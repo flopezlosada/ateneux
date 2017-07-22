@@ -17,3 +17,7 @@ app_student:
 app_studentmedical:
         resource: "@AppBundle/Resources/config/routing/studentmedical.xml"
         prefix:   /studentmedical
+
+app_meeting:
+        resource: "@AppBundle/Resources/config/routing/meeting.xml"
+        prefix:   /meeting

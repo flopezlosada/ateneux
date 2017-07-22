@@ -192,6 +192,11 @@ class Student
      */
     private $student_school;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="student_meeting")
+     */
+    protected $meetings;
+
 
     public function getAbsolutePath()
     {
@@ -769,4 +774,38 @@ class Student
 
 
 
+
+    /**
+     * Add meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return Student
+     */
+    public function addMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings[] = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Remove meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     */
+    public function removeMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings->removeElement($meeting);
+    }
+
+    /**
+     * Get meetings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
+    }
 }

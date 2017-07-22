@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Meetings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Date</th>
+                <th>Observations</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meeting in meetings %}
+            <tr>
+                <td><a href="{{ path('meeting_show', { 'id': meeting.id }) }}">{{ meeting.id }}</a></td>
+                <td>{% if meeting.created %}{{ meeting.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if meeting.updated %}{{ meeting.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if meeting.date %}{{ meeting.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ meeting.observations }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('meeting_show', { 'id': meeting.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('meeting_edit', { 'id': meeting.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('meeting_new') }}">Create a new meeting</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Editar reunión{% endblock %}
+{% block main %}
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            {{ form_start(edit_form, {'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.title) }}
+                        <label>{{ form_label(edit_form.title) }}</label>
+                        {{ form_widget(edit_form.title,{'attr':{'class':'form-control','placeholder':'Descripción'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(edit_form.date) }}
+                        <label>{{ form_label(edit_form.date) }}</label>
+                        {{ form_widget(edit_form.date,{'attr':{'placeholder':'Fecha de la reunión'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.handle_issues) }}
+                        <label>{{ form_label(edit_form.handle_issues) }}</label>
+                        {{ form_widget(edit_form.handle_issues,{'attr':{'class':'form-control','placeholder':'Asuntos tratados'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.deals) }}
+                        <label>{{ form_label(edit_form.deals) }}</label>
+                        {{ form_widget(edit_form.deals,{'attr':{'class':'form-control','placeholder':'Acuerdos'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.observations) }}
+                        <label>{{ form_label(edit_form.observations) }}</label>
+                        {{ form_widget(edit_form.observations,{'attr':{'class':'form-control','placeholder':'Observaciones'}}) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Actualizar"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('course_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+{% block specific_js %}
+    <script>
+        $('.datepicker').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if meeting.getDate() %}
+                var date = new Date("{{  meeting.getDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+    </script>
+{% endblock %}

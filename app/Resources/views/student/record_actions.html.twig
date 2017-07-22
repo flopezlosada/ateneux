@@ -1,7 +1,9 @@
 <ul class="list-inline">
     <li><a href="{{ path('student_edit', {'id': entity.id}) }}" >Editar</a> </li>
     {% if  app.request.attributes.get('_route') =='student_show'%}
+        <li><a href="{{ path('meeting_new', {'meeting_type_id': '1', 'student_id': entity.id}) }}">Programar reunión familiar</a> </li>
         <li><a href="{{ path('student_index') }}">Listado de estudiantes</a> </li>
+        <li><a href="{{ path('meeting_new', {'meeting_type_id': '2', 'student_id': entity.id}) }}">Programar reunión individual</a> </li>
     {% else  %}
         <li><a href="{{ path('student_show', {'id': entity.id}) }}">Ver detalles</a> </li>
     {% endif %}

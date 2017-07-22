@@ -57,6 +57,14 @@
                                 href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
                     </div>
                 {% endif %}
+                {% if pending_student_meetings|length>0 %}
+                    {% for meeting in pending_student_meetings %}
+                        <div class="alert alert-info">
+                            Esta/e estudiante tiene pendiente una {{ meeting.getMeetingType }} el
+                            día {{ meeting.date|localizeddate('long','none','es') }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
         </div>
         <div class="panel-body">
@@ -71,6 +79,10 @@
                         </li>
                         <li class=""><a href="#school" data-toggle="tab" aria-expanded="false">Contexto escolar</a>
                         </li>
+                        {% if student_meetings|length>0 %}
+                            <li class=""><a href="#meetings" data-toggle="tab" aria-expanded="false">Reuniones</a>
+                            </li>
+                        {% endif %}
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="home">
@@ -79,7 +91,7 @@
                             <div class="pull-right">
                                 <img class="img-thumbnail img-responsive image_task"
                                      src="{{ asset('uploads/student/images/' ~ student.image) | imagine_filter('image_student_card') }}"
-                                        >
+                                >
                             </div>
                             <p><strong>Nombre y Apellidos: </strong>{{ student }}</p>
 
@@ -101,6 +113,22 @@
                              id="familiar">{% include ':student:familiar.html.twig' with {'entity':student} %}</div>
                         <div class="tab-pane fade"
                              id="school">{% include ':student:school.html.twig' with {'entity':student} %}</div>
+                        {% if student_meetings|length>0 %}
+                            <div class="tab-pane fade"
+                                 id="meetings">
+                                <h4>Listado de reuniones</h4>
+                                <ul>
+                                    {% for meeting in student_meetings %}
+                                        <li>
+                                            <a href="{{ path('meeting_show', {'id': meeting.id}) }}">{{ meeting.title }}</a>
+                                            ({{ meeting.meetingStatus }})
+                                            Fecha: {{ meeting.date|localizeddate('long','none','es') }}
+
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

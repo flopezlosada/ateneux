@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 /**
  * Student controller.
  *
@@ -39,8 +40,7 @@ class StudentController extends Controller
         $form = $this->createForm('AppBundle\Form\StudentType', $student);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($student);
             $em->flush();
@@ -61,9 +61,16 @@ class StudentController extends Controller
     public function showAction(Student $student)
     {
         $deleteForm = $this->createDeleteForm($student);
+        $em = $this->getDoctrine()->getManager();
+        $pending_student_meetings = $em->getRepository('AppBundle:Student')
+            ->findMeetings($student->getId(), 1);//encuentra reuniones pendientes (1)
 
+        $student_meetings = $em->getRepository('AppBundle:Student')
+            ->findMeetings($student->getId());//todas las reuniones que ha tenido el estudiante
         return $this->render('student/show.html.twig', array(
             'student' => $student,
+            'pending_student_meetings' => $pending_student_meetings,
+            'student_meetings'=>$student_meetings,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -78,8 +85,7 @@ class StudentController extends Controller
         $editForm = $this->createForm('AppBundle\Form\StudentType', $student);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid())
-        {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('student_edit', array('id' => $student->getId()));
@@ -101,8 +107,7 @@ class StudentController extends Controller
         $form = $this->createDeleteForm($student);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($student);
             $em->flush();
@@ -152,8 +157,7 @@ class StudentController extends Controller
         $em->flush();
 
         $securityContext = $this->get('security.authorization_checker');
-        if( $securityContext->isGranted('ROLE_TEACHER') )
-        {
+        if ($securityContext->isGranted('ROLE_TEACHER')) {
             return $this->redirectToRoute('course_show', array('id' => $this->getUser()->getTeacher()->getMentorCourse()->getId()));
         }
 
