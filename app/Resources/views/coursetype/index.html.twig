@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Coursetypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for courseType in courseTypes %}
+            <tr>
+                <td><a href="{{ path('coursetype_show', { 'id': courseType.id }) }}">{{ courseType.id }}</a></td>
+                <td>{{ courseType.title }}</td>
+                <td>{% if courseType.created %}{{ courseType.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if courseType.updated %}{{ courseType.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('coursetype_show', { 'id': courseType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('coursetype_edit', { 'id': courseType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('coursetype_new') }}">Create a new courseType</a>
+        </li>
+    </ul>
+{% endblock %}

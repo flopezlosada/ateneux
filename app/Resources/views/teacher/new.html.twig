@@ -1,0 +1,43 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Profesorx{% endblock %}
+{% block main -%}
+<div class="panel panel-default">
+
+    <div class="panel-body">
+    {{ form_start(form,{'attr': {'role': 'form' }}) }}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    {{ form_errors(form.name) }}
+                    <label>{{ form_label(form.name) }}</label>
+                    {{ form_widget(form.name,{'attr':{'placeholder':'Nombre','class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.surname) }}
+                    <label>{{ form_label(form.surname) }}</label>
+                    {{ form_widget(form.surname,{'attr':{'placeholder':'Apellidos','class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.phone) }}
+                    <label>{{ form_label(form.phone) }}</label>
+                    {{ form_widget(form.phone,{'attr':{'placeholder':'Teléfono','class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.email) }}
+                    <label>{{ form_label(form.email) }}</label>
+                    {{ form_widget(form.email,{'attr':{'placeholder':'Correo electrónico','class':'form-control'}}) }}
+                </div>
+            </div>
+        </div>
+        {#{{ form_widget(form) }}#}
+        <input type="submit" value="Añadir" />
+    {{ form_end(form) }}
+    </div>
+</div>
+
+    <ul>
+        <li>
+            <a href="{{ path('teacher_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

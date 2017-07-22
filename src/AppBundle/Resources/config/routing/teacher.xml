@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="teacher_index" path="/" methods="GET">
+        <default key="_controller">AppBundle:Teacher:index</default>
+    </route>
+
+    <route id="teacher_show" path="/{id}/show" methods="GET">
+        <default key="_controller">AppBundle:Teacher:show</default>
+    </route>
+
+    <route id="teacher_new" path="/new" methods="GET|POST">
+        <default key="_controller">AppBundle:Teacher:new</default>
+    </route>
+
+    <route id="teacher_edit" path="/{id}/edit" methods="GET|POST">
+        <default key="_controller">AppBundle:Teacher:edit</default>
+    </route>
+
+    <route id="teacher_delete" path="/{id}/delete" methods="DELETE">
+        <default key="_controller">AppBundle:Teacher:delete</default>
+    </route>
+
+    <route id="teacher_select_mentor_course" path="/mentor/{teacher_id}" methods="GET">
+        <default key="_controller">AppBundle:Teacher:mentor</default>
+    </route>
+
+    <route id="teacher_select_mentor_teacher" path="/course/{course_id}" methods="GET">
+        <default key="_controller">AppBundle:Teacher:course</default>
+    </route>
+
+    <route id="teacher_selected_mentor_course" path="/mentor/{teacher_id}/{course_id}" methods="GET">
+        <default key="_controller">AppBundle:Teacher:mentor_selected</default>
+    </route>
+
+
+
+</routes>

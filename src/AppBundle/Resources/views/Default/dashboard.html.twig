@@ -1,0 +1,92 @@
+{% extends '::layout_graph.html.twig' %}
+ {% block more_css %}
+     <link rel="stylesheet" href="{{ asset('bundles/app/css/morris/morris.css') }}"/>
+ {% endblock %}
+
+    {% block title_wrapper %}Panel de control{% endblock %}
+{% block warning %}{% endblock %}
+{% block main %}
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-bicycle fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            {#<div class="huge">{{ render(controller('AppBundle:Default:layWeek')) }}</div>
+                            <div><br>¡Huevos puestos esta semana!</div>#}
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ path('student_new') }}">
+                    <div class="panel-footer">
+                        <span class="pull-left">Añadir estudiante</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Resumen de datos {{ 'now'|date ('Y') }}
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+                        {#<a class="list-group-item" href="{{ path('statistic_eggs') }}">
+                            <i class="fa fa-comment fa-fw"></i> Huevos puestos
+                                    <span class="pull-right text-muted small"><em> {{ total_lay_eggs }}</em>
+                                    </span>
+                        </a>
+                        <a class="list-group-item" href="{{ path('statistic_sale') }}">
+                            <i class="fa fa-twitter fa-fw"></i> Huevos vendidos
+                                    <span class="pull-right text-muted small"><em>{{ total_sale_eggs }}</em>
+                                    </span>
+                        </a>
+                        <a class="list-group-item" href="{{ path('statistic_user_collect',{'user_id':app.user.id}) }}">
+                            <i class="fa fa-envelope fa-fw"></i> Huevos que has consumido
+                                    <span class="pull-right text-muted small"><em>{{ total_collect_eggs_user }}</em>
+                                    </span>
+                        </a>
+                        <a class="list-group-item" href="{{ path('statistic_feed') }}">
+                            <i class="fa fa-tasks fa-fw"></i> Pienso de gallina (Kg)
+                                    <span class="pull-right text-muted small"><em>{{ hens_feed_year }}</em>
+                                    </span>
+                        </a>
+                        <a class="list-group-item" href="{{ path('statistic_feed') }}">
+                            <i class="fa fa-upload fa-fw"></i> Pienso de pavos (Kg)
+                                    <span class="pull-right text-muted small"><em>{{ turkey_feed_year }}</em>
+                                    </span>
+                        </a>
+                        <a class="list-group-item" href="{{ path('statistic_feed') }}">
+                            <i class="fa fa-bolt fa-fw"></i> Pienso de pollos (Kg)
+                                    <span class="pull-right text-muted small"><em>{{ broiler_feed_year }}</em>
+                                    </span>
+                        </a>#}
+                    </div>
+                    <!-- /.list-group -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

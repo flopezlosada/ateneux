@@ -1,0 +1,113 @@
+{% extends '::layout_show.html.twig' %}
+{% block more_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
+{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Ficha de estudiante: {{ student }} </h1>
+            {% if student.getCourse == null %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="alert alert-danger">
+                        Debes definir el curso actual de la/el estudiante <a
+                                href="{{ path('student_course', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% elseif  is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined %}
+                    <div class="alert alert-danger">No se ha indicado el curso del estudiante. <a
+                                href="{{ path('student_course_selected', {'course_id': app.user.getTeacher.getMentorCourse.getId, 'student_id': student.id}) }}"
+                                class="alert-link">Añadir a mi curso</a>.
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if student.getMedical.getId is not defined %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="alert alert-danger">
+                        Debes definir los datos médicos de la/el estudiante <a
+                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                    <div class="alert alert-danger">
+                        Debes definir los datos médicos de la/el estudiante <a
+                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if student.getFamiliar.getId is not defined %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="alert alert-danger">
+                        Debes definir los datos familiares de la/el estudiante <a
+                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                    <div class="alert alert-danger">
+                        Debes definir los datos familiares de la/el estudiante <a
+                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if student.getStudentSchool.getId is not defined %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="alert alert-danger">
+                        Debes definir los datos académicos de la/el estudiante <a
+                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                    <div class="alert alert-danger">
+                        Debes definir los datos académicos de la/el estudiante <a
+                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos personales</a>
+                        </li>
+                        <li class=""><a href="#medical" data-toggle="tab" aria-expanded="false">Datos médicos</a>
+                        </li>
+                        <li class=""><a href="#familiar" data-toggle="tab" aria-expanded="false">Contexto Familiar</a>
+                        </li>
+                        <li class=""><a href="#school" data-toggle="tab" aria-expanded="false">Contexto escolar</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="home">
+                            <h4>Datos Personales</h4>
+
+                            <div class="pull-right">
+                                <img class="img-thumbnail img-responsive image_task"
+                                     src="{{ asset('uploads/student/images/' ~ student.image) | imagine_filter('image_student_card') }}"
+                                        >
+                            </div>
+                            <p><strong>Nombre y Apellidos: </strong>{{ student }}</p>
+
+                            <p><strong>Dirección:</strong> {{ student.getCompleteAddress }}</p>
+
+                            <p><strong>Teléfono: </strong>{{ student.getPhone }}</p>
+
+                            <p><strong>Móvil: </strong>{{ student.getCelular }}</p>
+
+                            <p><strong>Correo electrónico: </strong>{{ student.getEmail }}</p>
+
+                            {% if student.getCourse != null %}
+                                <p><strong>Curso actual: </strong> {{ student.getCourse }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade"
+                             id="medical">{% include ':student:medical.html.twig' with {'entity':student} %}</div>
+                        <div class="tab-pane fade"
+                             id="familiar">{% include ':student:familiar.html.twig' with {'entity':student} %}</div>
+                        <div class="tab-pane fade"
+                             id="school">{% include ':student:school.html.twig' with {'entity':student} %}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            {% include ':student:record_actions.html.twig' with {'entity':student} %}
+        </div>
+    </div>
+
+{% endblock %}

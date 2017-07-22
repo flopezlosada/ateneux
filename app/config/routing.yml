@@ -1,0 +1,14 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    prefix: /
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+ateneux:
+  resource: "@AppBundle/Resources/config/routing.yml"
+  prefix:   /gestion
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+

@@ -1,0 +1,47 @@
+{% extends '::layout_show.html.twig' %}
+{% block more_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
+{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Ficha de tutora/or: {{ teacher }} </h1>
+            {% if teacher.getMentorCourse == null %}
+                <div class="alert alert-danger">
+                    Debes definir el curso que tutoriza <a
+                            href="{{ path('teacher_select_mentor_course', {'teacher_id': teacher.id}) }}"
+                            class="alert-link">Indicar</a>.
+                </div>
+            {% endif %}
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><strong>Nombre: </strong>{{ teacher }}</p>
+
+                    <p><strong>Teléfono: </strong>{{ teacher.getPhone }}</p>
+
+                    <p><strong>Correo electrónico: </strong>{{ teacher.getEmail }}</p>
+                    {% if teacher.getMentorCourse is not null %}
+                        <p><strong>Tutoriza al curso: <a href="{{ path('course_show', {'id': teacher.getMentorCourse.id}) }}">{{ teacher.getMentorCourse.title }}</a> </strong></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('teacher_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

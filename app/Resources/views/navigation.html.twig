@@ -1,0 +1,73 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+            <li>
+                <a href="{{ path('dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Panel de control</a>
+            </li>
+            {#<li>
+                <a href="{{ path('calendar') }}"><i class="fa fa-calendar fa-fw"></i> Calendario</a>
+            </li>#}
+            <li>
+                <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Cursos<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ path('course_index') }}">Listado de cursos {{ real_course.getRealCourse }}</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a href="{{ path('course_new') }}">Añadir curso</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{{ path('coursetype_index') }}">Tipos de cursos</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a href="{{ path('coursetype_new') }}">Añadir tipo de curso</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Estudiantes<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ path('student_index') }}">Listado de estudiantes {{ real_course.getRealCourse }}</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a href="{{ path('student_new') }}">Añadir estudiante</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Tutoras/es<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ path('teacher_index') }}">Listado de tutoras/es {{ real_course.getRealCourse }}</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a href="{{ path('teacher_new') }}">Añadir tutora/or</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>

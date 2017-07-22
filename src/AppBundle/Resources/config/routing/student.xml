@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="student_index" path="/" methods="GET">
+        <default key="_controller">AppBundle:Student:index</default>
+    </route>
+
+    <route id="student_show" path="/{id}/show" methods="GET">
+        <default key="_controller">AppBundle:Student:show</default>
+    </route>
+
+    <route id="student_new" path="/new" methods="GET|POST">
+        <default key="_controller">AppBundle:Student:new</default>
+    </route>
+
+    <route id="student_edit" path="/{id}/edit" methods="GET|POST">
+        <default key="_controller">AppBundle:Student:edit</default>
+    </route>
+
+    <route id="student_delete" path="/{id}/delete" methods="DELETE">
+        <default key="_controller">AppBundle:Student:delete</default>
+    </route>
+
+    <route id="student_course" path="/course/{student_id}" methods="GET">
+        <default key="_controller">AppBundle:Student:course</default>
+    </route>
+
+    <route id="student_course_selected" path="/course/selected/{student_id}/{course_id}" methods="GET">
+        <default key="_controller">AppBundle:Student:courseSelected</default>
+    </route>
+</routes>

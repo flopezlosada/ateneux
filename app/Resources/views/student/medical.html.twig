@@ -1,0 +1,128 @@
+<p></p>
+{% if student.getMedical.getId is defined %}
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false"
+                       class="collapsed">Padece algún tipo de alergia:
+                        {% if student.getMedical.getAllergy %}
+                            Sí <br/>
+
+                        {% else %}
+                            No
+                        {% endif %}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                {% if student.getMedical.getAllergy %}
+                    <div class="panel-body"><p>{{ student.getMedical.getAllergyObservations }}</p></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false"
+                       class="collapsed">Padece algún tipo de enfermedad:
+                        {% if student.getMedical.getDisease %}
+                            Sí <br/>
+
+                        {% else %}
+                            No
+                        {% endif %}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                {% if student.getMedical.getDisease %}
+                    <div class="panel-body"><p>{{ student.getMedical.getDiseaseObservations }}</p></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false"
+                       class="collapsed">Padece algún tipo de déficit:
+                        {% if student.getMedical.getHandicap %}
+                            Sí <br/>
+
+                        {% else %}
+                            No
+                        {% endif %}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                {% if student.getMedical.getHandicap %}
+                    <div class="panel-body"><p>{{ student.getMedical.getHandicapObservations }}</p></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Padece TDAH:
+                    {% if student.getMedical.getTdah %}
+                        Sí <br/>
+
+                    {% else %}
+                        No
+                    {% endif %}
+
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Tratamiento médico:
+                    {% if student.getMedical.getMedicalTreatment %}
+                        Sí <br/>
+
+                    {% else %}
+                        No
+                    {% endif %}
+
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Tratamiento psicológico:
+                    {% if student.getMedical.getPsychologicalTreatment %}
+                        Sí <br/>
+
+                    {% else %}
+                        No
+                    {% endif %}
+
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>{{ student.getObservations }}</p>
+        </div>
+    </div>
+{% else %}
+    <p>No se han definido los datos médicos. Por favor, añádelos a continuación. <a
+                href="{{ path('studentmedical_new', {'student_id': student.id}) }}">Añadir</a></p>
+{% endif %}

@@ -1,0 +1,36 @@
+{% extends '::layout_show.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Selecciona la/el tutora/or para el curso: {{ course }}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    {%  set count = 0 %}
+                    {% for teacher in teachers %}
+                        {% if loop.first %}
+                            <ul>
+
+                        {% endif %}
+                        {% if teacher.getMentorCourse.id is not defined %}
+                            {% set count = count+1 %}
+                            <li>
+                                <a href="{{ path('teacher_selected_mentor_course', {'course_id': course.id, 'teacher_id': teacher.id}) }}">{{ teacher }}</a>
+                            </li>
+                        {% endif %}
+                        {% if loop.last %}
+                            </ul>
+                        {% endif %}
+                    {% else %}
+                        <div class="alert alert-info">No se han definido tutoras/es</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title_wrapper %}
+    Selección de curso y tutora/or
+{% endblock %}
+

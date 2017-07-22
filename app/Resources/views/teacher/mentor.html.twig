@@ -1,0 +1,35 @@
+{% extends '::layout_show.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Selecciona el curso que tutoriza la/el tutora/or: {{ teacher }}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    {% for course in courses %}
+
+                        {% if loop.first %}
+                            <ul>
+
+                        {% endif %}
+                        {% if course.getMentorTeacher.id is not defined %}
+                            <li>
+                                <a href="{{ path('teacher_selected_mentor_course', {'course_id': course.id, 'teacher_id': teacher.id}) }}">{{ course }}</a>
+                            </li>
+                        {% endif %}
+                        {% if loop.last %}
+                            </ul>
+                        {% endif %}
+                    {% else %}
+                        <div class="alert alert-info">No se han definido cursos</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title_wrapper %}
+    Selección de curso y tutora/or
+{% endblock %}
+

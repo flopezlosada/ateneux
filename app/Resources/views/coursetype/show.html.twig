@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Coursetype</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ courseType.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ courseType.title }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if courseType.created %}{{ courseType.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if courseType.updated %}{{ courseType.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('coursetype_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('coursetype_edit', { 'id': courseType.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

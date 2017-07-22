@@ -1,0 +1,13 @@
+{% extends '::layout_show.html.twig' %}
+{% block more_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
+{% endblock %}
+{% block main -%}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="alert alert-warning">
+            No tienes permisos para acceder a esta parte de la aplicación.
+        </div>
+    </div>
+</div>
+{% endblock %}

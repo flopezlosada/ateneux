@@ -1,0 +1,78 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Estudiante{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(form.name) }}
+                        <label>{{ form_label(form.name) }}</label>
+                        {{ form_widget(form.name,{'attr':{'placeholder':'Nombre','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.surname) }}
+                        <label>{{ form_label(form.surname) }}</label>
+                        {{ form_widget(form.surname,{'attr':{'placeholder':'Apellidos','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.address) }}
+                        <label>{{ form_label(form.address) }}</label>
+                        {{ form_widget(form.address,{'attr':{'placeholder':'Dirección','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.state) }}
+                        <label>{{ form_label(form.state) }}</label>
+                        {{ form_widget(form.state,{'attr':{'placeholder':'Provincia','class':'form-control'}}) }}
+                    </div> <div class="form-group">
+                        {{ form_errors(form.city) }}
+                        <label>{{ form_label(form.city) }}</label>
+                        {{ form_widget(form.city,{'attr':{'placeholder':'Localidad','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.postal_code) }}
+                        <label>{{ form_label(form.postal_code) }}</label>
+                        {{ form_widget(form.postal_code,{'attr':{'placeholder':'Código Postal','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.phone) }}
+                        <label>{{ form_label(form.phone) }}</label>
+                        {{ form_widget(form.phone,{'attr':{'placeholder':'Teléfono','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.celular) }}
+                        <label>{{ form_label(form.celular) }}</label>
+                        {{ form_widget(form.celular,{'attr':{'placeholder':'Móvil','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.email) }}
+                        <label>{{ form_label(form.email) }}</label>
+                        {{ form_widget(form.email,{'attr':{'placeholder':'Correo electrónico','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.observations) }}
+                        <label>{{ form_label(form.observations) }}</label>
+                        {{ form_widget(form.observations,{'attr':{'placeholder':'Notas','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.file) }}
+                        <label>{{ form_label(form.file) }}</label>
+                        {{ form_widget(form.file,{'attr':{'placeholder':'Imagen','class':'form-control'}}) }}
+                    </div>
+
+                    {# {{ form_widget(form) }}#}
+                </div>
+            </div>
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('student_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+{% endblock %}

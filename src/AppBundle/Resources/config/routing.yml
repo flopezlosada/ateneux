@@ -1,0 +1,19 @@
+app_teacher:
+    resource: "@AppBundle/Resources/config/routing/teacher.xml"
+    prefix:   /teacher
+
+app_coursetype:
+        resource: "@AppBundle/Resources/config/routing/coursetype.xml"
+        prefix:   /coursetype
+
+app_course:
+        resource: "@AppBundle/Resources/config/routing/course.xml"
+        prefix:   /course
+
+app_student:
+        resource: "@AppBundle/Resources/config/routing/student.xml"
+        prefix:   /student
+
+app_studentmedical:
+        resource: "@AppBundle/Resources/config/routing/studentmedical.xml"
+        prefix:   /studentmedical
