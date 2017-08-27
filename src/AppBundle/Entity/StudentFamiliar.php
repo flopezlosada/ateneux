@@ -145,7 +145,7 @@ class StudentFamiliar
     /**
      * @var enum
      *
-     * @ORM\Column(name="death", type="string", columnDefinition="enum('male', 'femelle', 'both')")
+     * @ORM\Column(name="death", type="string", columnDefinition="enum('male', 'female', 'both')")
      *
      * ¿Muerte progenitorxs?
      */
@@ -154,7 +154,7 @@ class StudentFamiliar
     /**
      * @var enum
      *
-     * @ORM\Column(name="unemployment", type="string", columnDefinition="enum('male', 'femelle', 'both')")
+     * @ORM\Column(name="unemployment", type="string", columnDefinition="enum('male', 'female', 'both')")
      *
      * ¿Progenitorxs en paro?
      */
@@ -163,7 +163,7 @@ class StudentFamiliar
     /**
      * @var enum
      *
-     * @ORM\Column(name="care", type="string", columnDefinition="enum('male', 'femelle', 'both','grandparents','other')")
+     * @ORM\Column(name="care", type="string", columnDefinition="enum('male', 'female', 'both','grandparents','other')")
      *
      * ¿Custoria padres separadxs?
      */

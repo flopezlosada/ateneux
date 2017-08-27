@@ -119,9 +119,12 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
+            <h4 class="panel-title">Observaciones:</h4>
             <p>{{ student.getObservations }}</p>
         </div>
     </div>
+
+
 {% else %}
     <p>No se han definido los datos médicos. Por favor, añádelos a continuación. <a
                 href="{{ path('studentmedical_new', {'student_id': student.id}) }}">Añadir</a></p>

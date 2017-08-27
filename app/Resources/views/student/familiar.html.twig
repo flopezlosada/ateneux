@@ -1,0 +1,212 @@
+<p></p>
+{% if student.getFamiliar.getId is defined %}
+    <div class="col-lg-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Aceptan la situación hijo:
+                    {% if student.getFamiliar.getAccept %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Conocen las causas ACNEAE:
+                    {% if student.getFamiliar.getAcneae %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Conocen las causas ACNEAE:
+                    {% if student.getFamiliar.getAcneae %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Presenta excesiva protección:
+                    {% if student.getFamiliar.getProtection %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Refuerzan logros:
+                    {% if student.getFamiliar.getIncrease %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Castigan conductas disruptivas:
+                    {% if student.getFamiliar.getPunish %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Dialogan con su hijo/a:
+                    {% if student.getFamiliar.getConverse %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Presentan colaboración:
+                    {% if student.getFamiliar.getCooperate %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Demandan reuniones al tutor:
+                    {% if student.getFamiliar.getMeeting %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Colaboran sólo si el tutor lo pide:
+                    {% if student.getFamiliar.getMentor %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Organizan tiempo de estudio:
+                    {% if student.getFamiliar.getStudyTime %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Refuerzan aprendizaje:
+                    {% if student.getFamiliar.getLearning %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Controlan trabajo diario:
+                    {% if student.getFamiliar.getWorkControl %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Controlan estudio diario:
+                    {% if student.getFamiliar.getStudyControl %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Personas que conviven en el seno familiar</h4>
+            </div>
+            <div class="panel-body">
+                {{ student.getFamiliar.getFamiliarPeople }}
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Indica si ha habido algún progenitora/or fallecida/o:
+                </h4>
+            </div>
+            <div class="panel-body">
+                {% if student.getFamiliar.getDeath %}
+                    <p>{{ student.getFamiliar.getDeath|trans }}</p>
+                {% else %}
+                    Ninguno
+                {% endif %}
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Indica si hay algún progenitora/or en paro:
+                </h4>
+            </div>
+            <div class="panel-body">
+                {% if student.getFamiliar.getUnemployment %}
+                    <p>{{ student.getFamiliar.getUnemployment|trans }}</p>
+                {% else %}
+                    Ninguno
+                {% endif %}
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Indica si hay custiodia de progenitorxs separadxs:
+                </h4>
+            </div>
+            <div class="panel-body">
+                {% if student.getFamiliar.getCare %}
+                    <p>La custodia la realizan: {{ student.getFamiliar.getCare|trans }}</p>
+                {% else %}
+                    Sin definir
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+{% else %}
+    <p>No se ha definido el contexto familiar. Por favor, añádelo a continuación. <a
+                href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}">Añadir</a></p>
+{% endif %}

@@ -41,11 +41,11 @@ class StudentSchool
      */
 
     /**
-     * @var int repeat
-     * @ORM\Column(name="repeat", type="boolean", length=1, nullable=true)
+     * @var int repeat_grade
+     * @ORM\Column(name="repeat_grade", type="boolean", length=1, nullable=true)
      * ¿repite curso?
      */
-    private $repeat = false;
+    private $repeat_grade = false;
 
     /**
      * @var int adapted
@@ -165,11 +165,11 @@ class StudentSchool
      */
 
     /**
-     * @var int read
-     * @ORM\Column(name="read", type="boolean", length=1, nullable=true)
+     * @var int reading_comprehension
+     * @ORM\Column(name="reading_comprehension", type="boolean", length=1, nullable=true)
      * ¿comprensión lectora?
      */
-    private $read = false;
+    private $reading_comprehension = false;
 
     /**
      * @var int oral
@@ -296,27 +296,27 @@ class StudentSchool
     }
 
     /**
-     * Set repeat
+     * Set repeat_grade
      *
-     * @param boolean $repeat
+     * @param boolean $repeat_grade
      *
      * @return StudentSchool
      */
-    public function setRepeat($repeat)
+    public function setRepeatGrade($repeat_grade)
     {
-        $this->repeat = $repeat;
+        $this->repeat_grade = $repeat_grade;
 
         return $this;
     }
 
     /**
-     * Get repeat
+     * Get repeat_grade
      *
      * @return boolean
      */
-    public function getRepeat()
+    public function getRepeatGrade()
     {
-        return $this->repeat;
+        return $this->repeat_grade;
     }
 
     /**
@@ -680,27 +680,27 @@ class StudentSchool
     }
 
     /**
-     * Set read
+     * Set reading_comprehension
      *
-     * @param boolean $read
+     * @param boolean reading_comprehension
      *
      * @return StudentSchool
      */
-    public function setRead($read)
+    public function setReadingComprehension($reading_comprehension)
     {
-        $this->read = $read;
+        $this->reading_comprehension = $reading_comprehension;
 
         return $this;
     }
 
     /**
-     * Get read
+     * Get reading_comprehension
      *
      * @return boolean
      */
-    public function getRead()
+    public function getReadingComprehension()
     {
-        return $this->read;
+        return $this->reading_comprehension;
     }
 
     /**

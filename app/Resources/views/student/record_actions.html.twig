@@ -1,11 +1,18 @@
 <ul class="list-inline">
-    <li><a href="{{ path('student_edit', {'id': entity.id}) }}" >Editar</a> </li>
-    {% if  app.request.attributes.get('_route') =='student_show'%}
-        <li><a href="{{ path('meeting_new', {'meeting_type_id': '1', 'student_id': entity.id}) }}">Programar reunión familiar</a> </li>
-        <li><a href="{{ path('student_index') }}">Listado de estudiantes</a> </li>
-        <li><a href="{{ path('meeting_new', {'meeting_type_id': '2', 'student_id': entity.id}) }}">Programar reunión individual</a> </li>
-    {% else  %}
-        <li><a href="{{ path('student_show', {'id': entity.id}) }}">Ver detalles</a> </li>
+    <li><a href="{{ path('student_edit', {'id': entity.id}) }}">Editar</a></li>
+    {% if  app.request.attributes.get('_route') =='student_show' %}
+        <li><a href="{{ path('meeting_new', {'meeting_type_id': '1', 'student_id': entity.id}) }}">Programar reunión
+                familiar</a></li>
+        {% if is_granted("ROLE_ADMIN") %}
+            <li><a href="{{ path('student_index') }}">Listado de estudiantes</a></li>
+        {% elseif is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined %}
+            <li><a href="{{ path('course_show', {'id': app.user.getTeacher.getMentorCourse.id}) }}">Listado de estudiantes del curso {{ app.user.getTeacher.getMentorCourse.title }}</a></li>
+        {% endif %}
+
+        <li><a href="{{ path('meeting_new', {'meeting_type_id': '2', 'student_id': entity.id}) }}">Programar reunión
+                individual</a></li>
+    {% else %}
+        <li><a href="{{ path('student_show', {'id': entity.id}) }}">Ver detalles</a></li>
     {% endif %}
     <li>
         {{ form_start(delete_form) }}

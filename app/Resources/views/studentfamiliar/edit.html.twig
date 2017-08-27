@@ -1,0 +1,109 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Editar Datos Familiares {% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            {{ form_start(edit_form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.accept) }}
+                        {{ form_widget(edit_form.accept) }}
+                        {{ form_label(edit_form.accept) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.acneae) }}
+                        {{ form_widget(edit_form.acneae) }}
+                        {{ form_label(edit_form.acneae) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.protection) }}
+                        {{ form_widget(edit_form.protection) }}
+                        {{ form_label(edit_form.protection) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.increase) }}
+                        {{ form_widget(edit_form.increase) }}
+                        {{ form_label(edit_form.increase) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.punish) }}
+                        {{ form_widget(edit_form.punish) }}
+                        {{ form_label(edit_form.punish) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.converse) }}
+                        {{ form_widget(edit_form.converse) }}
+                        {{ form_label(edit_form.converse) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.cooperate) }}
+                        {{ form_widget(edit_form.cooperate) }}
+                        {{ form_label(edit_form.cooperate) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.meeting) }}
+                        {{ form_widget(edit_form.meeting) }}
+                        {{ form_label(edit_form.meeting) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(edit_form.mentor) }}
+                        {{ form_widget(edit_form.mentor) }}
+                        {{ form_label(edit_form.mentor) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.study_time) }}
+                        {{ form_widget(edit_form.study_time) }}
+                        {{ form_label(edit_form.study_time) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.learning) }}
+                        {{ form_widget(edit_form.learning) }}
+                        {{ form_label(edit_form.learning) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.work_control) }}
+                        {{ form_widget(edit_form.work_control) }}
+                        {{ form_label(edit_form.work_control) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.study_control) }}
+                        {{ form_widget(edit_form.study_control) }}
+                        {{ form_label(edit_form.study_control) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.familiar_people) }}
+                        <label>{{ form_label(edit_form.familiar_people) }}</label>
+                        {{ form_widget(edit_form.familiar_people,{'attr':{'placeholder':'Seno familiar','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.observations) }}
+                        <label>{{ form_label(edit_form.observations) }}</label>
+                        {{ form_widget(edit_form.observations,{'attr':{'placeholder':'Observaciones generales','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.death) }}
+                        {{ form_label(edit_form.death) }}
+                        {{ form_widget(edit_form.death) }}
+
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.unemployment) }}
+                        {{ form_label(edit_form.unemployment) }}
+                        {{ form_widget(edit_form.unemployment) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.care) }}
+                        {{ form_label(edit_form.care) }}
+                        {{ form_widget(edit_form.care) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Actualizar"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+{% endblock %}

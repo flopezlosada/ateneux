@@ -30,12 +30,14 @@
                                             <a href="{{ path('student_edit', { 'id': student.id }) }}">editar</a>
                                         </li>
                                         <li>
-                                            <a href="{{ path('student_course', {'student_id': student.id}) }}"  class="alert-link">Definir curso</a>.
+                                            <a href="{{ path('student_course', {'student_id': student.id}) }}"
+                                               class="alert-link">Definir curso</a>.
                                         </li>
                                     {% endif %}
-                                    {% if is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined  and student.getCourse.getId is not defined%}
+                                    {% if is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined  and student.getCourse.getId is not defined %}
                                         <li>
-                                            <a href="{{ path('student_course_selected', {'course_id': app.user.getTeacher.getMentorCourse.getId, 'student_id': student.id}) }}"  class="alert-link">Añadir a mi curso</a>.
+                                            <a href="{{ path('student_course_selected', {'course_id': app.user.getTeacher.getMentorCourse.getId, 'student_id': student.id}) }}"
+                                               class="alert-link">Añadir a mi curso</a>.
                                         </li>
                                     {% endif %}
                                 </ul>
@@ -47,12 +49,13 @@
             </div>
         </div>
     </div>
-
-    <ul>
-        <li>
-            <a href="{{ path('student_new') }}">
-                Añadir estudiante
-            </a>
-        </li>
-    </ul>
+    {% if is_granted("ROLE_ADMIN") %}
+        <ul>
+            <li>
+                <a href="{{ path('student_new') }}">
+                    Añadir estudiante
+                </a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

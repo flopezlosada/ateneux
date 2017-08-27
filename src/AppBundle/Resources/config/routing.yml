@@ -21,3 +21,15 @@ app_studentmedical:
 app_meeting:
         resource: "@AppBundle/Resources/config/routing/meeting.xml"
         prefix:   /meeting
+
+app_studentfamiliar:
+        resource: "@AppBundle/Resources/config/routing/studentfamiliar.xml"
+        prefix:   /studentfamiliar
+
+app_studentschool:
+        resource: "@AppBundle/Resources/config/routing/studentschool.xml"
+        prefix:   /studentschool
+
+app_academicinformation:
+        resource: "@AppBundle/Resources/config/routing/academicinformation.xml"
+        prefix:   /academicinformation

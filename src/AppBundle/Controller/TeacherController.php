@@ -206,7 +206,7 @@ class TeacherController extends Controller
         $em->flush();
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Has sido dada/o de alta como responsable de viajes en la web ' . $this->container->getParameter('domain'))
+            ->setSubject('Has sido dada/o de alta como tutora/or  la web ' . $this->container->getParameter('domain'))
             ->setFrom($this->container->getParameter('contact_email'))
             ->setTo($teacher->getEmail())
             ->setBody(

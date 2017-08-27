@@ -31,4 +31,12 @@
     <route id="student_course_selected" path="/course/selected/{student_id}/{course_id}" methods="GET">
         <default key="_controller">AppBundle:Student:courseSelected</default>
     </route>
+
+    <route id="student_familiar_pdf" path="/pdf/familiar/{student_id}" methods="GET">
+        <default key="_controller">AppBundle:Student:familiarPdf</default>
+    </route>
+    <route id="student_school_generate" path="/generate/school/{student_id}/{type}" methods="GET">
+        <default key="_controller">AppBundle:Student:generateSchool</default>
+        <requirement key="type">pdf|image</requirement>
+    </route>
 </routes>

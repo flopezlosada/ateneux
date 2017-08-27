@@ -1,0 +1,213 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Datos Académicos {% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Contexto escolar
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                {{ form_errors(form.repeat_grade) }}
+                                <label>{{ form_label(form.repeat_grade) }}</label>
+                                {{ form_widget(form.repeat_grade,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.adapted) }}
+                                <label>{{ form_label(form.adapted) }}</label>
+                                {{ form_widget(form.adapted,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.advance_with_fail) }}
+                                <label>{{ form_label(form.advance_with_fail) }}</label>
+                                {{ form_widget(form.advance_with_fail,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.fail_subject) }}
+                                <label>{{ form_label(form.fail_subject) }}</label>
+                                {{ form_widget(form.fail_subject,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            Dificultades de aprendizaje
+                        </div>
+                        <div class="panel-body">
+                            <p>Marca las casillas en las que la/el estudiante presente dificultades</p>
+                            <div class="form-group">
+                                {{ form_errors(form.reading_comprehension) }}
+                                {{ form_widget(form.reading_comprehension) }}
+                                {{ form_label(form.reading_comprehension) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.oral) }}
+                                {{ form_widget(form.oral) }}
+                                {{ form_label(form.oral) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.written) }}
+                                {{ form_widget(form.written) }}
+                                {{ form_label(form.written) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.oral_expression) }}
+                                {{ form_widget(form.oral_expression) }}
+                                {{ form_label(form.oral_expression) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.calculation) }}
+                                {{ form_widget(form.calculation) }}
+                                {{ form_label(form.calculation) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.troubleshooting) }}
+                                {{ form_widget(form.troubleshooting) }}
+                                {{ form_label(form.troubleshooting) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.spelling) }}
+                                {{ form_widget(form.spelling) }}
+                                {{ form_label(form.spelling) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.vocabulary) }}
+                                {{ form_widget(form.vocabulary) }}
+                                {{ form_label(form.vocabulary) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.attention) }}
+                                <label>{{ form_label(form.attention) }}</label>
+                                {{ form_widget(form.attention,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.student_relationship) }}
+                                <label>{{ form_label(form.student_relationship) }}</label>
+                                {{ form_widget(form.student_relationship,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.teacher_relationship) }}
+                                <label>{{ form_label(form.teacher_relationship) }}</label>
+                                {{ form_widget(form.teacher_relationship,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.work_habits) }}
+                                <label>{{ form_label(form.work_habits) }}</label>
+                                {{ form_widget(form.work_habits,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.study_habits) }}
+                                <label>{{ form_label(form.study_habits) }}</label>
+                                {{ form_widget(form.study_habits,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.behavior) }}
+                                <label>{{ form_label(form.behavior) }}</label>
+                                {{ form_widget(form.behavior,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            Características de aprendizaje
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ form_errors(form.responsible) }}
+                                <label>{{ form_label(form.responsible) }}</label>
+                                {{ form_widget(form.responsible,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.driven) }}
+                                <label>{{ form_label(form.driven) }}</label>
+                                {{ form_widget(form.driven,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.attentive) }}
+                                <label>{{ form_label(form.attentive) }}</label>
+                                {{ form_widget(form.attentive,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.thoughtful) }}
+                                <label>{{ form_label(form.thoughtful) }}</label>
+                                {{ form_widget(form.thoughtful,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_errors(form.independent) }}
+                                <label>{{ form_label(form.independent) }}</label>
+                                {{ form_widget(form.independent,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.organized) }}
+                                <label>{{ form_label(form.organized) }}</label>
+                                {{ form_widget(form.organized,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.demotivated) }}
+                                <label>{{ form_label(form.demotivated) }}</label>
+                                {{ form_widget(form.demotivated,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.carefree) }}
+                                <label>{{ form_label(form.carefree) }}</label>
+                                {{ form_widget(form.carefree,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.distracted) }}
+                                <label>{{ form_label(form.distracted) }}</label>
+                                {{ form_widget(form.distracted,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.impulsive) }}
+                                <label>{{ form_label(form.impulsive) }}</label>
+                                {{ form_widget(form.impulsive,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.dependent) }}
+                                <label>{{ form_label(form.dependent) }}</label>
+                                {{ form_widget(form.dependent,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.disorganized) }}
+                                <label>{{ form_label(form.disorganized) }}</label>
+                                {{ form_widget(form.disorganized,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Observaciones generales
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ form_errors(form.observations) }}
+                                <label>{{ form_label(form.observations) }}</label>
+                                {{ form_widget(form.observations,{'attr':{'placeholder':'Observaciones generales','class':'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Create"/>
+        {{ form_end(form) }}
+    </div>
+    </div>
+
+{% endblock %}

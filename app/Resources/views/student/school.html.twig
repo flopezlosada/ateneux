@@ -1,0 +1,269 @@
+<p></p>
+{% if student.getStudentSchool.getId is defined %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Contexto escolar
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <strong>Repite curso:</strong>
+                        {% if student.getStudentSchool.getRepeatGrade %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Presenta adaptación:</strong>
+                        {% if student.getStudentSchool.getAdapted %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Promociona con asignaturas suspensas:</strong>
+                        {% if student.getStudentSchool.getAdvanceWithFail %}
+                            Sí: <br>{{ student.getStudentSchool.getFailSubject }}
+
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    Dificultades de aprendizaje
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <strong>Comprensión lectora:</strong>
+                        {% if student.getStudentSchool.getReadingComprehension %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Comprensión oral:</strong>
+                        {% if student.getStudentSchool.getOral %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Expresión escrita:</strong>
+                        {% if student.getStudentSchool.getWritten %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Expresión oral:</strong>
+                        {% if student.getStudentSchool.getOralExpression %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Cálculo:</strong>
+                        {% if student.getStudentSchool.getCalculation %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Resolución de problemas:</strong>
+                        {% if student.getStudentSchool.getTroubleshooting %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Ortografía:</strong>
+                        {% if student.getStudentSchool.getSpelling %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Vocabulario:</strong>
+                        {% if student.getStudentSchool.getVocabulary %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p><strong>Interés por el aprendizaje:</strong>
+                        {% if student.getStudentSchool.getAttention %}
+                            {{ student.getStudentSchool.getAttention|trans }}
+                        {% else %}
+                            Sin definir
+                        {% endif %}
+                    </p>
+                    <p><strong>Relación con sus compañeras/os:</strong>
+                        {% if student.getStudentSchool.getStudentRelationship %}
+                            {{ student.getStudentSchool.getStudentRelationship|trans }}
+                        {% else %}
+                            Sin definir
+                        {% endif %}
+                    </p>
+                    <p><strong>Relación con sus profesoras/es:</strong>
+                        {% if student.getStudentSchool.getTeacherRelationship %}
+                            {{ student.getStudentSchool.getTeacherRelationship|trans }}
+                        {% else %}
+                            Sin definir
+                        {% endif %}
+                    </p>
+                    <p><strong>Hábitos de trabajo:</strong>
+                        {% if student.getStudentSchool.getWorkHabits %}
+                            {{ student.getStudentSchool.getWorkHabits|trans }}
+                        {% else %}
+                            Sin definir
+                        {% endif %}
+                    </p>
+                    <p><strong>Hábitos de estudio:</strong>
+                        {% if student.getStudentSchool.getStudyHabits %}
+                            {{ student.getStudentSchool.getStudyHabits|trans }}
+                        {% else %}
+                            Sin definir
+                        {% endif %}
+                    </p>
+                    <p><strong>Comportamiento:</strong>
+                        {% if student.getStudentSchool.getBehavior %}
+                            {{ student.getStudentSchool.getBehavior|trans }}
+                        {% else %}
+                            Sin definir
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Características de aprendizaje
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <strong>Es responsable:</strong>
+                        {% if student.getStudentSchool.getResponsible %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Está motivada/o:</strong>
+                        {% if student.getStudentSchool.getDriven %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Está atenta/o:</strong>
+                        {% if student.getStudentSchool.getAttentive %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es reflexiva/o:</strong>
+                        {% if student.getStudentSchool.getThoughtful %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es independiente:</strong>
+                        {% if student.getStudentSchool.getIndependent %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es organizada/o:</strong>
+                        {% if student.getStudentSchool.getOrganized %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Está desmotivada/o:</strong>
+                        {% if student.getStudentSchool.getDemotivated %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es despreocupada/o:</strong>
+                        {% if student.getStudentSchool.getCarefree %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es distraída/o:</strong>
+                        {% if student.getStudentSchool.getDistracted %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es impulsiva/o:</strong>
+                        {% if student.getStudentSchool.getImpulsive %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es dependiente:</strong>
+                        {% if student.getStudentSchool.getDependent %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>Es desorganizada/o:</strong>
+                        {% if student.getStudentSchool.getDisorganized %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   Observaciones
+                </div>
+                <div class="panel-body">
+                    {{ student.getStudentSchool.getObservations }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% else %}
+    <p>No se han definido los datos académicos. Por favor, añádelos a continuación. <a
+                href="{{ path('studentschool_new', {'student_id': student.id}) }}">Añadir</a></p>
+{% endif %}

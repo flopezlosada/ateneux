@@ -1,0 +1,109 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Datos Familiares {% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(form.accept) }}
+                        {{ form_widget(form.accept) }}
+                        {{ form_label(form.accept) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.acneae) }}
+                        {{ form_widget(form.acneae) }}
+                        {{ form_label(form.acneae) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.protection) }}
+                        {{ form_widget(form.protection) }}
+                        {{ form_label(form.protection) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.increase) }}
+                        {{ form_widget(form.increase) }}
+                        {{ form_label(form.increase) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.punish) }}
+                        {{ form_widget(form.punish) }}
+                        {{ form_label(form.punish) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.converse) }}
+                        {{ form_widget(form.converse) }}
+                        {{ form_label(form.converse) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.cooperate) }}
+                        {{ form_widget(form.cooperate) }}
+                        {{ form_label(form.cooperate) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.meeting) }}
+                        {{ form_widget(form.meeting) }}
+                        {{ form_label(form.meeting) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.mentor) }}
+                        {{ form_widget(form.mentor) }}
+                        {{ form_label(form.mentor) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.study_time) }}
+                        {{ form_widget(form.study_time) }}
+                        {{ form_label(form.study_time) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.learning) }}
+                        {{ form_widget(form.learning) }}
+                        {{ form_label(form.learning) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.work_control) }}
+                        {{ form_widget(form.work_control) }}
+                        {{ form_label(form.work_control) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.study_control) }}
+                        {{ form_widget(form.study_control) }}
+                        {{ form_label(form.study_control) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.familiar_people) }}
+                        <label>{{ form_label(form.familiar_people) }}</label>
+                        {{ form_widget(form.familiar_people,{'attr':{'placeholder':'Seno familiar','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.observations) }}
+                        <label>{{ form_label(form.observations) }}</label>
+                        {{ form_widget(form.observations,{'attr':{'placeholder':'Observaciones generales','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.death) }}
+                        {{ form_label(form.death) }}
+                        {{ form_widget(form.death) }}
+
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.unemployment) }}
+                        {{ form_label(form.unemployment) }}
+                        {{ form_widget(form.unemployment) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.care) }}
+                        {{ form_label(form.care) }}
+                        {{ form_widget(form.care) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

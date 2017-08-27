@@ -37,9 +37,10 @@ class StudentMedicalController extends Controller
         $em = $this->getDoctrine()->getManager();
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($this->get('security.authorization_checker')->isGranted("ROLE_ADMIN")
-            or ($this->get('security.authorization_checker')->isGranted("ROLE_TEACHER") and $this->getUser()->getTeacher()->getMentorCourse()->getId() == $student->getCourse()->getId()))
+            or ($this->get('security.authorization_checker')->isGranted("ROLE_TEACHER")
+                and $this->getUser()->getTeacher()->getMentorCourse()->getId() == $student->getCourse()->getId()))
         {
-            ;
+
             $studentMedical = new Studentmedical();
             $form = $this->createForm('AppBundle\Form\StudentMedicalType', $studentMedical);
             $form->handleRequest($request);

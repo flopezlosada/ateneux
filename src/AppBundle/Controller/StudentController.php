@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Student controller.
@@ -96,6 +97,62 @@ class StudentController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    public function familiarPdfAction($student_id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $student = $em->getRepository('AppBundle:Student')->find($student_id);
+
+        $html = $this->renderView(':student:familiar.html.twig', array(
+            'student'  => $student
+        ));
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml(utf8_decode($html)),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="familiar_'.$student->__toString().'.pdf"'
+            )
+        );
+    }
+
+    public function generateSchoolAction($student_id, $type)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $student = $em->getRepository('AppBundle:Student')->find($student_id);
+
+        $html = $this->renderView(':student:school.html.twig', array(
+            'student'  => $student
+        ));
+
+        if ($type=="pdf")
+        {
+            return new Response(
+                $this->get('knp_snappy.pdf')->getOutputFromHtml(utf8_decode($html)),
+                200,
+                array(
+                    'Content-Type'          => 'application/pdf',
+                    'Content-Disposition'   => 'attachment; filename="school'.$student->__toString().'.pdf"'
+                )
+            );
+        }
+        elseif ($type=='image')
+        {
+            return new Response(
+                $this->get('knp_snappy.image')->getOutputFromHtml(utf8_decode($html)),
+                200,
+                array(
+                    'Content-Type'          => 'image/jpg',
+                    'Content-Disposition'   => 'filename="school'.$student->__toString().'.jpg"'
+                )
+            );
+        }
+
     }
 
     /**

@@ -152,3 +152,12 @@ liip_imagine:
                     mode: line
                 strip: ~
                 thumbnail: { allow_upscale: true, size: [700,420], mode: outbound }
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/bin/xvfb-run wkhtmltopdf
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/bin/xvfb-run wkhtmltoimage
+        options:    []

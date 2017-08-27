@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Academicinformation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ academicInformation.id }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if academicInformation.created %}{{ academicInformation.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if academicInformation.updated %}{{ academicInformation.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if academicInformation.date %}{{ academicInformation.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Information</th>
+                <td>{{ academicInformation.information }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('academicinformation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('academicinformation_edit', { 'id': academicInformation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

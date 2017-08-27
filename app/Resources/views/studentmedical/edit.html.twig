@@ -1,21 +1,79 @@
-{% extends 'base.html.twig' %}
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Datos Médicos {% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
 
-{% block body %}
-    <h1>Studentmedical edit</h1>
+        <div class="panel-body">
+            {{ form_start(edit_form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.allergy) }}
+                        {{ form_widget(edit_form.allergy,{'attr':{'placeholder':'Alergias','class':''}}) }}
+                        {{ form_label(edit_form.allergy) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.allergy_observations) }}
+                        <label>{{ form_label(edit_form.allergy_observations) }}</label>
+                        {{ form_widget(edit_form.allergy_observations,{'attr':{'placeholder':'Observaciones sobre alergias','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.disease) }}
+                        {{ form_widget(edit_form.disease,{'attr':{'placeholder':'Enfermedades','class':''}}) }}
+                        {{ form_label(edit_form.disease) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.disease_observations) }}
+                        <label>{{ form_label(edit_form.disease_observations) }}</label>
+                        {{ form_widget(edit_form.disease_observations,{'attr':{'placeholder':'Observaciones sobre enfermedades','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.handicap) }}
+                        {{ form_widget(edit_form.handicap,{'attr':{'placeholder':'Déficits','class':''}}) }}
+                        {{ form_label(edit_form.handicap) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.handicap_observations) }}
+                        <label>{{ form_label(edit_form.handicap_observations) }}</label>
+                        {{ form_widget(edit_form.handicap_observations,{'attr':{'placeholder':'Observaciones sobre déficits','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.tdah) }}
+                        {{ form_widget(edit_form.tdah,{'attr':{'placeholder':'TDAH','class':''}}) }}
+                        {{ form_label(edit_form.tdah) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.medical_treatment) }}
+                        {{ form_widget(edit_form.medical_treatment,{'attr':{'placeholder':'Tratamiento Médico','class':''}}) }}
+                        {{ form_label(edit_form.medical_treatment) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.psychological_treatment) }}
+                        {{ form_widget(edit_form.psychological_treatment,{'attr':{'placeholder':'Tratamiento psicológico','class':''}}) }}
+                        {{ form_label(edit_form.psychological_treatment) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.observations) }}
+                        <label>{{ form_label(edit_form.observations) }}</label>
+                        {{ form_widget(edit_form.observations,{'attr':{'placeholder':'Observaciones generales','class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Actualizar"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+
+
+
+
+
+
 
     <ul>
         <li>
-            <a href="{{ path('studentmedical_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('student_show',{'id':studentMedical.student.id}) }}">Volver a la ficha de estudiante</a>
         </li>
     </ul>
 {% endblock %}

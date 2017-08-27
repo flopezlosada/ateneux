@@ -187,6 +187,13 @@ class Student
 
     /**
      *
+     * @var smallint $academic_informations
+     * @ORM\OneToOne(targetEntity="AcademicInformation", inversedBy="student")
+     */
+    private $academic_informations;
+
+    /**
+     *
      * @var smallint $student_school
      * @ORM\OneToOne(targetEntity="StudentSchool", inversedBy="student")
      */
@@ -807,5 +814,29 @@ class Student
     public function getMeetings()
     {
         return $this->meetings;
+    }
+
+    /**
+     * Set academicInformations
+     *
+     * @param \AppBundle\Entity\AcademicInformation $academicInformations
+     *
+     * @return Student
+     */
+    public function setAcademicInformations(\AppBundle\Entity\AcademicInformation $academicInformations = null)
+    {
+        $this->academic_informations = $academicInformations;
+
+        return $this;
+    }
+
+    /**
+     * Get academicInformations
+     *
+     * @return \AppBundle\Entity\AcademicInformation
+     */
+    public function getAcademicInformations()
+    {
+        return $this->academic_informations;
     }
 }

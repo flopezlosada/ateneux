@@ -1,16 +1,66 @@
-{% extends 'base.html.twig' %}
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Datos Médicos {% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
 
-{% block body %}
-    <h1>Studentmedical creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('studentmedical_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                            {{ form_errors(form.allergy) }}
+                            {{ form_widget(form.allergy,{'attr':{'placeholder':'Alergias','class':''}}) }}
+                            {{ form_label(form.allergy) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.allergy_observations) }}
+                        <label>{{ form_label(form.allergy_observations) }}</label>
+                        {{ form_widget(form.allergy_observations,{'attr':{'placeholder':'Observaciones sobre alergias','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.disease) }}
+                        {{ form_widget(form.disease,{'attr':{'placeholder':'Enfermedades','class':''}}) }}
+                        {{ form_label(form.disease) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.disease_observations) }}
+                        <label>{{ form_label(form.disease_observations) }}</label>
+                        {{ form_widget(form.disease_observations,{'attr':{'placeholder':'Observaciones sobre enfermedades','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.handicap) }}
+                        {{ form_widget(form.handicap,{'attr':{'placeholder':'Déficits','class':''}}) }}
+                        {{ form_label(form.handicap) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.handicap_observations) }}
+                        <label>{{ form_label(form.handicap_observations) }}</label>
+                        {{ form_widget(form.handicap_observations,{'attr':{'placeholder':'Observaciones sobre déficits','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.tdah) }}
+                        {{ form_widget(form.tdah,{'attr':{'placeholder':'TDAH','class':''}}) }}
+                        {{ form_label(form.tdah) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.medical_treatment) }}
+                        {{ form_widget(form.medical_treatment,{'attr':{'placeholder':'Tratamiento Médico','class':''}}) }}
+                        {{ form_label(form.medical_treatment) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.psychological_treatment) }}
+                        {{ form_widget(form.psychological_treatment,{'attr':{'placeholder':'Tratamiento psicológico','class':''}}) }}
+                        {{ form_label(form.psychological_treatment) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.observations) }}
+                        <label>{{ form_label(form.observations) }}</label>
+                        {{ form_widget(form.observations,{'attr':{'placeholder':'Observaciones generales','class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

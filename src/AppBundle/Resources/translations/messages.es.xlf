@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="male">
+                <source>male</source>
+                <target>Padre</target>
+            </trans-unit>
+            <trans-unit id="female">
+                <source>female</source>
+                <target>Madre</target>
+            </trans-unit>
+            <trans-unit id="both">
+                <source>both</source>
+                <target>Ambos</target>
+            </trans-unit>
+            <trans-unit id="grandparents">
+                <source>grandparents</source>
+                <target>Abuelos</target>
+            </trans-unit>
+            <trans-unit id="other">
+                <source>other</source>
+                <target>Otros</target>
+            </trans-unit>
+            <trans-unit id="good">
+                <source>good</source>
+                <target>Bueno</target>
+            </trans-unit>
+            <trans-unit id="appropriate">
+                <source>appropriate</source>
+                <target>Apropiado</target>
+            </trans-unit>
+            <trans-unit id="problem">
+                <source>problem</source>
+                <target>Problemático</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
