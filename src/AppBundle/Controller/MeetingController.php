@@ -31,12 +31,12 @@ class MeetingController extends Controller
      * Creates a new meeting entity.
      *
      */
-    public function newAction($student_id, $meeting_type_id, Request $request)
+    public function newAction($student_id, Request $request)
     {
         $meeting = new Meeting();
         $em = $this->getDoctrine()->getManager();
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
-        $meeting_type = $em->getRepository('AppBundle:MeetingType')->find($meeting_type_id);
+
         $meeting_status = $em->getRepository('AppBundle:MeetingStatus')->find(1);
 
 
@@ -44,7 +44,7 @@ class MeetingController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $meeting->setMeetingType($meeting_type);
+
             $meeting->setStudentMeeting($student);
             $meeting->setMeetingStatus($meeting_status);
             //$student->addMeeting($meeting);

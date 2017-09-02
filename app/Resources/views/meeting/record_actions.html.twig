@@ -1,11 +1,18 @@
 <ul class="list-inline">
-    <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}" >Editar</a> </li>
-    <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 3}) }}">Suspender</a> </li>
-    <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 4}) }}">Finalizar</a> </li>
-    <li>
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Delete">
-        {{ form_end(delete_form) }}
-    </li>
-
+    {% if entity.meetingStatus.getId==1 %}
+        <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}">Editar</a></li>
+        <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 3}) }}">Suspender</a></li>
+        <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 4}) }}">Finalizar</a></li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    {% elseif entity.meetingStatus.getId==3 %}
+        <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}">Editar</a></li>
+        <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 4}) }}">Finalizar</a></li>
+    {% elseif entity.meetingStatus.getId==4 %}
+        <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 1}) }}">Poner en estado
+                Pendiente</a></li>
+    {% endif %}
 </ul>

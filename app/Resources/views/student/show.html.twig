@@ -110,7 +110,7 @@
                         <div class="tab-pane fade"
                              id="medical">{% include ':student:medical.html.twig' with {'entity':student} %}
                             {% if student.getMedical.getId is defined %}
-                                <div class="panel panel-default">
+                                <div class="clearfix"></div><div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{ path('studentmedical_edit', {'id': student.getMedical.getId}) }}">Editar
                                             datos médicos</a>
@@ -121,7 +121,7 @@
                         <div class="tab-pane fade"
                              id="familiar">{% include ':student:familiar.html.twig' with {'entity':student} %}
                             {% if student.getFamiliar.getId is defined %}
-                                <div class="panel panel-default">
+                                <div class="clearfix"></div><div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{ path('studentfamiliar_edit', {'id': student.getFamiliar.getId}) }}">Editar
                                             contexto familiar</a> |
@@ -135,7 +135,7 @@
                         <div class="tab-pane fade"
                              id="school">{% include ':student:school.html.twig' with {'entity':student} %}
                             {% if student.getStudentSchool.getId is defined %}
-                                <div class="panel panel-default">
+                                <div class="clearfix"></div><div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{ path('studentschool_edit', {'id': student.getStudentSchool.getId}) }}">Editar
                                             contexto escolar</a> |
@@ -152,8 +152,8 @@
                                 <ul>
                                     {% for meeting in student_meetings %}
                                         <li>
-                                            <a href="{{ path('meeting_show', {'id': meeting.id}) }}">{{ meeting.title }}</a>
-                                            ({{ meeting.meetingStatus }})
+                                            <a href="{{ path('meeting_show', {'id': meeting.id}) }}">{{ meeting }}</a>.
+                                            ({{ meeting.meetingStatus }}).
                                             Fecha: {{ meeting.date|localizeddate('long','none','es') }}
 
                                         </li>

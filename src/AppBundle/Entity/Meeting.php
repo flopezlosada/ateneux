@@ -59,6 +59,13 @@ class Meeting
     private $meeting_type;
 
     /**
+     * @var smallint $meeting_board
+     * @ORM\ManyToOne(targetEntity="MeetingBoard", inversedBy="meeting")
+     * organo de la estructura: jefatura, tutorx, orientación ...
+     */
+    private $meeting_board;
+
+    /**
      * @Assert\NotBlank
      * @Assert\Date()
      * @var string $date
@@ -78,7 +85,7 @@ class Meeting
      * @var smallint $student_meeting
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="meetings")
      */
-     protected $student_meeting;
+    protected $student_meeting;
 
     /**
      * @var string observations
@@ -349,5 +356,36 @@ class Meeting
     public function getDeals()
     {
         return $this->deals;
+    }
+
+    /**
+     * Set meetingBoard
+     *
+     * @param \AppBundle\Entity\MeetingBoard $meetingBoard
+     *
+     * @return Meeting
+     */
+    public function setMeetingBoard(\AppBundle\Entity\MeetingBoard $meetingBoard = null)
+    {
+        $this->meeting_board = $meetingBoard;
+
+        return $this;
+    }
+
+    /**
+     * Get meetingBoard
+     *
+     * @return \AppBundle\Entity\MeetingBoard
+     */
+    public function getMeetingBoard()
+    {
+        return $this->meeting_board;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->getMeetingType()->getTitle() . " con "
+            . $this->getMeetingBoard()->getTitle() ;
     }
 }

@@ -12,7 +12,7 @@
         <default key="_controller">AppBundle:Meeting:show</default>
     </route>
 
-    <route id="meeting_new" path="/new/{student_id}/{meeting_type_id}" methods="GET|POST">
+    <route id="meeting_new" path="/new/{student_id}/" methods="GET|POST">
         <default key="_controller">AppBundle:Meeting:new</default>
     </route>
 

@@ -18,7 +18,16 @@
                     <label>{{ form_label(form.date) }}</label>
                     {{ form_widget(form.date,{'attr':{'placeholder':'Fecha de la reunión'}}) }}
                 </div>
-
+                <div class="form-group">
+                    {{ form_errors(form.meeting_board) }}
+                    <label>{{ form_label(form.meeting_board) }}</label>
+                    {{ form_widget(form.meeting_board,{'attr':{'class':'form-control','placeholder':''}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.meeting_type) }}
+                    <label>{{ form_label(form.meeting_type) }}</label>
+                    {{ form_widget(form.meeting_type,{'attr':{'class':'form-control','placeholder':''}}) }}
+                </div>
             </div>
         </div>
         <input type="submit" value="Crear"/>

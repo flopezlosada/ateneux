@@ -17,9 +17,9 @@ class MeetingEditType extends AbstractType
         $builder
             ->add('date',TextType::class, array('label'=>'Fecha de la reunión', 'attr'=>array('class'=>'datepicker form-control')))
             ->add('title', null, array('label' => 'Título'))
-            ->add('handle_issues', null, array('label' => 'Asuntos tratados'))
-            ->add('deals', null, array('label' => 'Acuerdos'))
-            ->add('observations', null, array('label' => 'Observaciones'))
+            ->add('handle_issues', null, array('label' => 'Asuntos tratados','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
+            ->add('deals', null, array('label' => 'Acuerdos','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
+            ->add('observations', null, array('label' => 'Observaciones','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
         ;
     }
     

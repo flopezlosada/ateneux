@@ -17,6 +17,8 @@ class MeetingType extends AbstractType
         $builder
             ->add('date',TextType::class, array('label'=>'Fecha de la reunión', 'attr'=>array('class'=>'datepicker form-control')))
             ->add('title', null, array('label' => 'Título'))
+            ->add('meeting_board',null,array('label'=>'Órgano de la reunión  '))
+            ->add('meeting_type',null, array('label'=>'Tipo de reunión'))
         ;
     }
     
