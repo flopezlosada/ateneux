@@ -1,21 +1,43 @@
 {% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Profesorx{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
 
-{% block main %}
-    <h1>Teacher edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div class="panel-body">
+            {{ form_start(edit_form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.name) }}
+                        <label>{{ form_label(edit_form.name) }}</label>
+                        {{ form_widget(edit_form.name,{'attr':{'placeholder':'Nombre','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.surname) }}
+                        <label>{{ form_label(edit_form.surname) }}</label>
+                        {{ form_widget(edit_form.surname,{'attr':{'placeholder':'Apellidos','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.phone) }}
+                        <label>{{ form_label(edit_form.phone) }}</label>
+                        {{ form_widget(edit_form.phone,{'attr':{'placeholder':'Teléfono','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.email) }}
+                        <label>{{ form_label(edit_form.email) }}</label>
+                        {{ form_widget(edit_form.email,{'attr':{'placeholder':'Correo electrónico','class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            {#{{ form_widget(form) }}#}
+            <input type="submit" value="Actualizar" />
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 
     <ul>
         <li>
             <a href="{{ path('teacher_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
         </li>
     </ul>
 {% endblock %}

@@ -1,0 +1,23 @@
+<div class="tab-pane fade"
+     id="meetings">
+    <h4>Listado de reuniones</h4>
+    <ul>
+        {% for meeting in student_meetings %}
+            <li>
+                <a href="{{ path('meeting_show', {'id': meeting.id}) }}">{{ meeting }}</a>.<br>
+                Estado: ({{ meeting.meetingStatus }}). <br>
+                Fecha: {{ meeting.date|localizeddate('long','none','es') }}<br>
+                <a href="{{ path('meeting_edit', {'id': meeting.id}) }}">Editar</a>
+                {% if meeting.getAcademicMeeting.id is not defined %}
+                    | Añadir información curso: <a
+                        href="{{ path('academicinformation_new', {'meeting_id': meeting.id}) }}">nueva </a>
+                    {% if academic_informations|length>0 %}
+                        o <a
+                            href="{{ path('academicinformation_associate', {'meeting_id': meeting.id}) }}">existente</a>
+                    {% endif %}
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>

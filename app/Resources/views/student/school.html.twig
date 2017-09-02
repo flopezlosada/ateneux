@@ -9,26 +9,20 @@
                 <div class="panel-body">
                     <p>
                         <strong>Repite curso:</strong>
-                        {% if student.getStudentSchool.getRepeatGrade %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getRepeatGrade} %}
+
                     </p>
                     <p>
                         <strong>Presenta adaptación:</strong>
-                        {% if student.getStudentSchool.getAdapted %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getAdapted} %}
                     </p>
                     <p>
                         <strong>Promociona con asignaturas suspensas:</strong>
-                        {% if student.getStudentSchool.getAdvanceWithFail %}
-                            Sí: <br>{{ student.getStudentSchool.getFailSubject }}
-
-                        {% else %}
+                        {% if student.getStudentSchool.getAdvanceWithFail is null %}
+                            Sin definir
+                        {% elseif student.getStudentSchool.getAdvanceWithFail == 1 %}
+                            Sí<br>{{ student.getStudentSchool.getFailSubject }}
+                        {% elseif  student.getStudentSchool.getAdvanceWithFail ==2 %}
                             No
                         {% endif %}
                     </p>
@@ -41,67 +35,41 @@
                 <div class="panel-body">
                     <p>
                         <strong>Comprensión lectora:</strong>
-                        {% if student.getStudentSchool.getReadingComprehension %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getReadingComprehension} %}
+
                     </p>
                     <p>
                         <strong>Comprensión oral:</strong>
-                        {% if student.getStudentSchool.getOral %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getOral} %}
+
                     </p>
                     <p>
                         <strong>Expresión escrita:</strong>
-                        {% if student.getStudentSchool.getWritten %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getWritten} %}
+
                     </p>
                     <p>
                         <strong>Expresión oral:</strong>
-                        {% if student.getStudentSchool.getOralExpression %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getOralExpression} %}
+
                     </p>
                     <p>
                         <strong>Cálculo:</strong>
-                        {% if student.getStudentSchool.getCalculation %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getCalculation} %}
+
                     </p>
                     <p>
                         <strong>Resolución de problemas:</strong>
-                        {% if student.getStudentSchool.getTroubleshooting %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getTroubleshooting} %}
+
                     </p>
                     <p>
                         <strong>Ortografía:</strong>
-                        {% if student.getStudentSchool.getSpelling %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getSpelling} %}
                     </p>
                     <p>
                         <strong>Vocabulario:</strong>
-                        {% if student.getStudentSchool.getVocabulary %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getVocabulary} %}
                     </p>
                     <p><strong>Interés por el aprendizaje:</strong>
                         {% if student.getStudentSchool.getAttention %}
@@ -156,105 +124,70 @@
                 <div class="panel-body">
                     <p>
                         <strong>Es responsable:</strong>
-                        {% if student.getStudentSchool.getResponsible %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getResponsible} %}
+
                     </p>
                     <p>
                         <strong>Está motivada/o:</strong>
-                        {% if student.getStudentSchool.getDriven %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDriven} %}
+
                     </p>
                     <p>
                         <strong>Está atenta/o:</strong>
-                        {% if student.getStudentSchool.getAttentive %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getAttentive} %}
+
                     </p>
                     <p>
                         <strong>Es reflexiva/o:</strong>
-                        {% if student.getStudentSchool.getThoughtful %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getThoughtful} %}
+
+
                     </p>
                     <p>
                         <strong>Es independiente:</strong>
-                        {% if student.getStudentSchool.getIndependent %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getIndependent} %}
+
                     </p>
                     <p>
                         <strong>Es organizada/o:</strong>
-                        {% if student.getStudentSchool.getOrganized %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getOrganized} %}
+
                     </p>
                     <p>
                         <strong>Está desmotivada/o:</strong>
-                        {% if student.getStudentSchool.getDemotivated %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDemotivated} %}
+
                     </p>
                     <p>
                         <strong>Es despreocupada/o:</strong>
-                        {% if student.getStudentSchool.getCarefree %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getCarefree} %}
+
                     </p>
                     <p>
                         <strong>Es distraída/o:</strong>
-                        {% if student.getStudentSchool.getDistracted %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDistracted} %}
+
                     </p>
                     <p>
                         <strong>Es impulsiva/o:</strong>
-                        {% if student.getStudentSchool.getImpulsive %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getImpulsive} %}
+
                     </p>
                     <p>
                         <strong>Es dependiente:</strong>
-                        {% if student.getStudentSchool.getDependent %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDependent} %}
+
                     </p>
                     <p>
                         <strong>Es desorganizada/o:</strong>
-                        {% if student.getStudentSchool.getDisorganized %}
-                            Sí
-                        {% else %}
-                            No
-                        {% endif %}
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDisorganized} %}
+
                     </p>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Observaciones
+                    Observaciones
                 </div>
                 <div class="panel-body">
                     {{ student.getStudentSchool.getObservations }}

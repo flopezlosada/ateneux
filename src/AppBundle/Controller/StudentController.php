@@ -68,11 +68,16 @@ class StudentController extends Controller
 
         $student_meetings = $em->getRepository('AppBundle:Student')
             ->findMeetings($student->getId());//todas las reuniones que ha tenido el estudiante
+
+        //busca que haya información sobre el estudiante para la reunión
+        $academic_informations=$em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
+
         return $this->render('student/show.html.twig', array(
             'student' => $student,
             'pending_student_meetings' => $pending_student_meetings,
             'student_meetings'=>$student_meetings,
             'delete_form' => $deleteForm->createView(),
+            'academic_informations' => $academic_informations
         ));
     }
 

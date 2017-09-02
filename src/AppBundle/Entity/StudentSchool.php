@@ -42,21 +42,21 @@ class StudentSchool
 
     /**
      * @var int repeat_grade
-     * @ORM\Column(name="repeat_grade", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="repeat_grade",  nullable=true)
      * ¿repite curso?
      */
     private $repeat_grade = false;
 
     /**
      * @var int adapted
-     * @ORM\Column(name="adapted", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="adapted",  length=1, nullable=true)
      * ¿presenta adaptación?
      */
     private $adapted = false;
 
     /**
      * @var int advance_with_fail
-     * @ORM\Column(name="advance_with_fail", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="advance_with_fail",  length=1, nullable=true)
      * ¿promociona con asignaturas suspensas?
      */
     private $advance_with_fail = false;
@@ -77,7 +77,7 @@ class StudentSchool
 
     /**
      * @var int responsible
-     * @ORM\Column(name="responsible", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="responsible",  length=1, nullable=true)
      * ¿es responsable?
      */
     private $responsible = false;
@@ -85,77 +85,77 @@ class StudentSchool
 
     /**
      * @var int driven
-     * @ORM\Column(name="driven", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="driven",  length=1, nullable=true)
      * ¿está motivado?
      */
     private $driven = false;
 
     /**
      * @var int attentive
-     * @ORM\Column(name="attentive", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="attentive",  length=1, nullable=true)
      * ¿atento?
      */
     private $attentive = false;
 
     /**
      * @var int thoughtful
-     * @ORM\Column(name="thoughtful", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="thoughtful",  length=1, nullable=true)
      * ¿reflexivo?
      */
     private $thoughtful = false;
 
     /**
      * @var int independent
-     * @ORM\Column(name="independent", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="independent",  length=1, nullable=true)
      * ¿independiente?
      */
     private $independent = false;
 
     /**
      * @var int organized
-     * @ORM\Column(name="organized", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="organized",  length=1, nullable=true)
      * ¿organizado?
      */
     private $organized = false;
 
     /**
      * @var int demotivated
-     * @ORM\Column(name="demotivated", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="demotivated",  length=1, nullable=true)
      * ¿desmotivado?
      */
     private $demotivated = false;
 
     /**
      * @var int carefree
-     * @ORM\Column(name="carefree", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="carefree",  length=1, nullable=true)
      * ¿despreocupado?
      */
     private $carefree = false;
 
     /**
      * @var int distracted
-     * @ORM\Column(name="distracted", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="distracted",  length=1, nullable=true)
      * ¿distraído?
      */
     private $distracted = false;
 
     /**
      * @var int impulsive
-     * @ORM\Column(name="impulsive", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="impulsive",  length=1, nullable=true)
      * ¿impulsivo?
      */
     private $impulsive = false;
 
     /**
      * @var int dependent
-     * @ORM\Column(name="dependent", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="dependent",  length=1, nullable=true)
      * ¿dependiente?
      */
     private $dependent = false;
 
     /**
      * @var int disorganized
-     * @ORM\Column(name="disorganized", type="boolean", length=1, nullable=true)
+     * @ORM\Column(name="disorganized",  length=1, nullable=true)
      * ¿desorganizado?
      */
     private $disorganized = false;

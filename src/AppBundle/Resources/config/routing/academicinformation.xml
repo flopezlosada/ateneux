@@ -12,8 +12,12 @@
         <default key="_controller">AppBundle:AcademicInformation:show</default>
     </route>
 
-    <route id="academicinformation_new" path="/new" methods="GET|POST">
+    <route id="academicinformation_new" path="/new/{meeting_id}" methods="GET|POST">
         <default key="_controller">AppBundle:AcademicInformation:new</default>
+    </route>
+
+    <route id="academicinformation_associate" path="/associate/{meeting_id}" methods="GET|POST">
+        <default key="_controller">AppBundle:AcademicInformation:associate</default>
     </route>
 
     <route id="academicinformation_edit" path="/{id}/edit" methods="GET|POST">

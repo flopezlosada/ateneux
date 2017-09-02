@@ -86,11 +86,10 @@ class StudentSchoolController extends Controller
         $deleteForm = $this->createDeleteForm($studentSchool);
         $editForm = $this->createForm('AppBundle\Form\StudentSchoolType', $studentSchool);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('studentschool_edit', array('id' => $studentSchool->getId()));
+            return $this->redirectToRoute('student_show', array('id' => $studentSchool->getStudent()->getId()));
         }
 
         return $this->render('studentschool/edit.html.twig', array(

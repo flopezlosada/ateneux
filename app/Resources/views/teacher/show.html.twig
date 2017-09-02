@@ -23,7 +23,14 @@
 
                     <p><strong>Correo electrónico: </strong>{{ teacher.getEmail }}</p>
                     {% if teacher.getMentorCourse is not null %}
-                        <p><strong>Tutoriza al curso: <a href="{{ path('course_show', {'id': teacher.getMentorCourse.id}) }}">{{ teacher.getMentorCourse.title }}</a> </strong></p>
+                        <p><strong>Tutoriza al curso: <a
+                                        href="{{ path('course_show', {'id': teacher.getMentorCourse.id}) }}">{{ teacher.getMentorCourse.title }}</a>
+                            </strong></p>
+                    {% endif %}
+                    {% if is_granted("ROLE_ADMIN") or (is_granted("ROLE_TEACHER") and app.user==teacher.getUser) %}
+                        <p><strong>Usuario:</strong> {{ teacher.getUser.username }}</p>
+                        <p><strong>Contraseña:</strong> {{ teacher.getPassw }} <a href="{{ path('fos_user_change_password') }}">Cambiar</a> </p>
+
                     {% endif %}
                 </div>
             </div>
@@ -35,13 +42,17 @@
         <li>
             <a href="{{ path('teacher_index') }}">Back to the list</a>
         </li>
-        <li>
-            <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher == teacher) or is_granted("ROLE_ADMIN") %}
+            <li>
+                <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Edit</a>
+            </li>
+        {% endif %}
+        {% if (is_granted("ROLE_ADMIN")) %}
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="{{ "Delete"|trans }}">
+                {{ form_end(delete_form) }}
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}

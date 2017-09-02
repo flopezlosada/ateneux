@@ -54,7 +54,7 @@ class Course
 
     /**
      * @var smallint $course_type
-     * @ORM\ManyToOne(targetEntity="CourseType", inversedBy="course")
+     * @ORM\ManyToOne(targetEntity="CourseType", inversedBy="courses")
      */
     private $course_type;
 
@@ -86,6 +86,13 @@ class Course
      * @ORM\OneToMany(targetEntity="Student", mappedBy="course")
      */
     private $students;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AssessmentBoard", mappedBy="course")
+     */
+    private $assessments_board;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Student", mappedBy="historical_courses")
@@ -380,5 +387,39 @@ class Course
     public function getMentorTeacher()
     {
         return $this->mentor_teacher;
+    }
+
+    /**
+     * Add assessmentsBoard
+     *
+     * @param \AppBundle\Entity\AssessmentBoard $assessmentsBoard
+     *
+     * @return Course
+     */
+    public function addAssessmentsBoard(\AppBundle\Entity\AssessmentBoard $assessmentsBoard)
+    {
+        $this->assessments_board[] = $assessmentsBoard;
+
+        return $this;
+    }
+
+    /**
+     * Remove assessmentsBoard
+     *
+     * @param \AppBundle\Entity\AssessmentBoard $assessmentsBoard
+     */
+    public function removeAssessmentsBoard(\AppBundle\Entity\AssessmentBoard $assessmentsBoard)
+    {
+        $this->assessments_board->removeElement($assessmentsBoard);
+    }
+
+    /**
+     * Get assessmentsBoard
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssessmentsBoard()
+    {
+        return $this->assessments_board;
     }
 }

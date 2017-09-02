@@ -1,16 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir información del curso.{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="alert alert-info">
+            <p>Información sobre la/el estudiante: {{ student }} para la reunión {{ meeting }}</p>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        {{ form_errors(form.date) }}
+                        <label>{{ form_label(form.date) }}</label>
+                        {{ form_widget(form.date,{'attr':{'placeholder':'Fecha'}}) }}
+                    </div>
 
-{% block body %}
-    <h1>Academicinformation creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
+                    <div class="form-group">
+                        {{ form_errors(form.information) }}
+                        <label>{{ form_label(form.information) }}</label>
+                        {{ form_widget(form.information,{'attr':{'class':'tinymce','placeholder':'Información'}}) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
     <ul>
         <li>
-            <a href="{{ path('academicinformation_index') }}">Back to the list</a>
+            <a href="{{ path('student_index') }}">Back to the list</a>
         </li>
     </ul>
+
+    {{ tinymce_init(    ) }}
 {% endblock %}

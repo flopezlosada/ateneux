@@ -1,21 +1,78 @@
 {% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Editar Estudiante{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
 
-{% block main %}
-    <h1>Student edit</h1>
+        <div class="panel-body">
+            {{ form_start(edit_form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.name) }}
+                        <label>{{ form_label(edit_form.name) }}</label>
+                        {{ form_widget(edit_form.name,{'attr':{'placeholder':'Nombre','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.surname) }}
+                        <label>{{ form_label(edit_form.surname) }}</label>
+                        {{ form_widget(edit_form.surname,{'attr':{'placeholder':'Apellidos','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.address) }}
+                        <label>{{ form_label(edit_form.address) }}</label>
+                        {{ form_widget(edit_form.address,{'attr':{'placeholder':'Dirección','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.state) }}
+                        <label>{{ form_label(edit_form.state) }}</label>
+                        {{ form_widget(edit_form.state,{'attr':{'placeholder':'Provincia','class':'form-control'}}) }}
+                    </div> <div class="form-group">
+                        {{ form_errors(edit_form.city) }}
+                        <label>{{ form_label(edit_form.city) }}</label>
+                        {{ form_widget(edit_form.city,{'attr':{'placeholder':'Localidad','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.postal_code) }}
+                        <label>{{ form_label(edit_form.postal_code) }}</label>
+                        {{ form_widget(edit_form.postal_code,{'attr':{'placeholder':'Código Postal','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.phone) }}
+                        <label>{{ form_label(edit_form.phone) }}</label>
+                        {{ form_widget(edit_form.phone,{'attr':{'placeholder':'Teléfono','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.celular) }}
+                        <label>{{ form_label(edit_form.celular) }}</label>
+                        {{ form_widget(edit_form.celular,{'attr':{'placeholder':'Móvil','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.email) }}
+                        <label>{{ form_label(edit_form.email) }}</label>
+                        {{ form_widget(edit_form.email,{'attr':{'placeholder':'Correo electrónico','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.observations) }}
+                        <label>{{ form_label(edit_form.observations) }}</label>
+                        {{ form_widget(edit_form.observations,{'attr':{'placeholder':'Notas','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.file) }}
+                        <label>{{ form_label(edit_form.file) }}</label>
+                        {{ form_widget(edit_form.file,{'attr':{'placeholder':'Imagen','class':'form-control'}}) }}
+                    </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
+                    {# {{ form_widget(form) }}#}
+                </div>
+            </div>
+            <input type="submit" value="Actualizar"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
     <ul>
         <li>
-            <a href="{{ path('student_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('student_index') }}">Volver al listado</a>
         </li>
     </ul>
+
 {% endblock %}

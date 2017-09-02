@@ -146,20 +146,7 @@
                             {% endif %}
                         </div>
                         {% if student_meetings|length>0 %}
-                            <div class="tab-pane fade"
-                                 id="meetings">
-                                <h4>Listado de reuniones</h4>
-                                <ul>
-                                    {% for meeting in student_meetings %}
-                                        <li>
-                                            <a href="{{ path('meeting_show', {'id': meeting.id}) }}">{{ meeting }}</a>.
-                                            ({{ meeting.meetingStatus }}).
-                                            Fecha: {{ meeting.date|localizeddate('long','none','es') }}
-
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                            {% include ':student:meetings.html.twig' with {'student_meetings':student_meetings} %}
                         {% endif %}
                     </div>
                 </div>

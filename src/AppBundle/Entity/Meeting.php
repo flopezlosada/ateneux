@@ -88,6 +88,13 @@ class Meeting
     protected $student_meeting;
 
     /**
+     *
+     * @var smallint $student_meeting
+     * @ORM\ManyToOne(targetEntity="AcademicInformation", inversedBy="meetings")
+     */
+    protected $academic_meeting;
+
+    /**
      * @var string observations
      * @ORM\Column(name="handle_issues", type="text", nullable=true)
      * asuntos tratados
@@ -385,7 +392,31 @@ class Meeting
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->getMeetingType()->getTitle() . " con "
-            . $this->getMeetingBoard()->getTitle() ;
+        return $this->getTitle()." (".$this->getMeetingType()->getTitle() . " con "
+            . $this->getMeetingBoard()->getTitle().")" ;
+    }
+
+    /**
+     * Set academicMeeting
+     *
+     * @param \AppBundle\Entity\AcademicInformation $academicMeeting
+     *
+     * @return Meeting
+     */
+    public function setAcademicMeeting(\AppBundle\Entity\AcademicInformation $academicMeeting = null)
+    {
+        $this->academic_meeting = $academicMeeting;
+
+        return $this;
+    }
+
+    /**
+     * Get academicMeeting
+     *
+     * @return \AppBundle\Entity\AcademicInformation
+     */
+    public function getAcademicMeeting()
+    {
+        return $this->academic_meeting;
     }
 }

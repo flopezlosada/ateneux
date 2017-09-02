@@ -33,3 +33,7 @@ app_studentschool:
 app_academicinformation:
         resource: "@AppBundle/Resources/config/routing/academicinformation.xml"
         prefix:   /academicinformation
+
+app_assessmentboard:
+        resource: "@AppBundle/Resources/config/routing/assessmentboard.xml"
+        prefix:   /assessmentboard

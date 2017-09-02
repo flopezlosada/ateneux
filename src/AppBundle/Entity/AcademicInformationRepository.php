@@ -10,4 +10,14 @@ namespace AppBundle\Entity;
  */
 class AcademicInformationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findRealInformation(Student $student)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:AcademicInformation t where t.student=:student ORDER BY  t.date DESC";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("student", $student);
+
+        return $query->getResult();
+    }
 }

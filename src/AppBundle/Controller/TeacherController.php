@@ -133,7 +133,7 @@ class TeacherController extends Controller
         {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('teacher_edit', array('id' => $teacher->getId()));
+            return $this->redirectToRoute('teacher_show', array('id' => $teacher->getId()));
         }
 
         return $this->render('teacher/edit.html.twig', array(
@@ -202,6 +202,7 @@ class TeacherController extends Controller
 
         $userManager->updateUser($userAdmin, true);
         $teacher->setUser($userAdmin);
+        $teacher->setPassw($password);
         $em->persist($teacher);
         $em->flush();
 

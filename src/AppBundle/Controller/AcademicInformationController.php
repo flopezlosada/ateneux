@@ -31,23 +31,32 @@ class AcademicInformationController extends Controller
      * Creates a new academicInformation entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction($meeting_id, Request $request)
     {
         $academicInformation = new Academicinformation();
+        $em = $this->getDoctrine()->getManager();
+        $meeting = $em->getRepository("AppBundle:Meeting")->find($meeting_id);
         $form = $this->createForm('AppBundle\Form\AcademicInformationType', $academicInformation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+
+            $academicInformation->addMeeting($meeting);
+            $academicInformation->setDate(new \DateTime($academicInformation->getDate()));
+            $academicInformation->setStudent($meeting->getStudentMeeting());
+            $meeting->setAcademicMeeting($academicInformation);
+            $em->persist($meeting);
             $em->persist($academicInformation);
             $em->flush();
 
-            return $this->redirectToRoute('academicinformation_show', array('id' => $academicInformation->getId()));
+            return $this->redirectToRoute('student_show', array('id' => $academicInformation->getStudent()->getId()));
         }
 
         return $this->render('academicinformation/new.html.twig', array(
             'academicInformation' => $academicInformation,
             'form' => $form->createView(),
+            'student'=>$meeting->getStudentMeeting(),
+            'meeting'=>$meeting
         ));
     }
 
@@ -72,19 +81,23 @@ class AcademicInformationController extends Controller
     public function editAction(Request $request, AcademicInformation $academicInformation)
     {
         $deleteForm = $this->createDeleteForm($academicInformation);
+        $academicInformation->setDate($academicInformation->getDate()->format('Y-m-d'));
         $editForm = $this->createForm('AppBundle\Form\AcademicInformationType', $academicInformation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $academicInformation->setDate(new \DateTime($academicInformation->getDate()));
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('academicinformation_edit', array('id' => $academicInformation->getId()));
+            return $this->redirectToRoute('student_show', array('id' => $academicInformation->getStudent()->getId()));
         }
 
         return $this->render('academicinformation/edit.html.twig', array(
             'academicInformation' => $academicInformation,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'student'=>$academicInformation->getStudent(),
+
         ));
     }
 
@@ -118,7 +131,6 @@ class AcademicInformationController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('academicinformation_delete', array('id' => $academicInformation->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

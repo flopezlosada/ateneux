@@ -5,7 +5,7 @@
         <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 4}) }}">Finalizar</a></li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input type="submit" value="{{"Delete"|trans}}">
             {{ form_end(delete_form) }}
         </li>
     {% elseif entity.meetingStatus.getId==3 %}

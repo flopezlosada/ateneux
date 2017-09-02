@@ -29,6 +29,7 @@
                             <td>{% if course.startdate %}{{ course.startdate|localizeddate('long','none','es')  }}{% endif %}</td>
                             <td>{% if course.enddate %}{{ course.enddate|localizeddate('long','none','es')  }}{% endif %}</td>
                             <td>
+                                {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id ==course.id) or is_granted ("ROLE_ADMIN") %}
                                 <ul>
                                     <li>
                                         <a href="{{ path('course_show', { 'id': course.id }) }}">show</a>
@@ -36,7 +37,11 @@
                                     <li>
                                         <a href="{{ path('course_edit', { 'id': course.id }) }}">edit</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ path('assessmentboard_new', {'course_id': course.id}) }}">Añadir junta de evaluación</a>
+                                    </li>
                                 </ul>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

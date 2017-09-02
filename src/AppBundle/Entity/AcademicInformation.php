@@ -28,8 +28,6 @@ class AcademicInformation
      */
     private $id;
 
-
-
     /**
      *
      * @var smallint $student
@@ -37,6 +35,13 @@ class AcademicInformation
      */
 
     private $student;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="academic_meeting")
+     */
+    protected $meetings;
+
 
     /**
      * @var dateTime $created
@@ -197,4 +202,63 @@ class AcademicInformation
     {
         return $this->student;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->meetings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return AcademicInformation
+     */
+    public function addMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings[] = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Remove meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     */
+    public function removeMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings->removeElement($meeting);
+    }
+
+    /**
+     * Get meetings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
+    }
+
+
+    /**
+     * get last meeting in the meetings list
+     *
+     * @return Meeting
+     */
+    public function getLastMeeting()
+    {
+        $meetings = $this->getMeetings();
+        $pepe=end($meetings);
+
+        echo $pepe;
+
+        return end($meetings);
+    }
+
 }

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Assessmentboards list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Date</th>
+                <th>Information</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assessmentBoard in assessmentBoards %}
+            <tr>
+                <td><a href="{{ path('assessmentboard_show', { 'id': assessmentBoard.id }) }}">{{ assessmentBoard.id }}</a></td>
+                <td>{% if assessmentBoard.created %}{{ assessmentBoard.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if assessmentBoard.updated %}{{ assessmentBoard.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if assessmentBoard.date %}{{ assessmentBoard.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ assessmentBoard.information }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('assessmentboard_show', { 'id': assessmentBoard.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('assessmentboard_edit', { 'id': assessmentBoard.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('assessmentboard_new') }}">Create a new assessmentBoard</a>
+        </li>
+    </ul>
+{% endblock %}

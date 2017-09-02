@@ -16,7 +16,7 @@
     <li>
         {% if is_granted("ROLE_ADMIN") %}
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input type="submit" value="{{"Delete"|trans}}">
             {{ form_end(delete_form) }}
         {% endif %}
     </li>

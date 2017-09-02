@@ -1,0 +1,59 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Editar junta de evaluación{% endblock %}
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="alert alert-info">
+                {{ assessmentBoard.course }}
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="panel-body">
+                {{ form_start(edit_form, {'attr': {'role': 'form' }}) }}
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="form-group">
+                            {{ form_errors(edit_form.assessment_type) }}
+                            <label>{{ form_label(edit_form.assessment_type) }}</label>
+                            {{ form_widget(edit_form.assessment_type,{'attr':{'class':'form-control','placeholder':'Evaluación'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_errors(edit_form.date) }}
+                            <label>{{ form_label(edit_form.date) }}</label>
+                            {{ form_widget(edit_form.date,{'attr':{'placeholder':'Fecha'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_errors(edit_form.information) }}
+                            <label>{{ form_label(edit_form.information) }}</label>
+                            {{ form_widget(edit_form.information,{'attr':{'class':'tinymce','placeholder':'Información'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Actualizar"/>
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('course_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block specific_js %}
+    <script>
+        $('.datepicker').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if assessmentBoard.getDate() %}
+                var date = new Date("{{  assessmentBoard.getDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+    </script>
+    {{ tinymce_init() }}
+{% endblock %}

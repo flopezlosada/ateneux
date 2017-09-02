@@ -38,6 +38,13 @@ class Teacher
     private $name;
 
     /**
+     *
+     * @var string passw
+     * @ORM\Column(name="passw", type="string", length=255,nullable=true)
+     */
+    private $passw;
+
+    /**
      * @Assert\NotBlank
      * @var string surname
      * @ORM\Column(name="surname", type="string", length=255)
@@ -298,5 +305,29 @@ class Teacher
     public function __toString()
     {
         return $this->getName()." ".$this->getSurname();
+    }
+
+    /**
+     * Set passw
+     *
+     * @param string $passw
+     *
+     * @return Teacher
+     */
+    public function setPassw($passw)
+    {
+        $this->passw = $passw;
+
+        return $this;
+    }
+
+    /**
+     * Get passw
+     *
+     * @return string
+     */
+    public function getPassw()
+    {
+        return $this->passw;
     }
 }
