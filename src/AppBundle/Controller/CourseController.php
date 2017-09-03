@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Course;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Course controller.
@@ -29,7 +30,7 @@ class CourseController extends Controller
 
     /**
      * Creates a new course entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -74,7 +75,7 @@ class CourseController extends Controller
 
     /**
      * Displays a form to edit an existing course entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Course $course)
     {
@@ -98,7 +99,7 @@ class CourseController extends Controller
 
     /**
      * Deletes a course entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Course $course)
     {
