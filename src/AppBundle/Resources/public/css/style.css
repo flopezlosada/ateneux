@@ -1,3 +1,7 @@
-.fa-egg:before{
+.fa-egg:before {
     content: url('../images/lay.png');
+}
+
+.radio_academic {
+    margin-left: 100px;
 }

@@ -261,4 +261,9 @@ class AcademicInformation
         return end($meetings);
     }
 
+    public function __toString()
+    {
+        return "Información del curso. Fecha: ".$this->getDate()->format("d/m/Y");
+    }
+
 }

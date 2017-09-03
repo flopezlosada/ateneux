@@ -1,0 +1,38 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir información del curso.{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="alert alert-info">
+            <p>Información sobre la/el estudiante: {{ student }} para la reunión {{ meeting }}</p>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel-body">
+                        <div class="form-group">
+
+                            {{ form_errors(form.academic) }}
+                            <div class="alert alert-success">
+                                {{ form_label(form.academic) }}
+                            </div>
+
+                            {{ form_widget(form.academic,{'attr':{'placeholder':''}}) }}
+
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('student_show', {'id': student.id}) }}">Volver a la ficha de estudiante</a>
+        </li>
+    </ul>
+
+{% endblock %}
