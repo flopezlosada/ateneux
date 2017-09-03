@@ -172,7 +172,7 @@ class AcademicInformationController extends Controller
             $meeting->setAcademicMeeting($data['academic']);
             $em->persist($meeting);
             $em->flush();
-            
+
             return $this->redirectToRoute('student_show', array('id' => $meeting->getStudentMeeting()->getId()));
         }
 

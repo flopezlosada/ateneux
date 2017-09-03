@@ -29,7 +29,7 @@
                     {% endif %}
                     {% if is_granted("ROLE_ADMIN") or (is_granted("ROLE_TEACHER") and app.user==teacher.getUser) %}
                         <p><strong>Usuario:</strong> {{ teacher.getUser.username }}</p>
-                        <p><strong>Contraseña:</strong> {{ teacher.getPassw }} <a href="{{ path('fos_user_change_password') }}">Cambiar</a> </p>
+                        <p><strong>Contraseña:</strong> {{ teacher.getPassw }} {#<a href="{{ path('fos_user_change_password') }}">Cambiar</a>#} </p>
 
                     {% endif %}
                 </div>
