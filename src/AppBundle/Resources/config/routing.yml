@@ -37,3 +37,7 @@ app_academicinformation:
 app_assessmentboard:
         resource: "@AppBundle/Resources/config/routing/assessmentboard.xml"
         prefix:   /assessmentboard
+
+app_warning:
+        resource: "@AppBundle/Resources/config/routing/warning.xml"
+        prefix:   /warning

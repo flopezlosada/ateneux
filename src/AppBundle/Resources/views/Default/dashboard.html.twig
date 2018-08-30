@@ -7,7 +7,7 @@
 {% block warning %}{% endblock %}
 {% block main %}
     <div class="row">
-        {% if is_granted("ROLE_ADMIN") %}
+        {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
 
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">

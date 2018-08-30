@@ -33,7 +33,7 @@ class StudentController extends Controller
 
     /**
      * Creates a new student entity.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
      */
     public function newAction(Request $request)
     {
@@ -55,6 +55,16 @@ class StudentController extends Controller
         ));
     }
 
+    public function promoteAction(Student $student)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+        return $this->render('student/promote.html.twig', array(
+            'student' => $student,
+        ));
+    }
+
     /**
      * Finds and displays a student entity.
      *
@@ -69,13 +79,17 @@ class StudentController extends Controller
         $student_meetings = $em->getRepository('AppBundle:Student')
             ->findMeetings($student->getId());//todas las reuniones que ha tenido el estudiante
 
+        $student_warnings = $em->getRepository('AppBundle:Student')
+            ->findWarnings($student->getId());//todas las amonestaciones y partes que ha tenido el estudiante
+
         //busca que haya información sobre el estudiante para la reunión
-        $academic_informations=$em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
+        $academic_informations = $em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
 
         return $this->render('student/show.html.twig', array(
             'student' => $student,
             'pending_student_meetings' => $pending_student_meetings,
-            'student_meetings'=>$student_meetings,
+            'student_meetings' => $student_meetings,
+            'student_warnings' => $student_warnings,
             'delete_form' => $deleteForm->createView(),
             'academic_informations' => $academic_informations
         ));
@@ -112,15 +126,15 @@ class StudentController extends Controller
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
 
         $html = $this->renderView(':student:familiar.html.twig', array(
-            'student'  => $student
+            'student' => $student
         ));
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml(utf8_decode($html)),
             200,
             array(
-                'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'attachment; filename="familiar_'.$student->__toString().'.pdf"'
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="familiar_' . $student->__toString() . '.pdf"'
             )
         );
     }
@@ -132,28 +146,25 @@ class StudentController extends Controller
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
 
         $html = $this->renderView(':student:school.html.twig', array(
-            'student'  => $student
+            'student' => $student
         ));
 
-        if ($type=="pdf")
-        {
+        if ($type == "pdf") {
             return new Response(
                 $this->get('knp_snappy.pdf')->getOutputFromHtml(utf8_decode($html)),
                 200,
                 array(
-                    'Content-Type'          => 'application/pdf',
-                    'Content-Disposition'   => 'attachment; filename="school'.$student->__toString().'.pdf"'
+                    'Content-Type' => 'application/pdf',
+                    'Content-Disposition' => 'attachment; filename="school' . $student->__toString() . '.pdf"'
                 )
             );
-        }
-        elseif ($type=='image')
-        {
+        } elseif ($type == 'image') {
             return new Response(
                 $this->get('knp_snappy.image')->getOutputFromHtml(utf8_decode($html)),
                 200,
                 array(
-                    'Content-Type'          => 'image/jpg',
-                    'Content-Disposition'   => 'filename="school'.$student->__toString().'.jpg"'
+                    'Content-Type' => 'image/jpg',
+                    'Content-Disposition' => 'filename="school' . $student->__toString() . '.jpg"'
                 )
             );
         }
@@ -193,13 +204,17 @@ class StudentController extends Controller
             ->getForm();
     }
 
-
+    /**
+     * @param $student_id
+     * @return Response
+     *  @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
     public function courseAction($student_id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
-        $courses = $em->getRepository('AppBundle:Course')->findCoursesStatus(1);//encuentra cursos activos
+        $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,$student);//encuentra cursos activos
 
         return $this->render('student/courses.html.twig', array(
             'student' => $student,

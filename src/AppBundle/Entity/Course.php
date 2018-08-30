@@ -89,6 +89,12 @@ class Course
 
     /**
      *
+     * @ORM\OneToMany(targetEntity="Warning", mappedBy="course")
+     */
+    private $warnings;
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="AssessmentBoard", mappedBy="course")
      */
     private $assessments_board;
@@ -104,6 +110,11 @@ class Course
      */
     protected $mentor_teacher;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Teacher", mappedBy="historical_courses")
+     */
+    protected $historical_mentors;
 
 
     public function __toString()
@@ -421,5 +432,77 @@ class Course
     public function getAssessmentsBoard()
     {
         return $this->assessments_board;
+    }
+
+    /**
+     * Add historicalMentor.
+     *
+     * @param \AppBundle\Entity\Teacher $historicalMentor
+     *
+     * @return Course
+     */
+    public function addHistoricalMentor(\AppBundle\Entity\Teacher $historicalMentor)
+    {
+        $this->historical_mentors[] = $historicalMentor;
+
+        return $this;
+    }
+
+    /**
+     * Remove historicalMentor.
+     *
+     * @param \AppBundle\Entity\Teacher $historicalMentor
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeHistoricalMentor(\AppBundle\Entity\Teacher $historicalMentor)
+    {
+        return $this->historical_mentors->removeElement($historicalMentor);
+    }
+
+    /**
+     * Get historicalMentors.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHistoricalMentors()
+    {
+        return $this->historical_mentors;
+    }
+
+    /**
+     * Add warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return Course
+     */
+    public function addWarning(\AppBundle\Entity\Warning $warning)
+    {
+        $this->warnings[] = $warning;
+
+        return $this;
+    }
+
+    /**
+     * Remove warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeWarning(\AppBundle\Entity\Warning $warning)
+    {
+        return $this->warnings->removeElement($warning);
+    }
+
+    /**
+     * Get warnings.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWarnings()
+    {
+        return $this->warnings;
     }
 }

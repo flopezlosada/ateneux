@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Warnings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Date</th>
+                <th>Information</th>
+                <th>Signed</th>
+                <th>Description</th>
+                <th>Penalty_start_date</th>
+                <th>Penalty_end_date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for warning in warnings %}
+            <tr>
+                <td><a href="{{ path('warning_show', { 'id': warning.id }) }}">{{ warning.id }}</a></td>
+                <td>{% if warning.created %}{{ warning.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if warning.updated %}{{ warning.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if warning.date %}{{ warning.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ warning.information }}</td>
+                <td>{{ warning.signed }}</td>
+                <td>{{ warning.description }}</td>
+                <td>{% if warning.penaltystartdate %}{{ warning.penaltystartdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if warning.penaltyenddate %}{{ warning.penaltyenddate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('warning_show', { 'id': warning.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('warning_edit', { 'id': warning.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('warning_new') }}">Create a new warning</a>
+        </li>
+    </ul>
+{% endblock %}

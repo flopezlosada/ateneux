@@ -57,7 +57,7 @@ class Teacher
      *     checkMX = true
      * )
      * @var string email
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
@@ -99,6 +99,28 @@ class Teacher
      * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
+
+
+    /**
+     *
+     * @var smallint $historical_courses
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Course", inversedBy="historical_mentors")
+     * @ORM\JoinTable(name="historical_course_mentor",
+     *      joinColumns={@ORM\JoinColumn(name="teacher_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="course_id", referencedColumnName="id")}
+     *      )
+     *
+     * histórico de cursos realizados
+     */
+    private $historical_courses;
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Warning", mappedBy="teacher")
+     */
+    private $warnings;
+
 
     /**
      * Get id
@@ -329,5 +351,84 @@ class Teacher
     public function getPassw()
     {
         return $this->passw;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->historical_courses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add historicalCourse.
+     *
+     * @param \AppBundle\Entity\Course $historicalCourse
+     *
+     * @return Teacher
+     */
+    public function addHistoricalCourse(\AppBundle\Entity\Course $historicalCourse)
+    {
+        $this->historical_courses[] = $historicalCourse;
+
+        return $this;
+    }
+
+    /**
+     * Remove historicalCourse.
+     *
+     * @param \AppBundle\Entity\Course $historicalCourse
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeHistoricalCourse(\AppBundle\Entity\Course $historicalCourse)
+    {
+        return $this->historical_courses->removeElement($historicalCourse);
+    }
+
+    /**
+     * Get historicalCourses.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHistoricalCourses()
+    {
+        return $this->historical_courses;
+    }
+
+    /**
+     * Add warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return Teacher
+     */
+    public function addWarning(\AppBundle\Entity\Warning $warning)
+    {
+        $this->warnings[] = $warning;
+
+        return $this;
+    }
+
+    /**
+     * Remove warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeWarning(\AppBundle\Entity\Warning $warning)
+    {
+        return $this->warnings->removeElement($warning);
+    }
+
+    /**
+     * Get warnings.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWarnings()
+    {
+        return $this->warnings;
     }
 }

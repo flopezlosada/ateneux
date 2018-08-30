@@ -1,5 +1,5 @@
 <ul class="list-inline">
-    {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id ==entity.getCourse.getId) or is_granted ("ROLE_ADMIN") %}
+    {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id ==entity.getCourse.getId) or is_granted ("ROLE_ADMIN")   or is_granted("ROLE_JEFATURA")%}
         <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}">Editar</a></li>
         <li>
             {{ form_start(delete_form) }}

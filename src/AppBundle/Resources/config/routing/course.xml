@@ -12,6 +12,10 @@
         <default key="_controller">AppBundle:Course:show</default>
     </route>
 
+    <route id="add_students" path="/{course}/addstudents" methods="GET|POST">
+        <default key="_controller">AppBundle:Course:addStudents</default>
+    </route>
+
     <route id="course_new" path="/new" methods="GET|POST">
         <default key="_controller">AppBundle:Course:new</default>
     </route>

@@ -9,7 +9,7 @@
                 Fecha: {{ meeting.date|localizeddate('long','none','es') }}<br>
                 <a href="{{ path('meeting_edit', {'id': meeting.id}) }}">Editar</a>
                 {% if meeting.getAcademicMeeting.id is not defined %}
-                    | Añadir información curso: <a
+                    | Añadir Evolución Académica: <a
                         href="{{ path('academicinformation_new', {'meeting_id': meeting.id}) }}">nueva </a>
                     {% if academic_informations|length>0 %}
                         o <a

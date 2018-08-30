@@ -20,7 +20,7 @@ class StudentSchoolType extends AbstractType
                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
-            ->add('adapted', ChoiceType::class, array('label' => '¿Presenta adaptación?',
+            ->add('adapted', ChoiceType::class, array('label' => '¿Tiene adaptación curricular?',
                 'choices' => array(
                    'Sí' => 1,
                     'No' => 2,

@@ -22,8 +22,7 @@
                         <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos generales</a>
                         </li>
                         {% if meeting.academicMeeting is defined %}
-                            <li class=""><a href="#information" data-toggle="tab" aria-expanded="false">Información
-                                    Curso</a>
+                            <li class=""><a href="#information" data-toggle="tab" aria-expanded="false">Evolución Académica</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -35,12 +34,14 @@
                             <p><strong>Acuerdos:</strong> {{ meeting.deals |raw }}</p>
                             <p><strong>Observaciones:</strong> {{ meeting.observations |raw }}</p>
                         </div>
+                        {% if meeting.academicMeeting is defined %}
                         <div class="tab-pane fade"
                              id="information">
                             <p><strong>Fecha:</strong> {{ meeting.academicMeeting.date|localizeddate('long','none','es') }}</p>
                             <p> {{ meeting.academicMeeting.information |raw }}</p>
-                            <a href="{{ path('academicinformation_edit', {'id': meeting.academicMeeting.id}) }}">Editar información curso</a>
+                            <a href="{{ path('academicinformation_edit', {'id': meeting.academicMeeting.id}) }}">Editar Evolución Académica</a>
                         </div>
+                        {% endif %}
                     </div>
 
                 </div>

@@ -12,3 +12,7 @@ ateneux:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin

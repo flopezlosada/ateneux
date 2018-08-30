@@ -34,6 +34,14 @@ class Student
     private $id;
 
     /**
+     *
+     * @var smallint $student_status
+     * @ORM\ManyToOne(targetEntity="StudentStatus", inversedBy="students")
+     */
+    private $student_status;
+
+
+    /**
      * @Assert\NotBlank
      * @var string name
      * @ORM\Column(name="name", type="string", length=255)
@@ -149,13 +157,22 @@ class Student
 
 
     /**
-     *
+     * Unidad que está cursando, 1ºESO-A, 2ºESO-C, ....
      * @var smallint $course
      * @ORM\ManyToOne(targetEntity="Course", inversedBy="students")
      * Curso actual
      */
     private $course;
 
+    /**
+     * Nivel del curso que está estudiando. 1ºESO, 2ºESO, ....
+     * Es para promocionar. Cuando termina un curso, se le promociona al siguiente nivel. Este campo es el que cambia
+     * y el del $course se queda a null.
+     * @var smallint $course_type
+     * @ORM\ManyToOne(targetEntity="CourseType", inversedBy="students")
+     *
+     */
+    private $course_type;
 
     /**
      *
@@ -192,6 +209,14 @@ class Student
      */
     private $academic_informations;
 
+
+    /**
+     *
+     * @var smallint $warnings
+     * @ORM\OneToOne(targetEntity="Warning", inversedBy="student")
+     */
+    private $warnings;
+
     /**
      *
      * @var smallint $student_school
@@ -203,6 +228,14 @@ class Student
      * @ORM\OneToMany(targetEntity="Meeting", mappedBy="student_meeting")
      */
     protected $meetings;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Date()
+     * @var string $birth_date
+     * @ORM\Column(name="birth_date", type="date")
+     */
+    private $birth_date;
 
 
     public function getAbsolutePath()
@@ -233,11 +266,9 @@ class Student
      */
     public function preUpload()
     {
-        if (null !== $this->file)
-        {
+        if (null !== $this->file) {
             // haz cualquier cosa para generar un nombre único
-            if ($this->image !== null)
-            {
+            if ($this->image !== null) {
                 $this->removeUpload();
             }
             $this->image = uniqid("", true) . '.' . $this->file->guessExtension();
@@ -251,8 +282,7 @@ class Student
     public function upload()
     {
         // la propiedad file puede estar vacía si el campo no es obligatorio
-        if (null === $this->file)
-        {
+        if (null === $this->file) {
             return;
         }
 
@@ -279,8 +309,7 @@ class Student
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsolutePath())
-        {
+        if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
     }
@@ -771,15 +800,13 @@ class Student
 
     public function __toString()
     {
-        return $this->getName() . " " . $this->getSurname();
+        return $this->getSurName() . ", " . $this->getName();
     }
 
     public function getCompleteAddress()
     {
-        return $this->getAddress(). " - ".$this->getPostalCode()." ".$this->getCity()." (".$this->getState().")";
+        return $this->getAddress() . " - " . $this->getPostalCode() . " " . $this->getCity() . " (" . $this->getState() . ")";
     }
-
-
 
 
     /**
@@ -838,5 +865,101 @@ class Student
     public function getAcademicInformations()
     {
         return $this->academic_informations;
+    }
+
+    /**
+     * Set birthDate.
+     *
+     * @param \DateTime $birthDate
+     *
+     * @return Student
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birth_date = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthDate.
+     *
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->birth_date;
+    }
+
+    /**
+     * Set studentStatus.
+     *
+     * @param \AppBundle\Entity\StudentStatus|null $studentStatus
+     *
+     * @return Student
+     */
+    public function setStudentStatus(\AppBundle\Entity\StudentStatus $studentStatus = null)
+    {
+        $this->student_status = $studentStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get studentStatus.
+     *
+     * @return \AppBundle\Entity\StudentStatus|null
+     */
+    public function getStudentStatus()
+    {
+        return $this->student_status;
+    }
+
+    /**
+     * Set courseType.
+     *
+     * @param \AppBundle\Entity\CourseType|null $courseType
+     *
+     * @return Student
+     */
+    public function setCourseType(\AppBundle\Entity\CourseType $courseType = null)
+    {
+        $this->course_type = $courseType;
+
+        return $this;
+    }
+
+    /**
+     * Get courseType.
+     *
+     * @return \AppBundle\Entity\CourseType|null
+     */
+    public function getCourseType()
+    {
+        return $this->course_type;
+    }
+
+    /**
+     * Set warnings.
+     *
+     * @param \AppBundle\Entity\Warning|null $warnings
+     *
+     * @return Student
+     */
+    public function setWarnings(\AppBundle\Entity\Warning $warnings = null)
+    {
+        $this->warnings = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Get warnings.
+     *
+     * @return \AppBundle\Entity\Warning|null
+     */
+    public function getWarnings()
+    {
+        return $this->warnings;
     }
 }

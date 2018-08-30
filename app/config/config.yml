@@ -42,12 +42,13 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         real_course: '@AppBundle\Service\RealCourse'
-        domain: %domain%
-        contact_email: %contact_email%
+        domain: '%domain%'
+        contact_email: '%contact_email%'
 
 # Doctrine Configuration
 doctrine:
     dbal:
+        server_version: 9.4
         driver: pdo_mysql
         host: '%database_host%'
         port: '%database_port%'
@@ -94,12 +95,12 @@ liip_imagine:
     resolvers:
         default:
             web_path:
-                web_root: %kernel.root_dir%/../web
+                web_root: '%kernel.root_dir%/../web'
                 cache_prefix: media/cache
     loaders:
         default:
             filesystem:
-                data_root: %kernel.root_dir%/../web/
+                data_root: '%kernel.root_dir%/../web/'
 
     driver:               gd
     cache:                default
@@ -161,3 +162,7 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/xvfb-run wkhtmltoimage
         options:    []
+easy_admin:
+        entities:
+            - AppBundle\Entity\Course
+            - AppBundle\Entity\Student

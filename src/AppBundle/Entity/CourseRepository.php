@@ -20,4 +20,22 @@ class CourseRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+
+    /**
+     * @param $int
+     * @return mixed
+     * Devuelve los cursos activos que corresponden con el nivel del estudiante
+     */
+    public function findCoursesStatusUnity($int,$student)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Course t where t.course_status=:status and t.course_type=:course_type ORDER BY  t.course_type asc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("status", $int);
+        $query->setParameter("course_type", $student->getCourseType()->getId());
+
+        return $query->getResult();
+    }
 }

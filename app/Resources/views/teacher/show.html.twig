@@ -27,7 +27,7 @@
                                         href="{{ path('course_show', {'id': teacher.getMentorCourse.id}) }}">{{ teacher.getMentorCourse.title }}</a>
                             </strong></p>
                     {% endif %}
-                    {% if is_granted("ROLE_ADMIN") or (is_granted("ROLE_TEACHER") and app.user==teacher.getUser) %}
+                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or (is_granted("ROLE_TEACHER") and app.user==teacher.getUser) %}
                         <p><strong>Usuario:</strong> {{ teacher.getUser.username }}</p>
                         <p><strong>Contraseña:</strong> {{ teacher.getPassw }} {#<a href="{{ path('fos_user_change_password') }}">Cambiar</a>#} </p>
 
@@ -42,7 +42,7 @@
         <li>
             <a href="{{ path('teacher_index') }}">Back to the list</a>
         </li>
-        {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher == teacher) or is_granted("ROLE_ADMIN") %}
+        {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher == teacher) or is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
             <li>
                 <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Edit</a>
             </li>

@@ -38,6 +38,22 @@
                 <source>Delete</source>
                 <target>Borrar</target>
             </trans-unit>
+            <trans-unit id="Edit">
+                <source>Edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="Show">
+                <source>Show</source>
+                <target>Mostrar</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>editar</target>
+            </trans-unit>
+            <trans-unit id="show">
+                <source>show</source>
+                <target>mostrar</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

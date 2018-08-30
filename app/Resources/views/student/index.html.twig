@@ -1,9 +1,9 @@
 {% extends '::layout_list.html.twig' %}
-{% block title_wrapper %}Lista de estudiantes{% endblock %}
+{% block title_wrapper %}Lista de estudiantes {{ real_course.getRealCourse }}{% endblock %}
 {% block main -%}
     <div class="panel panel-default">
         <div class="panel-heading">
-            Listado
+            Listado con un total de <strong>{{ students|length }}</strong> estudiantxs.
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -25,10 +25,10 @@
                             <td><a href="{{ path('student_show', { 'id': student.id }) }}">{{ student }}</a></td>
                             <td>
                                 <ul>
-                                    {% if is_granted("ROLE_ADMIN") %}
-                                        <li>
+                                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
+                                        {#<li>
                                             <a href="{{ path('student_edit', { 'id': student.id }) }}">editar</a>
-                                        </li>
+                                        </li>#}
                                         <li>
                                             <a href="{{ path('student_course', {'student_id': student.id}) }}"
                                                class="alert-link">Definir curso</a>.
@@ -40,6 +40,7 @@
                                                class="alert-link">Añadir a mi curso</a>.
                                         </li>
                                     {% endif %}
+
                                 </ul>
                             </td>
                         </tr>
@@ -49,7 +50,7 @@
             </div>
         </div>
     </div>
-    {% if is_granted("ROLE_ADMIN") %}
+    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA")%}
         <ul>
             <li>
                 <a href="{{ path('student_new') }}">

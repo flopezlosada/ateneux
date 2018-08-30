@@ -35,7 +35,7 @@ class StudentFamiliarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
-        if ($this->get('security.authorization_checker')->isGranted("ROLE_ADMIN")
+        if ($this->get('security.authorization_checker')->isGranted("ROLE_ADMIN") or $this->get('security.authorization_checker')->isGranted("ROLE_JEFATURA")
             or ($this->get('security.authorization_checker')->isGranted("ROLE_TEACHER")
                 and $this->getUser()->getTeacher()->getMentorCourse()->getId() == $student->getCourse()->getId())) {
             $studentFamiliar = new Studentfamiliar();

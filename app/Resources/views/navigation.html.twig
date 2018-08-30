@@ -24,7 +24,7 @@
                     <li>
                         <a href="{{ path('course_index') }}">Listado de cursos {{ real_course.getRealCourse }}</a>
                     </li>
-                    {% if is_granted("ROLE_ADMIN") %}
+                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
                     <li>
                         <a href="{{ path('course_new') }}">Añadir curso</a>
                     </li>
@@ -47,7 +47,7 @@
                     <li>
                         <a href="{{ path('student_index') }}">Listado de estudiantes {{ real_course.getRealCourse }}</a>
                     </li>
-                    {% if is_granted("ROLE_ADMIN") %}
+                    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA")%}
                     <li>
                         <a href="{{ path('student_new') }}">Añadir estudiante</a>
                     </li>
@@ -60,7 +60,7 @@
                     <li>
                         <a href="{{ path('teacher_index') }}">Listado de tutoras/es {{ real_course.getRealCourse }}</a>
                     </li>
-                    {% if is_granted("ROLE_ADMIN") %}
+                    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA")%}
                     <li>
                         <a href="{{ path('teacher_new') }}">Añadir tutora/or</a>
                     </li>

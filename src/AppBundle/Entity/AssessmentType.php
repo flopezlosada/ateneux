@@ -34,7 +34,7 @@ class AssessmentType
     /**
      * @ORM\OneToMany(targetEntity="AssessmentBoard", mappedBy="assessment_type")
      */
-    protected $assessments;
+    protected $assessments_board;
 
     /**
      * @var string $title
@@ -124,5 +124,41 @@ class AssessmentType
     public function getAssessments()
     {
         return $this->assessments;
+    }
+
+    /**
+     * Add assessmentsBoard.
+     *
+     * @param \AppBundle\Entity\AssessmentBoard $assessmentsBoard
+     *
+     * @return AssessmentType
+     */
+    public function addAssessmentsBoard(\AppBundle\Entity\AssessmentBoard $assessmentsBoard)
+    {
+        $this->assessments_board[] = $assessmentsBoard;
+
+        return $this;
+    }
+
+    /**
+     * Remove assessmentsBoard.
+     *
+     * @param \AppBundle\Entity\AssessmentBoard $assessmentsBoard
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAssessmentsBoard(\AppBundle\Entity\AssessmentBoard $assessmentsBoard)
+    {
+        return $this->assessments_board->removeElement($assessmentsBoard);
+    }
+
+    /**
+     * Get assessmentsBoard.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssessmentsBoard()
+    {
+        return $this->assessments_board;
     }
 }

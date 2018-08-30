@@ -1,0 +1,56 @@
+{% extends '::layout_show.html.twig' %}
+{% form_theme form _self %}
+{% block checkbox_widget %}
+    <div class="checkbox-multiple">
+        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+        <label><a href="{{ path('student_show', {'id': value}) }}">{{ label }}</a></label>
+    </div>
+{% endblock %}
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+{% block more_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
+{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Añadir estudiantes al curso: {{ course }} </h1>
+            {% if course.getMentorTeacher == null %}
+                <div class="alert alert-danger">
+                    Debes definir la/el tutor del curso <a
+                            href="{{ path('teacher_select_mentor_teacher', {'course_id': course.id}) }}"
+                            class="alert-link">Indicar</a>.
+                </div>
+            {% endif %}
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                {{ form_start(form,{'attr': {'role': 'form' }}) }}
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel-body">
+                            <div class="form-group">
+
+                                {{ form_errors(form.student) }}
+                                <div class="alert alert-success">
+                                    {{ form_label(form.student) }}
+                                </div>
+
+                                {{ form_widget(form.student,{'attr':{'placeholder':''}}) }}
+
+                            </div>
+
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

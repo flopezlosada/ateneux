@@ -30,4 +30,25 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    public function findWarnings($student_id, $meeting_status_id = null)
+    {
+
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Warning t where t.student=:student ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("student", $student_id);
+
+        return $query->getResult();
+    }
+
+    public function findByUnity($course)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Student t where t.course is null and t.course_type=:course_type ";
+        $query = $em->createQuery($dql);
+        $query->setParameter("course_type", $course->getCourseType());
+        return $query->getResult();
+    }
+
 }

@@ -254,16 +254,16 @@ class AcademicInformation
     public function getLastMeeting()
     {
         $meetings = $this->getMeetings();
-        $pepe=end($meetings);
+        //$pepe=end($meetings);
 
-        echo $pepe;
+        //echo $pepe;
 
         return end($meetings);
     }
 
     public function __toString()
     {
-        return "Información del curso. Fecha: ".$this->getDate()->format("d/m/Y");
+        return "Evolución Académica. Fecha: ".$this->getDate()->format("d/m/Y");
     }
 
 }

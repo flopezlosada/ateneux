@@ -37,6 +37,12 @@ class CourseType
     protected $courses;
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="Student", mappedBy="course_type")
+     */
+    private $students;
+
+    /**
      * @var string $title
      * @Assert\NotBlank
      * @ORM\Column(name="title", type="string", length=255)
@@ -185,5 +191,41 @@ class CourseType
     public function __toString()
     {
         return $this->getTitle();
+    }
+
+    /**
+     * Add student.
+     *
+     * @param \AppBundle\Entity\Student $student
+     *
+     * @return CourseType
+     */
+    public function addStudent(\AppBundle\Entity\Student $student)
+    {
+        $this->students[] = $student;
+
+        return $this;
+    }
+
+    /**
+     * Remove student.
+     *
+     * @param \AppBundle\Entity\Student $student
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeStudent(\AppBundle\Entity\Student $student)
+    {
+        return $this->students->removeElement($student);
+    }
+
+    /**
+     * Get students.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }

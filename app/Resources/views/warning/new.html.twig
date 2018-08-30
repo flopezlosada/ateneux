@@ -1,0 +1,141 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Parte/Incidencia a {{ student }}{% endblock %}
+{% block main %}
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            {{ form_start(form,{'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="form-group">
+                        {{ form_errors(form.warning_type) }}
+                        <label>{{ form_label(form.warning_type) }}</label>
+                        {{ form_widget(form.warning_type,{'attr':{'placeholder':'Tipo de incidencia','class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.date) }}
+                        <label>{{ form_label(form.date) }}</label>
+                        {{ form_widget(form.date,{'attr':{'placeholder':'Fecha'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.teacher) }}
+                        <label>{{ form_label(form.teacher) }}</label>
+                        {{ form_widget(form.teacher,{'attr':{'placeholder':'Profesora/or','class':'form-control'}}) }}
+                    </div>
+                    <div id="minor_warning" class="hidden">
+                        <div class="form-group" id="information">
+                            {{ form_errors(form.information) }}
+                            <label>{{ form_label(form.information) }}</label>
+                            {{ form_widget(form.information,{'attr':{'placeholder':'Motivo','class':'tinymce'}}) }}
+                        </div>
+                    </div>
+                    <div id="major_warning" class="hidden">
+                        <div class="form-group">
+                            {{ form_errors(form.major_offence_type) }}
+                            <label>{{ form_label(form.major_offence_type) }}</label>
+                            {{ form_widget(form.major_offence_type,{'attr':{'placeholder':'Tipo de falta grave directa','class':'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_errors(form.description) }}
+                            <label>{{ form_label(form.description) }}</label>
+                            {{ form_widget(form.description,{'attr':{'placeholder':'Descripción de la falta grave','class':'tinymce'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_errors(form.penalty_type) }}
+                            <label>{{ form_label(form.penalty_type) }}</label>
+                            {{ form_widget(form.penalty_type,{'attr':{'placeholder':'Tipo de sanción','class':'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_errors(form.penalty_start_date) }}
+                            <label>{{ form_label(form.penalty_start_date) }}</label>
+                            {{ form_widget(form.penalty_start_date,{'attr':{'placeholder':'Fecha inicio de sanción'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_errors(form.penalty_end_date) }}
+                            <label>{{ form_label(form.penalty_end_date) }}</label>
+                            {{ form_widget(form.penalty_end_date,{'attr':{'placeholder':'Fecha fin de sanción'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.signed) }}
+                        {{ form_widget(form.signed) }}
+                        {{ form_label(form.signed) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('student_show', {'id': student.id}) }}">Volver a la ficha de estudiante</a>
+        </li>
+    </ul>
+    {{ tinymce_init() }}
+{% endblock %}
+{% block specific_js %}
+    <script>
+        $('.datepicker').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if warning.getDate() %}
+                var date = new Date("{{  warning.getDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+        $('.datepicker2').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if warning.getPenaltyStartDate() %}
+                var date = new Date("{{  warning.getPenaltyStartDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+        $('.datepicker3').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if warning.getPenaltyEndDate() %}
+                var date = new Date("{{  warning.getPenaltyEndDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+
+        $('#appbundle_warning_warning_type').change(function () {
+            if ($(this).val() == 2) {
+                tinymce.get('appbundle_warning_information').setContent('');
+                $('#minor_warning').hide('slow');
+                $('#major_warning').removeClass('hidden');
+                $('#major_warning').show('slow');
+            }
+            else if ($(this).val() == 1) {
+                tinymce.get('appbundle_warning_description').setContent('');
+                $('#appbundle_warning_major_offence_type').val('');
+                $('#appbundle_warning_penalty_type').val('');
+                $('#appbundle_warning_penalty_start_date').val('');
+                $('#appbundle_warning_penalty_end_date').val('');
+                $('#major_warning').hide('slow');
+                $('#minor_warning').removeClass('hidden');
+                $('#minor_warning').show('slow');
+            }
+            else if ($(this).val() == '') {
+                $('#major_warning').hide('slow');
+                $('#minor_warning').hide('slow');
+            }
+        });
+
+        if($('#appbundle_warning_warning_type').val()==1){
+            $('#major_warning').hide('slow');
+            $('#minor_warning').removeClass('hidden');
+            $('#minor_warning').show('slow');
+        }else if($('#appbundle_warning_warning_type').val()==2){
+            $('#minor_warning').hide('slow');
+            $('#major_warning').removeClass('hidden');
+            $('#major_warning').show('slow');
+        }
+
+    </script>
+{% endblock %}

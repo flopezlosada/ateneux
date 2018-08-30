@@ -1,0 +1,25 @@
+{% extends '::layout_show.html.twig' %}
+{% block more_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
+{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12"></div>
+            </div>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block title_wrapper %}
+    <p>Promoción de la/el alumna/o {{ student }} </p>
+{% endblock %}
+

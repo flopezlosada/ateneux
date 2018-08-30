@@ -1,0 +1,45 @@
+{% extends '::layout_show.html.twig' %}
+{% block more_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
+{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>{{ warning }} {{ warning.student }}
+
+            </h1>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-info">
+                        <p>
+                            <a href="{{ path('student_show', {'id': warning.student.id}) }}">Ir a la ficha de la/el
+                                estudiante
+                                : {{ warning.student }}</a>
+                        </p>
+                    </div>
+                    <p><strong>Tipo de incicencia: </strong>{{ warning.warningType }}</p>
+                    <p><strong>Fecha:</strong> {{ warning.date|localizeddate('long','none','es') }}</p>
+                    <p><strong>Profesora/or: </strong><a href="{{ path('teacher_show', {'id': warning.teacher.id}) }}"> {{ warning.teacher }}</a></p>
+                    {% if  warning.warningtype.id==1 %}
+                        <p><strong>Información: </strong>{{ warning.information|raw }}</p>
+                    {% elseif  warning.warningtype.id==2 %}
+                        <p><strong>Tipo de falta grave:</strong> {{warning.majoroffencetype}}</p>
+                        <p><strong>Descripción del hecho:</strong> {{ warning.description|raw }}</p>
+                        <p><strong>Sanción</strong> {{ warning.penaltytype }}</p>
+                        <p><strong>Fecha inicio de sanción:</strong> {{ warning.penaltystartdate|localizeddate('long','none','es') }}</p>
+                        <p><strong>Fecha fin de sanción:</strong> {{ warning.penaltyenddate|localizeddate('long','none','es') }}</p>
+                    {% endif %}
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            {#{% include ':assessmentboard:record_actions.html.twig' with {'entity':assessmentBoard} %}#}
+        </div>
+    </div>
+
+{% endblock %}
