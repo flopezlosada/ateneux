@@ -54,6 +54,30 @@ class StudentSchool
      */
     private $adapted = false;
 
+
+    /**
+     * @var enum
+     *
+     * @ORM\Column(name="adapted_type", type="string", columnDefinition="enum('significant', 'procedural')")
+     *
+     * Tipo de adaptación curricular
+     */
+    private $adapted_type;
+
+    /**
+     *
+     * @var smallint $procedural_type
+     * @ORM\ManyToOne(targetEntity="ProceduralType", inversedBy="students_school")
+     * Tipo de adaptación procedimental:
+     */
+    private $procedural_type;
+
+    /**
+     * @var string $adapted_subjects
+     * @ORM\Column(name="adapted_subjects", type="text", nullable=true)
+     */
+    private $adapted_subjects;
+
     /**
      * @var int advance_with_fail
      * @ORM\Column(name="advance_with_fail",  length=1, nullable=true)
@@ -68,7 +92,6 @@ class StudentSchool
      * Indica qué asignaturas tiene suspensas
      */
     private $fail_subject;
-
 
 
     /*
@@ -219,6 +242,35 @@ class StudentSchool
      * ¿vocabulario?
      */
     private $vocabulary = false;
+
+    /**
+     * @var int acne
+     * @ORM\Column(name="acne", type="boolean", length=1, nullable=true)
+     * ¿vocabulario?
+     */
+    private $acne = false;
+
+    /**
+     * @var int psycho_report
+     * @ORM\Column(name="psycho_report", type="boolean", length=1, nullable=true)
+     * ¿tiene valoración psicopedagógica?
+     */
+    private $psycho_report = false;
+
+    /**
+     * @var string $psycho_evaluation
+     * @ORM\Column(name="psycho_evaluation", type="text", nullable=true)
+     * Resultado de la valoración
+     */
+    private $psycho_evaluation;
+
+    /**
+     * @var string $psycho_tips
+     * @ORM\Column(name="psycho_tips", type="text", nullable=true)
+     * Recomendaciones psicopedagógicas
+     */
+    private $psycho_tips;
+
 
     /**
      * @var enum
@@ -1061,5 +1113,173 @@ class StudentSchool
     public function getStudent()
     {
         return $this->student;
+    }
+
+    /**
+     * Set adaptedType.
+     *
+     * @param string $adaptedType
+     *
+     * @return StudentSchool
+     */
+    public function setAdaptedType($adaptedType)
+    {
+        $this->adapted_type = $adaptedType;
+
+        return $this;
+    }
+
+    /**
+     * Get adaptedType.
+     *
+     * @return string
+     */
+    public function getAdaptedType()
+    {
+        return $this->adapted_type;
+    }
+
+    /**
+     * Set adaptedSubjects.
+     *
+     * @param string|null $adaptedSubjects
+     *
+     * @return StudentSchool
+     */
+    public function setAdaptedSubjects($adaptedSubjects = null)
+    {
+        $this->adapted_subjects = $adaptedSubjects;
+
+        return $this;
+    }
+
+    /**
+     * Get adaptedSubjects.
+     *
+     * @return string|null
+     */
+    public function getAdaptedSubjects()
+    {
+        return $this->adapted_subjects;
+    }
+
+    /**
+     * Set proceduralType.
+     *
+     * @param \AppBundle\Entity\ProceduralType|null $proceduralType
+     *
+     * @return StudentSchool
+     */
+    public function setProceduralType(\AppBundle\Entity\ProceduralType $proceduralType = null)
+    {
+        $this->procedural_type = $proceduralType;
+
+        return $this;
+    }
+
+    /**
+     * Get proceduralType.
+     *
+     * @return \AppBundle\Entity\ProceduralType|null
+     */
+    public function getProceduralType()
+    {
+        return $this->procedural_type;
+    }
+
+    /**
+     * Set acne.
+     *
+     * @param bool|null $acne
+     *
+     * @return StudentSchool
+     */
+    public function setAcne($acne = null)
+    {
+        $this->acne = $acne;
+
+        return $this;
+    }
+
+    /**
+     * Get acne.
+     *
+     * @return bool|null
+     */
+    public function getAcne()
+    {
+        return $this->acne;
+    }
+
+    /**
+     * Set psychoReport.
+     *
+     * @param bool|null $psychoReport
+     *
+     * @return StudentSchool
+     */
+    public function setPsychoReport($psychoReport = null)
+    {
+        $this->psycho_report = $psychoReport;
+
+        return $this;
+    }
+
+    /**
+     * Get psychoReport.
+     *
+     * @return bool|null
+     */
+    public function getPsychoReport()
+    {
+        return $this->psycho_report;
+    }
+
+    /**
+     * Set psychoEvaluation.
+     *
+     * @param string|null $psychoEvaluation
+     *
+     * @return StudentSchool
+     */
+    public function setPsychoEvaluation($psychoEvaluation = null)
+    {
+        $this->psycho_evaluation = $psychoEvaluation;
+
+        return $this;
+    }
+
+    /**
+     * Get psychoEvaluation.
+     *
+     * @return string|null
+     */
+    public function getPsychoEvaluation()
+    {
+        return $this->psycho_evaluation;
+    }
+
+    /**
+     * Set psychoTips.
+     *
+     * @param string|null $psychoTips
+     *
+     * @return StudentSchool
+     */
+    public function setPsychoTips($psychoTips = null)
+    {
+        $this->psycho_tips = $psychoTips;
+
+        return $this;
+    }
+
+    /**
+     * Get psychoTips.
+     *
+     * @return string|null
+     */
+    public function getPsychoTips()
+    {
+        return $this->psycho_tips;
     }
 }

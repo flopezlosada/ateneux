@@ -23,6 +23,26 @@
                                 <label>{{ form_label(form.adapted) }}</label>
                                 {{ form_widget(form.adapted,{'attr':{'placeholder':'','class':'form-control'}}) }}
                             </div>
+                            <div id="adapted_type" class="hidden">
+                                <div class="form-group">
+                                {{ form_errors(form.adapted_type) }}
+                                <label>{{ form_label(form.adapted_type) }}</label>
+                                {{ form_widget(form.adapted_type,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                                </div>
+                                <div class="hidden" id="procedural_type">
+                                    <div class="form-group">
+                                     {{ form_errors(form.procedural_type) }}
+                                <label>{{ form_label(form.procedural_type) }}</label>
+                                {{ form_widget(form.procedural_type,{'attr':{'placeholder':'','class':'form-control'}}) }}
+
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.adapted_subjects) }}
+                                        <label>{{ form_label(form.adapted_subjects) }}</label>
+                                        {{ form_widget(form.adapted_subjects,{'attr':{'class':'form-control tinymce','placeholder':'Materias con adaptación'}}) }}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 {{ form_errors(form.advance_with_fail) }}
                                 <label>{{ form_label(form.advance_with_fail) }}</label>
@@ -82,6 +102,29 @@
                                 {{ form_widget(form.vocabulary) }}
                                 {{ form_label(form.vocabulary) }}
                             </div>
+                            <div class="form-group">
+                                {{ form_errors(form.acne) }}
+                                {{ form_widget(form.acne) }}
+                                {{ form_label(form.acne) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.psycho_report) }}
+                                {{ form_widget(form.psycho_report) }}
+                                {{ form_label(form.psycho_report) }}
+                            </div>
+                            <div id="psycho_report" class="hidden">
+                            <div class="form-group">
+                                {{ form_errors(form.psycho_evaluation) }}
+                                <label>{{ form_label(form.psycho_evaluation) }}</label>
+                                {{ form_widget(form.psycho_evaluation,{'attr':{'placeholder':'Indica el resultado de la valoración','class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_errors(form.psycho_tips) }}
+                                <label>{{ form_label(form.psycho_tips) }}</label>
+                                {{ form_widget(form.psycho_tips,{'attr':{'placeholder':'Indica las recomendaciones psicopedagógicas','class':'form-control'}}) }}
+                            </div>
+                                </div>
+
                             <div class="form-group">
                                 {{ form_errors(form.attention) }}
                                 <label>{{ form_label(form.attention) }}</label>
@@ -190,8 +233,8 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel panel-e">
+                        <div class="panel-heading ">
                             Observaciones generales
                         </div>
                         <div class="panel-body">
@@ -210,4 +253,75 @@
     </div>
     </div>
 
+{% endblock %}
+{% block specific_js %}
+    <script>
+        $('#appbundle_studentschool_adapted').change(function () {
+            if ($(this).val() == 1) {
+                // tinymce.get('appbundle_warning_information').setContent('');
+                $('#adapted_type').hide('slow');
+                $('#adapted_type').removeClass('hidden');
+                $('#adapted_type').show('slow');
+            }
+            else {
+                $('#adapted_type').hide('slow');
+                $('#procedural_type').hide('slow');
+                $('#appbundle_studentschool_adapted_type').val('');
+                $('#appbundle_studentschool_adapted_subjects').val('');
+                $('#appbundle_studentschool_procedural_type').val('');
+            }
+        });
+
+        $('#appbundle_studentschool_adapted_type').change(function () {
+            if ($(this).val() == 'procedural') {
+                // tinymce.get('appbundle_warning_information').setContent('');
+                $('#procedural_type').hide('slow');
+                $('#procedural_type').removeClass('hidden');
+                $('#procedural_type').show('slow');
+            }
+            else {
+                $('#procedural_type').hide('slow');
+                $('#appbundle_studentschool_adapted_subjects').val('');
+                $('#appbundle_studentschool_procedural_type').val('');
+            }
+        });
+
+        if ($('#appbundle_studentschool_adapted_type').val() == 'procedural') {
+            $('#procedural_type').hide('slow');
+            $('#procedural_type').removeClass('hidden');
+            $('#procedural_type').show('slow');
+        }
+        if ($('#appbundle_studentschool_adapted').val() == 1) {
+            // tinymce.get('appbundle_warning_information').setContent('');
+            $('#adapted_type').hide('slow');
+            $('#adapted_type').removeClass('hidden');
+            $('#adapted_type').show('slow');
+        }
+
+
+        $('#appbundle_studentschool_psycho_report').change(function () {
+            if ($(this).is(':checked')) {
+
+                $('#psycho_report').removeClass('hidden');
+                $('#psycho_report').show('slow');
+            }
+            else {
+                $('#psycho_report').hide('slow');
+                $('#appbundle_studentschool_psycho_evaluation').val('');
+                $('#appbundle_studentschool_psycho_tips').val('');
+
+            }
+        });
+
+        if ($('#appbundle_studentschool_psycho_report').is(':checked')) {
+            $('#psycho_report').removeClass('hidden');
+            $('#psycho_report').show('slow');
+        }
+        else {
+            $('#psycho_report').hide('slow');
+            $('#appbundle_studentschool_psycho_evaluation').val('');
+            $('#appbundle_studentschool_psycho_tips').val('');
+
+        }
+    </script>
 {% endblock %}

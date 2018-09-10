@@ -42,6 +42,7 @@ class StudentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $student->setBirthDate(new \DateTime($student->getBirthDate())) ;
             $em = $this->getDoctrine()->getManager();
             $em->persist($student);
             $em->flush();
@@ -102,13 +103,16 @@ class StudentController extends Controller
     public function editAction(Request $request, Student $student)
     {
         $deleteForm = $this->createDeleteForm($student);
+        $student->setBirthDate($student->getBirthDate()->format('Y-m-d')) ;
         $editForm = $this->createForm('AppBundle\Form\StudentType', $student);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $student->setBirthDate(new \DateTime($student->getBirthDate())) ;
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('student_edit', array('id' => $student->getId()));
+            return $this->redirectToRoute('student_show', array('id' => $student->getId()));
         }
 
         return $this->render('student/edit.html.twig', array(

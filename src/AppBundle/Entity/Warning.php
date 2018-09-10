@@ -148,6 +148,28 @@ class Warning
     private $course;
 
 
+    /**
+     * @var int $sai
+     * @ORM\Column(name="sai", type="boolean", length=1, nullable=true)
+     * ¿Acude a la SAI?
+     */
+    private $sai = false;
+
+    /**
+     * Campo para que rellene el profesor de guardia en la SAI cuando el alumno acude allí.
+     * @var string $sai_observations
+     * @ORM\Column(name="sai_observations", type="text", nullable=true)
+     */
+    private $sai_observations;
+
+
+    /**
+     *
+     * @var smallint $sai_teacher
+     * @ORM\ManyToOne(targetEntity="Teacher", inversedBy="warnings_sai_teacher")
+     */
+    private $sai_teacher;
+
 
     /**
      * Get id.
@@ -522,5 +544,77 @@ class Warning
     public function __toString()
     {
         return $this->getWarningType()->__toString();
+    }
+
+    /**
+     * Set sai.
+     *
+     * @param bool|null $sai
+     *
+     * @return Warning
+     */
+    public function setSai($sai = null)
+    {
+        $this->sai = $sai;
+
+        return $this;
+    }
+
+    /**
+     * Get sai.
+     *
+     * @return bool|null
+     */
+    public function getSai()
+    {
+        return $this->sai;
+    }
+
+    /**
+     * Set saiObservations.
+     *
+     * @param string|null $saiObservations
+     *
+     * @return Warning
+     */
+    public function setSaiObservations($saiObservations = null)
+    {
+        $this->sai_observations = $saiObservations;
+
+        return $this;
+    }
+
+    /**
+     * Get saiObservations.
+     *
+     * @return string|null
+     */
+    public function getSaiObservations()
+    {
+        return $this->sai_observations;
+    }
+
+    /**
+     * Set saiTeacher.
+     *
+     * @param \AppBundle\Entity\Teacher|null $saiTeacher
+     *
+     * @return Warning
+     */
+    public function setSaiTeacher(\AppBundle\Entity\Teacher $saiTeacher = null)
+    {
+        $this->sai_teacher = $saiTeacher;
+
+        return $this;
+    }
+
+    /**
+     * Get saiTeacher.
+     *
+     * @return \AppBundle\Entity\Teacher|null
+     */
+    public function getSaiTeacher()
+    {
+        return $this->sai_teacher;
     }
 }

@@ -25,7 +25,7 @@
                         Debes definir los datos médicos de la/el estudiante <a
                                 href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
                     </div>
-                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId  is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
                     <div class="alert alert-danger">
                         Debes definir los datos médicos de la/el estudiante <a
                                 href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
@@ -38,7 +38,7 @@
                         Debes definir los datos familiares de la/el estudiante <a
                                 href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
                     </div>
-                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
                     <div class="alert alert-danger">
                         Debes definir los datos familiares de la/el estudiante <a
                                 href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
@@ -51,7 +51,7 @@
                         Debes definir los datos académicos de la/el estudiante <a
                                 href="{{ path('studentschool_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
                     </div>
-                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
                     <div class="alert alert-danger">
                         Debes definir los datos académicos de la/el estudiante <a
                                 href="{{ path('studentschool_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
@@ -154,7 +154,7 @@
                             {% include ':student:meetings.html.twig' with {'student_meetings':student_meetings} %}
                         {% endif %}
                         {% if student_warnings|length>0 %}
-                            {% include ':student:warnings.html.twig' with {'student_meetings':student_meetings} %}
+                            {% include ':student:warnings.html.twig' %}
                         {% endif %}
                     </div>
                 </div>

@@ -40,9 +40,9 @@ class WarningController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $warning->setDate(new \DateTime($warning->getDate())) ;
-            $warning->setPenaltyStartDate(new \DateTime($warning->getPenaltyStartDate())) ;
-            $warning->setPenaltyEndDate(new \DateTime($warning->getPenaltyEndDate())) ;
+            $warning->setDate(new \DateTime($warning->getDate()));
+            $warning->setPenaltyStartDate(new \DateTime($warning->getPenaltyStartDate()));
+            $warning->setPenaltyEndDate(new \DateTime($warning->getPenaltyEndDate()));
             $warning->setStudent($student);
             $warning->setCourse($student->getCourse());
 
@@ -54,7 +54,7 @@ class WarningController extends Controller
 
         return $this->render('warning/new.html.twig', array(
             'warning' => $warning,
-            'student'=>$student,
+            'student' => $student,
             'form' => $form->createView(),
         ));
     }
@@ -77,20 +77,29 @@ class WarningController extends Controller
      * Displays a form to edit an existing warning entity.
      *
      */
-    public function editAction(Request $request, Warning $warning)
+    public function editAction(Request $request, Warning $warning, Student $student)
     {
         $deleteForm = $this->createDeleteForm($warning);
+        $warning->setDate($warning->getDate()->format('Y-m-d'));
+        $warning->setPenaltyStartDate($warning->getPenaltyStartDate()->format('Y-m-d'));
+        $warning->setPenaltyEndDate($warning->getPenaltyEndDate()->format('Y-m-d'));
         $editForm = $this->createForm('AppBundle\Form\WarningType', $warning);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $warning->setDate(new \DateTime($warning->getDate())) ;
+            $warning->setPenaltyStartDate(new \DateTime($warning->getPenaltyStartDate())) ;
+            $warning->setPenaltyEndDate(new \DateTime($warning->getPenaltyEndDate())) ;
+
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('warning_edit', array('id' => $warning->getId()));
+            return $this->redirectToRoute('warning_show', array('id' => $warning->getId()));
         }
 
         return $this->render('warning/edit.html.twig', array(
             'warning' => $warning,
+            'student' => $student,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -126,7 +135,6 @@ class WarningController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('warning_delete', array('id' => $warning->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

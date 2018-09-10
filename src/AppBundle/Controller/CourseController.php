@@ -82,13 +82,17 @@ class CourseController extends Controller
     public function editAction(Request $request, Course $course)
     {
         $deleteForm = $this->createDeleteForm($course);
+        $course->setStartDate($course->getStartDate()->format('Y-m-d')) ;
+        $course->setENdDate($course->getEndDate()->format('Y-m-d')) ;
         $editForm = $this->createForm('AppBundle\Form\CourseType', $course);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $course->setStartDate(new \DateTime($course->getStartDate())) ;
+            $course->setEndDate(new \DateTime($course->getEndDate())) ;
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('course_edit', array('id' => $course->getId()));
+            return $this->redirectToRoute('course_show', array('id' => $course->getId()));
         }
 
         return $this->render('course/edit.html.twig', array(

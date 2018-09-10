@@ -17,81 +17,81 @@ class StudentSchoolType extends AbstractType
         $builder
             ->add('repeat_grade', ChoiceType::class, array('label' => '¿Repite curso?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
-            ->add('adapted', ChoiceType::class, array('label' => '¿Tiene adaptación curricular?',
+            ->add('adapted', ChoiceType::class, array('label' => '¿Presenta adaptación?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('advance_with_fail', ChoiceType::class, array('label' => '¿Promociona con asignaturas suspensas?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('fail_subject', null, array('label' => 'Indica qué asignaturas tiene suspensas'))
             ->add('responsible', ChoiceType::class, array('label' => '¿Es responsable?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('driven', ChoiceType::class, array('label' => '¿Está motivada/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('attentive', ChoiceType::class, array('label' => '¿Está atenta/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('thoughtful', ChoiceType::class, array('label' => '¿Es reflexiva/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('independent', ChoiceType::class, array('label' => '¿Es independiente?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('organized', ChoiceType::class, array('label' => '¿Es organizada/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('demotivated', ChoiceType::class, array('label' => '¿Está desmotivada/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('carefree', ChoiceType::class, array('label' => '¿Es despreocupada/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('distracted', ChoiceType::class, array('label' => '¿Es distraída/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('impulsive', ChoiceType::class, array('label' => '¿Es impulsiva/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('dependent', ChoiceType::class, array('label' => '¿Es dependiente?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
             ->add('disorganized', ChoiceType::class, array('label' => '¿Es desorganizada/o?',
                 'choices' => array(
-                   'Sí' => 1,
+                    'Sí' => 1,
                     'No' => 2,
                     'Sin definir' => 0)))
-            ->add('reading_comprehension',null, array('label' => '¿Comprensión lectora?'))
+            ->add('reading_comprehension', null, array('label' => '¿Comprensión lectora?'))
             ->add('oral', null, array('label' => '¿Comprensión oral?'))
             ->add('written', null, array('label' => '¿Expresión escrita?'))
             ->add('oral_expression', null, array('label' => '¿Expresión oral?'))
@@ -99,6 +99,10 @@ class StudentSchoolType extends AbstractType
             ->add('troubleshooting', null, array('label' => '¿Resolución de problemas?'))
             ->add('spelling', null, array('label' => '¿Ortografía?'))
             ->add('vocabulary', null, array('label' => '¿Vocabulario?'))
+            ->add('acne', null, array('label' => '¿Tiene dictamen ACNE?'))
+            ->add('psycho_report', null, array('label' => '¿Tiene valoración psicopedagógica?'))
+            ->add('psycho_evaluation', null, array('label' => 'Indica el resultado de la valoración'))
+            ->add('psycho_tips', null, array('label' => 'Indica las recomendaciones psicopedagógicas'))
             ->add('attention', ChoiceType::class, array(
                 'label' => 'Define su interés por el aprendizaje',
                 'choices' => array(
@@ -126,6 +130,16 @@ class StudentSchoolType extends AbstractType
                     'Problemática' => 'problem',
                 ),
             ))
+            ->add('adapted_type', ChoiceType::class, array(
+                'label' => 'Tipo de adaptación',
+                'choices' => array(
+                    'Sin definir' => 0,
+                    'Significativa' => 'significant',
+                    'Procedimental' => 'procedural',
+                ),
+            ))
+            ->add('procedural_type', null, array('label' => 'Tipo de adaptación procedimental'))
+            ->add('adapted_subjects', null, array('label' => 'Materias con adaptación', 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
             ->add('work_habits', ChoiceType::class, array(
                 'label' => 'Define sus hábitos de trabajo',
                 'choices' => array(

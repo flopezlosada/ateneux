@@ -54,6 +54,14 @@
                 <source>show</source>
                 <target>mostrar</target>
             </trans-unit>
+            <trans-unit id="procedural">
+                <source>procedural</source>
+                <target>Procedimental</target>
+            </trans-unit>
+            <trans-unit id="significant">
+                <source>significant</source>
+                <target>Significativa</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

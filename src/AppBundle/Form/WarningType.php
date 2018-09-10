@@ -27,6 +27,9 @@ class WarningType extends AbstractType
             //->add('warning_cause_type',null,array('label'=>'Motivo de amonestación'))
             ->add('major_offence_type',null,array('label'=>'Tipo de falta grave'))
             ->add('penalty_type',null,array('label'=>'Tipo de sanción'))
+            ->add('sai',null, array('label' => '¿Acude a la SAI?'))
+            ->add('sai_observations', null, array('label' => 'Resumen de la estancia en la SAI','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
+            ->add('sai_teacher',null,array('label'=>'Profesora/or de guardia en la SAI'))
         ;
     }/**
      * {@inheritdoc}

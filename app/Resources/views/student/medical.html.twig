@@ -126,6 +126,13 @@
 
 
 {% else %}
-    <p>No se han definido los datos médicos. Por favor, añádelos a continuación. <a
-                href="{{ path('studentmedical_new', {'student_id': student.id}) }}">Añadir</a></p>
+    <p>No se han definido los datos médicos.
+    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")
+    or (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId
+    is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId)
+    %}
+        Por favor, añádelos a continuación. <a
+                href="{{ path('studentmedical_new', {'student_id': student.id}) }}">Añadir</a>
+    {% endif %}
+    </p>
 {% endif %}

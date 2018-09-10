@@ -12,10 +12,24 @@
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getRepeatGrade} %}
 
                     </p>
-                    <p>
-                        <strong>Tiene adaptación curricular:</strong>
-                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getAdapted} %}
-                    </p>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <strong>Presenta adaptación curricular:</strong>
+                            {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getAdapted} %}
+                            {% if student.getStudentSchool.getAdapted==1 %}
+                                <br><strong>Tipo de
+                                adaptación: </strong> {{ student.getStudentSchool.adaptedType|trans }}
+                                {% if  student.getStudentSchool.adaptedType=='procedural' %}
+                                    <br><strong>Tipo de adaptación
+                                    procedimental: </strong> {{ student.getStudentSchool.proceduralType }}<br>
+                                    <strong>Materias con
+                                        adaptación: </strong>  {{ student.getStudentSchool.adaptedSubjects|raw }}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+
                     <p>
                         <strong>Promociona con asignaturas suspensas:</strong>
                         {% if student.getStudentSchool.getAdvanceWithFail is null %}
@@ -38,39 +52,65 @@
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getReadingComprehension} %}
 
                     </p>
+
                     <p>
                         <strong>Comprensión oral:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getOral} %}
 
                     </p>
+
                     <p>
                         <strong>Expresión escrita:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getWritten} %}
 
                     </p>
+
                     <p>
                         <strong>Expresión oral:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getOralExpression} %}
 
                     </p>
+
                     <p>
                         <strong>Cálculo:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getCalculation} %}
 
                     </p>
+
                     <p>
                         <strong>Resolución de problemas:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getTroubleshooting} %}
 
                     </p>
+
                     <p>
                         <strong>Ortografía:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getSpelling} %}
                     </p>
+
                     <p>
                         <strong>Vocabulario:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getVocabulary} %}
                     </p>
+
+                    <p>
+                        <strong>¿Tiene dictamen ACNE?:</strong>
+                        {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getAcne} %}
+                    </p>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <strong>¿Tiene valoración psicopedagógica?:</strong>
+                            {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getPsychoReport} %}
+                            </p>
+                            {% if  student.getStudentSchool.getPsychoReport==1 %}
+                                <p><strong>Resultado de la
+                                        valoración: </strong> {{ student.getStudentSchool.psychoEvaluation }}</p>
+                                <p><strong>Recomendaciones
+                                        psicopedagógicas: </strong> {{ student.getStudentSchool.psychoTips }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
                     <p><strong>Interés por el aprendizaje:</strong>
                         {% if student.getStudentSchool.getAttention %}
                             {{ student.getStudentSchool.getAttention|trans }}
@@ -78,6 +118,7 @@
                             Sin definir
                         {% endif %}
                     </p>
+
                     <p><strong>Relación con sus compañeras/os:</strong>
                         {% if student.getStudentSchool.getStudentRelationship %}
                             {{ student.getStudentSchool.getStudentRelationship|trans }}
@@ -85,6 +126,7 @@
                             Sin definir
                         {% endif %}
                     </p>
+
                     <p><strong>Relación con sus profesoras/es:</strong>
                         {% if student.getStudentSchool.getTeacherRelationship %}
                             {{ student.getStudentSchool.getTeacherRelationship|trans }}
@@ -92,6 +134,7 @@
                             Sin definir
                         {% endif %}
                     </p>
+
                     <p><strong>Hábitos de trabajo:</strong>
                         {% if student.getStudentSchool.getWorkHabits %}
                             {{ student.getStudentSchool.getWorkHabits|trans }}
@@ -99,6 +142,7 @@
                             Sin definir
                         {% endif %}
                     </p>
+
                     <p><strong>Hábitos de estudio:</strong>
                         {% if student.getStudentSchool.getStudyHabits %}
                             {{ student.getStudentSchool.getStudyHabits|trans }}
@@ -106,6 +150,7 @@
                             Sin definir
                         {% endif %}
                     </p>
+
                     <p><strong>Comportamiento:</strong>
                         {% if student.getStudentSchool.getBehavior %}
                             {{ student.getStudentSchool.getBehavior|trans }}
@@ -127,57 +172,68 @@
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getResponsible} %}
 
                     </p>
+
                     <p>
                         <strong>Está motivada/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDriven} %}
 
                     </p>
+
                     <p>
                         <strong>Está atenta/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getAttentive} %}
 
                     </p>
+
                     <p>
                         <strong>Es reflexiva/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getThoughtful} %}
 
 
                     </p>
+
                     <p>
                         <strong>Es independiente:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getIndependent} %}
 
                     </p>
+
                     <p>
                         <strong>Es organizada/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getOrganized} %}
 
                     </p>
+
                     <p>
                         <strong>Está desmotivada/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDemotivated} %}
 
                     </p>
+
                     <p>
                         <strong>Es despreocupada/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getCarefree} %}
 
                     </p>
+
                     <p>
                         <strong>Es distraída/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDistracted} %}
 
                     </p>
+
                     <p>
                         <strong>Es impulsiva/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getImpulsive} %}
 
                     </p>
+
                     <p>
                         <strong>Es dependiente:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDependent} %}
 
                     </p>
+
                     <p>
                         <strong>Es desorganizada/o:</strong>
                         {% include ':student:if_control.html.twig' with {'property':student.getStudentSchool.getDisorganized} %}
@@ -197,6 +253,11 @@
 
     </div>
 {% else %}
-    <p>No se han definido los datos académicos. Por favor, añádelos a continuación. <a
-                href="{{ path('studentschool_new', {'student_id': student.id}) }}">Añadir</a></p>
+    <p>No se han definido los datos académicos.
+    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")
+    or (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId
+    is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId) %}
+        Por favor, añádelos a continuación. <a
+            href="{{ path('studentschool_new', {'student_id': student.id}) }}">Añadir</a></p>
+    {% endif %}
 {% endif %}

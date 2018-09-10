@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,6 +22,7 @@ class StudentType extends AbstractType
 
 
         $builder
+            ->add('birth_date',TextType::class, array('label'=>'Fecha de nacimiento', 'attr'=>array('class'=>'datepicker form-control')))
             ->add('name', null, array('label' => 'Nombre'))
             ->add('surname', null, array('label' => 'Apellidos'))
             ->add('address', null, array('label' => 'Dirección'))

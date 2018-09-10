@@ -37,6 +37,11 @@
                         {{ form_widget(form.postal_code,{'attr':{'placeholder':'Código Postal','class':'form-control'}}) }}
                     </div>
                     <div class="form-group">
+                        {{ form_errors(form.birth_date) }}
+                        <label>{{ form_label(form.birth_date) }}</label>
+                        {{ form_widget(form.birth_date,{'attr':{'placeholder':'Fecha de nacimiento'}}) }}
+                    </div>
+                    <div class="form-group">
                         {{ form_errors(form.phone) }}
                         <label>{{ form_label(form.phone) }}</label>
                         {{ form_widget(form.phone,{'attr':{'placeholder':'Teléfono','class':'form-control'}}) }}
@@ -75,4 +80,17 @@
         </li>
     </ul>
 
+{% endblock %}
+{% block specific_js %}
+    <script>
+        $('.datepicker').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if student.getBirthDate() %}
+                var date = new Date("{{  student.getBirthDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+    </script>
 {% endblock %}

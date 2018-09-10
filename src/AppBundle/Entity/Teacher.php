@@ -121,6 +121,11 @@ class Teacher
      */
     private $warnings;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Warning", mappedBy="sai_teacher")
+     */
+    private $warnings_sai_teacher;
 
     /**
      * Get id
@@ -430,5 +435,41 @@ class Teacher
     public function getWarnings()
     {
         return $this->warnings;
+    }
+
+    /**
+     * Add warningsSaiTeacher.
+     *
+     * @param \AppBundle\Entity\Warning $warningsSaiTeacher
+     *
+     * @return Teacher
+     */
+    public function addWarningsSaiTeacher(\AppBundle\Entity\Warning $warningsSaiTeacher)
+    {
+        $this->warnings_sai_teacher[] = $warningsSaiTeacher;
+
+        return $this;
+    }
+
+    /**
+     * Remove warningsSaiTeacher.
+     *
+     * @param \AppBundle\Entity\Warning $warningsSaiTeacher
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeWarningsSaiTeacher(\AppBundle\Entity\Warning $warningsSaiTeacher)
+    {
+        return $this->warnings_sai_teacher->removeElement($warningsSaiTeacher);
+    }
+
+    /**
+     * Get warningsSaiTeacher.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWarningsSaiTeacher()
+    {
+        return $this->warnings_sai_teacher;
     }
 }

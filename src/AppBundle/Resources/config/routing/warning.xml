@@ -16,7 +16,7 @@
         <default key="_controller">AppBundle:Warning:new</default>
     </route>
 
-    <route id="warning_edit" path="/{id}/edit" methods="GET|POST">
+    <route id="warning_edit" path="/{id}/edit/{student}" methods="GET|POST">
         <default key="_controller">AppBundle:Warning:edit</default>
     </route>
 

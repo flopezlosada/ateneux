@@ -1,21 +1,73 @@
 {% extends '::layout_crud.html.twig' %}
-
+{% block title_wrapper %}Editar curso{% endblock %}
 {% block main %}
-    <h1>Course edit</h1>
+    <div class="panel panel-default">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div class="panel-body">
+            {{ form_start(edit_form, {'attr': {'role': 'form' }}) }}
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                        {{ form_errors(edit_form.title) }}
+                        <label>{{ form_label(edit_form.title) }}</label>
+                        {{ form_widget(edit_form.title,{'attr':{'class':'form-control','placeholder':'Nombre del curso'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.course_type) }}
+                        <label>{{ form_label(edit_form.course_type) }}</label>
+                        {{ form_widget(edit_form.course_type,{'attr':{'class':'form-control','placeholder':'Tipo de curso'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.start_date) }}
+                        <label>{{ form_label(edit_form.start_date) }}</label>
+                        {{ form_widget(edit_form.start_date,{'attr':{'placeholder':'Fecha de inicio'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.end_date) }}
+                        <label>{{ form_label(edit_form.end_date) }}</label>
+                        {{ form_widget(edit_form.end_date,{'attr':{'placeholder':'Fecha de finalización'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.mentor_teacher) }}
+                        <label>{{ form_label(edit_form.mentor_teacher) }}</label>
+                        {{ form_widget(edit_form.mentor_teacher,{'attr':{'class':'form-control','placeholder':'Tutora o tutor'}}) }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Actualizar"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+
 
     <ul>
         <li>
             <a href="{{ path('course_index') }}">Back to the list</a>
         </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="{{"Delete"|trans}}">
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
 {% endblock %}
+{% block specific_js %}
+    <script>
+        $('.datepicker').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if course.getStartDate() %}
+                var date = new Date("{{  course.getStartDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+        $('.datepicker2').pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            onStart: function () {
+                {% if course.getEndDate() %}
+                var date = new Date("{{  course.getEndDate()}}");
+                this.set('select', date)
+                {% endif %}
+            }
+        })
+    </script>
+{% endblock %}
+
