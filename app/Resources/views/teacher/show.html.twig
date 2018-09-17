@@ -40,11 +40,11 @@
 
     <ul>
         <li>
-            <a href="{{ path('teacher_index') }}">Back to the list</a>
+            <a href="{{ path('teacher_index') }}">{{"Back to the list"|trans}}</a>
         </li>
         {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher == teacher) or is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
             <li>
-                <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Edit</a>
+                <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Editar</a>
             </li>
         {% endif %}
         {% if (is_granted("ROLE_ADMIN")) %}

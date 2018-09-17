@@ -1,9 +1,12 @@
 <ul class="list-inline">
-    {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id ==entity.getCourse.getId) or is_granted ("ROLE_ADMIN")   or is_granted("ROLE_JEFATURA")%}
-        <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}">Editar</a></li>
+    {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id ==entity.getCourse.getId) or is_granted ("ROLE_ADMIN")   or is_granted("ROLE_JEFATURA") %}
+        <li><a href="{{ path('course_show', {'id': assessmentBoard.course.id}) }}">Ir a la ficha del
+                curso: {{ assessmentBoard.course }}</a></li>
+        <li><a href="{{ path('assessmentboard_edit', {'id': entity.id}) }}">Editar</a></li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="{{"Delete"|trans}}">
+            <input type="submit" value="{{ "Borrar" }}"
+                   onclick="return confirm('¿Estás segura/o de eliminar esta junta de evaluación?')">
             {{ form_end(delete_form) }}
         </li>
 

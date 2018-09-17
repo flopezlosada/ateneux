@@ -85,7 +85,7 @@ class AssessmentBoardController extends Controller
             $assessmentBoard->setDate(new \DateTime($assessmentBoard->getDate()));
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('assessmentboard_edit', array('id' => $assessmentBoard->getId()));
+            return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoard->getId()));
         }
 
         return $this->render('assessmentboard/edit.html.twig', array(

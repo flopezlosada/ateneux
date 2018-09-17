@@ -14,15 +14,15 @@ class StudentMedicalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('allergy', null, array('label' => 'Padece algún tipo de alergia'))
+            ->add('allergy', null, array('label' => 'Tiene algún tipo de alergia'))
             ->add('allergy_observations', null, array('label' => 'Observaciones sobre alergias'))
-            ->add('disease', null, array('label' => 'Padece algún tipo de enfermedad'))
+            ->add('disease', null, array('label' => 'Tiene algún tipo de enfermedad'))
             ->add('disease_observations', null, array('label' => 'Observaciones sobre enfermedades'))
-            ->add('handicap', null, array('label' => 'Padece algún tipo de déficit'))
+            ->add('handicap', null, array('label' => 'Tiene algún tipo de déficit'))
             ->add('handicap_observations', null, array('label' => 'Observaciones sobre déficits'))
-            ->add('tdah', null, array('label' => 'Padece TDAH'))
+            ->add('tdah', null, array('label' => 'Tiene TDAH'))
             ->add('medical_treatment', null, array('label' => 'Sigue algún tratamiento médico'))
-            ->add('psychological_treatment', null, array('label' => 'Sigue algún tratamiento psicológico'))
+            ->add('psychological_treatment', null, array('label' => 'Sigue algún proceso terapéutico'))
             ->add('observations', null, array('label' => 'Otras observaciones'));
     }
     

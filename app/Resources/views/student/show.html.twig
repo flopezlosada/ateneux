@@ -71,20 +71,25 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos personales</a>
+                        <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos<br>personales</a>
                         </li>
-                        <li class=""><a href="#medical" data-toggle="tab" aria-expanded="false">Datos médicos</a>
+                        <li class=""><a href="#medical" data-toggle="tab" aria-expanded="false">Datos<br>médicos</a>
                         </li>
-                        <li class=""><a href="#familiar" data-toggle="tab" aria-expanded="false">Contexto Familiar</a>
+                        <li class=""><a href="#familiar" data-toggle="tab" aria-expanded="false">Contexto<br>Familiar</a>
                         </li>
-                        <li class=""><a href="#school" data-toggle="tab" aria-expanded="false">Contexto escolar</a>
+                        <li class=""><a href="#school" data-toggle="tab" aria-expanded="false">Contexto<br>escolar</a>
                         </li>
                         {% if student_meetings|length>0 %}
-                            <li class=""><a href="#meetings" data-toggle="tab" aria-expanded="false">Reuniones</a>
+                            <li class=""><a href="#meetings" data-toggle="tab" aria-expanded="false">Reuniones<br>de curso</a>
                             </li>
                         {% endif %}
                         {% if student_warnings|length>0 %}
-                            <li class=""><a href="#warnings" data-toggle="tab" aria-expanded="false">Datos de convivencia</a>
+                            <li class=""><a href="#warnings" data-toggle="tab" aria-expanded="false">Datos<br>de convivencia</a>
+                            </li>
+                        {% endif %}
+
+                        {% if assessment_board_learning_difficulties|length>0 %}
+                            <li class=""><a href="#assessmentboard" data-toggle="tab" aria-expanded="false">Juntas<br>de evaluación</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -155,6 +160,9 @@
                         {% endif %}
                         {% if student_warnings|length>0 %}
                             {% include ':student:warnings.html.twig' %}
+                        {% endif %}
+                        {% if assessment_board_learning_difficulties|length>0 %}
+                            {% include ':student:assessment_board_learning_difficulties.html.twig' %}
                         {% endif %}
                     </div>
                 </div>

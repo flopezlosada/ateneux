@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Assessmentboardlearningdifficulties list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Learning_difficulties</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assessmentBoardLearningDifficulty in assessmentBoardLearningDifficulties %}
+            <tr>
+                <td><a href="{{ path('assessmentboardlearningdifficulties_show', { 'id': assessmentBoardLearningDifficulty.id }) }}">{{ assessmentBoardLearningDifficulty.id }}</a></td>
+                <td>{% if assessmentBoardLearningDifficulty.created %}{{ assessmentBoardLearningDifficulty.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if assessmentBoardLearningDifficulty.updated %}{{ assessmentBoardLearningDifficulty.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ assessmentBoardLearningDifficulty.learningdifficulties }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('assessmentboardlearningdifficulties_show', { 'id': assessmentBoardLearningDifficulty.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('assessmentboardlearningdifficulties_edit', { 'id': assessmentBoardLearningDifficulty.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('assessmentboardlearningdifficulties_new') }}">Create a new assessmentBoardLearningDifficulty</a>
+        </li>
+    </ul>
+{% endblock %}

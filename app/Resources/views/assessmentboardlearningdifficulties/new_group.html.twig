@@ -1,0 +1,75 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir estudiantes con dificultades de aprendizaje{% endblock %}
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="alert alert-info">
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="panel-body">
+                <form method="post" name="appbundle_learning_difficulties"
+                      action="{{ path('assessmentboardlearningdifficulties_create', {'id': assessmentBoard.id}) }}">
+                    <table id="table_list" class="table table-striped table-bordered table-hover dataTable no-footer"
+                           aria-describedby="dataTables-example_info">
+                        <thead>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th width="60%">Tipo de dificultad</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for student in students %}
+                            {#{% if not student.hasDifficulties %}#}
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="student[{{ student.id }}]"
+                                               id="student[{{ student.id }}]">
+                                        <a href="{{ path('student_show', {'id': student.id}) }}">{{ student }}</a> :
+                                    </td>
+                                    <td><textarea name="difficulties[{{ student.id }}]"
+                                                  id="difficulties[{{ student.id }}]" cols="44" rows="2"
+                                                  class="hidden"></textarea></td>
+                                </tr>
+                            {#{% endif %}#}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <input type="submit" value="Aceptar">
+                </form>
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block specific_js %}
+    <script>
+        {% for student in students %}
+
+        $("#student\\[{{ student.id }}\\]").change(function () {
+            if ($(this).is(":checked")) {
+
+                $("#difficulties\\[{{ student.id }}\\]").removeClass("hidden");
+                $("#difficulties\\[{{ student.id }}\\]").show("slow");
+            }
+            else {
+                $("#difficulties\\[{{ student.id }}\\]").hide("slow");
+                $("#difficulties\\[{{ student.id }}\\]").val("");
+
+
+            }
+        });
+        if ($("#student\\[{{ student.id }}\\]").is(":checked")) {
+            $("#difficulties\\[{{ student.id }}\\]").removeClass("hidden");
+            $("#difficulties\\[{{ student.id }}\\]").show("slow");
+        }
+        else {
+            $("#difficulties\\[{{ student.id }}\\]").hide("slow");
+            $("#difficulties\\[{{ student.id }}\\]").val("");
+        }
+        {% endfor %}
+    </script>
+{% endblock %}

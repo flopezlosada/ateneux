@@ -5,7 +5,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false"
-                       class="collapsed">Padece algún tipo de alergia:
+                       class="collapsed">Tiene algún tipo de alergia:
                         {% if student.getMedical.getAllergy %}
                             Sí <br/>
 
@@ -28,7 +28,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false"
-                       class="collapsed">Padece algún tipo de enfermedad:
+                       class="collapsed">Tiene algún tipo de enfermedad:
                         {% if student.getMedical.getDisease %}
                             Sí <br/>
 
@@ -51,7 +51,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false"
-                       class="collapsed">Padece algún tipo de déficit:
+                       class="collapsed">Tiene algún tipo de déficit:
                         {% if student.getMedical.getHandicap %}
                             Sí <br/>
 
@@ -72,7 +72,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Padece TDAH:
+                    Tiene TDAH:
                     {% if student.getMedical.getTdah %}
                         Sí <br/>
 
@@ -104,7 +104,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Tratamiento psicológico:
+                    Proceso terapéutico:
                     {% if student.getMedical.getPsychologicalTreatment %}
                         Sí <br/>
 

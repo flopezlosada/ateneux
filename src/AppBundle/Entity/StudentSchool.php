@@ -49,7 +49,7 @@ class StudentSchool
 
     /**
      * @var int adapted
-     * @ORM\Column(name="adapted",  length=1, nullable=true)
+     * @ORM\Column(name="adapted",  length=1, nullable=true)f
      * ¿presenta adaptación?
      */
     private $adapted = false;

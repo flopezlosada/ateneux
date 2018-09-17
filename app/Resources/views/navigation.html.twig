@@ -25,17 +25,18 @@
                         <a href="{{ path('course_index') }}">Listado de cursos {{ real_course.getRealCourse }}</a>
                     </li>
                     {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
-                    <li>
-                        <a href="{{ path('course_new') }}">Añadir curso</a>
-                    </li>
+                        <li>
+                            <a href="{{ path('course_new') }}">Añadir curso</a>
+                        </li>
                     {% endif %}
-                    <li>
-                        <a href="{{ path('coursetype_index') }}">Tipos de cursos</a>
-                    </li>
+
                     {% if is_granted("ROLE_ADMIN") %}
-                    <li>
-                        <a href="{{ path('coursetype_new') }}">Añadir tipo de curso</a>
-                    </li>
+                        <li>
+                            <a href="{{ path('coursetype_index') }}">Tipos de cursos</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('coursetype_new') }}">Añadir tipo de curso</a>
+                        </li>
                     {% endif %}
                 </ul>
 
@@ -47,10 +48,10 @@
                     <li>
                         <a href="{{ path('student_index') }}">Listado de estudiantes {{ real_course.getRealCourse }}</a>
                     </li>
-                    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA")%}
-                    <li>
-                        <a href="{{ path('student_new') }}">Añadir estudiante</a>
-                    </li>
+                    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA") %}
+                        <li>
+                            <a href="{{ path('student_new') }}">Añadir estudiante</a>
+                        </li>
                     {% endif %}
                 </ul>
             </li>
@@ -60,10 +61,10 @@
                     <li>
                         <a href="{{ path('teacher_index') }}">Listado de tutoras/es {{ real_course.getRealCourse }}</a>
                     </li>
-                    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA")%}
-                    <li>
-                        <a href="{{ path('teacher_new') }}">Añadir tutora/or</a>
-                    </li>
+                    {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA") %}
+                        <li>
+                            <a href="{{ path('teacher_new') }}">Añadir tutora/or</a>
+                        </li>
                     {% endif %}
                 </ul>
             </li>

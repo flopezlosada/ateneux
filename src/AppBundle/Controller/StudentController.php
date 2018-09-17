@@ -85,6 +85,14 @@ class StudentController extends Controller
 
         //busca que haya información sobre el estudiante para la reunión
         $academic_informations = $em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
+        foreach ($student->getCourse()->getAssessmentsBoard() as $assessment_board)
+        {
+
+            $learning_difficulties=$em->getRepository("AppBundle:Student")->getDifficulties($student->getCourse(),$student,$assessment_board);
+            $assessment_board_learning_difficulties[]=array($assessment_board,$learning_difficulties);
+        }
+
+
 
         return $this->render('student/show.html.twig', array(
             'student' => $student,
@@ -92,7 +100,9 @@ class StudentController extends Controller
             'student_meetings' => $student_meetings,
             'student_warnings' => $student_warnings,
             'delete_form' => $deleteForm->createView(),
-            'academic_informations' => $academic_informations
+            'academic_informations' => $academic_informations,
+            'assessment_board_learning_difficulties'=>$assessment_board_learning_difficulties,
+            'learning_difficulties'=>$learning_difficulties,
         ));
     }
 
@@ -103,7 +113,7 @@ class StudentController extends Controller
     public function editAction(Request $request, Student $student)
     {
         $deleteForm = $this->createDeleteForm($student);
-        $student->setBirthDate($student->getBirthDate()->format('Y-m-d')) ;
+        Date($student->getBirthDate()->format('Y-m-d')) ;
         $editForm = $this->createForm('AppBundle\Form\StudentType', $student);
         $editForm->handleRequest($request);
 

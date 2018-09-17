@@ -21,7 +21,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos generales</a>
                         </li>
-                        {% if meeting.academicMeeting is defined %}
+                        {% if meeting.academicMeeting is defined and meeting.academicMeeting is not null%}
                             <li class=""><a href="#information" data-toggle="tab" aria-expanded="false">Evolución Académica</a>
                             </li>
                         {% endif %}
@@ -34,7 +34,8 @@
                             <p><strong>Acuerdos:</strong> {{ meeting.deals |raw }}</p>
                             <p><strong>Observaciones:</strong> {{ meeting.observations |raw }}</p>
                         </div>
-                        {% if meeting.academicMeeting is defined %}
+                        {% if meeting.academicMeeting is defined and meeting.academicMeeting is not null%}
+                            {{ meeting.academicMeeting|yaml_dump }}
                         <div class="tab-pane fade"
                              id="information">
                             <p><strong>Fecha:</strong> {{ meeting.academicMeeting.date|localizeddate('long','none','es') }}</p>

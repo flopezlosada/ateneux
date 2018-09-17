@@ -25,7 +25,7 @@
                             <td><a href="{{ path('student_show', { 'id': student.id }) }}">{{ student }}</a></td>
                             <td>
                                 <ul>
-                                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
+                                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") and student.getCourse.getId is not defined %}
                                         {#<li>
                                             <a href="{{ path('student_edit', { 'id': student.id }) }}">editar</a>
                                         </li>#}

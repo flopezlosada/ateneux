@@ -117,6 +117,12 @@ class Course
     protected $historical_mentors;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="AssessmentBoardLearningDifficulties", mappedBy="course")
+     */
+    protected $assessments_board_learning_difficulties;
+
+
     public function __toString()
     {
         return $this->getTitle();
@@ -504,5 +510,41 @@ class Course
     public function getWarnings()
     {
         return $this->warnings;
+    }
+
+    /**
+     * Add assessmentsBoardLearningDifficulty.
+     *
+     * @param \AppBundle\Entity\AssessmentBoardLearningDifficulties $assessmentsBoardLearningDifficulty
+     *
+     * @return Course
+     */
+    public function addAssessmentsBoardLearningDifficulty(\AppBundle\Entity\AssessmentBoardLearningDifficulties $assessmentsBoardLearningDifficulty)
+    {
+        $this->assessments_board_learning_difficulties[] = $assessmentsBoardLearningDifficulty;
+
+        return $this;
+    }
+
+    /**
+     * Remove assessmentsBoardLearningDifficulty.
+     *
+     * @param \AppBundle\Entity\AssessmentBoardLearningDifficulties $assessmentsBoardLearningDifficulty
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAssessmentsBoardLearningDifficulty(\AppBundle\Entity\AssessmentBoardLearningDifficulties $assessmentsBoardLearningDifficulty)
+    {
+        return $this->assessments_board_learning_difficulties->removeElement($assessmentsBoardLearningDifficulty);
+    }
+
+    /**
+     * Get assessmentsBoardLearningDifficulties.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssessmentsBoardLearningDifficulties()
+    {
+        return $this->assessments_board_learning_difficulties;
     }
 }

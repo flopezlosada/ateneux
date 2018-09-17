@@ -1,0 +1,24 @@
+<div class="tab-pane fade"
+     id="assessmentboard">
+    <h4>Evolución juntas evaluación</h4>
+    <ul>
+
+        {% for assessment_board_first in assessment_board_learning_difficulties %}
+            <li>
+                <a href="{{ path('assessmentboard_show', {'id': assessment_board_first[0].id}) }}">{{ assessment_board_first[0] }}</a>.
+                <br>
+
+                Fecha: {{ assessment_board_first[0].date|localizeddate('long','none','es') }}<br>
+                {% for diff in assessment_board_first[1] %}
+                    <p> {{ diff.learningDifficulties }} <br>
+                        {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
+
+                            <a href="{{ path('assessmentboardlearningdifficulties_edit', {'id':diff.id}) }}">Editar</a>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>

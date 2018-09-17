@@ -32,10 +32,10 @@
                                 and app.user.getTeacher.getMentorCourse.id == course.id) or is_granted ("ROLE_ADMIN")   or is_granted("ROLE_JEFATURA")  %}
                                 <ul>
                                     <li>
-                                        <a href="{{ path('course_show', { 'id': course.id }) }}">{{ "show"|trans }}</a>
+                                        <a href="{{ path('course_show', { 'id': course.id }) }}">{{ "mostrar"|trans }}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('course_edit', { 'id': course.id }) }}">{{ "edit"|trans }}</a>
+                                        <a href="{{ path('course_edit', { 'id': course.id }) }}">{{ "editar"|trans }}</a>
                                     </li>
 
                                 </ul>

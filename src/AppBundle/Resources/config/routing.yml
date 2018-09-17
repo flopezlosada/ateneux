@@ -41,3 +41,7 @@ app_assessmentboard:
 app_warning:
         resource: "@AppBundle/Resources/config/routing/warning.xml"
         prefix:   /warning
+
+app_assessmentboardlearningdifficulties:
+        resource: "@AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml"
+        prefix:   /assessmentboardlearningdifficulties
