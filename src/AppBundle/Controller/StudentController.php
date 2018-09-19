@@ -85,6 +85,8 @@ class StudentController extends Controller
 
         //busca que haya información sobre el estudiante para la reunión
         $academic_informations = $em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
+        $assessment_board_learning_difficulties=null;
+        $learning_difficulties=null;
         foreach ($student->getCourse()->getAssessmentsBoard() as $assessment_board)
         {
 

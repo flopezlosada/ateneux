@@ -10,7 +10,7 @@
 
                 Fecha: {{ assessment_board_first[0].date|localizeddate('long','none','es') }}<br>
                 {% for diff in assessment_board_first[1] %}
-                    <p> {{ diff.learningDifficulties }} <br>
+                    <p><strong>{{ diff.getType }}</strong>: {{ diff.learningDifficulties }} <br>
                         {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
 
                             <a href="{{ path('assessmentboardlearningdifficulties_edit', {'id':diff.id}) }}">Editar</a>

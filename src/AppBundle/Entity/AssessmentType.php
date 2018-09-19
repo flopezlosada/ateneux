@@ -36,6 +36,15 @@ class AssessmentType
      */
     protected $assessments_board;
 
+
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AssessmentBoardLearningDifficultiesType", mappedBy="assessments_type")
+     */
+    protected $assessments_board_learningn_difficulties_type;
+
+
     /**
      * @var string $title
      * @Assert\NotBlank
@@ -160,5 +169,41 @@ class AssessmentType
     public function getAssessmentsBoard()
     {
         return $this->assessments_board;
+    }
+
+    /**
+     * Add assessmentsBoardLearningnDifficultiesType.
+     *
+     * @param \AppBundle\Entity\AssessmentBoardLearningDifficultiesType $assessmentsBoardLearningnDifficultiesType
+     *
+     * @return AssessmentType
+     */
+    public function addAssessmentsBoardLearningnDifficultiesType(\AppBundle\Entity\AssessmentBoardLearningDifficultiesType $assessmentsBoardLearningnDifficultiesType)
+    {
+        $this->assessments_board_learningn_difficulties_type[] = $assessmentsBoardLearningnDifficultiesType;
+
+        return $this;
+    }
+
+    /**
+     * Remove assessmentsBoardLearningnDifficultiesType.
+     *
+     * @param \AppBundle\Entity\AssessmentBoardLearningDifficultiesType $assessmentsBoardLearningnDifficultiesType
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAssessmentsBoardLearningnDifficultiesType(\AppBundle\Entity\AssessmentBoardLearningDifficultiesType $assessmentsBoardLearningnDifficultiesType)
+    {
+        return $this->assessments_board_learningn_difficulties_type->removeElement($assessmentsBoardLearningnDifficultiesType);
+    }
+
+    /**
+     * Get assessmentsBoardLearningnDifficultiesType.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssessmentsBoardLearningnDifficultiesType()
+    {
+        return $this->assessments_board_learningn_difficulties_type;
     }
 }

@@ -16,11 +16,11 @@
         <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:new</default>
     </route>
 
-    <route id="assessmentboardlearningdifficulties_new_group" path="/new_group/{id}" methods="GET|POST">
+    <route id="assessmentboardlearningdifficulties_new_group" path="/new_group/{assessment_board_id}/{difficulty_type_id}" methods="GET|POST">
         <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:new_group</default>
     </route>
 
-    <route id="assessmentboardlearningdifficulties_create" path="/create/{id}" methods="GET|POST">
+    <route id="assessmentboardlearningdifficulties_create" path="/create/{assessment_board_id}/{difficulty_type_id}" methods="GET|POST">
         <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:create</default>
     </route>
 
@@ -30,6 +30,10 @@
 
     <route id="assessmentboardlearningdifficulties_delete" path="/{id}/delete" methods="DELETE">
         <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:delete</default>
+    </route>
+
+    <route id="assessmentboardlearningdifficulties_fast_delete" path="/{id}/fast_delete" methods="GET">
+        <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:fast_delete</default>
     </route>
 
 </routes>

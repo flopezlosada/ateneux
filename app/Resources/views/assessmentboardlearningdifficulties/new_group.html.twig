@@ -1,5 +1,5 @@
 {% extends '::layout_crud.html.twig' %}
-{% block title_wrapper %}Añadir estudiantes con dificultades de aprendizaje{% endblock %}
+{% block title_wrapper %}Añadir {{ difficulty_type }}{% endblock %}
 {% block main %}
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -10,29 +10,70 @@
         <div class="panel-body">
             <div class="panel-body">
                 <form method="post" name="appbundle_learning_difficulties"
-                      action="{{ path('assessmentboardlearningdifficulties_create', {'id': assessmentBoard.id}) }}">
+                      action="{{ path('assessmentboardlearningdifficulties_create', {'assessment_board_id': assessmentBoard.id,'difficulty_type_id':difficulty_type.id}) }}">
                     <table id="table_list" class="table table-striped table-bordered table-hover dataTable no-footer"
                            aria-describedby="dataTables-example_info">
                         <thead>
                         <tr>
                             <th>Estudiante</th>
-                            <th width="60%">Tipo de dificultad</th>
+                            {% if difficulty_type.id != 3 %}
+                                <th width="60%">{{ difficulty_type.commonName }}</th>{% endif %}
                         </tr>
                         </thead>
                         <tbody>
                         {% for student in students %}
-                            {#{% if not student.hasDifficulties %}#}
+                            {% if not student.hasDifficulties(difficulty_type) %}
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="student[{{ student.id }}]"
                                                id="student[{{ student.id }}]">
                                         <a href="{{ path('student_show', {'id': student.id}) }}">{{ student }}</a> :
                                     </td>
-                                    <td><textarea name="difficulties[{{ student.id }}]"
-                                                  id="difficulties[{{ student.id }}]" cols="44" rows="2"
-                                                  class="hidden"></textarea></td>
+                                    {% if difficulty_type.id == 1 or difficulty_type.id == 2 or difficulty_type.id == 5 %}
+                                        <td><textarea name="difficulties[{{ student.id }}]"
+                                                      id="difficulties[{{ student.id }}]" cols="44" rows="2"
+                                                      class="hidden"></textarea></td>
+                                    {% elseif difficulty_type.id != 3 %}
+                                        <td><select name="difficulties[{{ student.id }}]"
+                                                    id="difficulties[{{ student.id }}]" class="hidden">
+                                                {% if difficulty_type.id == 4 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Compensatoria">Compensatoria</option>
+                                                    <option value="Apoyo en casa">Apoyo en casa</option>
+                                                    <option value="ARA">ARA</option>
+                                                {% elseif difficulty_type.id == 6 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Conflictos">Conflictos</option>
+                                                    <option value="Separaciones">Separaciones</option>
+                                                    <option value="Dificultades">Dificultades</option>
+                                                    <option value="Faltas de asistencia reiteradas">Faltas de asistencia
+                                                        reiteradas
+                                                    </option>
+                                                    <option value="No incorporados">No incorporados</option>
+                                                {% elseif difficulty_type.id == 7 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Informe psicopedagógico">Informe psicopedagógico
+                                                    </option>
+                                                    <option value="Dictámen">Dictámen</option>
+                                                    <option value="Otros">Otros</option>
+                                                {% elseif difficulty_type.id == 8 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Menor y familia">Menor y familia</option>
+                                                    <option value="Integra">Integra</option>
+                                                    <option value="Otros">Otros</option>
+                                                {% elseif difficulty_type.id == 9 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="PMAR">PMAR</option>
+                                                    <option value="FPB">FPB</option>
+                                                {% elseif difficulty_type.id == 10 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Repetición">Repetición</option>
+                                                    <option value="PIL">PIL</option>
+                                                {% endif %}
+                                            </select></td>
+                                    {% endif %}
                                 </tr>
-                            {#{% endif %}#}
+                            {% endif %}
                         {% endfor %}
                         </tbody>
                     </table>
@@ -47,6 +88,7 @@
 {% endblock %}
 {% block specific_js %}
     <script>
+        {% if difficulty_type.id != 3 %}
         {% for student in students %}
 
         $("#student\\[{{ student.id }}\\]").change(function () {
@@ -71,5 +113,6 @@
             $("#difficulties\\[{{ student.id }}\\]").val("");
         }
         {% endfor %}
+        {% endif %}
     </script>
 {% endblock %}

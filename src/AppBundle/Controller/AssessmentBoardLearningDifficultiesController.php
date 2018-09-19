@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\AssessmentBoard;
 use AppBundle\Entity\AssessmentBoardLearningDifficulties;
+use AppBundle\Entity\AssessmentBoardLearningDifficultiesType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -53,30 +54,41 @@ class AssessmentBoardLearningDifficultiesController extends Controller
         ));
     }
 
-    public function new_groupAction(Request $request, AssessmentBoard $assessmentBoard)
+    public function new_groupAction(Request $request, $assessment_board_id, $difficulty_type_id)
     {
-        $students = $assessmentBoard->getCourse()->getStudents();
+        $em = $this->getDoctrine()->getManager();
 
+        $assessmentBoard = $em->getRepository("AppBundle:AssessmentBoard")->find($assessment_board_id);
+        $difficulty_type = $em->getRepository("AppBundle:AssessmentBoardLearningDifficultiesType")->find($difficulty_type_id);
+
+        $students = $em->getRepository('AppBundle:Student')->findStudentAssessmentBoardCourse($assessmentBoard);
 
 
         return $this->render('assessmentboardlearningdifficulties/new_group.html.twig', array(
             'assessmentBoard' => $assessmentBoard,
-            'students'=>$students
+            'students' => $students,
+            'difficulty_type' => $difficulty_type
+
         ));
     }
 
 
-    public function createAction(Request $request, AssessmentBoard  $assessmentBoard)
+    public function createAction(Request $request, $assessment_board_id, $difficulty_type_id)
     {
-       $students=$request->get('student');
-        $students_difficulties=$request->Get('difficulties');
-        $em=$this->getDoctrine()->getManager();
-        foreach ($students as $student_key=>$student_value)
-        {
-            $difficult=new AssessmentBoardLearningDifficulties();
-            $student=$em->getRepository("AppBundle:Student")->find($student_key);
+        $em = $this->getDoctrine()->getManager();
+
+        $assessmentBoard = $em->getRepository("AppBundle:AssessmentBoard")->find($assessment_board_id);
+        $difficulty_type = $em->getRepository("AppBundle:AssessmentBoardLearningDifficultiesType")->find($difficulty_type_id);
+
+        $students = $request->get('student');
+        $students_difficulties = $request->get('difficulties');
+
+        foreach ($students as $student_key => $student_value) {
+            $difficult = new AssessmentBoardLearningDifficulties();
+            $student = $em->getRepository("AppBundle:Student")->find($student_key);
             $difficult->setStudent($student);
             $difficult->setAssessmentBoard($assessmentBoard);
+            $difficult->setAssessmentsBoardLearningnDifficultiesType($difficulty_type);
             $difficult->setCourse($assessmentBoard->getCourse());
             $difficult->setLearningDifficulties($students_difficulties[$student_key]);
             $em->persist($difficult);
@@ -86,6 +98,7 @@ class AssessmentBoardLearningDifficultiesController extends Controller
 
         return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoard->getId()));
     }
+
     /**
      * Finds and displays a assessmentBoardLearningDifficulties entity.
      *
@@ -123,6 +136,15 @@ class AssessmentBoardLearningDifficultiesController extends Controller
         ));
     }
 
+    public function fast_deleteAction(Request $request, AssessmentBoardLearningDifficulties $assessmentBoardLearningDifficulties)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($assessmentBoardLearningDifficulties);
+        $em->flush();
+
+        return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoardLearningDifficulties->getAssessmentBoard()->getId()));
+    }
+
     /**
      * Deletes a assessmentBoardLearningDifficulties entity.
      *
@@ -138,7 +160,7 @@ class AssessmentBoardLearningDifficultiesController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('assessmentboardlearningdifficulties_index');
+        return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoardLearningDifficulties->getAssessmentBoard()->getId()));
     }
 
     /**
@@ -156,4 +178,4 @@ class AssessmentBoardLearningDifficultiesController extends Controller
             ->getForm();
     }
 
-    }
+}

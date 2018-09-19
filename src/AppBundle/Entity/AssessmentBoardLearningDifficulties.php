@@ -31,6 +31,12 @@ class AssessmentBoardLearningDifficulties
     private $id;
 
     /**
+     * @var smallint assessments_board_learningn_difficulties_type
+     * @ORM\ManyToOne(targetEntity="AssessmentBoardLearningDifficultiesType", inversedBy="assessments_board_learningn_difficulties")
+     */
+    private $assessments_board_learningn_difficulties_type;
+
+    /**
      * @var dateTime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -226,5 +232,34 @@ class AssessmentBoardLearningDifficulties
     public function getCourse()
     {
         return $this->course;
+    }
+
+    /**
+     * Set assessmentsBoardLearningnDifficultiesType.
+     *
+     * @param \AppBundle\Entity\AssessmentBoardLearningDifficultiesType|null $assessmentsBoardLearningnDifficultiesType
+     *
+     * @return AssessmentBoardLearningDifficulties
+     */
+    public function setAssessmentsBoardLearningnDifficultiesType(\AppBundle\Entity\AssessmentBoardLearningDifficultiesType $assessmentsBoardLearningnDifficultiesType = null)
+    {
+        $this->assessments_board_learningn_difficulties_type = $assessmentsBoardLearningnDifficultiesType;
+
+        return $this;
+    }
+
+    /**
+     * Get assessmentsBoardLearningnDifficultiesType.
+     *
+     * @return \AppBundle\Entity\AssessmentBoardLearningDifficultiesType|null
+     */
+    public function getAssessmentsBoardLearningnDifficultiesType()
+    {
+        return $this->assessments_board_learningn_difficulties_type;
+    }
+
+    public function getType()
+    {
+        return $this->getAssessmentsBoardLearningnDifficultiesType();
     }
 }

@@ -3,43 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/StudentMedicalType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/StudentMedicalType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/StudentRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/StudentRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/StudentSchool.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/StudentSchool.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/academicinformation/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/academicinformation/edit.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/course/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/course/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/coursetype/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/coursetype/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/meeting/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/meeting/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/teacher/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/teacher/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/course/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/course/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/student/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/student/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/student/medical.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/student/medical.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/translations/messages.es.xlf" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/translations/messages.es.xlf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/translations/messages.es.yml" afterPath="$PROJECT_DIR$/translations/messages.es.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/navigation.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/navigation.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/academicinformation/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/academicinformation/new.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/edit.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/course/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/course/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/coursetype/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/coursetype/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/meeting/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/meeting/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/student/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/student/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/teacher/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/teacher/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/record_actions.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/record_actions.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/meeting/record_actions.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/meeting/record_actions.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/coursetype/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/coursetype/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/meeting/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/meeting/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/student/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/student/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/teacher/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/teacher/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/public/css/style.css" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -63,42 +40,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/student/show.html.twig">
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-53.875">
-              <caret line="164" column="63" selection-start-line="164" selection-start-column="63" selection-end-line="164" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.7601351">
+              <caret line="47" column="134" selection-start-line="47" selection-start-column="134" selection-end-line="47" selection-end-column="134" />
               <folding>
-                <element signature="e#621#635#0#Twig" expanded="false" />
-                <element signature="e#988#1011#0#Twig" expanded="false" />
-                <element signature="e#1575#1593#0#Twig" expanded="false" />
-                <element signature="e#2123#2141#0#Twig" expanded="false" />
-                <element signature="e#2612#2631#0#Twig" expanded="false" />
-                <element signature="e#3163#3182#0#Twig" expanded="false" />
-                <element signature="e#3657#3674#0#Twig" expanded="false" />
-                <element signature="e#4206#4223#0#Twig" expanded="false" />
-                <element signature="e#7602#7616#0#Twig" expanded="false" />
-                <element signature="e#7862#7888#0#Twig" expanded="false" />
-                <element signature="e#8206#8225#0#Twig" expanded="false" />
-                <element signature="e#8940#8960#0#Twig" expanded="false" />
-                <element signature="e#9183#9203#0#Twig" expanded="false" />
-                <element signature="e#9907#9925#0#Twig" expanded="false" />
-                <element signature="e#10104#10127#0#Twig" expanded="false" />
-                <element signature="e#10492#10519#0#Twig" expanded="false" />
-                <element signature="e#11132#11165#0#Twig" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assessment_board_learning_difficulties.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10465116">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="e#239#259#0#Twig" expanded="true" />
-                <element signature="e#750#790#0#Twig" expanded="true" />
+                <element signature="e#693#738#0#Twig" expanded="true" />
+                <element signature="e#2790#2837#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,38 +56,21 @@
       <file leaf-file-name="new_group.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.5">
-              <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-              <folding />
+            <state vertical-scroll-proportion="-18.291666">
+              <caret line="31" column="122" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="122" />
+              <folding>
+                <element signature="e#461#503#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
+      <file leaf-file-name="record_actions.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/record_actions.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5">
-              <caret line="91" column="53" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
-              <folding>
-                <element signature="e#2689#2720#1#PHP" expanded="true" />
-                <element signature="e#2903#2922#1#PHP" expanded="true" />
-                <element signature="e#3137#3161#0#PHP" expanded="true" />
-                <element signature="e#4311#4325#0#PHP" expanded="true" />
-                <element signature="e#4402#4426#0#PHP" expanded="true" />
-                <element signature="e#4744#4763#1#PHP" expanded="true" />
-                <element signature="e#4820#4849#0#PHP" expanded="true" />
-                <element signature="e#5402#5421#1#PHP" expanded="true" />
-                <element signature="e#5478#5505#0#PHP" expanded="true" />
-                <element signature="e#6800#6815#1#PHP" expanded="true" />
-                <element signature="e#7155#7171#0#PHP" expanded="true" />
-                <element signature="e#7554#7573#1#PHP" expanded="true" />
-                <element signature="e#7633#7651#1#PHP" expanded="true" />
-                <element signature="e#7746#7773#0#PHP" expanded="true" />
-                <element signature="e#8031#8050#1#PHP" expanded="true" />
-                <element signature="e#8109#8127#1#PHP" expanded="true" />
-                <element signature="e#8416#8429#0#PHP" expanded="true" />
-                <element signature="e#8556#8570#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="8" column="100" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="100" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,18 +79,73 @@
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/StudentRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-30.125">
-              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+              <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
               <folding>
-                <marker date="1537210330728" expanded="true" signature="369:435" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="923:981" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1229:1316" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1612:1696" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1612:1700" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1612:1706" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1612:1719" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1612:1744" placeholder="select t fro..AppBundle..." />
-                <marker date="1537210330728" expanded="true" signature="1612:1760" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="369:435" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="923:981" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="1229:1316" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="1612:1760" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="2150:2207" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="2150:2218" placeholder="select t fro..AppBundle..." />
+                <marker date="1537385131929" expanded="true" signature="2150:2233" placeholder="select t fro..AppBundle..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.291666">
+              <caret line="986" column="32" selection-start-line="986" selection-start-column="32" selection-end-line="986" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssessmentBoard.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-32.375">
+              <caret line="307" column="0" selection-start-line="295" selection-start-column="7" selection-end-line="307" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssessmentBoardLearningDifficultiesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.5">
+              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+              <folding>
+                <element signature="e#1582#1624#0#PHP" expanded="true" />
+                <element signature="e#1727#1778#0#PHP" expanded="true" />
+                <element signature="e#2136#2163#1#PHP" expanded="true" />
+                <element signature="e#2240#2291#1#PHP" expanded="true" />
+                <element signature="e#2361#2380#1#PHP" expanded="true" />
+                <element signature="e#2466#2523#0#PHP" expanded="true" />
+                <element signature="e#2888#2915#1#PHP" expanded="true" />
+                <element signature="e#2992#3043#1#PHP" expanded="true" />
+                <element signature="e#3359#3378#1#PHP" expanded="true" />
+                <element signature="e#3860#3882#0#PHP" expanded="true" />
+                <element signature="e#4255#4307#0#PHP" expanded="true" />
+                <element signature="e#5150#5172#0#PHP" expanded="true" />
+                <element signature="e#5299#5351#0#PHP" expanded="true" />
+                <element signature="e#5884#5906#0#PHP" expanded="true" />
+                <element signature="e#6583#6605#0#PHP" expanded="true" />
+                <element signature="e#7197#7241#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="assessmentboardlearningdifficulties.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="86" selection-start-line="35" selection-start-column="86" selection-end-line="35" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -232,8 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/StudentSchoolType.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/studentschool/new.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/studentschool/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/school.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/meeting/show.html.twig" />
@@ -241,14 +226,11 @@
         <option value="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/StudentSchool.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardStudent.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/academicinformation/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/academicinformation/new.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/edit.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/new.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/new.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/coursetype/edit.html.twig" />
@@ -268,21 +250,26 @@
         <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/record_actions.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/css/style.css" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardLearningDifficultiesType.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/StudentRepository.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardType.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/new.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/StudentRepository.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficultiesType.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
       </list>
     </option>
   </component>
@@ -383,6 +370,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -585,125 +573,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OptionsResolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrameworkBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrameworkBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -806,62 +676,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -918,28 +732,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="routing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1097,6 +889,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="assessmentboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ateneux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ateneux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="academicinformation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1121,7 +939,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -1252,41 +1069,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/coursetype/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/coursetype/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/coursetype/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.875">
-          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/meeting/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.375">
-          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/meeting/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.375">
-          <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/student/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.75">
@@ -1326,7 +1108,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.125">
           <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1376,7 +1157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3256579">
           <caret line="39" column="46" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1408,27 +1188,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.14864865">
-          <caret line="12" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/studentschool/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5945946">
           <caret line="308" column="45" selection-start-line="308" selection-start-column="45" selection-end-line="308" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-44.25">
-          <caret line="87" column="63" selection-start-line="87" selection-start-column="63" selection-end-line="87" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,17 +1199,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25675675">
-          <caret line="974" column="74" selection-start-line="974" selection-start-column="74" selection-end-line="974" selection-end-column="74" />
-          <folding>
-            <element signature="e#118#150#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1466,29 +1218,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/record_actions.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13513513">
-          <caret line="8" column="99" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.125">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#12#35#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardLearningDifficultiesType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23648648">
           <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1500,84 +1233,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6081081">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding>
-            <element signature="e#575#620#0#Twig" expanded="false" />
-            <element signature="e#2098#2110#0#Twig" expanded="false" />
-            <element signature="e#2327#2367#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3125">
-          <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.125">
-          <caret line="67" column="10" selection-start-line="65" selection-start-column="13" selection-end-line="67" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48986486">
-          <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4864865">
-          <caret line="118" column="0" selection-start-line="114" selection-start-column="4" selection-end-line="118" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.731982">
-          <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
-          <folding>
-            <element signature="e#116#148#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41103604">
-          <caret line="79" column="65" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
-          <folding>
-            <element signature="e#1520#1562#0#PHP" expanded="true" />
-            <element signature="e#1665#1716#0#PHP" expanded="true" />
-            <element signature="e#2066#2123#0#PHP" expanded="true" />
-            <element signature="e#2658#2677#1#PHP" expanded="true" />
-            <element signature="e#3071#3093#0#PHP" expanded="true" />
-            <element signature="e#3465#3517#0#PHP" expanded="true" />
-            <element signature="e#4360#4382#0#PHP" expanded="true" />
-            <element signature="e#4509#4561#0#PHP" expanded="true" />
-            <element signature="e#5371#5414#1#PHP" expanded="true" />
-            <element signature="e#5922#5966#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1593,7 +1253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.5101352">
           <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1601,7 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30405405">
           <caret line="18" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1609,7 +1267,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5067568">
           <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1617,96 +1274,213 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16891892">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.875">
+          <caret line="92" column="84" selection-start-line="92" selection-start-column="84" selection-end-line="92" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Teacher.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55440414">
+          <caret line="114" column="32" selection-start-line="102" selection-start-column="0" selection-end-line="114" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42487046">
+          <caret line="117" column="0" selection-start-line="113" selection-start-column="4" selection-end-line="117" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/AssessmentBoardType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.375">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.75">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-36.75">
+          <caret line="87" column="63" selection-start-line="87" selection-start-column="63" selection-end-line="87" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.153846">
+          <caret line="204" column="64" selection-start-line="204" selection-start-column="20" selection-end-line="204" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/student/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-53.875">
+        <state vertical-scroll-proportion="-26.75">
           <caret line="164" column="63" selection-start-line="164" selection-start-column="63" selection-end-line="164" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficultiesRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-151.25">
+          <caret line="262" column="69" selection-start-line="262" selection-start-column="69" selection-end-line="262" selection-end-column="69" />
           <folding>
-            <element signature="e#621#635#0#Twig" expanded="false" />
-            <element signature="e#988#1011#0#Twig" expanded="false" />
-            <element signature="e#1575#1593#0#Twig" expanded="false" />
-            <element signature="e#2123#2141#0#Twig" expanded="false" />
-            <element signature="e#2612#2631#0#Twig" expanded="false" />
-            <element signature="e#3163#3182#0#Twig" expanded="false" />
-            <element signature="e#3657#3674#0#Twig" expanded="false" />
-            <element signature="e#4206#4223#0#Twig" expanded="false" />
-            <element signature="e#7602#7616#0#Twig" expanded="false" />
-            <element signature="e#7862#7888#0#Twig" expanded="false" />
-            <element signature="e#8206#8225#0#Twig" expanded="false" />
-            <element signature="e#8940#8960#0#Twig" expanded="false" />
-            <element signature="e#9183#9203#0#Twig" expanded="false" />
-            <element signature="e#9907#9925#0#Twig" expanded="false" />
-            <element signature="e#10104#10127#0#Twig" expanded="false" />
-            <element signature="e#10492#10519#0#Twig" expanded="false" />
-            <element signature="e#11132#11165#0#Twig" expanded="false" />
+            <element signature="e#116#148#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.375">
+          <caret line="307" column="0" selection-start-line="295" selection-start-column="7" selection-end-line="307" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.291666">
+          <caret line="986" column="32" selection-start-line="986" selection-start-column="32" selection-end-line="986" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/StudentRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.125">
-          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+          <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
           <folding>
-            <marker date="1537210330728" expanded="true" signature="369:435" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="923:981" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1229:1316" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1612:1696" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1612:1700" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1612:1706" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1612:1719" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1612:1744" placeholder="select t fro..AppBundle..." />
-            <marker date="1537210330728" expanded="true" signature="1612:1760" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="369:435" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="923:981" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="1229:1316" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="1612:1760" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="2150:2207" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="2150:2218" placeholder="select t fro..AppBundle..." />
+            <marker date="1537385131929" expanded="true" signature="2150:2233" placeholder="select t fro..AppBundle..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.5">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.625">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficultiesType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5">
-          <caret line="91" column="53" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
-          <folding>
-            <element signature="e#2689#2720#1#PHP" expanded="true" />
-            <element signature="e#2903#2922#1#PHP" expanded="true" />
-            <element signature="e#3137#3161#0#PHP" expanded="true" />
-            <element signature="e#4311#4325#0#PHP" expanded="true" />
-            <element signature="e#4402#4426#0#PHP" expanded="true" />
-            <element signature="e#4744#4763#1#PHP" expanded="true" />
-            <element signature="e#4820#4849#0#PHP" expanded="true" />
-            <element signature="e#5402#5421#1#PHP" expanded="true" />
-            <element signature="e#5478#5505#0#PHP" expanded="true" />
-            <element signature="e#6800#6815#1#PHP" expanded="true" />
-            <element signature="e#7155#7171#0#PHP" expanded="true" />
-            <element signature="e#7554#7573#1#PHP" expanded="true" />
-            <element signature="e#7633#7651#1#PHP" expanded="true" />
-            <element signature="e#7746#7773#0#PHP" expanded="true" />
-            <element signature="e#8031#8050#1#PHP" expanded="true" />
-            <element signature="e#8109#8127#1#PHP" expanded="true" />
-            <element signature="e#8416#8429#0#PHP" expanded="true" />
-            <element signature="e#8556#8570#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.16891892">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10465116">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2195946">
+          <caret line="13" column="120" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="86" selection-start-line="35" selection-start-column="86" selection-end-line="35" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.5">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
           <folding>
-            <element signature="e#239#259#0#Twig" expanded="true" />
-            <element signature="e#750#790#0#Twig" expanded="true" />
+            <element signature="e#1582#1624#0#PHP" expanded="true" />
+            <element signature="e#1727#1778#0#PHP" expanded="true" />
+            <element signature="e#2136#2163#1#PHP" expanded="true" />
+            <element signature="e#2240#2291#1#PHP" expanded="true" />
+            <element signature="e#2361#2380#1#PHP" expanded="true" />
+            <element signature="e#2466#2523#0#PHP" expanded="true" />
+            <element signature="e#2888#2915#1#PHP" expanded="true" />
+            <element signature="e#2992#3043#1#PHP" expanded="true" />
+            <element signature="e#3359#3378#1#PHP" expanded="true" />
+            <element signature="e#3860#3882#0#PHP" expanded="true" />
+            <element signature="e#4255#4307#0#PHP" expanded="true" />
+            <element signature="e#5150#5172#0#PHP" expanded="true" />
+            <element signature="e#5299#5351#0#PHP" expanded="true" />
+            <element signature="e#5884#5906#0#PHP" expanded="true" />
+            <element signature="e#6583#6605#0#PHP" expanded="true" />
+            <element signature="e#7197#7241#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/record_actions.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="8" column="100" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboardlearningdifficulties/new_group.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.291666">
+          <caret line="31" column="122" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="122" />
+          <folding>
+            <element signature="e#461#503#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7601351">
+          <caret line="47" column="134" selection-start-line="47" selection-start-column="134" selection-end-line="47" selection-end-column="134" />
+          <folding>
+            <element signature="e#693#738#0#Twig" expanded="true" />
+            <element signature="e#2790#2837#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>

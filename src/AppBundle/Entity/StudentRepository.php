@@ -62,4 +62,14 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter("student", $student);
         return $query->getResult();
     }
+
+    public function findStudentAssessmentBoardCourse($assessmentBoard)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Student t where t.course=:course order by t.surname, t.name";
+        $query = $em->createQuery($dql);
+        $query->setParameter("course", $assessmentBoard->getCourse());
+
+        return $query->getResult();
+    }
 }

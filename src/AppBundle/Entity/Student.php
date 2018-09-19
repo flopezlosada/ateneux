@@ -970,9 +970,21 @@ class Student
         return $this->warnings;
     }
 
-    public function hasDifficulties()
+    public function hasDifficulties(AssessmentBoardLearningDifficultiesType $type)
     {
-        if (count($this->getAssessmentsBoardLearningDifficulties()) > 0) {
+        $difficulties=array();
+
+        foreach ($this->getAssessmentsBoardLearningDifficulties() as $learning_difficulty)
+        {
+
+            if ($learning_difficulty->getAssessmentsBoardLearningnDifficultiesType()==$type)
+            {
+                $difficulties[]=$learning_difficulty;
+            }
+        }
+
+
+        if (count($difficulties) > 0) {
 
             return true;
         }

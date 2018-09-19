@@ -76,41 +76,7 @@ class AssessmentBoard
      */
     private $information;
 
-    /**
-     * @var string learning_difficulties
-     * @ORM\Column(name="learning_difficulties", type="text", nullable=true)
-     */
-    private $learning_difficulties;
 
-    /**
-     * @var string coexistence_difficulties
-     * @ORM\Column(name="coexistence_difficulties", type="text", nullable=true)
-     */
-    private $coexistence_difficulties;
-
-    /**
-     * @var string support
-     * @ORM\Column(name="support", type="text", nullable=true)
-     */
-    private $support;
-
-    /**
-     * @var string family_date
-     * @ORM\Column(name="family_date", type="text", nullable=true)
-     */
-    private $family_date;
-
-    /**
-     * @var string change_optional
-     * @ORM\Column(name="change_optional", type="text", nullable=true)
-     */
-    private $change_optional;
-
-    /**
-     * @var string other_interesting
-     * @ORM\Column(name="other_interesting", type="text", nullable=true)
-     */
-    private $other_interesting;
 
     /**
      * @ORM\OneToMany(targetEntity="AssessmentBoardLearningDifficulties", mappedBy="assessment_board")
@@ -118,10 +84,26 @@ class AssessmentBoard
     protected $assessments_board_learning_difficulties;
 
 
+
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return "Junta de evaluación de la ".$this->getAssessmentType()->getTitle();
+    }
+
     /**
-     * Get id
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->assessments_board_learning_difficulties = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -129,7 +111,7 @@ class AssessmentBoard
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
      *
@@ -143,7 +125,7 @@ class AssessmentBoard
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -153,7 +135,7 @@ class AssessmentBoard
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
      *
@@ -167,7 +149,7 @@ class AssessmentBoard
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
      * @return \DateTime
      */
@@ -177,7 +159,7 @@ class AssessmentBoard
     }
 
     /**
-     * Set date
+     * Set date.
      *
      * @param \DateTime $date
      *
@@ -191,7 +173,7 @@ class AssessmentBoard
     }
 
     /**
-     * Get date
+     * Get date.
      *
      * @return \DateTime
      */
@@ -201,13 +183,13 @@ class AssessmentBoard
     }
 
     /**
-     * Set information
+     * Set information.
      *
-     * @param string $information
+     * @param string|null $information
      *
      * @return AssessmentBoard
      */
-    public function setInformation($information)
+    public function setInformation($information = null)
     {
         $this->information = $information;
 
@@ -215,9 +197,9 @@ class AssessmentBoard
     }
 
     /**
-     * Get information
+     * Get information.
      *
-     * @return string
+     * @return string|null
      */
     public function getInformation()
     {
@@ -225,9 +207,9 @@ class AssessmentBoard
     }
 
     /**
-     * Set assessmentType
+     * Set assessmentType.
      *
-     * @param \AppBundle\Entity\AssessmentType $assessmentType
+     * @param \AppBundle\Entity\AssessmentType|null $assessmentType
      *
      * @return AssessmentBoard
      */
@@ -239,9 +221,9 @@ class AssessmentBoard
     }
 
     /**
-     * Get assessmentType
+     * Get assessmentType.
      *
-     * @return \AppBundle\Entity\AssessmentType
+     * @return \AppBundle\Entity\AssessmentType|null
      */
     public function getAssessmentType()
     {
@@ -249,9 +231,9 @@ class AssessmentBoard
     }
 
     /**
-     * Set course
+     * Set course.
      *
-     * @param \AppBundle\Entity\Course $course
+     * @param \AppBundle\Entity\Course|null $course
      *
      * @return AssessmentBoard
      */
@@ -263,174 +245,13 @@ class AssessmentBoard
     }
 
     /**
-     * Get course
+     * Get course.
      *
-     * @return \AppBundle\Entity\Course
+     * @return \AppBundle\Entity\Course|null
      */
     public function getCourse()
     {
         return $this->course;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return "Junta de evaluación de la ".$this->getAssessmentType()->getTitle();
-    }
-
-    /**
-     * Set learningDifficulties.
-     *
-     * @param string|null $learningDifficulties
-     *
-     * @return AssessmentBoard
-     */
-    public function setLearningDifficulties($learningDifficulties = null)
-    {
-        $this->learning_difficulties = $learningDifficulties;
-
-        return $this;
-    }
-
-    /**
-     * Get learningDifficulties.
-     *
-     * @return string|null
-     */
-    public function getLearningDifficulties()
-    {
-        return $this->learning_difficulties;
-    }
-
-    /**
-     * Set coexistenceDifficulties.
-     *
-     * @param string|null $coexistenceDifficulties
-     *
-     * @return AssessmentBoard
-     */
-    public function setCoexistenceDifficulties($coexistenceDifficulties = null)
-    {
-        $this->coexistence_difficulties = $coexistenceDifficulties;
-
-        return $this;
-    }
-
-    /**
-     * Get coexistenceDifficulties.
-     *
-     * @return string|null
-     */
-    public function getCoexistenceDifficulties()
-    {
-        return $this->coexistence_difficulties;
-    }
-
-    /**
-     * Set support.
-     *
-     * @param string|null $support
-     *
-     * @return AssessmentBoard
-     */
-    public function setSupport($support = null)
-    {
-        $this->support = $support;
-
-        return $this;
-    }
-
-    /**
-     * Get support.
-     *
-     * @return string|null
-     */
-    public function getSupport()
-    {
-        return $this->support;
-    }
-
-    /**
-     * Set familyDate.
-     *
-     * @param string|null $familyDate
-     *
-     * @return AssessmentBoard
-     */
-    public function setFamilyDate($familyDate = null)
-    {
-        $this->family_date = $familyDate;
-
-        return $this;
-    }
-
-    /**
-     * Get familyDate.
-     *
-     * @return string|null
-     */
-    public function getFamilyDate()
-    {
-        return $this->family_date;
-    }
-
-    /**
-     * Set changeOptional.
-     *
-     * @param string|null $changeOptional
-     *
-     * @return AssessmentBoard
-     */
-    public function setChangeOptional($changeOptional = null)
-    {
-        $this->change_optional = $changeOptional;
-
-        return $this;
-    }
-
-    /**
-     * Get changeOptional.
-     *
-     * @return string|null
-     */
-    public function getChangeOptional()
-    {
-        return $this->change_optional;
-    }
-
-    /**
-     * Set otherInteresting.
-     *
-     * @param string|null $otherInteresting
-     *
-     * @return AssessmentBoard
-     */
-    public function setOtherInteresting($otherInteresting = null)
-    {
-        $this->other_interesting = $otherInteresting;
-
-        return $this;
-    }
-
-    /**
-     * Get otherInteresting.
-     *
-     * @return string|null
-     */
-    public function getOtherInteresting()
-    {
-        return $this->other_interesting;
-    }
-    /**
-     * Constructor
-     */
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->assessments_board_learning_difficulties = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -467,5 +288,23 @@ class AssessmentBoard
     public function getAssessmentsBoardLearningDifficulties()
     {
         return $this->assessments_board_learning_difficulties;
+    }
+
+
+    public function getDifficulties(AssessmentBoardLearningDifficultiesType $type)
+    {
+        $difficulties=array();
+
+        foreach ($this->getAssessmentsBoardLearningDifficulties() as $learning_difficulty)
+        {
+
+            if ($learning_difficulty->getAssessmentsBoardLearningnDifficultiesType()==$type)
+            {
+                $difficulties[]=$learning_difficulty;
+            }
+        }
+
+        return $difficulties;
+
     }
 }
