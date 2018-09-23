@@ -52,7 +52,7 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
-    public function getDifficulties($course,$student, $assessment_board)
+    public function getDifficulties($course, $student, $assessment_board)
     {
         $em = $this->getEntityManager();
         $dql = "select t from AppBundle:AssessmentBoardLearningDifficulties t where t.course=:course and t.student=:student and t.assessment_board=:assessment_board";
@@ -71,5 +71,25 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter("course", $assessmentBoard->getCourse());
 
         return $query->getResult();
+    }
+
+    public function findAllSorted()
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Student t order by t.surname, t.name";
+        $query = $em->createQuery($dql);
+
+        return $query->getResult();
+
+    }
+
+    public function findAllActiveSorted()
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Student t where t.course is not null order by t.surname, t.name";
+        $query = $em->createQuery($dql);
+
+        return $query->getResult();
+
     }
 }

@@ -31,6 +31,22 @@ class StudentController extends Controller
         ));
     }
 
+    public function mediationFirstAction($student_id)
+    {
+        $em=$this->getDoctrine();
+        $students=$em->getRepository("AppBundle:Student")->findAllActiveSorted();
+        $first_student=$em->getRepository("AppBundle:Student")->find($student_id);
+
+        return $this->render('student/mediation_first.html.twig', array(
+            'students' => $students,
+            'first_student'=>$first_student
+        ));
+    }
+
+    public function mediationSecondAction($first_student_id, $second_student_id)
+    {
+    }
+
     /**
      * Creates a new student entity.
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")

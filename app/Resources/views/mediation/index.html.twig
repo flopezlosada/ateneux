@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mediations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Accept_first_student</th>
+                <th>Accept_second_student</th>
+                <th>First_student_observations</th>
+                <th>Second_student_observations</th>
+                <th>Deals</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mediation in mediations %}
+            <tr>
+                <td><a href="{{ path('mediation_show', { 'id': mediation.id }) }}">{{ mediation.id }}</a></td>
+                <td>{% if mediation.acceptfirststudent %}Yes{% else %}No{% endif %}</td>
+                <td>{% if mediation.acceptsecondstudent %}Yes{% else %}No{% endif %}</td>
+                <td>{{ mediation.firststudentobservations }}</td>
+                <td>{{ mediation.secondstudentobservations }}</td>
+                <td>{{ mediation.deals }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('mediation_show', { 'id': mediation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('mediation_edit', { 'id': mediation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mediation_new') }}">Create a new mediation</a>
+        </li>
+    </ul>
+{% endblock %}
