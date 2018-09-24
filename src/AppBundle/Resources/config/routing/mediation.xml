@@ -24,4 +24,9 @@
         <default key="_controller">AppBundle:Mediation:delete</default>
     </route>
 
+    <route id="mediation_set_mediation" path="/{id}/{type}/set_mediation/" methods="GET">
+        <default key="_controller">AppBundle:Mediation:setMediation</default>
+        <requirement key="type">teacher|student</requirement>
+    </route>
+
 </routes>

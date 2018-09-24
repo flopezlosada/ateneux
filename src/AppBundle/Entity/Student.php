@@ -229,6 +229,17 @@ class Student
      */
     protected $meetings;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Mediation", mappedBy="student_mediator")
+     */
+    protected $mediations;
+
+    /**
+     * @var int is_mediator
+     * @ORM\Column(name="is_mediator", type="boolean", length=1)
+     * ¿es mediador?
+     */
+    private $is_mediator = false;
 
     /**
      * @ORM\OneToMany(targetEntity="AssessmentBoardLearningDifficulties", mappedBy="student")
@@ -1026,5 +1037,65 @@ class Student
     public function getAssessmentsBoardLearningDifficulties()
     {
         return $this->assessments_board_learning_difficulties;
+    }
+
+    /**
+     * Add mediation.
+     *
+     * @param \AppBundle\Entity\Mediation $mediation
+     *
+     * @return Student
+     */
+    public function addMediation(\AppBundle\Entity\Mediation $mediation)
+    {
+        $this->mediations[] = $mediation;
+
+        return $this;
+    }
+
+    /**
+     * Remove mediation.
+     *
+     * @param \AppBundle\Entity\Mediation $mediation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMediation(\AppBundle\Entity\Mediation $mediation)
+    {
+        return $this->mediations->removeElement($mediation);
+    }
+
+    /**
+     * Get mediations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMediations()
+    {
+        return $this->mediations;
+    }
+
+    /**
+     * Set isMediator.
+     *
+     * @param bool $isMediator
+     *
+     * @return Student
+     */
+    public function setIsMediator($isMediator)
+    {
+        $this->is_mediator = $isMediator;
+
+        return $this;
+    }
+
+    /**
+     * Get isMediator.
+     *
+     * @return bool
+     */
+    public function getIsMediator()
+    {
+        return $this->is_mediator;
     }
 }

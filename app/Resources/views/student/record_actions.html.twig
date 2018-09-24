@@ -18,6 +18,10 @@
             <li><a href="{{ path('meeting_new', { 'student_id': entity.id}) }}">Programar reunión
                 </a></li>
             <li><a href="{{ path('warning_new', {'student': entity.id}) }}">Añadir incidencia</a></li>
+            {% if not student.getIsMediator %}
+                <li><a href="{{ path('mediation_set_mediation', {'id': student.id, 'type': 'student'}) }}">Convertir en
+                        mediadora/or</a></li>
+            {% endif %}
             {#{% endif %}#}
         {% endif %}
 
@@ -30,10 +34,13 @@
             <li><a href="{{ path('student_promote', {'id': student.id}) }}">Promocionar </a>
             </li>
         {% endif %}
-    <li><a href="{{ path('student_mediation_first', {'student_id': student.id}) }}">Mediación</a> </li>
+        <li><a href="{{ path('student_mediation_first', {'student_id': student.id}) }}">Mediación</a></li>
+
     {% else %}
         <li><a href="{{ path('student_show', {'id': entity.id}) }}">Ver detalles</a></li>
+
     {% endif %}
+
 </ul>
 <ul class="list-inline">
     <li>

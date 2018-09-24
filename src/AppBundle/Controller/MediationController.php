@@ -57,6 +57,17 @@ class MediationController extends Controller
         ));
     }
 
+    public function setMediationAction($id, $type)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $mediator=$em->getRepository("AppBundle:".ucfirst($type))->find($id);
+        $mediator->setIsMediator(1);
+        $em->persist($mediator);
+        $em->flush();
+
+        return $this->redirectToRoute($type.'_show', array('id' => $mediator->getId()));
+    }
+
     /**
      * Finds and displays a mediation entity.
      *

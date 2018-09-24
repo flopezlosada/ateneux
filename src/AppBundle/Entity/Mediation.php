@@ -31,6 +31,28 @@ class Mediation
 
     /**
      *
+     * @var smallint $student_mediator
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="mediations")
+     */
+    protected $student_mediator;
+
+    /**
+     *
+     * @var smallint $teacher_mediator
+     * @ORM\ManyToOne(targetEntity="Teacher", inversedBy="mediations")
+     */
+    protected $teacher_mediator;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Date()
+     * @var string $date
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
+     *
      * @var smallint $first_student
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="first_students")
      */
@@ -253,5 +275,101 @@ class Mediation
     public function getSecondStudent()
     {
         return $this->second_student;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param \DateTime $date
+     *
+     * @return Mediation
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date.
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set mediator.
+     *
+     * @param \AppBundle\Entity\MediatorInterface|null $mediator
+     *
+     * @return Mediation
+     */
+    public function setMediator(\AppBundle\Entity\MediatorInterface $mediator = null)
+    {
+        $this->mediator = $mediator;
+
+        return $this;
+    }
+
+    /**
+     * Get mediator.
+     *
+     * @return \AppBundle\Entity\MediatorInterface|null
+     */
+    public function getMediator()
+    {
+        return $this->mediator;
+    }
+
+    /**
+     * Set studentMediator.
+     *
+     * @param \AppBundle\Entity\Student|null $studentMediator
+     *
+     * @return Mediation
+     */
+    public function setStudentMediator(\AppBundle\Entity\Student $studentMediator = null)
+    {
+        $this->student_mediator = $studentMediator;
+
+        return $this;
+    }
+
+    /**
+     * Get studentMediator.
+     *
+     * @return \AppBundle\Entity\Student|null
+     */
+    public function getStudentMediator()
+    {
+        return $this->student_mediator;
+    }
+
+    /**
+     * Set teacherMediator.
+     *
+     * @param \AppBundle\Entity\Teacher|null $teacherMediator
+     *
+     * @return Mediation
+     */
+    public function setTeacherMediator(\AppBundle\Entity\Teacher $teacherMediator = null)
+    {
+        $this->teacher_mediator = $teacherMediator;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherMediator.
+     *
+     * @return \AppBundle\Entity\Teacher|null
+     */
+    public function getTeacherMediator()
+    {
+        return $this->teacher_mediator;
     }
 }

@@ -38,6 +38,13 @@ class Teacher
     private $name;
 
     /**
+     * @var int is_mediator
+     * @ORM\Column(name="is_mediator", type="boolean", length=1)
+     * ¿es mediador?
+     */
+    private $is_mediator = false;
+
+    /**
      *
      * @var string passw
      * @ORM\Column(name="passw", type="string", length=255,nullable=true)
@@ -126,6 +133,13 @@ class Teacher
      * @ORM\OneToMany(targetEntity="Warning", mappedBy="sai_teacher")
      */
     private $warnings_sai_teacher;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Mediation", mappedBy="teacher_mediator")
+     */
+    protected $mediations;
+
 
     /**
      * Get id
@@ -471,5 +485,65 @@ class Teacher
     public function getWarningsSaiTeacher()
     {
         return $this->warnings_sai_teacher;
+    }
+
+    /**
+     * Add mediation.
+     *
+     * @param \AppBundle\Entity\Mediation $mediation
+     *
+     * @return Teacher
+     */
+    public function addMediation(\AppBundle\Entity\Mediation $mediation)
+    {
+        $this->mediations[] = $mediation;
+
+        return $this;
+    }
+
+    /**
+     * Remove mediation.
+     *
+     * @param \AppBundle\Entity\Mediation $mediation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMediation(\AppBundle\Entity\Mediation $mediation)
+    {
+        return $this->mediations->removeElement($mediation);
+    }
+
+    /**
+     * Get mediations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMediations()
+    {
+        return $this->mediations;
+    }
+
+    /**
+     * Set isMediator.
+     *
+     * @param bool $isMediator
+     *
+     * @return Teacher
+     */
+    public function setIsMediator($isMediator)
+    {
+        $this->is_mediator = $isMediator;
+
+        return $this;
+    }
+
+    /**
+     * Get isMediator.
+     *
+     * @return bool
+     */
+    public function getIsMediator()
+    {
+        return $this->is_mediator;
     }
 }

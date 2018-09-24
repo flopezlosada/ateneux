@@ -131,7 +131,8 @@ class StudentController extends Controller
     public function editAction(Request $request, Student $student)
     {
         $deleteForm = $this->createDeleteForm($student);
-        Date($student->getBirthDate()->format('Y-m-d')) ;
+
+        $student->setBirthDate($student->getBirthDate()->format('Y-m-d'));
         $editForm = $this->createForm('AppBundle\Form\StudentType', $student);
         $editForm->handleRequest($request);
 

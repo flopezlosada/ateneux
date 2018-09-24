@@ -29,8 +29,15 @@
                     {% endif %}
                     {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or (is_granted("ROLE_TEACHER") and app.user==teacher.getUser) %}
                         <p><strong>Usuario:</strong> {{ teacher.getUser.username }}</p>
-                        <p><strong>Contraseña:</strong> {{ teacher.getPassw }} {#<a href="{{ path('fos_user_change_password') }}">Cambiar</a>#} </p>
+                        <p>
+                            <strong>Contraseña:</strong> {{ teacher.getPassw }} {#<a href="{{ path('fos_user_change_password') }}">Cambiar</a>#}
+                        </p>
 
+                    {% endif %}
+                    {% if teacher.getIsMediator %}
+                        <div class="alert alert-success">
+                            Esta/e profesor es MEDIADORA/OR
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -38,19 +45,24 @@
     </div>
 
 
-    <ul>
+    <ul class="list-inline" l>
         <li>
-            <a href="{{ path('teacher_index') }}">{{"Back to the list"|trans}}</a>
+            <a href="{{ path('teacher_index') }}">{{ "Back to the list"|trans }}</a>
         </li>
         {% if (is_granted("ROLE_TEACHER") and app.user.getTeacher == teacher) or is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
             <li>
                 <a href="{{ path('teacher_edit', { 'id': teacher.id }) }}">Editar</a>
             </li>
         {% endif %}
-        {% if (is_granted("ROLE_ADMIN")) %}
+        {% if (is_granted("ROLE_ADMIN")   or is_granted("ROLE_JEFATURA")) %}
+            {% if not teacher.getIsMediator %}
+                <li><a href="{{ path('mediation_set_mediation', {'id': teacher.id, 'type': 'teacher'}) }}">Convertir en
+                        mediadora/or</a></li>
+            {% endif %}
             <li>
                 {{ form_start(delete_form) }}
-                <input type="submit" value="{{ "Delete"|trans }}">
+                <input type="submit" value="{{ "Borrar" }}"
+                       onclick="return confirm('¿Estás segura/o de eliminar esta/e profesora/or?')">
                 {{ form_end(delete_form) }}
             </li>
         {% endif %}
