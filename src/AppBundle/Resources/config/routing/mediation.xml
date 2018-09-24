@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="mediation_index" path="/" methods="GET">
+        <default key="_controller">AppBundle:Mediation:index</default>
+    </route>
+
+    <route id="mediation_show" path="/{id}/show" methods="GET">
+        <default key="_controller">AppBundle:Mediation:show</default>
+    </route>
+
+    <route id="mediation_new" path="/new/{first_student_id}/{second_student_id}" methods="GET|POST">
+        <default key="_controller">AppBundle:Mediation:new</default>
+    </route>
+
+    <route id="mediation_edit" path="/{id}/edit" methods="GET|POST">
+        <default key="_controller">AppBundle:Mediation:edit</default>
+    </route>
+
+    <route id="mediation_delete" path="/{id}/delete" methods="DELETE">
+        <default key="_controller">AppBundle:Mediation:delete</default>
+    </route>
+
+</routes>

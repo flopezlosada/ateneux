@@ -39,8 +39,17 @@
     <route id="student_familiar_pdf" path="/pdf/familiar/{student_id}" methods="GET">
         <default key="_controller">AppBundle:Student:familiarPdf</default>
     </route>
+
     <route id="student_school_generate" path="/generate/school/{student_id}/{type}" methods="GET">
         <default key="_controller">AppBundle:Student:generateSchool</default>
         <requirement key="type">pdf|image</requirement>
+    </route>
+
+    <route id="student_mediation_first" path="/mediation/first/{student_id}" methods="GET">
+        <default key="_controller">AppBundle:Student:mediationFirst</default>
+    </route>
+
+    <route id="student_mediation_second" path="/mediation/second/{first_student}/{second_student}" methods="GET">
+        <default key="_controller">AppBundle:Mediation:new</default>
     </route>
 </routes>

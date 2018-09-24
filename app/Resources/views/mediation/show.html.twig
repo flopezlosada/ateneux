@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mediation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mediation.id }}</td>
+            </tr>
+            <tr>
+                <th>Accept_first_student</th>
+                <td>{% if mediation.acceptfirststudent %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Accept_second_student</th>
+                <td>{% if mediation.acceptsecondstudent %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>First_student_observations</th>
+                <td>{{ mediation.firststudentobservations }}</td>
+            </tr>
+            <tr>
+                <th>Second_student_observations</th>
+                <td>{{ mediation.secondstudentobservations }}</td>
+            </tr>
+            <tr>
+                <th>Deals</th>
+                <td>{{ mediation.deals }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mediation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('mediation_edit', { 'id': mediation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

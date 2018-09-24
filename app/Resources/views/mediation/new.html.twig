@@ -1,0 +1,67 @@
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Añadir Estudiante{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
+
+    <div class="panel-body">
+        {{ form_start(form,{'attr': {'role': 'form' }}) }}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        {{ first_student }}
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{ form_errors(form.accept_first_student) }}
+                            {{ form_widget(form.accept_first_student) }}
+                            {{ form_label(form.accept_first_student) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_errors(form.first_student_observations) }}
+                            <label>{{ form_label(form.first_student_observations) }}</label>
+                            {{ form_widget(form.first_student_observations,{'attr':{'placeholder':'Observaciones','class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        {{ second_student }}
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{ form_errors(form.accept_second_student) }}
+                            {{ form_widget(form.accept_second_student) }}
+                            {{ form_label(form.accept_second_student) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_errors(form.second_student_observations) }}
+                            <label>{{ form_label(form.second_student_observations) }}</label>
+                            {{ form_widget(form.second_student_observations,{'attr':{'placeholder':'Observaciones','class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        Acuerdos tomados
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            {{ form_errors(form.deals) }}
+                            <label>{{ form_label(form.deals) }}</label>
+                            {{ form_widget(form.deals,{'attr':{'placeholder':'Acuerdos','class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    {{ tinymce_init() }}
+{% endblock %}
