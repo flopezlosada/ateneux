@@ -12,11 +12,11 @@
         <default key="_controller">AppBundle:Mediation:show</default>
     </route>
 
-    <route id="mediation_new" path="/new/{first_student_id}/{second_student_id}" methods="GET|POST">
+    <route id="mediation_new" path="/new/{first_student}/{second_student}" methods="GET|POST">
         <default key="_controller">AppBundle:Mediation:new</default>
     </route>
 
-    <route id="mediation_edit" path="/{id}/edit" methods="GET|POST">
+    <route id="mediation_edit" path="/{id}/{first_student}/{second_student}/edit" methods="GET|POST">
         <default key="_controller">AppBundle:Mediation:edit</default>
     </route>
 

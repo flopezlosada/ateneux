@@ -19,18 +19,18 @@ class MediationType extends AbstractType
         $builder
             ->add('accept_first_student', null, array('label'=>"¿Acepta Mediación?"))
             ->add('accept_second_student', null, array('label'=>"¿Acepta Mediación?"))
-            ->add('date', TextType::class, array('label' => 'Fecha de la reunión', 'attr' => array('class' => 'datepicker form-control')))
-            ->add('first_student_observations', null, array('label' => 'Información', 'attr' => array('class' => 'tinymce', 'data-theme' => 'simple')))
-            ->add('second_student_observations', null, array('label' => 'Información', 'attr' => array('class' => 'tinymce', 'data-theme' => 'simple')))
+            ->add('date', TextType::class, array('label' => 'Fecha de la mediación', 'attr' => array('class' => 'datepicker form-control')))
+            ->add('first_student_observations', null, array('label' => 'Descripción de los hechos', 'attr' => array('class' => 'tinymce', 'data-theme' => 'simple')))
+            ->add('second_student_observations', null, array('label' => 'Descripción de los hechos', 'attr' => array('class' => 'tinymce', 'data-theme' => 'simple')))
             ->add('deals', null, array('label' => 'Información', 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
-            ->add('student_mediator', EntityType::class, array("label" => "Estudiante mediadora/or", 'placeholder' => 'Selecciona Estudiante', 'class' => 'AppBundle\Entity\Student',
+            ->add('student_mediator', EntityType::class, array("label" => "Estudiante mediadora/or", 'placeholder' => 'Selecciona Estudiante', 'class' => 'AppBundle\Entity\Student',  'required'=>false,
                 'query_builder' => function (EntityRepository $er) {
 
                     return $er->createQueryBuilder('u')->where('u.is_mediator=1');
                 }
 
             ))
-            ->add('teacher_mediator', EntityType::class, array("label" => "Profesora/or mediadora/or", 'placeholder' => 'Selecciona Profesora/or', 'class' => 'AppBundle\Entity\Teacher',
+            ->add('teacher_mediator', EntityType::class, array("label" => "Profesora/or mediadora/or", 'placeholder' => 'Selecciona Profesora/or', 'class' => 'AppBundle\Entity\Teacher', 'required'=>false,
                 'query_builder' => function (EntityRepository $er) {
 
                     return $er->createQueryBuilder('u')->where('u.is_mediator=1');

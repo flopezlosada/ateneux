@@ -1,5 +1,5 @@
 {% extends '::layout_crud.html.twig' %}
-{% block title_wrapper %}Añadir Estudiante{% endblock %}
+{% block title_wrapper %}Mediación entre estudiantes{% endblock %}
 {% block main -%}
     <div class="panel panel-default">
 
@@ -10,7 +10,7 @@
                 <div class="form-group">
                     {{ form_errors(form.date) }}
                     <label>{{ form_label(form.date) }}</label>
-                    {{ form_widget(form.date,{'attr':{'placeholder':'Fecha de la reunión'}}) }}
+                    {{ form_widget(form.date,{'attr':{'placeholder':'Fecha de la mediación'}}) }}
                 </div>
                 <div class="col-lg-6">
                     {{ form_errors(form.student_mediator) }}
@@ -39,7 +39,7 @@
                                 {{ form_widget(form.accept_first_student) }}
                                 {{ form_label(form.accept_first_student) }}
                             </div>
-                            <div class="form-group">
+                            <div class="form-group hidden" id="first_student_observations">
                                 {{ form_errors(form.first_student_observations) }}
                                 <label>{{ form_label(form.first_student_observations) }}</label>
                                 {{ form_widget(form.first_student_observations,{'attr':{'placeholder':'Observaciones','class':'tinymce'}}) }}
@@ -59,7 +59,7 @@
                                 {{ form_widget(form.accept_second_student) }}
                                 {{ form_label(form.accept_second_student) }}
                             </div>
-                            <div class="form-group">
+                            <div class="form-group hidden" id="second_student_observations">
                                 {{ form_errors(form.second_student_observations) }}
                                 <label>{{ form_label(form.second_student_observations) }}</label>
                                 {{ form_widget(form.second_student_observations,{'attr':{'placeholder':'Observaciones','class':'tinymce'}}) }}
@@ -76,18 +76,80 @@
                             <div class="form-group">
                                 {{ form_errors(form.deals) }}
                                 <label>{{ form_label(form.deals) }}</label>
-                                {{ form_widget(form.deals,{'attr':{'placeholder':'Acuerdos','class':'form-control'}}) }}
+                                {{ form_widget(form.deals,{'attr':{'placeholder':'Acuerdos','class':'tinymce'}}) }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Create"/>
-                {{ form_end(form) }}
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                    <div class="panel-body">
+                        <input type="submit" value="Crear"/>
+                        {{ form_end(form) }}
+                        </div>
+                     </div>
+                </div>
             </div>
         </div>
     </div>
-
-{% endblock %}
-{% block specific_js %}
         {{ tinymce_init() }}
+{% endblock %}
+        {% block specific_js %}
+        <script>
+            $('.datepicker').pickadate({
+                formatSubmit: 'yyyy-mm-dd',
+                onStart: function () {
+                    {% if mediation.getDate() %}
+                    var date = new Date("{{  mediation.getDate()}}");
+                    this.set('select', date)
+                    {% endif %}
+                }
+            })
+
+            $('#appbundle_mediation_accept_first_student').change(function () {
+            if ($(this).is(':checked')) {
+
+                $('#first_student_observations').removeClass('hidden');
+                $('#first_student_observations').show('slow');
+            }
+            else {
+                $('#first_student_observations').hide('slow');
+                tinymce.get('appbundle_mediation_first_student_observations').setContent('');
+
+
+            }
+        });
+
+        if ($('#appbundle_mediation_accept_first_student').is(':checked')) {
+           $('#first_student_observations').removeClass('hidden');
+            $('#first_student_observations').show('slow');
+        }
+        else {
+            $('#first_student_observations').hide('slow');
+
+        }
+
+         $('#appbundle_mediation_accept_second_student').change(function () {
+            if ($(this).is(':checked')) {
+
+                $('#second_student_observations').removeClass('hidden');
+                $('#second_student_observations').show('slow');
+            }
+            else {
+                $('#second_student_observations').hide('slow');
+                tinymce.get('appbundle_mediation_second_student_observations').setContent('');
+
+
+            }
+        });
+
+        if ($('#appbundle_mediation_accept_second_student').is(':checked')) {
+           $('#second_student_observations').removeClass('hidden');
+            $('#second_student_observations').show('slow');
+        }
+        else {
+            $('#second_student_observations').hide('slow');
+
+        }
+    </script>
 {% endblock %}

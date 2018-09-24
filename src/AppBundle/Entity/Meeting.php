@@ -54,13 +54,13 @@ class Meeting
 
     /**
      * @var smallint $meeting_type
-     * @ORM\ManyToOne(targetEntity="MeetingType", inversedBy="meeting")
+     * @ORM\ManyToOne(targetEntity="MeetingType", inversedBy="meetings")
      */
     private $meeting_type;
 
     /**
      * @var smallint $meeting_board
-     * @ORM\ManyToOne(targetEntity="MeetingBoard", inversedBy="meeting")
+     * @ORM\ManyToOne(targetEntity="MeetingBoard", inversedBy="meetings")
      * organo de la estructura: jefatura, tutorx, orientación ...
      */
     private $meeting_board;

@@ -205,7 +205,7 @@ class Student
     /**
      *
      * @var smallint $academic_informations
-     * @ORM\OneToOne(targetEntity="AcademicInformation", inversedBy="student")
+     * @ORM\OneToMany(targetEntity="AcademicInformation", mappedBy="student")
      */
     private $academic_informations;
 
@@ -213,9 +213,23 @@ class Student
     /**
      *
      * @var smallint $warnings
-     * @ORM\OneToOne(targetEntity="Warning", inversedBy="student")
+     * @ORM\OneToMany(targetEntity="Warning", mappedBy="student")
      */
     private $warnings;
+
+    /**
+     *
+     * @var smallint $first_students
+     * @ORM\OneToMany(targetEntity="Mediation", mappedBy="first_student")
+     */
+    private $first_students;
+
+    /**
+     *
+     * @var smallint $second_students
+     * @ORM\OneToMany(targetEntity="Mediation", mappedBy="second_student")
+     */
+    private $second_students;
 
     /**
      *

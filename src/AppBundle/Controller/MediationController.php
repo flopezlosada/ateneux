@@ -41,6 +41,7 @@ class MediationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $mediation->setDate(new \DateTime($mediation->getDate()));
             $mediation->setFirstStudent($first_student);
             $mediation->setSecondStudent($second_student);
             $em->persist($mediation);
@@ -86,21 +87,26 @@ class MediationController extends Controller
      * Displays a form to edit an existing mediation entity.
      *
      */
-    public function editAction(Request $request, Mediation $mediation)
+    public function editAction(Request $request, Mediation $mediation, Student $first_student, Student $second_student)
     {
         $deleteForm = $this->createDeleteForm($mediation);
+
+        $mediation->setDate($mediation->getDate()->format('Y-m-d'));
         $editForm = $this->createForm('AppBundle\Form\MediationType', $mediation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $mediation->setDate(new \DateTime($mediation->getDate())) ;
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('mediation_edit', array('id' => $mediation->getId()));
+            return $this->redirectToRoute('mediation_show', array('id' => $mediation->getId()));
         }
 
         return $this->render('mediation/edit.html.twig', array(
             'mediation' => $mediation,
             'edit_form' => $editForm->createView(),
+            'first_student'=>$first_student,
+            'second_student'=>$second_student,
             'delete_form' => $deleteForm->createView(),
         ));
     }

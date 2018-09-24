@@ -22,7 +22,7 @@
                     <tbody>
                     {% for student in students %}
                         <tr>
-                            <td><a href={{ path('student_mediation_second', {'first_student': first_student.id, 'second_student': student.id }) }}>{{ student }}</a></td>
+                            <td><a href={{ path('mediation_new', {'first_student': first_student.id, 'second_student': student.id }) }}>{{ student }}</a></td>
                             <td>{{ student.course }}</td>
                         </tr>
                     {% endfor %}

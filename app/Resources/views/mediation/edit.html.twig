@@ -1,21 +1,155 @@
-{% extends 'base.html.twig' %}
+{% extends '::layout_crud.html.twig' %}
+{% block title_wrapper %}Mediación entre estudiantes{% endblock %}
+{% block main -%}
+    <div class="panel panel-default">
 
-{% block body %}
-    <h1>Mediation edit</h1>
+    <div class="panel-body">
+        {{ form_start(edit_form,{'attr': {'role': 'form' }}) }}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    {{ form_errors(edit_form.date) }}
+                    <label>{{ form_label(edit_form.date) }}</label>
+                    {{ form_widget(edit_form.date,{'attr':{'placeholder':'Fecha de la mediación'}}) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_errors(edit_form.student_mediator) }}
+                    <label>{{ form_label(edit_form.student_mediator) }}</label>
+                    {{ form_widget(edit_form.student_mediator,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+                <div class="col-lg-6">
+                    {{ form_errors(edit_form.teacher_mediator) }}
+                    <label>{{ form_label(edit_form.teacher_mediator) }}</label>
+                    {{ form_widget(edit_form.teacher_mediator,{'attr':{'placeholder':'','class':'form-control'}}) }}
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('mediation_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel-body">
+                <div class="col-lg-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <a href="{{ path('student_show', {'id': first_student.id}) }}"> {{ first_student }}</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ form_errors(edit_form.accept_first_student) }}
+                                {{ form_widget(edit_form.accept_first_student) }}
+                                {{ form_label(edit_form.accept_first_student) }}
+                            </div>
+                            <div class="form-group hidden" id="first_student_observations">
+                                {{ form_errors(edit_form.first_student_observations) }}
+                                <label>{{ form_label(edit_form.first_student_observations) }}</label>
+                                {{ form_widget(edit_form.first_student_observations,{'attr':{'placeholder':'Observaciones','class':'tinymce'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <a href="{{ path('student_show', {'id': second_student.id}) }}"> {{ second_student }}</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ form_errors(edit_form.accept_second_student) }}
+                                {{ form_widget(edit_form.accept_second_student) }}
+                                {{ form_label(edit_form.accept_second_student) }}
+                            </div>
+                            <div class="form-group hidden" id="second_student_observations">
+                                {{ form_errors(edit_form.second_student_observations) }}
+                                <label>{{ form_label(edit_form.second_student_observations) }}</label>
+                                {{ form_widget(edit_form.second_student_observations,{'attr':{'placeholder':'Observaciones','class':'tinymce'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            Acuerdos tomados
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ form_errors(edit_form.deals) }}
+                                <label>{{ form_label(edit_form.deals) }}</label>
+                                {{ form_widget(edit_form.deals,{'attr':{'placeholder':'Acuerdos','class':'tinymce'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                    <div class="panel-body">
+                        <input type="submit" value="Editar"/>
+                        {{ form_end(edit_form) }}
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {{ tinymce_init() }}
+{% endblock %}
+        {% block specific_js %}
+        <script>
+            $('.datepicker').pickadate({
+                formatSubmit: 'yyyy-mm-dd',
+                onStart: function () {
+                    {% if mediation.getDate() %}
+                    var date = new Date("{{  mediation.getDate()}}");
+                    this.set('select', date)
+                    {% endif %}
+                }
+            })
+
+            $('#appbundle_mediation_accept_first_student').change(function () {
+            if ($(this).is(':checked')) {
+
+                $('#first_student_observations').removeClass('hidden');
+                $('#first_student_observations').show('slow');
+            }
+            else {
+                $('#first_student_observations').hide('slow');
+                tinymce.get('appbundle_mediation_first_student_observations').setContent('');
+
+
+            }
+        });
+
+        if ($('#appbundle_mediation_accept_first_student').is(':checked')) {
+           $('#first_student_observations').removeClass('hidden');
+            $('#first_student_observations').show('slow');
+        }
+        else {
+            $('#first_student_observations').hide('slow');
+
+        }
+
+         $('#appbundle_mediation_accept_second_student').change(function () {
+            if ($(this).is(':checked')) {
+
+                $('#second_student_observations').removeClass('hidden');
+                $('#second_student_observations').show('slow');
+            }
+            else {
+                $('#second_student_observations').hide('slow');
+                tinymce.get('appbundle_mediation_second_student_observations').setContent('');
+
+
+            }
+        });
+
+        if ($('#appbundle_mediation_accept_second_student').is(':checked')) {
+           $('#second_student_observations').removeClass('hidden');
+            $('#second_student_observations').show('slow');
+        }
+        else {
+            $('#second_student_observations').hide('slow');
+
+        }
+    </script>
 {% endblock %}
