@@ -19,6 +19,7 @@
 
                 <div class="col-lg-7">
                     <p><strong>Nombre: </strong>{{ course }}</p>
+                    <p><strong>Tipo de curso: </strong> {{ course.courseType }}</p>
 
                     <strong>Fecha de inicio:</strong> {{ course.startdate|localizeddate('long','none','es') }}<br>
 

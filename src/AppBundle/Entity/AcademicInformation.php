@@ -38,9 +38,18 @@ class AcademicInformation
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="academic_meeting")
+     *
+     * @var smallint $teacher
+     * @ORM\ManyToOne(targetEntity="Teacher", inversedBy="academic_informations")
      */
-    protected $meetings;
+
+    private $teacher;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Meeting", inversedBy="$academic_informations")
+     */
+    protected $meeting;
 
 
     /**
@@ -203,47 +212,6 @@ class AcademicInformation
         return $this->student;
     }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->meetings = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add meeting
-     *
-     * @param \AppBundle\Entity\Meeting $meeting
-     *
-     * @return AcademicInformation
-     */
-    public function addMeeting(\AppBundle\Entity\Meeting $meeting)
-    {
-        $this->meetings[] = $meeting;
-
-        return $this;
-    }
-
-    /**
-     * Remove meeting
-     *
-     * @param \AppBundle\Entity\Meeting $meeting
-     */
-    public function removeMeeting(\AppBundle\Entity\Meeting $meeting)
-    {
-        $this->meetings->removeElement($meeting);
-    }
-
-    /**
-     * Get meetings
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMeetings()
-    {
-        return $this->meetings;
-    }
 
 
     /**
@@ -266,4 +234,54 @@ class AcademicInformation
         return "Evolución Académica. Fecha: ".$this->getDate()->format("d/m/Y");
     }
 
+
+   
+
+    /**
+     * Set meeting.
+     *
+     * @param \AppBundle\Entity\Meeting|null $meeting
+     *
+     * @return AcademicInformation
+     */
+    public function setMeeting(\AppBundle\Entity\Meeting $meeting = null)
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Get meeting.
+     *
+     * @return \AppBundle\Entity\Meeting|null
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
+    }
+
+    /**
+     * Set teacher.
+     *
+     * @param \AppBundle\Entity\Teacher|null $teacher
+     *
+     * @return AcademicInformation
+     */
+    public function setTeacher(\AppBundle\Entity\Teacher $teacher = null)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher.
+     *
+     * @return \AppBundle\Entity\Teacher|null
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
+    }
 }

@@ -45,15 +45,15 @@ class AcademicInformationController extends Controller
         if ($form->isSubmitted() && $form->isValid())
         {
 
-            $academicInformation->addMeeting($meeting);
+            $academicInformation->setMeeting($meeting);
             $academicInformation->setDate(new \DateTime($academicInformation->getDate()));
             $academicInformation->setStudent($meeting->getStudentMeeting());
-            $meeting->setAcademicMeeting($academicInformation);
+
             $em->persist($meeting);
             $em->persist($academicInformation);
             $em->flush();
 
-            return $this->redirectToRoute('student_show', array('id' => $academicInformation->getStudent()->getId()));
+            return $this->redirectToRoute('meeting_show', array('id' => $academicInformation->getMeeting()->getId()));
         }
 
         return $this->render('academicinformation/new.html.twig', array(

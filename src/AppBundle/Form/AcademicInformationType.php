@@ -17,6 +17,7 @@ class AcademicInformationType extends AbstractType
         $builder
             ->add('date',TextType::class, array('label'=>'Fecha', 'attr'=>array('class'=>'datepicker form-control')))
             ->add('information', null, array('label' => 'Información','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
+            ->add('teacher',null, array('label'=>'Profesora/or'))
         ;
     }
     

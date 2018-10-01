@@ -1112,4 +1112,128 @@ class Student
     {
         return $this->is_mediator;
     }
+
+    /**
+     * Add academicInformation.
+     *
+     * @param \AppBundle\Entity\AcademicInformation $academicInformation
+     *
+     * @return Student
+     */
+    public function addAcademicInformation(\AppBundle\Entity\AcademicInformation $academicInformation)
+    {
+        $this->academic_informations[] = $academicInformation;
+
+        return $this;
+    }
+
+    /**
+     * Remove academicInformation.
+     *
+     * @param \AppBundle\Entity\AcademicInformation $academicInformation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAcademicInformation(\AppBundle\Entity\AcademicInformation $academicInformation)
+    {
+        return $this->academic_informations->removeElement($academicInformation);
+    }
+
+    /**
+     * Add warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return Student
+     */
+    public function addWarning(\AppBundle\Entity\Warning $warning)
+    {
+        $this->warnings[] = $warning;
+
+        return $this;
+    }
+
+    /**
+     * Remove warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeWarning(\AppBundle\Entity\Warning $warning)
+    {
+        return $this->warnings->removeElement($warning);
+    }
+
+    /**
+     * Add firstStudent.
+     *
+     * @param \AppBundle\Entity\Mediation $firstStudent
+     *
+     * @return Student
+     */
+    public function addFirstStudent(\AppBundle\Entity\Mediation $firstStudent)
+    {
+        $this->first_students[] = $firstStudent;
+
+        return $this;
+    }
+
+    /**
+     * Remove firstStudent.
+     *
+     * @param \AppBundle\Entity\Mediation $firstStudent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFirstStudent(\AppBundle\Entity\Mediation $firstStudent)
+    {
+        return $this->first_students->removeElement($firstStudent);
+    }
+
+    /**
+     * Get firstStudents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFirstStudents()
+    {
+        return $this->first_students;
+    }
+
+    /**
+     * Add secondStudent.
+     *
+     * @param \AppBundle\Entity\Mediation $secondStudent
+     *
+     * @return Student
+     */
+    public function addSecondStudent(\AppBundle\Entity\Mediation $secondStudent)
+    {
+        $this->second_students[] = $secondStudent;
+
+        return $this;
+    }
+
+    /**
+     * Remove secondStudent.
+     *
+     * @param \AppBundle\Entity\Mediation $secondStudent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSecondStudent(\AppBundle\Entity\Mediation $secondStudent)
+    {
+        return $this->second_students->removeElement($secondStudent);
+    }
+
+    /**
+     * Get secondStudents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSecondStudents()
+    {
+        return $this->second_students;
+    }
 }

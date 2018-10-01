@@ -21,27 +21,43 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos generales</a>
                         </li>
-                        {% if meeting.academicMeeting is defined and meeting.academicMeeting is not null%}
-                            <li class=""><a href="#information" data-toggle="tab" aria-expanded="false">Evolución Académica</a>
+                        {% if meeting.academicInformations|length>0 %}
+                            <li class=""><a href="#information" data-toggle="tab" aria-expanded="false">Evolución
+                                    Académica</a>
                             </li>
                         {% endif %}
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="home">
                             <p><strong>Estado: </strong>{{ meeting.meetingStatus }}</p>
+
                             <p><strong>Fecha:</strong> {{ meeting.date|localizeddate('long','none','es') }}</p>
+
                             <p><strong>Asuntos tratados:</strong> {{ meeting.handleIssues |raw }}</p>
+
                             <p><strong>Acuerdos:</strong> {{ meeting.deals |raw }}</p>
+
                             <p><strong>Observaciones:</strong> {{ meeting.observations |raw }}</p>
+
                         </div>
-                        {% if meeting.academicMeeting is defined and meeting.academicMeeting is not null%}
-                            {{ meeting.academicMeeting|yaml_dump }}
-                        <div class="tab-pane fade"
-                             id="information">
-                            <p><strong>Fecha:</strong> {{ meeting.academicMeeting.date|localizeddate('long','none','es') }}</p>
-                            <p> {{ meeting.academicMeeting.information |raw }}</p>
-                            <a href="{{ path('academicinformation_edit', {'id': meeting.academicMeeting.id}) }}">Editar Evolución Académica</a>
-                        </div>
+                        {% if meeting.academicInformations|length>0 %}
+                            <div class="tab-pane fade"
+                                 id="information">
+                            {% for info in meeting.getAcademicInformations %}
+                                <div class="alert alert-success">
+
+
+                                    <p>
+                                        <strong>Fecha:</strong> {{ info.date|localizeddate('long','none','es') }}
+                                    </p>
+                                <p><strong>Profesora/or: </strong><a href="{{ path('teacher_show', {'id': info.teacher.id}) }}">{{ info.teacher }}</a> </p>
+
+                                    <p> {{ info.information |raw }}</p>
+                                    <a href="{{ path('academicinformation_edit', {'id': info.id}) }}">Editar
+                                        Información Académica</a>
+                                </div>
+                            {% endfor %}
+                            </div>
                         {% endif %}
                     </div>
 

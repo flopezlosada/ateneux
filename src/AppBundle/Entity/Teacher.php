@@ -107,6 +107,12 @@ class Teacher
      */
     private $updated;
 
+    /**
+     *
+     * @var smallint $academic_informations
+     * @ORM\OneToMany(targetEntity="AcademicInformation", mappedBy="teacher")
+     */
+    private $academic_informations;
 
     /**
      *
@@ -545,5 +551,41 @@ class Teacher
     public function getIsMediator()
     {
         return $this->is_mediator;
+    }
+
+    /**
+     * Add academicInformation.
+     *
+     * @param \AppBundle\Entity\AcademicInformation $academicInformation
+     *
+     * @return Teacher
+     */
+    public function addAcademicInformation(\AppBundle\Entity\AcademicInformation $academicInformation)
+    {
+        $this->academic_informations[] = $academicInformation;
+
+        return $this;
+    }
+
+    /**
+     * Remove academicInformation.
+     *
+     * @param \AppBundle\Entity\AcademicInformation $academicInformation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAcademicInformation(\AppBundle\Entity\AcademicInformation $academicInformation)
+    {
+        return $this->academic_informations->removeElement($academicInformation);
+    }
+
+    /**
+     * Get academicInformations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAcademicInformations()
+    {
+        return $this->academic_informations;
     }
 }

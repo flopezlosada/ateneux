@@ -11,7 +11,7 @@
                 {% if meeting.getAcademicMeeting.id is not defined %}
                     | Añadir Evolución Académica: <a
                         href="{{ path('academicinformation_new', {'meeting_id': meeting.id}) }}">nueva </a>
-                    {% if academic_informations|length>0 %}
+                    {% if meeting.academicInformations|length>0 %}
                         o <a
                             href="{{ path('academicinformation_associate', {'meeting_id': meeting.id}) }}">existente</a>
                     {% endif %}

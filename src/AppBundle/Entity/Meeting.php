@@ -89,10 +89,10 @@ class Meeting
 
     /**
      *
-     * @var smallint $student_meeting
-     * @ORM\ManyToOne(targetEntity="AcademicInformation", inversedBy="meetings")
+     * @var smallint $academic_informations
+     * @ORM\OneToMany(targetEntity="AcademicInformation", mappedBy="meeting")
      */
-    protected $academic_meeting;
+    protected $academic_informations;
 
     /**
      * @var string observations
@@ -396,27 +396,49 @@ class Meeting
             . $this->getMeetingBoard()->getTitle().")" ;
     }
 
+   
+
     /**
-     * Set academicMeeting
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->academic_informations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add academicInformation.
      *
-     * @param \AppBundle\Entity\AcademicInformation $academicMeeting
+     * @param \AppBundle\Entity\AcademicInformation $academicInformation
      *
      * @return Meeting
      */
-    public function setAcademicMeeting(\AppBundle\Entity\AcademicInformation $academicMeeting = null)
+    public function addAcademicInformation(\AppBundle\Entity\AcademicInformation $academicInformation)
     {
-        $this->academic_meeting = $academicMeeting;
+        $this->academic_informations[] = $academicInformation;
 
         return $this;
     }
 
     /**
-     * Get academicMeeting
+     * Remove academicInformation.
      *
-     * @return \AppBundle\Entity\AcademicInformation
+     * @param \AppBundle\Entity\AcademicInformation $academicInformation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function getAcademicMeeting()
+    public function removeAcademicInformation(\AppBundle\Entity\AcademicInformation $academicInformation)
     {
-        return $this->academic_meeting;
+        return $this->academic_informations->removeElement($academicInformation);
+    }
+
+    /**
+     * Get academicInformations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAcademicInformations()
+    {
+        return $this->academic_informations;
     }
 }

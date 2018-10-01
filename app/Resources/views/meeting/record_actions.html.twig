@@ -1,11 +1,12 @@
 <ul class="list-inline">
     {% if entity.meetingStatus.getId==1 %}
-        <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}">Editar</a></li>
+        <li><a href="{{ path('academicinformation_new', {'meeting_id': entity.id}) }}">Añadir información académica</a> </li>
+        <li><a href="{{ path('meeting_edit', {'id': entity.id}) }}">Editar Reunión</a></li>
         <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 3}) }}">Suspender</a></li>
         <li><a href="{{ path('meeting_change_status', {'id': entity.id, 'meeting_status_id': 4}) }}">Finalizar</a></li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="{{"Borrar"|trans}}" onclick="return confirm('¿Estás segura/o de eliminar esta reunión?')">
+            <input type="submit" value="{{"Borrar"}}" onclick="return confirm('¿Estás segura/o de eliminar esta reunión?')">
             {{ form_end(delete_form) }}
         </li>
     {% elseif entity.meetingStatus.getId==3 %}
