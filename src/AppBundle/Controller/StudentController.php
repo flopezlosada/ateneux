@@ -249,8 +249,11 @@ class StudentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
-        $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student);//encuentra cursos activos
-
+        if ($student->getCourseType()) {
+            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student);//encuentra cursos activos del tipo que le corresponde
+        } else {
+            $courses = $em->getRepository('AppBundle:Course')->findAll();
+        }
         return $this->render('student/courses.html.twig', array(
             'student' => $student,
             'courses' => $courses
@@ -265,6 +268,7 @@ class StudentController extends Controller
         $course = $em->getRepository('AppBundle:Course')->find($course_id);
 
         $student->setCourse($course);
+        $student->setCourseType($course->getCourseType());
         $em->persist($student);
         $em->flush();
 
