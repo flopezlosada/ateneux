@@ -22,7 +22,7 @@ class StudentType extends AbstractType
 
 
         $builder
-            ->add('birth_date',TextType::class, array('label'=>'Fecha de nacimiento', 'attr'=>array('class'=>'datepicker form-control')))
+            ->add('birth_date',TextType::class, array('label'=>'Fecha de nacimiento','required'=>false, 'attr'=>array('class'=>'datepicker form-control')))
             ->add('name', null, array('label' => 'Nombre'))
             ->add('surname', null, array('label' => 'Apellidos'))
             ->add('address', null, array('label' => 'Dirección'))
@@ -32,17 +32,17 @@ class StudentType extends AbstractType
             ->add('email', null, array('label' => 'Correo electrónico'))
             ->add('observations', null, array('label' => 'Notas'))
             ->add('file', null, array(
-                "required" => null === $builder->getData()->getId() ? true : false,
+                "required" => null === $builder->getData()->getId() ? false : false,
                 "label" => "Imagen"
             ))
-            ->add('state', null, array('label' => 'Selecciona Provincia'))
-            ->add('state', EntityType::class, array("label" => "Provincia", 'placeholder' => 'Selecciona Provincia', 'class' => 'AppBundle\Entity\State',
+
+            ->add('state', EntityType::class, array("label" => "Provincia",'required'=>false, 'placeholder' => 'Selecciona Provincia', 'class' => 'AppBundle\Entity\State',
                 'query_builder' => function (EntityRepository $er)
                 {
                     return $er->createQueryBuilder('u')->where('u.id = :id')->setParameter("id", 32);
 
                 }))
-            ->add('city', EntityType::class, array("label" => "Ciudad", 'placeholder' => 'Selecciona Ciudad', 'class' => 'AppBundle\Entity\City',
+            ->add('city', EntityType::class, array("label" => "Ciudad",'required'=>false, 'placeholder' => 'Selecciona Ciudad', 'class' => 'AppBundle\Entity\City',
                 'query_builder' => function (EntityRepository $er)
                 {
                     return $er->createQueryBuilder('u')->where('u.state = :state')->setParameter("state", 32)->orderBy('u.name');

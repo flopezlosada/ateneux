@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\AssessmentBoard;
+use AppBundle\Entity\Course;
+use AppBundle\Entity\Student;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,7 +33,7 @@ class AssessmentBoardController extends Controller
      * Creates a new assessmentBoard entity.
      *
      */
-    public function newAction($course_id,Request $request)
+    public function newAction($course_id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $course = $em->getRepository('AppBundle:Course')->find($course_id);
@@ -52,7 +54,7 @@ class AssessmentBoardController extends Controller
         return $this->render('assessmentboard/new.html.twig', array(
             'assessmentBoard' => $assessmentBoard,
             'form' => $form->createView(),
-            'course'=>$course
+            'course' => $course
         ));
     }
 
@@ -125,7 +127,15 @@ class AssessmentBoardController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('assessmentboard_delete', array('id' => $assessmentBoard->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    public function addDifficultiesAction(AssessmentBoard $assessmentBoard, Course $course, Student $student)
+    {
+         return $this->render('assessmentboard/add_difficulties.html.twig', array(
+            'assessmentBoard' => $assessmentBoard,
+            'course'=>$course,
+             'student'=>$student
+        ));
     }
 }

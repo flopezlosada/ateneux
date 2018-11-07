@@ -24,4 +24,7 @@
         <default key="_controller">AppBundle:AssessmentBoard:delete</default>
     </route>
 
+    <route id="assessmentboard_student_add_difficulties" path="/{student}/{course}/{assesmentBoard}/add_difficulties" methods="GET">
+        <default key="_controller">AppBundle:AssessmentBoard:addDifficulties</default>
+    </route>
 </routes>

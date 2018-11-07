@@ -56,22 +56,22 @@ class Student
     private $surname;
 
     /**
-     * @Assert\NotBlank
+     *
      * @var string address
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      */
     private $address;
 
 
     /**
-     * @Assert\NotBlank
+     *
      * @var smallint $state
      * @ORM\ManyToOne(targetEntity="State", inversedBy="students")
      */
     private $state;
 
     /**
-     * @Assert\NotBlank
+     *
      * @var smallint $city
      * @ORM\ManyToOne(targetEntity="City", inversedBy="students")
      */
@@ -83,7 +83,7 @@ class Student
      *     checkMX = true
      * )
      * @var string email
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
@@ -262,10 +262,10 @@ class Student
 
 
     /**
-     * @Assert\NotBlank
+     *
      * @Assert\Date()
      * @var string $birth_date
-     * @ORM\Column(name="birth_date", type="date")
+     * @ORM\Column(name="birth_date", type="date", nullable=true)
      */
     private $birth_date;
 

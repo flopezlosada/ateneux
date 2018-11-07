@@ -13,24 +13,25 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <div class="well">
-                        <h4>Acciones</h4>
-                        {% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
+                    {#   <div class="well">
+                           <h4>Acciones</h4>
+                           {% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
 
-                            <a href="{{ path('assessmentboardlearningdifficulties_new_group', {'assessment_board_id': assessmentBoard.id,'difficulty_type_id':difficulty_type.id}) }}">
-                                <button class="btn btn-outline btn-default border" type="button"> {{ difficulty_type }}
-                                </button>
-                            </a>
+                               <a href="{{ path('assessmentboardlearningdifficulties_new_group', {'assessment_board_id': assessmentBoard.id,'difficulty_type_id':difficulty_type.id}) }}">
+                                   <button class="btn btn-outline btn-default border" type="button"> {{ difficulty_type }}
+                                   </button>
+                               </a>
 
-                        {% endfor %}
-                    </div>
+                           {% endfor %}
+                       </div>#}
+                    <p><strong>Curso: </strong><a href="{{ path('course_show', {'id': assessmentBoard.course.id}) }}"> {{ assessmentBoard.course }}</a></p>
                     <p><strong>Evaluación: </strong>{{ assessmentBoard.assessmentType }}</p>
 
                     <p><strong>Fecha:</strong> {{ assessmentBoard.date|localizeddate('long','none','es') }}</p>
 
                     <p><strong>Valoración general del grupo: </strong>{{ assessmentBoard.information|raw }}</p>
 
-                    {% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
+                    {#{% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
                         {% if assessmentBoard.getDifficulties(difficulty_type)|length>0 %}
                             <p><strong>{{ difficulty_type }}</strong></p>
                             {% for difficult in assessmentBoard.getDifficulties(difficulty_type) %}
@@ -52,9 +53,13 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
+                    {% endfor %}#}
+                    <p>Evaluación de estudiantes:</p>
+                    <ul>
+                    {% for student in assessmentBoard.course.getStudents  %}
+                        <li><a href="{{ path('assessmentboard_student_add_difficulties', {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">{{ student }}</a> </li>
                     {% endfor %}
-
-                    </p>
+                    </ul>
                 </div>
             </div>
         </div>
