@@ -33,13 +33,13 @@ class StudentController extends Controller
 
     public function mediationFirstAction($student_id)
     {
-        $em=$this->getDoctrine();
-        $students=$em->getRepository("AppBundle:Student")->findAllActiveSorted();
-        $first_student=$em->getRepository("AppBundle:Student")->find($student_id);
+        $em = $this->getDoctrine();
+        $students = $em->getRepository("AppBundle:Student")->findAllActiveSorted();
+        $first_student = $em->getRepository("AppBundle:Student")->find($student_id);
 
         return $this->render('student/mediation_first.html.twig', array(
             'students' => $students,
-            'first_student'=>$first_student
+            'first_student' => $first_student
         ));
     }
 
@@ -58,7 +58,7 @@ class StudentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $student->setBirthDate(new \DateTime($student->getBirthDate())) ;
+            $student->setBirthDate(new \DateTime($student->getBirthDate()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($student);
             $em->flush();
@@ -101,15 +101,17 @@ class StudentController extends Controller
 
         //busca que haya información sobre el estudiante para la reunión
         $academic_informations = $em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
-        $assessment_board_learning_difficulties=null;
-        $learning_difficulties=null;
-        foreach ($student->getCourse()->getAssessmentsBoard() as $assessment_board)
-        {
+        $assessment_board_learning_difficulties = null;
+        $learning_difficulties = null;
+        if ($student->getCourse()) {
 
-            $learning_difficulties=$em->getRepository("AppBundle:Student")->getDifficulties($student->getCourse(),$student,$assessment_board);
-            $assessment_board_learning_difficulties[]=array($assessment_board,$learning_difficulties);
+
+            foreach ($student->getCourse()->getAssessmentsBoard() as $assessment_board) {
+
+                $learning_difficulties = $em->getRepository("AppBundle:Student")->getDifficulties($student->getCourse(), $student, $assessment_board);
+                $assessment_board_learning_difficulties[] = array($assessment_board, $learning_difficulties);
+            }
         }
-
 
 
         return $this->render('student/show.html.twig', array(
@@ -119,8 +121,8 @@ class StudentController extends Controller
             'student_warnings' => $student_warnings,
             'delete_form' => $deleteForm->createView(),
             'academic_informations' => $academic_informations,
-            'assessment_board_learning_difficulties'=>$assessment_board_learning_difficulties,
-            'learning_difficulties'=>$learning_difficulties,
+            'assessment_board_learning_difficulties' => $assessment_board_learning_difficulties,
+            'learning_difficulties' => $learning_difficulties,
         ));
     }
 
@@ -138,7 +140,7 @@ class StudentController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            $student->setBirthDate(new \DateTime($student->getBirthDate())) ;
+            $student->setBirthDate(new \DateTime($student->getBirthDate()));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('student_show', array('id' => $student->getId()));
@@ -240,14 +242,14 @@ class StudentController extends Controller
     /**
      * @param $student_id
      * @return Response
-     *  @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
      */
     public function courseAction($student_id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
-        $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,$student);//encuentra cursos activos
+        $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student);//encuentra cursos activos
 
         return $this->render('student/courses.html.twig', array(
             'student' => $student,

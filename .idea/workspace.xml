@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/StudentType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/StudentType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.php" afterPath="$PROJECT_DIR$/web/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -52,20 +46,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StudentController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="102" column="97" selection-start-line="102" selection-start-column="97" selection-end-line="102" selection-end-column="97" />
-              <folding />
+            <state vertical-scroll-proportion="0.35472974">
+              <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+              <folding>
+                <element signature="e#5024#5038#0#PHP" expanded="true" />
+                <element signature="e#5115#5139#0#PHP" expanded="true" />
+                <element signature="e#5457#5476#1#PHP" expanded="true" />
+                <element signature="e#5533#5562#0#PHP" expanded="true" />
+                <element signature="e#6115#6134#1#PHP" expanded="true" />
+                <element signature="e#6191#6218#0#PHP" expanded="true" />
+                <element signature="e#7513#7528#1#PHP" expanded="true" />
+                <element signature="e#7868#7884#0#PHP" expanded="true" />
+                <element signature="e#8266#8285#1#PHP" expanded="true" />
+                <element signature="e#8345#8363#1#PHP" expanded="true" />
+                <element signature="e#8459#8486#0#PHP" expanded="true" />
+                <element signature="e#8744#8763#1#PHP" expanded="true" />
+                <element signature="e#8822#8840#1#PHP" expanded="true" />
+                <element signature="e#9129#9142#0#PHP" expanded="true" />
+                <element signature="e#9269#9283#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Student.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Student.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="267" column="64" selection-start-line="267" selection-start-column="64" selection-end-line="267" selection-end-column="64" />
               <folding />
             </state>
@@ -170,7 +180,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/MediatorInterface.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/record_actions.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/teacher/show.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/mediation/new.html.twig" />
@@ -202,6 +211,7 @@
         <option value="$PROJECT_DIR$/app/Resources/views/teacher/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/StudentType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
       </list>
     </option>
   </component>
@@ -370,114 +380,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ateneux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -564,9 +474,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1030" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.270073" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.270073" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -704,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="75" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,7 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="98" selection-start-line="26" selection-start-column="98" selection-end-line="26" selection-end-column="98" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,14 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="97" selection-start-line="102" selection-start-column="97" selection-end-line="102" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/StudentType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -972,6 +871,30 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="267" column="64" selection-start-line="267" selection-start-column="64" selection-end-line="267" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35472974">
+          <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+          <folding>
+            <element signature="e#5024#5038#0#PHP" expanded="true" />
+            <element signature="e#5115#5139#0#PHP" expanded="true" />
+            <element signature="e#5457#5476#1#PHP" expanded="true" />
+            <element signature="e#5533#5562#0#PHP" expanded="true" />
+            <element signature="e#6115#6134#1#PHP" expanded="true" />
+            <element signature="e#6191#6218#0#PHP" expanded="true" />
+            <element signature="e#7513#7528#1#PHP" expanded="true" />
+            <element signature="e#7868#7884#0#PHP" expanded="true" />
+            <element signature="e#8266#8285#1#PHP" expanded="true" />
+            <element signature="e#8345#8363#1#PHP" expanded="true" />
+            <element signature="e#8459#8486#0#PHP" expanded="true" />
+            <element signature="e#8744#8763#1#PHP" expanded="true" />
+            <element signature="e#8822#8840#1#PHP" expanded="true" />
+            <element signature="e#9129#9142#0#PHP" expanded="true" />
+            <element signature="e#9269#9283#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
