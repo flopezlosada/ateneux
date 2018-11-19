@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -29,14 +26,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="add_difficulties.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add_difficulties.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="21" column="59" selection-start-line="20" selection-start-column="28" selection-end-line="21" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.35472974">
+              <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
               <folding>
-                <element signature="e#532#544#0#Twig" expanded="false" />
-                <marker date="1542659502471" expanded="true" signature="1269:1309" placeholder="/{id}/edit" />
+                <element signature="e#12#35#0#Twig" expanded="true" />
+                <element signature="e#1269#1309#0#Twig" expanded="true" />
+                <element signature="e#1717#1771#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,10 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6959459">
+            <state vertical-scroll-proportion="-25.75">
               <caret line="71" column="226" selection-start-line="71" selection-start-column="226" selection-end-line="71" selection-end-column="226" />
               <folding />
             </state>
@@ -207,10 +205,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficultiesRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
       </list>
     </option>
   </component>
@@ -1111,17 +1109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="21" column="59" selection-start-line="20" selection-start-column="28" selection-end-line="21" selection-end-column="59" />
-          <folding>
-            <element signature="e#532#544#0#Twig" expanded="false" />
-            <marker date="1542659502471" expanded="true" signature="1269:1309" placeholder="/{id}/edit" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-31.125">
@@ -1168,9 +1155,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6959459">
+        <state vertical-scroll-proportion="-25.75">
           <caret line="71" column="226" selection-start-line="71" selection-start-column="226" selection-end-line="71" selection-end-column="226" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35472974">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+          <folding>
+            <element signature="e#12#35#0#Twig" expanded="true" />
+            <element signature="e#1269#1309#0#Twig" expanded="true" />
+            <element signature="e#1717#1771#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

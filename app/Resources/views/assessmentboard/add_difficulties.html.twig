@@ -47,11 +47,11 @@
                                                id="difficulty_type[{{ difficulty_type.id }}]"></td>
                                     <td>{{ difficulty_type }}</td>
                                     <td>{{ difficulty_type.commonName }} <br>
-                                        {% if difficulty_type.id == 1 or difficulty_type.id == 2 or difficulty_type.id == 5 or difficulty_type.id == 3 %}
+                                        {% if difficulty_type.id == 1 or difficulty_type.id == 2 or difficulty_type.id == 5 or difficulty_type.id == 3 or difficulty_type.id == 11%}
                                             <textarea name="difficulties[{{ difficulty_type.id }}]"
                                                       id="difficulties[{{ difficulty_type.id }}]" cols="44" rows="2"
                                                       class="hidden"></textarea>
-                                        {% elseif difficulty_type.id != 3 %}
+                                        {% else %}
                                             <select name="difficulties[{{ difficulty_type.id }}]"
                                                     id="difficulties[{{ difficulty_type.id }}]" class="hidden">
                                                 {% if difficulty_type.id == 4 %}
