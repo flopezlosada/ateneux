@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -29,12 +32,11 @@
       <file leaf-file-name="add_difficulties.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.25">
-              <caret line="39" column="84" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="84" />
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="21" column="59" selection-start-line="20" selection-start-column="28" selection-end-line="21" selection-end-column="59" />
               <folding>
-                <element signature="e#12#35#0#Twig" expanded="true" />
-                <element signature="e#1011#1051#0#Twig" expanded="true" />
-                <element signature="e#1564#1618#0#Twig" expanded="true" />
+                <element signature="e#532#544#0#Twig" expanded="false" />
+                <marker date="1542659502471" expanded="true" signature="1269:1309" placeholder="/{id}/edit" />
               </folding>
             </state>
           </provider>
@@ -50,21 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assessment_board_learning_difficulties.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig">
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
-              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.875">
-              <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.6959459">
+              <caret line="71" column="226" selection-start-line="71" selection-start-column="226" selection-end-line="71" selection-end-column="226" />
               <folding />
             </state>
           </provider>
@@ -73,25 +65,28 @@
       <file leaf-file-name="AssessmentBoardController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.125">
-              <caret line="135" column="108" selection-start-line="135" selection-start-column="108" selection-end-line="135" selection-end-column="108" />
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="70" column="107" selection-start-line="70" selection-start-column="107" selection-end-line="70" selection-end-column="107" />
               <folding>
-                <element signature="e#4506#4533#1#PHP" expanded="true" />
-                <element signature="e#4749#4796#1#PHP" expanded="true" />
+                <element signature="e#2209#2236#1#PHP" expanded="true" />
+                <element signature="e#3416#3438#0#PHP" expanded="true" />
+                <element signature="e#3523#3555#0#PHP" expanded="true" />
+                <element signature="e#4225#4248#1#PHP" expanded="true" />
+                <element signature="e#4636#4660#0#PHP" expanded="true" />
+                <element signature="e#4996#5023#1#PHP" expanded="true" />
+                <element signature="e#5239#5286#1#PHP" expanded="true" />
+                <element signature="e#5392#5436#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssessmentBoardRepository.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php">
+      <file leaf-file-name="Student.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3716216">
-              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
-              <folding>
-                <marker date="1542658464549" expanded="true" signature="389:516" placeholder="select t fro..AppBundle..." />
-                <marker date="1542658464549" expanded="true" signature="949:1068" placeholder="select t fro..AppBundle..." />
-              </folding>
+            <state vertical-scroll-proportion="-24.5">
+              <caret line="1266" column="64" selection-start-line="1266" selection-start-column="20" selection-end-line="1266" selection-end-column="64" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,15 +202,15 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/mediation_needed.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/mediator.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/student/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboardlearningdifficulties.xml" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardLearningDifficultiesController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficultiesRepository.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
       </list>
     </option>
   </component>
@@ -1013,14 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5">
-          <caret line="306" column="38" selection-start-line="306" selection-start-column="38" selection-end-line="306" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoard.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1050,16 +1037,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9290541">
-          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
-          <folding>
-            <element signature="e#3664#3676#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1100,27 +1077,11 @@
         <state vertical-scroll-proportion="-1.2128378">
           <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
-            <element signature="e#6329#6356#1#PHP" expanded="true" />
-            <element signature="e#6425#6444#1#PHP" expanded="true" />
-            <element signature="e#6785#6836#1#PHP" expanded="true" />
-            <element signature="e#7324#7346#0#PHP" expanded="true" />
+            <element signature="e#6329#6356#1#PHP" expanded="false" />
+            <element signature="e#6425#6444#1#PHP" expanded="false" />
+            <element signature="e#6785#6836#1#PHP" expanded="false" />
+            <element signature="e#7324#7346#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.875">
-          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1134,6 +1095,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/student/assessment_board_learning_difficulties.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16891892">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficulties.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-27.0">
@@ -1144,24 +1113,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.25">
-          <caret line="39" column="84" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="84" />
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="21" column="59" selection-start-line="20" selection-start-column="28" selection-end-line="21" selection-end-column="59" />
           <folding>
-            <element signature="e#12#35#0#Twig" expanded="true" />
-            <element signature="e#1011#1051#0#Twig" expanded="true" />
-            <element signature="e#1564#1618#0#Twig" expanded="true" />
+            <element signature="e#532#544#0#Twig" expanded="false" />
+            <marker date="1542659502471" expanded="true" signature="1269:1309" placeholder="/{id}/edit" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.125">
-          <caret line="135" column="108" selection-start-line="135" selection-start-column="108" selection-end-line="135" selection-end-column="108" />
-          <folding>
-            <element signature="e#4506#4533#1#PHP" expanded="true" />
-            <element signature="e#4749#4796#1#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-31.125">
+          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,9 +1135,42 @@
         <state vertical-scroll-proportion="0.3716216">
           <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
           <folding>
-            <marker date="1542658464549" expanded="true" signature="389:516" placeholder="select t fro..AppBundle..." />
-            <marker date="1542658464549" expanded="true" signature="949:1068" placeholder="select t fro..AppBundle..." />
+            <marker date="1542658464549" expanded="true" signature="-1:-1" placeholder="select t fro..AppBundle..." />
+            <marker date="1542658464549" expanded="true" signature="-1:-1" placeholder="select t fro..AppBundle..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="70" column="107" selection-start-line="70" selection-start-column="107" selection-end-line="70" selection-end-column="107" />
+          <folding>
+            <element signature="e#2209#2236#1#PHP" expanded="true" />
+            <element signature="e#3416#3438#0#PHP" expanded="true" />
+            <element signature="e#3523#3555#0#PHP" expanded="true" />
+            <element signature="e#4225#4248#1#PHP" expanded="true" />
+            <element signature="e#4636#4660#0#PHP" expanded="true" />
+            <element signature="e#4996#5023#1#PHP" expanded="true" />
+            <element signature="e#5239#5286#1#PHP" expanded="true" />
+            <element signature="e#5392#5436#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Student.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.5">
+          <caret line="1266" column="64" selection-start-line="1266" selection-start-column="20" selection-end-line="1266" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6959459">
+          <caret line="71" column="226" selection-start-line="71" selection-start-column="226" selection-end-line="71" selection-end-column="226" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -24,12 +24,21 @@
 
                            {% endfor %}
                        </div>#}
-                    <p><strong>Curso: </strong><a href="{{ path('course_show', {'id': assessmentBoard.course.id}) }}"> {{ assessmentBoard.course }}</a></p>
+                    <p><strong>Curso: </strong><a
+                                href="{{ path('course_show', {'id': assessmentBoard.course.id}) }}"> {{ assessmentBoard.course }}</a>
+                    </p>
+
                     <p><strong>Evaluación: </strong>{{ assessmentBoard.assessmentType }}</p>
 
                     <p><strong>Fecha:</strong> {{ assessmentBoard.date|localizeddate('long','none','es') }}</p>
 
-                    <p><strong>Valoración general del grupo: </strong>{{ assessmentBoard.information|raw }}</p>
+                    <p><strong>Valoración general del grupo: </strong></p>
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            {{ assessmentBoard.information|raw }}
+                        </div>
+                    </div>
 
                     {#{% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
                         {% if assessmentBoard.getDifficulties(difficulty_type)|length>0 %}
@@ -56,13 +65,13 @@
                     {% endfor %}#}
                     <p>Evaluación de estudiantes:</p>
                     <ul>
-                    {% for student in assessmentBoard.course.getStudents  %}
-                        <li> {{ student }}
-                            <a href="{{ path('student_show', {'id': student.id}) }}">Ver ficha</a> |
-                            <a href="{{ path('assessmentboard_student_add_difficulties',
-                            {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a>
-                        </li>
-                    {% endfor %}
+                        {% for student in assessmentBoard.course.getStudents %}
+                            <li> {{ student }}
+                                <a href="{{ path('student_show', {'id': student.id}) }}">Ver ficha</a> |
+                                <a href="{{ path('assessmentboard_student_add_difficulties',
+                                {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a> ({{ student.getNotEvaluatedDifficultiesInAssessmentBoard }} items sin evaluar)
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

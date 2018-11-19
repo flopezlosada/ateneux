@@ -16,16 +16,20 @@
                                 href="{{ path('student_show', {'id': student.id}) }}"> {{ student }}</a></p>
                     {% if  student_difficulty_type_evaluated|length>0 %}
                         <p>Ya has evaluado los siguientes items:</p>
-                        <ul>
-                            {% for difficulty in student_difficulty_type_evaluated %}
-                                <li>{{ difficulty.getAssessmentsBoardLearningnDifficultiesType }} <a
-                                            href="{{ path('assessmentboardlearningdifficulties_edit', {'id': 'x'}) }}">Editar</a>
+
+                        {% for difficulty in student_difficulty_type_evaluated %}
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <strong>{{ difficulty.getAssessmentsBoardLearningnDifficultiesType }}</strong>
                                     <br>
                                     {{ difficulty.getLearningDifficulties }}
-                                </li>
+                                    <br>
+                                    <a href="{{ path('assessmentboardlearningdifficulties_edit', {'id': difficulty.id}) }}">Editar</a>
+                                </div>
+                            </div>
 
-                            {% endfor %}
-                        </ul>
+                        {% endfor %}
+
                     {% endif %}
 
                     <p>Marca las casillas correspondientes y rellena los campos que aparecen.</p>

@@ -273,6 +273,13 @@ class Student
     private $birth_date;
 
 
+    /**
+     * @var Me sirve para mostrar una propiedad en cada evaluación, la de items sin evaluar en una evaluación determinada. No se guarda, es sólo para la plantilla..
+     */
+    private $not_evaluated_difficulties_in_assessment_board;
+
+
+
     public function getAbsolutePath()
     {
         return null === $this->image ? null : $this->getUploadRootDir() . '/' . $this->image;
@@ -1253,4 +1260,21 @@ class Student
 
         return false;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNotEvaluatedDifficultiesInAssessmentBoard()
+    {
+        return $this->not_evaluated_difficulties_in_assessment_board;
+    }
+
+    /**
+     * @param mixed $not_evaluated_difficulties_in_assessment_board
+     */
+    public function setNotEvaluatedDifficultiesInAssessmentBoard($not_evaluated_difficulties_in_assessment_board)
+    {
+        $this->not_evaluated_difficulties_in_assessment_board = $not_evaluated_difficulties_in_assessment_board;
+    }
+
 }

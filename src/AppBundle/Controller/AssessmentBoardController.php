@@ -65,7 +65,11 @@ class AssessmentBoardController extends Controller
     public function showAction(AssessmentBoard $assessmentBoard)
     {
         $deleteForm = $this->createDeleteForm($assessmentBoard);
-
+        $em = $this->getDoctrine()->getManager();
+        foreach ($assessmentBoard->getCourse()->getStudents() as $student) {
+            $difficulty_types_not_evaluated = $em->getRepository("AppBundle:AssessmentBoard")->findNotEvaluatedDifficutyTypes($student, $assessmentBoard); //son los tipos de dificultades que no se han evaluado para esta estudiante y evaluacioón.
+            $student->setNotEvaluatedDifficultiesInAssessmentBoard(count($difficulty_types_not_evaluated));
+        }
         return $this->render('assessmentboard/show.html.twig', array(
             'assessmentBoard' => $assessmentBoard,
             'delete_form' => $deleteForm->createView(),
