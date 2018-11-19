@@ -24,6 +24,10 @@
         <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:create</default>
     </route>
 
+    <route id="assessmentboardlearningdifficulties_create_for_student" path="/create_for_student/{assessment_board_id}/{student_id}" methods="GET|POST">
+        <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:createForStudent</default>
+    </route>
+
     <route id="assessmentboardlearningdifficulties_edit" path="/{id}/edit" methods="GET|POST">
         <default key="_controller">AppBundle:AssessmentBoardLearningDifficulties:edit</default>
     </route>

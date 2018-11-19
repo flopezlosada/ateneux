@@ -221,6 +221,7 @@ class Student
      *
      * @var smallint $first_students
      * @ORM\OneToMany(targetEntity="Mediation", mappedBy="first_student")
+     * @ORM\OrderBy({"date"= "desc"})
      */
     private $first_students;
 
@@ -228,6 +229,7 @@ class Student
      *
      * @var smallint $second_students
      * @ORM\OneToMany(targetEntity="Mediation", mappedBy="second_student")
+     * @ORM\OrderBy({"date"= "desc"})
      */
     private $second_students;
 
@@ -245,6 +247,7 @@ class Student
 
     /**
      * @ORM\OneToMany(targetEntity="Mediation", mappedBy="student_mediator")
+     * @ORM\OrderBy({"date"= "desc"})
      */
     protected $mediations;
 
@@ -1235,5 +1238,19 @@ class Student
     public function getSecondStudents()
     {
         return $this->second_students;
+    }
+
+
+    /**
+     * en el caso de que haya necesitado una mediación con otrx estudiante
+     */
+    public  function hadMediationNeeded()
+    {
+        if (count($this->getFirstStudents()) or count($this->getSecondStudents()))
+        {
+            return true;
+        }
+
+        return false;
     }
 }

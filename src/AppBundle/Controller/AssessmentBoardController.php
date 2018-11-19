@@ -132,10 +132,17 @@ class AssessmentBoardController extends Controller
 
     public function addDifficultiesAction(AssessmentBoard $assessmentBoard, Course $course, Student $student)
     {
+        $em = $this->getDoctrine()->getManager();
+        $difficulty_types_not_evaluated=$em->getRepository("AppBundle:AssessmentBoard")->findNotEvaluatedDifficutyTypes($student,$assessmentBoard); //son los tipos de dificultades que no se han evaluado para esta estudiante y evaluacioón.
+
+        $student_difficulty_type_evaluated=$em->getRepository("AppBundle:AssessmentBoardLearningDifficulties")->findEvaluated($student,$assessmentBoard);//son lo que ya se ha evaluado
+
          return $this->render('assessmentboard/add_difficulties.html.twig', array(
             'assessmentBoard' => $assessmentBoard,
             'course'=>$course,
-             'student'=>$student
+             'student'=>$student,
+             'difficulty_types_not_evaluated'=>$difficulty_types_not_evaluated,
+             'student_difficulty_type_evaluated'=>$student_difficulty_type_evaluated
         ));
     }
 }

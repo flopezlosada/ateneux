@@ -10,4 +10,29 @@ namespace AppBundle\Entity;
  */
 class AssessmentBoardRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findNotEvaluatedDifficutyTypes($student, $assessmentBoard)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:AssessmentBoardLearningDifficulties t where t.student=:student and t.assessment_board=:assessment_board";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("student", $student);
+        $query->setParameter("assessment_board", $assessmentBoard);
+
+        $result=$query->getResult();
+        $difficulties_evaluated=array();
+        foreach ($result as $abld)
+        {
+            $difficulties_evaluated[]=$abld->getAssessmentsBoardLearningnDifficultiesType()->getId();
+        }
+
+
+        $dql_no_evaluated="select t from AppBundle:AssessmentBoardLearningDifficultiesType t where t not in (:ids) and t in (:ids_assessmentBoard) ";
+        $query_no_evaluated = $em->createQuery($dql_no_evaluated);
+        $query_no_evaluated->setParameter("ids", $difficulties_evaluated);
+        $query_no_evaluated->setParameter("ids_assessmentBoard", $assessmentBoard->getAssessmentType()->getAssessmentsBoardLearningnDifficultiesType());
+
+        return $query_no_evaluated->getResult();
+
+    }
 }

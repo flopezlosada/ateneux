@@ -1,4 +1,4 @@
-{% extends '::layout_show.html.twig' %}
+{% extends '::layout_crud.html.twig' %}
 {% block more_css %}
     <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
 {% endblock %}
@@ -12,26 +12,88 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                <p>Indica la evaluación de <a href="{{ path('student_show', {'id': student.id}) }}"> {{ student }}</a></p>
-                    <table id="table_list" class="table table-striped table-bordered table-hover dataTable no-footer"
-                           aria-describedby="dataTables-example_info">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            {% if difficulty_type.id != 3 %}
-                                <th width="60%">{{ difficulty_type.commonName }}</th>{% endif %}
-                        </tr>
-                        </thead>
-                    {% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
+                    <p>Indica la evaluación de <a
+                                href="{{ path('student_show', {'id': student.id}) }}"> {{ student }}</a></p>
+                    {% if  student_difficulty_type_evaluated|length>0 %}
+                        <p>Ya has evaluado los siguientes items:</p>
+                        <ul>
+                            {% for difficulty in student_difficulty_type_evaluated %}
+                                <li>{{ difficulty.getAssessmentsBoardLearningnDifficultiesType }} <a
+                                            href="{{ path('assessmentboardlearningdifficulties_edit', {'id': 'x'}) }}">Editar</a>
+                                    <br>
+                                    {{ difficulty.getLearningDifficulties }}
+                                </li>
 
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
-                        <a href="{{ path('assessmentboardlearningdifficulties_new_group', {'assessment_board_id': assessmentBoard.id,'difficulty_type_id':difficulty_type.id}) }}">
-                            <button class="btn btn-outline btn-default border" type="button"> {{ difficulty_type }}
-                            </button>
-                        </a>
+                    <p>Marca las casillas correspondientes y rellena los campos que aparecen.</p>
 
-                    {% endfor %}
+                    <form method="post" name="appbundle_learning_difficulties"
+                          action="{{ path('assessmentboardlearningdifficulties_create_for_student', {'assessment_board_id': assessmentBoard.id,'student_id':student.id}) }}">
+
+                        <table id="table_list"
+                               class="table table-striped table-bordered table-hover dataTable no-footer"
+                               aria-describedby="dataTables-example_info">
+
+                            {% for difficulty_type in difficulty_types_not_evaluated %}
+                                <tr>
+                                    <td><input type="checkbox" name="difficulty_type[{{ difficulty_type.id }}]"
+                                               id="difficulty_type[{{ difficulty_type.id }}]"></td>
+                                    <td>{{ difficulty_type }}</td>
+                                    <td>{{ difficulty_type.commonName }} <br>
+                                        {% if difficulty_type.id == 1 or difficulty_type.id == 2 or difficulty_type.id == 5 or difficulty_type.id == 3 %}
+                                            <textarea name="difficulties[{{ difficulty_type.id }}]"
+                                                      id="difficulties[{{ difficulty_type.id }}]" cols="44" rows="2"
+                                                      class="hidden"></textarea>
+                                        {% elseif difficulty_type.id != 3 %}
+                                            <select name="difficulties[{{ difficulty_type.id }}]"
+                                                    id="difficulties[{{ difficulty_type.id }}]" class="hidden">
+                                                {% if difficulty_type.id == 4 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Compensatoria">Compensatoria</option>
+                                                    <option value="Apoyo en casa">Apoyo en casa</option>
+                                                    <option value="ARA">ARA</option>
+                                                {% elseif difficulty_type.id == 6 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Conflictos">Conflictos</option>
+                                                    <option value="Separaciones">Separaciones</option>
+                                                    <option value="Dificultades">Dificultades</option>
+                                                    <option value="Faltas de asistencia reiteradas">Faltas de asistencia
+                                                        reiteradas
+                                                    </option>
+                                                    <option value="No incorporados">No incorporados</option>
+                                                {% elseif difficulty_type.id == 7 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Informe psicopedagógico">Informe psicopedagógico
+                                                    </option>
+                                                    <option value="Dictámen">Dictámen</option>
+                                                    <option value="Otros">Otros</option>
+                                                {% elseif difficulty_type.id == 8 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Menor y familia">Menor y familia</option>
+                                                    <option value="Integra">Integra</option>
+                                                    <option value="Otros">Otros</option>
+                                                {% elseif difficulty_type.id == 9 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="PMAR">PMAR</option>
+                                                    <option value="FPB">FPB</option>
+                                                {% elseif difficulty_type.id == 10 %}
+                                                    <option value="">Por favor, selecciona de la lista</option>
+                                                    <option value="Repetición">Repetición</option>
+                                                    <option value="PIL">PIL</option>
+                                                {% endif %}
+                                            </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
                         </table>
+                        <input type="submit" value="Aceptar">
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -39,7 +101,33 @@
     </div>
 {% endblock %}
 
-    {% block title_wrapper %}
+{% block specific_js %}
+    <script>
 
-    {% endblock %}
+        {% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
 
+        $("#difficulty_type\\[{{ difficulty_type.id }}\\]").change(function () {
+            if ($(this).is(":checked")) {
+
+                $("#difficulties\\[{{ difficulty_type.id }}\\]").removeClass("hidden");
+                $("#difficulties\\[{{ difficulty_type.id }}\\]").show("slow");
+            }
+            else {
+                $("#difficulties\\[{{ difficulty_type.id }}\\]").hide("slow");
+                $("#difficulties\\[{{ difficulty_type.id }}\\]").val("");
+
+
+            }
+        });
+        if ($("#difficulty_type\\[{{ difficulty_type.id }}\\]").is(":checked")) {
+            $("#difficulties\\[{{ difficulty_type.id }}\\]").removeClass("hidden");
+            $("#difficulties\\[{{ difficulty_type.id }}\\]").show("slow");
+        }
+        else {
+            $("#difficulties\\[{{ difficulty_type.id }}\\]").hide("slow");
+            $("#difficulties\\[{{ difficulty_type.id }}\\]").val("");
+        }
+        {% endfor %}
+
+    </script>
+{% endblock %}

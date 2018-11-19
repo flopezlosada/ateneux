@@ -1,0 +1,9 @@
+<div class="tab-pane fade"
+     id="mediator">
+    <h4>Mediaciones en las que ha participado como mediadora/or</h4>
+    {% for mediation in student.getMediations %}
+        <p><a href="{{ path('mediation_show', {'id': mediation.id}) }}">Mediación de {{ mediation.getFirstStudent }} con {{ mediation.getSecondStudent }}</a> ({{ mediation.getDate|localizeddate('long','none','es') }})
+        </p>
+    {% endfor %}
+
+</div>

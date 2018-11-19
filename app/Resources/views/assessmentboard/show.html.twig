@@ -57,7 +57,11 @@
                     <p>Evaluación de estudiantes:</p>
                     <ul>
                     {% for student in assessmentBoard.course.getStudents  %}
-                        <li><a href="{{ path('assessmentboard_student_add_difficulties', {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">{{ student }}</a> </li>
+                        <li> {{ student }}
+                            <a href="{{ path('student_show', {'id': student.id}) }}">Ver ficha</a> |
+                            <a href="{{ path('assessmentboard_student_add_difficulties',
+                            {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a>
+                        </li>
                     {% endfor %}
                     </ul>
                 </div>

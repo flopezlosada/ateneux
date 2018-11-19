@@ -84,12 +84,20 @@
                             </li>
                         {% endif %}
                         {% if student_warnings|length>0 %}
-                            <li class=""><a href="#warnings" data-toggle="tab" aria-expanded="false">Datos<br>de convivencia</a>
+                            <li class=""><a href="#warnings" data-toggle="tab" aria-expanded="false">Datos de<br>convivencia</a>
                             </li>
                         {% endif %}
 
                         {% if assessment_board_learning_difficulties|length>0 %}
-                            <li class=""><a href="#assessmentboard" data-toggle="tab" aria-expanded="false">Juntas<br>de evaluación</a>
+                            <li class=""><a href="#assessmentboard" data-toggle="tab" aria-expanded="false">Juntas de<br>evaluación</a>
+                            </li>
+                        {% endif %}
+                        {% if student.hadMediationNeeded %}
+                            <li class=""><a href="#mediation_needed" data-toggle="tab" aria-expanded="false">Mediaciones<br>necesarias</a>
+                            </li>
+                        {% endif %}
+                        {% if student.getIsMediator %}
+                            <li class=""><a href="#mediator" data-toggle="tab" aria-expanded="false">Estudiante<br>mediadora/or</a>
                             </li>
                         {% endif %}
 
@@ -164,6 +172,12 @@
                         {% endif %}
                         {% if assessment_board_learning_difficulties|length>0 %}
                             {% include ':student:assessment_board_learning_difficulties.html.twig' %}
+                        {% endif %}
+                        {% if student.hadMediationNeeded %}
+                            {% include ':student:mediation_needed.html.twig' %}
+                        {% endif %}
+                        {% if student.getIsMediator %}
+                            {% include ':student:mediator.html.twig' %}
                         {% endif %}
                     </div>
                 </div>

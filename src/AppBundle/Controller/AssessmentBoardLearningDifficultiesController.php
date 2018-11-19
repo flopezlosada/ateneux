@@ -73,32 +73,6 @@ class AssessmentBoardLearningDifficultiesController extends Controller
     }
 
 
-    public function createAction(Request $request, $assessment_board_id, $difficulty_type_id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $assessmentBoard = $em->getRepository("AppBundle:AssessmentBoard")->find($assessment_board_id);
-        $difficulty_type = $em->getRepository("AppBundle:AssessmentBoardLearningDifficultiesType")->find($difficulty_type_id);
-
-        $students = $request->get('student');
-        $students_difficulties = $request->get('difficulties');
-
-        foreach ($students as $student_key => $student_value) {
-            $difficult = new AssessmentBoardLearningDifficulties();
-            $student = $em->getRepository("AppBundle:Student")->find($student_key);
-            $difficult->setStudent($student);
-            $difficult->setAssessmentBoard($assessmentBoard);
-            $difficult->setAssessmentsBoardLearningnDifficultiesType($difficulty_type);
-            $difficult->setCourse($assessmentBoard->getCourse());
-            $difficult->setLearningDifficulties($students_difficulties[$student_key]);
-            $em->persist($difficult);
-        }
-
-        $em->flush();
-
-        return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoard->getId()));
-    }
-
     /**
      * Finds and displays a assessmentBoardLearningDifficulties entity.
      *
@@ -106,6 +80,7 @@ class AssessmentBoardLearningDifficultiesController extends Controller
     public function showAction(AssessmentBoardLearningDifficulties $assessmentBoardLearningDifficulties)
     {
         $deleteForm = $this->createDeleteForm($assessmentBoardLearningDifficulties);
+
 
         return $this->render('assessmentboardlearningdifficulties/show.html.twig', array(
             'assessmentBoardLearningDifficulties' => $assessmentBoardLearningDifficulties,
@@ -177,5 +152,56 @@ class AssessmentBoardLearningDifficultiesController extends Controller
             ->setMethod('DELETE')
             ->getForm();
     }
+
+    public function createForStudentAction(Request $request, $assessment_board_id, $student_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $assessmentBoard = $em->getRepository("AppBundle:AssessmentBoard")->find($assessment_board_id);
+        $student = $em->getRepository("AppBundle:Student")->find($student_id);
+        $difficulties = $request->get('difficulties');
+        $difficulty_types = $request->get("difficulty_type");
+
+        foreach ($difficulty_types as $difficulty_type_key => $difficulty_value) {
+            $difficult = new AssessmentBoardLearningDifficulties();
+            $difficulty_type = $em->getRepository("AppBundle:AssessmentBoardLearningDifficultiesType")->find($difficulty_type_key);
+            $difficult->setStudent($student);
+            $difficult->setAssessmentBoard($assessmentBoard);
+            $difficult->setAssessmentsBoardLearningnDifficultiesType($difficulty_type);
+            $difficult->setCourse($assessmentBoard->getCourse());
+            $difficult->setLearningDifficulties($difficulties[$difficulty_type_key]);
+            $em->persist($difficult);
+        }
+        $em->flush();
+
+        return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoard->getId()));
+    }
+
+    public function createAction(Request $request, $assessment_board_id, $difficulty_type_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $assessmentBoard = $em->getRepository("AppBundle:AssessmentBoard")->find($assessment_board_id);
+        $difficulty_type = $em->getRepository("AppBundle:AssessmentBoardLearningDifficultiesType")->find($difficulty_type_id);
+
+        $students = $request->get('student');
+        $students_difficulties = $request->get('difficulties');
+
+        foreach ($students as $student_key => $student_value) {
+            $difficult = new AssessmentBoardLearningDifficulties();
+            $student = $em->getRepository("AppBundle:Student")->find($student_key);
+            $difficult->setStudent($student);
+            $difficult->setAssessmentBoard($assessmentBoard);
+            $difficult->setAssessmentsBoardLearningnDifficultiesType($difficulty_type);
+            $difficult->setCourse($assessmentBoard->getCourse());
+            $difficult->setLearningDifficulties($students_difficulties[$student_key]);
+            $em->persist($difficult);
+        }
+
+        $em->flush();
+
+        return $this->redirectToRoute('assessmentboard_show', array('id' => $assessmentBoard->getId()));
+    }
+
 
 }

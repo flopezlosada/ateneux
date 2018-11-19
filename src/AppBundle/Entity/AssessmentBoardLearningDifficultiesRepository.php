@@ -10,4 +10,15 @@ namespace AppBundle\Entity;
  */
 class AssessmentBoardLearningDifficultiesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findEvaluated($student, $assessmentBoard)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:AssessmentBoardLearningDifficulties t where t.student=:student and t.assessment_board=:assessment_board";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("student", $student);
+        $query->setParameter("assessment_board", $assessmentBoard);
+
+        return $query->getResult();
+    }
 }
