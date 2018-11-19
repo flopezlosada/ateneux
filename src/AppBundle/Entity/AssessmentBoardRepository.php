@@ -20,10 +20,11 @@ class AssessmentBoardRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter("assessment_board", $assessmentBoard);
 
         $result=$query->getResult();
-        $difficulties_evaluated=array();
+        $difficulties_evaluated=array(158);
         foreach ($result as $abld)
         {
             $difficulties_evaluated[]=$abld->getAssessmentsBoardLearningnDifficultiesType()->getId();
+
         }
 
 
