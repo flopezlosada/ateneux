@@ -25,7 +25,6 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('dashboard'));
     }
 
-
     /**
      * @Route("/gestion/dashboard", name="dashboard")
      * @Template()
@@ -114,4 +113,14 @@ class DefaultController extends Controller
         $em->flush();
     }*/
 
+    public function mediationAction()
+    {
+        return $this->render(':statistics:mediation.html.twig', array(
+
+        ));
+    }
+
+    public function warningAction()
+    {
+    }
 }

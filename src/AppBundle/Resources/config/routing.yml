@@ -49,3 +49,7 @@ app_assessmentboardlearningdifficulties:
 app_mediation:
         resource: "@AppBundle/Resources/config/routing/mediation.xml"
         prefix:   /mediation
+
+app_statistics:
+        resource: "@AppBundle/Resources/config/routing/statistics.xml"
+        prefix:   /statistics

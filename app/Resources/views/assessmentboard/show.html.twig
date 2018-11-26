@@ -11,7 +11,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
 
                     {#   <div class="well">
                            <h4>Acciones</h4>
@@ -39,40 +39,55 @@
                             {{ assessmentBoard.information|raw }}
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <h4>Listado de estudiantes para evaluar:</h4>
+                            <ul>
+                                {% for student in assessmentBoard.course.getStudents %}
+                                    <li> {{ student }}
+                                        <a href="{{ path('student_show', {'id': student.id}) }}">Ficha</a> |
+                                        <a href="{{ path('assessmentboard_student_add_difficulties',
+                                        {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a>
+                                        ({{ student.getNotEvaluatedDifficultiesInAssessmentBoard }} items sin evaluar)
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                    {#{% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
-                        {% if assessmentBoard.getDifficulties(difficulty_type)|length>0 %}
-                            <p><strong>{{ difficulty_type }}</strong></p>
-                            {% for difficult in assessmentBoard.getDifficulties(difficulty_type) %}
-                                <div class="border"><p><a
-                                                href="{{ path('student_show', {'id': difficult.student.id}) }}"> {{ difficult.student }}</a><br>
-                                        {{ difficult.learningDifficulties }}
-                                    </p>
-                                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
-                                        {% if difficulty_type.id == 1 or difficulty_type.id == 2 or difficulty_type.id == 5 %}
-                                            <p>
-                                                <a href="{{ path('assessmentboardlearningdifficulties_edit', {'id': difficult.id}) }}">Editar</a>
+                <div class="col-lg-12">
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><h4>Resultado de la evaluación</h4></div>
+                        <div class="panel-body">
+                            {% for difficulty_type in assessmentBoard.assessmentType.getAssessmentsBoardLearningnDifficultiesType %}
+                                {% if assessmentBoard.getDifficulties(difficulty_type)|length>0 %}
+                                    <p><strong>{{ difficulty_type }}</strong></p>
+                                    {% for difficult in assessmentBoard.getDifficulties(difficulty_type) %}
+                                        <div class="border"><p><a
+                                                        href="{{ path('student_show', {'id': difficult.student.id}) }}"> {{ difficult.student }}</a><br>
+                                                {{ difficult.learningDifficulties }}
                                             </p>
-                                        {% else %}
-                                            <p>
-                                                <a href="{{ path('assessmentboardlearningdifficulties_fast_delete', {'id':difficult.id }) }}"
-                                                   onclick="return confirm('¿Estás segura/o?')">Eliminar</a></p>
-                                        {% endif %}
-                                    {% endif %}
-                                </div>
+                                            {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
+                                                {% if difficulty_type.id == 1 or difficulty_type.id == 2 or difficulty_type.id == 5 %}
+                                                    <p>
+                                                        <a href="{{ path('assessmentboardlearningdifficulties_edit', {'id': difficult.id}) }}">Editar</a>
+                                                    </p>
+                                                {% else %}
+                                                    <p>
+                                                        <a href="{{ path('assessmentboardlearningdifficulties_fast_delete', {'id':difficult.id }) }}"
+                                                           onclick="return confirm('¿Estás segura/o?')">Eliminar</a></p>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
                             {% endfor %}
-                        {% endif %}
-                    {% endfor %}#}
-                    <p>Evaluación de estudiantes:</p>
-                    <ul>
-                        {% for student in assessmentBoard.course.getStudents %}
-                            <li> {{ student }}
-                                <a href="{{ path('student_show', {'id': student.id}) }}">Ver ficha</a> |
-                                <a href="{{ path('assessmentboard_student_add_difficulties',
-                                {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a> ({{ student.getNotEvaluatedDifficultiesInAssessmentBoard }} items sin evaluar)
-                            </li>
-                        {% endfor %}
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,13 +13,13 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="{{ path('dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Panel de control</a>
+                <a href="{{ path('dashboard') }}"><i class="fa fa-school fa-fw"></i> Panel de control</a>
             </li>
             {#<li>
                 <a href="{{ path('calendar') }}"><i class="fa fa-calendar fa-fw"></i> Calendario</a>
             </li>#}
             <li>
-                <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Cursos<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-atom fa-fw"></i> Cursos<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ path('course_index') }}">Listado de cursos {{ real_course.getRealCourse }}</a>
@@ -43,7 +43,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Estudiantes<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-user-graduate  fa-fw"></i> Estudiantes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ path('student_index') }}">Listado de estudiantes {{ real_course.getRealCourse }}</a>
@@ -56,7 +56,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Tutoras/es<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-chalkboard-teacher   fa-fw"></i> Tutoras/es<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ path('teacher_index') }}">Listado de tutoras/es {{ real_course.getRealCourse }}</a>
@@ -66,6 +66,17 @@
                             <a href="{{ path('teacher_new') }}">Añadir tutora/or</a>
                         </li>
                     {% endif %}
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-chart-line fa-fw"></i> Estadísticas<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ path('statistics_warning') }}"><i class="fa fa-chart-bar fa-fw"></i>Amonestaciones</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('statistics_mediation') }}"><i class="fa fa-chart-pie fa-fw"></i>Mediaciones</a>
+                    </li>
                 </ul>
             </li>
         </ul>
