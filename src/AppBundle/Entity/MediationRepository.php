@@ -85,4 +85,17 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
+    public function findAllMediationsByCourse()
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(m) as total  from AppBundle:Mediation m
+              where (m.course_first_student in (:courses) or  m.course_second_student in (:courses))";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("courses", $this->getActiveCourseIds());
+
+
+        return $query->getSingleScalarResult();
+    }
+
 }

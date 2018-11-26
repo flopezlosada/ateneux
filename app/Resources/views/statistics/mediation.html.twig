@@ -25,15 +25,15 @@
                         </thead>
 
                         <tbody>
-                        {% set total=0 %}
+
                         {% for mediations in course_year_mediations %}
                             <tr>
                                 <td>{{ mediations[1] }}</td>
                                 <td>{{ mediations[0] }}</td>
                             </tr>
-                            {% set total= total + mediations[0] %}
+
                         {% endfor %}
-                        <tr><td><strong>Total</strong></td><td>{{ total }}</td></tr>
+                        <tr><td><strong>Total</strong></td><td>{{ total_by_course }}</td></tr>
                         </tbody>
                     </table>
                 </div>

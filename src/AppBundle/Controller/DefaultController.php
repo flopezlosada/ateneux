@@ -141,10 +141,13 @@ class DefaultController extends Controller
             $month_by_mediation[$month] = $em->getRepository("AppBundle:Mediation")->findByMonth($month);//mediaciones por mes, sin tener en cuenta el curso
         }
 
+        $total_by_course=$em->getRepository("AppBundle:Mediation")->findAllMediationsByCourse();
+
         return $this->render(':statistics:mediation.html.twig', array(
             'course_year_mediations' => $course_year_mediations,
             'course_month_mediations' => $course_month_mediations,
-            'month_by_mediation' => $month_by_mediation
+            'month_by_mediation' => $month_by_mediation,
+            'total_by_course'=>$total_by_course
         ));
     }
 
