@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/DoctrineExtensions" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/behat/transliterator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -63,6 +64,7 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/beberlei/DoctrineExtensions" />
           <root url="file://$MODULE_DIR$/vendor/behat/transliterator" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -71,13 +73,10 @@
           <root url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/doctrine-bundle" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/doctrine-cache-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/event-manager" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/orm" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/persistence" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/reflection" />
           <root url="file://$MODULE_DIR$/vendor/easycorp/easyadmin-bundle" />
           <root url="file://$MODULE_DIR$/vendor/fig/link-util" />
           <root url="file://$MODULE_DIR$/vendor/friendsofsymfony/user-bundle" />
@@ -118,6 +117,7 @@
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/beberlei/DoctrineExtensions" />
           <root url="file://$MODULE_DIR$/vendor/behat/transliterator" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -126,13 +126,10 @@
           <root url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/doctrine-bundle" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/doctrine-cache-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/event-manager" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/orm" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/persistence" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/reflection" />
           <root url="file://$MODULE_DIR$/vendor/easycorp/easyadmin-bundle" />
           <root url="file://$MODULE_DIR$/vendor/fig/link-util" />
           <root url="file://$MODULE_DIR$/vendor/friendsofsymfony/user-bundle" />

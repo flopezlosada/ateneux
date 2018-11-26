@@ -90,6 +90,21 @@ class Course
 
     /**
      *
+     * @ORM\OneToMany(targetEntity="Mediation", mappedBy="course_first_student")
+
+     */
+    private $first_student_mediations;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Mediation", mappedBy="course_second_student")
+
+     */
+    private $second_student_mediations;
+
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="Warning", mappedBy="course")
      */
     private $warnings;
@@ -547,5 +562,77 @@ class Course
     public function getAssessmentsBoardLearningDifficulties()
     {
         return $this->assessments_board_learning_difficulties;
+    }
+
+    /**
+     * Add firstStudentMediation.
+     *
+     * @param \AppBundle\Entity\Mediation $firstStudentMediation
+     *
+     * @return Course
+     */
+    public function addFirstStudentMediation(\AppBundle\Entity\Mediation $firstStudentMediation)
+    {
+        $this->first_student_mediations[] = $firstStudentMediation;
+
+        return $this;
+    }
+
+    /**
+     * Remove firstStudentMediation.
+     *
+     * @param \AppBundle\Entity\Mediation $firstStudentMediation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFirstStudentMediation(\AppBundle\Entity\Mediation $firstStudentMediation)
+    {
+        return $this->first_student_mediations->removeElement($firstStudentMediation);
+    }
+
+    /**
+     * Get firstStudentMediations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFirstStudentMediations()
+    {
+        return $this->first_student_mediations;
+    }
+
+    /**
+     * Add secondStudentMediation.
+     *
+     * @param \AppBundle\Entity\Mediation $secondStudentMediation
+     *
+     * @return Course
+     */
+    public function addSecondStudentMediation(\AppBundle\Entity\Mediation $secondStudentMediation)
+    {
+        $this->second_student_mediations[] = $secondStudentMediation;
+
+        return $this;
+    }
+
+    /**
+     * Remove secondStudentMediation.
+     *
+     * @param \AppBundle\Entity\Mediation $secondStudentMediation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSecondStudentMediation(\AppBundle\Entity\Mediation $secondStudentMediation)
+    {
+        return $this->second_student_mediations->removeElement($secondStudentMediation);
+    }
+
+    /**
+     * Get secondStudentMediations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSecondStudentMediations()
+    {
+        return $this->second_student_mediations;
     }
 }

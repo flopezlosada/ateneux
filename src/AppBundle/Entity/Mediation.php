@@ -58,6 +58,24 @@ class Mediation
      */
     protected $first_student;
 
+
+    /**
+     * Unidad que está cursando, 1ºESO-A, 2ºESO-C, ....
+     * @var smallint $course_first_student
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="first_student_mediations")
+     * Curso actual
+     */
+    private $course_first_student;
+
+    /**
+     * Unidad que está cursando, 1ºESO-A, 2ºESO-C, ....
+     * @var smallint $course_second_student
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="second_student_mediations")
+     * Curso actual
+     */
+    private $course_second_student;
+
+
     /**
      * @var int accept_first_student
      * @ORM\Column(name="accept_first_student", type="boolean", length=1)
@@ -371,5 +389,53 @@ class Mediation
     public function getTeacherMediator()
     {
         return $this->teacher_mediator;
+    }
+
+    /**
+     * Set courseFirstStudent.
+     *
+     * @param \AppBundle\Entity\Course|null $courseFirstStudent
+     *
+     * @return Mediation
+     */
+    public function setCourseFirstStudent(\AppBundle\Entity\Course $courseFirstStudent = null)
+    {
+        $this->course_first_student = $courseFirstStudent;
+
+        return $this;
+    }
+
+    /**
+     * Get courseFirstStudent.
+     *
+     * @return \AppBundle\Entity\Course|null
+     */
+    public function getCourseFirstStudent()
+    {
+        return $this->course_first_student;
+    }
+
+    /**
+     * Set courseSecondStudent.
+     *
+     * @param \AppBundle\Entity\Course|null $courseSecondStudent
+     *
+     * @return Mediation
+     */
+    public function setCourseSecondStudent(\AppBundle\Entity\Course $courseSecondStudent = null)
+    {
+        $this->course_second_student = $courseSecondStudent;
+
+        return $this;
+    }
+
+    /**
+     * Get courseSecondStudent.
+     *
+     * @return \AppBundle\Entity\Course|null
+     */
+    public function getCourseSecondStudent()
+    {
+        return $this->course_second_student;
     }
 }

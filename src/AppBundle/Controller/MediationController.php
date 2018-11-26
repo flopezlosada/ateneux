@@ -44,6 +44,8 @@ class MediationController extends Controller
             $mediation->setDate(new \DateTime($mediation->getDate()));
             $mediation->setFirstStudent($first_student);
             $mediation->setSecondStudent($second_student);
+            $mediation->setCourseFirstStudent($mediation->getFirstStudent()->getCourse());
+            $mediation->setCourseSecondStudent($mediation->getSecondStudent()->getCourse());
             $em->persist($mediation);
             $em->flush();
 

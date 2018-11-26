@@ -10,4 +10,48 @@ namespace AppBundle\Entity;
  */
 class MediationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByCourseType($type)
+    {
+
+
+        $em = $this->getEntityManager();
+        $dql = "select count(m) from AppBundle:Mediation m where m.course_first_student in (:courses) or  m.course_second_student in (:courses)";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("courses", $this->getCourseTypesIds($type));
+
+        return $query->getSingleScalarResult();
+    }
+
+    private function getCourseTypesIds($type)
+    {
+        $em = $this->getEntityManager();
+
+        $dql_courses = "select c from AppBundle:Course c where c.course_status=:course_status and c.course_type=:type";
+        $query_courses = $em->createQuery($dql_courses);
+        $query_courses->setParameter("course_status", 1);
+        $query_courses->setParameter("type", $type);
+
+        $result_courses = $query_courses->getResult();
+        $int = array();
+        foreach ($result_courses as $course) {
+            $int[] = $course->getId();
+        }
+
+        return $int;
+    }
+
+    public function findByCourseTypeMonth($type,$month)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(m) from AppBundle:Mediation m
+              where (m.course_first_student in (:courses) or  m.course_second_student in (:courses)) and MONTH(m.date)=:month order by m.date asc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("courses", $this->getCourseTypesIds($type));
+        $query->setParameter("month", $month);
+
+        return $query->getSingleScalarResult();
+    }
+
 }
