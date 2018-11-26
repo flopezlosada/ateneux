@@ -25,12 +25,15 @@
                         </thead>
 
                         <tbody>
+                        {% set total=0 %}
                         {% for mediations in course_year_mediations %}
                             <tr>
                                 <td>{{ mediations[1] }}</td>
                                 <td>{{ mediations[0] }}</td>
                             </tr>
+                            {% set total= total + mediations[0] %}
                         {% endfor %}
+                        <tr><td><strong>Total</strong></td><td>{{ total }}</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -66,13 +69,21 @@
                         {% for array_mediation in course_month_mediations %}
                             <tr>
                                 <td>{{ array_mediation[1] }}</td>
+
                                 {% for mediation in array_mediation[0] %}
                                     <td>{{ mediation }}</td>
+
                                     {% endfor %}
 
 
                             </tr>
                         {% endfor %}
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            {% for key, month in month_by_mediation %}
+                               <td> {{ month }}</td>
+                            {% endfor %}
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -109,7 +120,7 @@
 
                 tooltip: {
                     headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> kg<br/>'
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> mediaciones<br/>'
                 },
 
                 legend: {

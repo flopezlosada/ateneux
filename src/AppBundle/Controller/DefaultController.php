@@ -131,14 +131,20 @@ class DefaultController extends Controller
             $course_year_mediations[] = array($em->getRepository("AppBundle:Mediation")->findByCourseType($type), $type->getTitle());
             foreach ($array_months as $month) {
                 $month_mediations[$month] = $em->getRepository("AppBundle:Mediation")->findByCourseTypeMonth($type, $month);
+
+
             }
-            $course_month_mediations[]=array($month_mediations,$type->getTitle());
+            $course_month_mediations[] = array($month_mediations, $type->getTitle());
         }
 
+        foreach ($array_months as $month) {
+            $month_by_mediation[$month] = $em->getRepository("AppBundle:Mediation")->findByMonth($month);//mediaciones por mes, sin tener en cuenta el curso
+        }
 
         return $this->render(':statistics:mediation.html.twig', array(
             'course_year_mediations' => $course_year_mediations,
-            'course_month_mediations' => $course_month_mediations
+            'course_month_mediations' => $course_month_mediations,
+            'month_by_mediation' => $month_by_mediation
         ));
     }
 

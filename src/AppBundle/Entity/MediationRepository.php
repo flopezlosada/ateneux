@@ -41,7 +41,25 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
         return $int;
     }
 
-    public function findByCourseTypeMonth($type,$month)
+    private function getActiveCourseIds()
+    {
+        $em = $this->getEntityManager();
+
+        $dql_courses = "select c from AppBundle:Course c where c.course_status=:course_status";
+        $query_courses = $em->createQuery($dql_courses);
+        $query_courses->setParameter("course_status", 1);
+
+        $result_courses = $query_courses->getResult();
+        $int = array();
+        foreach ($result_courses as $course) {
+            $int[] = $course->getId();
+        }
+
+        return $int;
+    }
+
+
+    public function findByCourseTypeMonth($type, $month)
     {
         $em = $this->getEntityManager();
         $dql = "select count(m) from AppBundle:Mediation m
@@ -49,6 +67,19 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
 
         $query = $em->createQuery($dql);
         $query->setParameter("courses", $this->getCourseTypesIds($type));
+        $query->setParameter("month", $month);
+
+        return $query->getSingleScalarResult();
+    }
+
+    public function findByMonth($month)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(m) as total  from AppBundle:Mediation m
+              where (m.course_first_student in (:courses) or  m.course_second_student in (:courses)) and MONTH(m.date)=:month order by m.date asc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("courses", $this->getActiveCourseIds());
         $query->setParameter("month", $month);
 
         return $query->getSingleScalarResult();
