@@ -108,14 +108,14 @@ class DefaultController extends Controller
             $em->persist($teacher);
             $em->flush();
         }*/
-        $em = $this->getDoctrine()->getManager();
+        /*$em = $this->getDoctrine()->getManager();
         $mediations = $em->getRepository("AppBundle:Mediation")->findAll();
         foreach ($mediations as $mediation) {
             $mediation->setCourseFirstStudent($mediation->getFirstStudent()->getCourse());
             $mediation->setCourseSecondStudent($mediation->getSecondStudent()->getCourse());
             $em->persist($mediation);
         }
-        $em->flush();
+        $em->flush();*/
     }
 
     public function mediationAction()
