@@ -49,7 +49,7 @@
                                     <li> {{ student }}
                                         <a href="{{ path('student_show', {'id': student.id}) }}">Ficha</a> |
                                         <a href="{{ path('assessmentboard_student_add_difficulties',
-                                        {'assesmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a>
+                                        {'assessmentBoard': assessmentBoard.id, 'course': assessmentBoard.course.id, 'student': student.id}) }}">Evaluar</a>
                                         ({{ student.getNotEvaluatedDifficultiesInAssessmentBoard }} items sin evaluar)
                                     </li>
                                 {% endfor %}

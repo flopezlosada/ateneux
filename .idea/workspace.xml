@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/MediationRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/MediationRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -28,15 +27,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mediation.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig">
+      <file leaf-file-name="add_difficulties.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4391892">
-              <caret line="35" column="81" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
+            <state vertical-scroll-proportion="-5.5">
+              <caret line="57" column="102" selection-start-line="57" selection-start-column="97" selection-end-line="57" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.230769">
+              <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
               <folding>
-                <element signature="e#12#36#0#Twig" expanded="true" />
-                <marker date="1543266714838" expanded="true" signature="3921:3935" placeholder="..." />
-                <marker date="1543266714838" expanded="true" signature="4011:4030" placeholder="..." />
+                <element signature="e#2428#2468#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,35 +52,33 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-30.125">
+            <state vertical-scroll-proportion="-28.25">
               <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssessmentBoardController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-24.5">
+              <caret line="138" column="49" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
               <folding>
-                <element signature="e#712#723#1#PHP" expanded="true" />
-                <element signature="e#1085#1099#0#PHP" expanded="true" />
-                <element signature="e#5888#5910#1#PHP" expanded="true" />
-                <element signature="e#6124#6145#1#PHP" expanded="true" />
-                <element signature="e#6304#6325#1#PHP" expanded="true" />
-                <element signature="e#6584#6605#1#PHP" expanded="true" />
-                <element signature="e#6735#6756#1#PHP" expanded="true" />
-                <element signature="e#6818#6851#0#PHP" expanded="true" />
+                <element signature="e#4996#5023#1#PHP" expanded="true" />
+                <element signature="e#5239#5286#1#PHP" expanded="true" />
+                <element signature="e#5392#5436#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MediationRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/MediationRepository.php">
+      <file leaf-file-name="assessmentboard.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-34.5">
-              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-              <folding>
-                <marker date="1543266701691" expanded="true" signature="344:471" placeholder="select count..AppBundle..." />
-                <marker date="1543266701691" expanded="true" signature="764:857" placeholder="select c fro..AppBundle..." />
-                <marker date="1543266701691" expanded="true" signature="1347:1416" placeholder="select c fro..AppBundle..." />
-                <marker date="1543266701691" expanded="true" signature="1860:2048" placeholder="select count..AppBundle..." />
-                <marker date="1543266701691" expanded="true" signature="2373:2571" placeholder="select count..." />
-                <marker date="1543266701691" expanded="true" signature="2900:3053" placeholder="select count..AppBundle..." />
-              </folding>
+            <state vertical-scroll-proportion="0.4276316">
+              <caret line="26" column="89" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,7 +172,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/academicinformation/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AcademicInformationController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/meeting/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml" />
         <option value="$PROJECT_DIR$/app/Resources/views/teacher/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/StudentType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" />
@@ -179,10 +183,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardLearningDifficultiesRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/css/style.css" />
-        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/dashboard.html.twig" />
@@ -198,6 +200,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/MediationRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml" />
       </list>
     </option>
   </component>
@@ -299,7 +304,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -523,7 +527,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ateneux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ateneux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,6 +692,32 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assessmentboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ateneux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ateneux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -675,6 +739,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -843,13 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="98" selection-start-line="26" selection-start-column="98" selection-end-line="26" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/teacher/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -977,31 +1035,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="107" selection-start-line="70" selection-start-column="107" selection-end-line="70" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.125">
-          <caret line="62" column="48" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1067,9 +1104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0">
           <caret line="8" column="77" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
-          <folding>
-            <element signature="e#12#30#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1101,7 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,10 +1149,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="35" selection-start-line="14" selection-start-column="7" selection-end-line="20" selection-end-column="35" />
-          <folding>
-            <marker date="1535647049366" expanded="true" signature="-1:-1" placeholder="select t fro..AppBundle..." />
-            <marker date="1535647049366" expanded="true" signature="-1:-1" placeholder="select t fro..AppBundle..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,29 +1157,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-          <folding>
-            <marker date="1542658464549" expanded="true" signature="-1:-1" placeholder="select t fro..AppBundle..." />
-            <marker date="1542658464549" expanded="true" signature="-1:-1" placeholder="select t fro..AppBundle..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1157,7 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.25">
           <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1165,56 +1189,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7400722">
           <caret line="52" column="83" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
-          <folding>
-            <element signature="e#102#148#0#PHP" expanded="true" />
-            <element signature="e#4595#4615#1#PHP" expanded="true" />
-            <element signature="e#5203#5223#1#PHP" expanded="true" />
-            <element signature="e#5387#5407#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/MediationRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-34.5">
+        <state vertical-scroll-proportion="0.0">
           <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
-            <marker date="1543266701691" expanded="true" signature="344:471" placeholder="select count..AppBundle..." />
-            <marker date="1543266701691" expanded="true" signature="764:857" placeholder="select c fro..AppBundle..." />
-            <marker date="1543266701691" expanded="true" signature="1347:1416" placeholder="select c fro..AppBundle..." />
-            <marker date="1543266701691" expanded="true" signature="1860:2048" placeholder="select count..AppBundle..." />
-            <marker date="1543266701691" expanded="true" signature="2373:2571" placeholder="select count..." />
-            <marker date="1543266701691" expanded="true" signature="2900:3053" placeholder="select count..AppBundle..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.125">
-          <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
-          <folding>
-            <element signature="e#712#723#1#PHP" expanded="true" />
-            <element signature="e#1085#1099#0#PHP" expanded="true" />
-            <element signature="e#5888#5910#1#PHP" expanded="true" />
-            <element signature="e#6124#6145#1#PHP" expanded="true" />
-            <element signature="e#6304#6325#1#PHP" expanded="true" />
-            <element signature="e#6584#6605#1#PHP" expanded="true" />
-            <element signature="e#6735#6756#1#PHP" expanded="true" />
-            <element signature="e#6818#6851#0#PHP" expanded="true" />
+            <marker date="1543266701691" expanded="true" signature="-1:-1" placeholder="select count..AppBundle..." />
+            <marker date="1543266701691" expanded="true" signature="-1:-1" placeholder="select c fro..AppBundle..." />
+            <marker date="1543266701691" expanded="true" signature="-1:-1" placeholder="select c fro..AppBundle..." />
+            <marker date="1543266701691" expanded="true" signature="-1:-1" placeholder="select count..AppBundle..." />
+            <marker date="1543266701691" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1543266701691" expanded="true" signature="-1:-1" placeholder="select count..AppBundle..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4391892">
+        <state vertical-scroll-proportion="0.0">
           <caret line="35" column="81" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
           <folding>
-            <element signature="e#12#36#0#Twig" expanded="true" />
-            <marker date="1543266714838" expanded="true" signature="3921:3935" placeholder="..." />
-            <marker date="1543266714838" expanded="true" signature="4011:4030" placeholder="..." />
+            <marker date="1543266714838" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1543266714838" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5">
+          <caret line="57" column="102" selection-start-line="57" selection-start-column="97" selection-end-line="57" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.25">
+          <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.230769">
+          <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+          <folding>
+            <element signature="e#2428#2468#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AssessmentBoardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.5">
+          <caret line="138" column="49" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
+          <folding>
+            <element signature="e#4996#5023#1#PHP" expanded="true" />
+            <element signature="e#5239#5286#1#PHP" expanded="true" />
+            <element signature="e#5392#5436#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/assessmentboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4276316">
+          <caret line="26" column="89" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
+          <folding />
         </state>
       </provider>
     </entry>
