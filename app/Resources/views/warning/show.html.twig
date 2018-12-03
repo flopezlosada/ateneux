@@ -63,7 +63,12 @@
             </div>
         </div>
         <div class="panel-footer">
-            <p><a href="{{ path('warning_edit', {'id': warning.id, 'student': warning.student.id}) }}">Editar Incidencia</a></p>
+            <p><a href="{{ path('warning_edit', {'id': warning.id, 'student': warning.student.id}) }}">Editar Incidencia</a>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="{{"Borrar"}}" onclick="return confirm('¿Estás segura/o de eliminar esta incidencia?')">
+                {{ form_end(delete_form) }}
+            </p>
+
         </div>
     </div>
 

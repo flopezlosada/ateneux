@@ -113,6 +113,7 @@ class WarningController extends Controller
     {
         $form = $this->createDeleteForm($warning);
         $form->handleRequest($request);
+        $student=$warning->getStudent();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -120,7 +121,7 @@ class WarningController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('warning_index');
+        return $this->redirectToRoute('student_show', array('id'=>$student->getId()));
     }
 
     /**

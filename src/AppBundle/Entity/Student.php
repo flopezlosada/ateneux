@@ -214,6 +214,7 @@ class Student
      *
      * @var smallint $warnings
      * @ORM\OneToMany(targetEntity="Warning", mappedBy="student")
+     * @ORM\OrderBy({"date"= "desc"})
      */
     private $warnings;
 

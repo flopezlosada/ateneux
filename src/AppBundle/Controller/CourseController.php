@@ -81,7 +81,13 @@ class CourseController extends Controller
      */
     public function editAction(Request $request, Course $course)
     {
+
         $deleteForm = $this->createDeleteForm($course);
+        $previous_mentor=$course->getMentorTeacher();
+        if ($previous_mentor)
+        {
+            $previous_mentor->setMentorCourse(null);
+        }
         $course->setStartDate($course->getStartDate()->format('Y-m-d')) ;
         $course->setENdDate($course->getEndDate()->format('Y-m-d')) ;
         $editForm = $this->createForm('AppBundle\Form\CourseType', $course);
@@ -90,6 +96,8 @@ class CourseController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $course->setStartDate(new \DateTime($course->getStartDate())) ;
             $course->setEndDate(new \DateTime($course->getEndDate())) ;
+            $course->getMentorTeacher()->setMentorCourse($course);
+            $this->getDoctrine()->getManager()->persist($course->getMentorTeacher());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('course_show', array('id' => $course->getId()));
@@ -104,7 +112,7 @@ class CourseController extends Controller
 
     /**
      * Deletes a course entity.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
      */
     public function deleteAction(Request $request, Course $course)
     {

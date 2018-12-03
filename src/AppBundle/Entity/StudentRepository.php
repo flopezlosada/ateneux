@@ -34,7 +34,7 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
     {
 
         $em = $this->getEntityManager();
-        $dql = "select t from AppBundle:Warning t where t.student=:student ";
+        $dql = "select t from AppBundle:Warning t where t.student=:student order by t.date desc";
 
         $query = $em->createQuery($dql);
         $query->setParameter("student", $student_id);

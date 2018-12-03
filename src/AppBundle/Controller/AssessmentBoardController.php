@@ -109,6 +109,8 @@ class AssessmentBoardController extends Controller
     {
         $form = $this->createDeleteForm($assessmentBoard);
         $form->handleRequest($request);
+        $course=$assessmentBoard->getCourse();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -116,7 +118,7 @@ class AssessmentBoardController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('assessmentboard_index');
+        return $this->redirectToRoute('course_show', array('id'=>$course->getId()));
     }
 
     /**

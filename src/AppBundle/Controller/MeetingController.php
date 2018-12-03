@@ -110,14 +110,14 @@ class MeetingController extends Controller
     {
         $form = $this->createDeleteForm($meeting);
         $form->handleRequest($request);
-
+        $student = $meeting->getStudentMeeting();
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($meeting);
             $em->flush();
         }
 
-        return $this->redirectToRoute('meeting_index');
+        return $this->redirectToRoute('student_show', array('id'=>$student->getId()));
     }
 
     /**
