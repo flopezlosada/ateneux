@@ -151,7 +151,18 @@ class DefaultController extends Controller
         ));
     }
 
-    public function warningAction()
+    public function warningAction($year=null)
     {
+        $em = $this->getDoctrine()->getManager();
+
+
+        $course_year_warnings = $em->getRepository("AppBundle:Warning")->findByTypeYear($year); //valores por año
+        $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
+
+
+
+        return $this->render(':statistics:warnings.html.twig', array(
+            'course_year_warnings'=>$course_year_warnings
+        ));
     }
 }

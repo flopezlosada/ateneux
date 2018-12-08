@@ -15,7 +15,8 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
 
 
         $em = $this->getEntityManager();
-        $dql = "select count(m) from AppBundle:Mediation m where m.course_first_student in (:courses) or  m.course_second_student in (:courses)";
+        $dql = "select count(m) from AppBundle:Mediation m where m.course_first_student in (:courses) 
+              or  m.course_second_student in (:courses)";
 
         $query = $em->createQuery($dql);
         $query->setParameter("courses", $this->getCourseTypesIds($type));
@@ -63,7 +64,8 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
     {
         $em = $this->getEntityManager();
         $dql = "select count(m) from AppBundle:Mediation m
-              where (m.course_first_student in (:courses) or  m.course_second_student in (:courses)) and MONTH(m.date)=:month order by m.date asc";
+              where (m.course_first_student in (:courses) or  m.course_second_student in (:courses)) 
+              and MONTH(m.date)=:month order by m.date asc";
 
         $query = $em->createQuery($dql);
         $query->setParameter("courses", $this->getCourseTypesIds($type));

@@ -7,7 +7,7 @@
     <route id="statistics_mediation" path="/mediation" methods="GET">
         <default key="_controller">AppBundle:Default:mediation</default>
     </route>
-    <route id="statistics_warning" path="/mediation" methods="GET">
+    <route id="statistics_warning" path="/warning" methods="GET">
         <default key="_controller">AppBundle:Default:warning</default>
     </route>
 

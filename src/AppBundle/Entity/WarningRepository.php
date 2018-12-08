@@ -10,4 +10,14 @@ namespace AppBundle\Entity;
  */
 class WarningRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findByTypeYear($year=null)
+    {
+        $em=$this->getEntityManager();
+        $dql="select count(w) as total, IDENTITY(w.warning_type) as wt from AppBundle:Warning w where w.date 
+          BETWEEN :start and :end group by wt";
+        $query = $em->createQuery($dql);
+
+        return $query->getResult();
+    }
 }
