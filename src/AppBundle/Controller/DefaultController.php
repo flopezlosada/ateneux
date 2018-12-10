@@ -116,6 +116,26 @@ class DefaultController extends Controller
             $em->persist($mediation);
         }
         $em->flush();*/
+
+
+    }
+    /**
+     * @Route("/change_password_teacher/{teacher_id}", name="change_password_teacher")
+     */
+    public function changePasswordTeacher($teacher_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $teacher=$em->getRepository("AppBundle:Teacher")->find($teacher_id);
+        $tokenGenerator = $this->container->get('fos_user.util.token_generator');
+        $userManager = $this->container->get('fos_user.user_manager');
+        $password = substr($tokenGenerator->generateToken(), 0, 8);
+        $teacher->getUser()->setPlainPassword($password);
+        $userManager->updateUser($teacher->getUser(), true);
+        $teacher->setPassw($password);
+        $em->persist($teacher);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('teacher_show', array('id'=>$teacher->getId())));
     }
 
     public function mediationAction()
