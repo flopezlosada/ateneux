@@ -16,32 +16,47 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @param null $year
      * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findByTypeYear($type,$year=null)
+    public function findByTypeYear($type, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
           BETWEEN :start and :end and w.warning_type=:type";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
         $query = $em->createQuery($dql);
-        $query->setParameter('type',$type);
+        $query->setParameter('type', $type);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
         return $query->getSingleScalarResult();
     }
 
-    public function findByCourseTypeMonth($type, $month,$year=null)
+    public function findByCourseTypeMonth($type, $month, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
                where w.date 
           BETWEEN :start and :end 
               and MONTH(w.date)=:month and w.warning_type=:type 
-              order by w.date asc";
+              ";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
+
+        $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
-        $query->setParameter('type',$type);
+        $query->setParameter('type', $type);
         $query->setParameter("month", $month);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
@@ -49,33 +64,46 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
-
-    public function findMajorOffenceByTypeYear($major_offence_type,$year=null)
+    public function findMajorOffenceByTypeYear($major_offence_type, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
           BETWEEN :start and :end and w.warning_type=:type and w.major_offence_type=:major_offence_type";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
         $query = $em->createQuery($dql);
-        $query->setParameter('type',2);
-        $query->setParameter('major_offence_type',$major_offence_type);
+        $query->setParameter('type', 2);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+        $query->setParameter('major_offence_type', $major_offence_type);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
         return $query->getSingleScalarResult();
     }
 
-    public function findMajorOffenceByCourseTypeMonth($major_offence_type, $month,$year=null)
+    public function findMajorOffenceByCourseTypeMonth($major_offence_type, $month, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
                where w.date 
           BETWEEN :start and :end 
               and MONTH(w.date)=:month and w.warning_type=:type and w.major_offence_type=:major_offence_type
-              order by w.date asc";
+              ";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
+
+        $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
-        $query->setParameter('type',2);
-        $query->setParameter('major_offence_type',$major_offence_type);
+        $query->setParameter('type', 2);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+        $query->setParameter('major_offence_type', $major_offence_type);
         $query->setParameter("month", $month);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
@@ -83,32 +111,47 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByTypeYear($penalty_type,$year=null)
+    public function findPenaltyByTypeYear($penalty_type, $year = null,$course=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
           BETWEEN :start and :end and w.warning_type=:type and w.penalty_type=:penalty_type";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
+
         $query = $em->createQuery($dql);
-        $query->setParameter('type',2);
-        $query->setParameter('penalty_type',$penalty_type);
+        $query->setParameter('type', 2);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+        $query->setParameter('penalty_type', $penalty_type);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByCourseTypeMonth($penalty_type, $month,$year=null)
+    public function findPenaltyByCourseTypeMonth($penalty_type, $month, $year = null,$course=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
                where w.date 
           BETWEEN :start and :end 
               and MONTH(w.date)=:month and w.warning_type=:type and w.penalty_type=:penalty_type
-              order by w.date asc";
+             ";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
+
+        $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
-        $query->setParameter('type',2);
-        $query->setParameter('penalty_type',$penalty_type);
+        $query->setParameter('type', 2);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+        $query->setParameter('penalty_type', $penalty_type);
         $query->setParameter("month", $month);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));

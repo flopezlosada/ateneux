@@ -1,4 +1,4 @@
-{% extends '::layout_show.html.twig' %}
+{% extends '::layout_graph.html.twig' %}
 {% block more_css %}
     <link rel="stylesheet" href="{{ asset('bundles/app/fancybox/jquery.fancybox.css') }}"/>
 {% endblock %}
@@ -56,6 +56,7 @@
                         </li>
                         <li class=""><a href="#assessmentboard" data-toggle="tab" aria-expanded="false">Juntas de
                                 evaluación</a></li>
+                        <li class=""><a href="#warning_statistics" data-toggle="tab" aria-expanded="false">Gráfico incidencias</a>  </li>
                     </ul>
 
                     <div class="tab-content">
@@ -171,6 +172,43 @@
                                 <p>No se han definido juntas de evaluación para este curso.</p>
                             {% endif %}
                         </div>
+                        <div class="tab-pane fade"
+                             id="warning_statistics">
+                            <div class="col-lg-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        Datos anuales
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div id="container" style="width:100%; height:400px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        Datos de amonestaciones por tipo
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div id="container2" style="width:100%; height:400px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        Datos de amonestaciones por tipo de sanción
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div id="container3" style="width:100%; height:400px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
 
                 </div>
@@ -195,4 +233,218 @@
             {% endif %}
         </ul>
     {% endif %}
+{% endblock %}
+{% block graph_js %}
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script>
+
+        $(function () {
+            var myChart = Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Resumen incidencias de comportamiento anuales'
+                },
+
+                subtitle: {
+                    text: 'Partes y faltas graves. IES La Cabrera'
+                },
+
+                yAxis: {
+                    title: {
+                        text: 'Número de Amonestaciones'
+                    }
+                },
+                xAxis: {
+                    type: 'category'
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> incidencias<br/>'
+                },
+
+                legend: {
+                    enabled: false
+                },
+
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Resumen anual',
+                    colorByPoint: true,
+                    data: [
+                        {% for warning in course_year_warnings %}
+                        {
+                            name: '{{ warning[1] }}',
+                            y: {{ warning[0] }},
+                            drilldown: '{{ warning[1] }}'
+                        },
+                        {% endfor %}
+                    ]
+                }],
+                drilldown: {
+                    series: [
+                        {% for array_warning in course_month_warnings %}
+                        {
+                            name: '{{ array_warning[1] }}',
+                            id: '{{ array_warning[1] }}',
+                            data: [{% for key,warning in  array_warning[0] %}
+                                ["{{ key|month_names }}", {{ warning }}],
+                                {% endfor %}]
+
+                        },
+                        {% endfor %}
+                    ]
+                }
+            });
+
+            var myChart = Highcharts.chart('container2', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Resumen anual de amonestaciones por tipo'
+                },
+
+                subtitle: {
+                    text: 'Clasificación de faltas graves'
+                },
+
+                yAxis: {
+                    title: {
+                        text: 'Número de Amonestaciones'
+                    }
+                },
+                xAxis: {
+                    type: 'category'
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> amonestaciones<br/>'
+                },
+
+                legend: {
+                    enabled: false
+                },
+
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Resumen anual',
+                    colorByPoint: true,
+                    data: [
+                        {% for warning in course_year_major_offence %}
+                        {
+                            name: '{{ warning[1] }}',
+                            y: {{ warning[0] }},
+                            drilldown: '{{ warning[1] }}'
+                        },
+                        {% endfor %}
+                    ]
+                }],
+                drilldown: {
+                    series: [
+                        {% for array_warning in course_month_major_offence %}
+                        {
+                            name: '{{ array_warning[1] }}',
+                            id: '{{ array_warning[1] }}',
+                            data: [{% for key,warning in  array_warning[0] %}
+                                ["{{ key|month_names }}", {{ warning }}],
+                                {% endfor %}]
+
+                        },
+                        {% endfor %}
+                    ]
+                }
+            });
+
+            var myChart = Highcharts.chart('container3', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Resumen anual de amonestaciones por tipo de sanción'
+                },
+
+                subtitle: {
+                    text: 'Clasificación de Sanciones'
+                },
+
+                yAxis: {
+                    title: {
+                        text: 'Número de Amonestaciones'
+                    }
+                },
+                xAxis: {
+                    type: 'category'
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> amonestaciones<br/>'
+                },
+
+                legend: {
+                    enabled: false
+                },
+
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Resumen anual',
+                    colorByPoint: true,
+                    data: [
+                        {% for warning in course_year_penalty %}
+                        {
+                            name: '{{ warning[1] }}',
+                            y: {{ warning[0] }},
+                            drilldown: '{{ warning[1] }}'
+                        },
+                        {% endfor %}
+                    ]
+                }],
+                drilldown: {
+                    series: [
+                        {% for array_warning in course_month_penalty %}
+                        {
+                            name: '{{ array_warning[1] }}',
+                            id: '{{ array_warning[1] }}',
+                            data: [{% for key,warning in  array_warning[0] %}
+                                ["{{ key|month_names }}", {{ warning }}],
+                                {% endfor %}]
+
+                        },
+                        {% endfor %}
+                    ]
+                }
+            });
+
+
+        })
+    </script>
+
 {% endblock %}
