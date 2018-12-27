@@ -38,17 +38,16 @@ class RealCourse
     public function getStartDateCourse($year = null)
     {
         if ($year) {
-            return date("01-09-" . ($year));
+            return date(($year)."-09-01");
         } else {
             $real_month = date('m');
             $real_year = date('Y');
 
             if ($real_month > 6) {
-                return date("01-09-" . $real_year);
+                return date($real_year."-09-01");
             }
 
-            return date("01-09-" . ($real_year - 1));
-
+            return date(($real_year-1)."-09-01");
         }
     }
 
@@ -56,17 +55,17 @@ class RealCourse
     {
 
         if ($year) {
-            return date("30-06-" . ($year+1));
+            return date(($year+1)."-06-30");
         }
         else {
             $real_month = date('m');
             $real_year = date('Y');
 
             if ($real_month > 8) {
-                return date("30-06-" . ($real_year + 1));
+                return date(($real_year+1)."-06-30");
             }
 
-            return date("30-06-" . $real_year);
+            return date(($real_year)."-06-30");
         }
     }
 }

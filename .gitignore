@@ -1,4 +1,4 @@
-./idea/*
+.idea/*
 /data/*
 /vendor/
 # Cache and logs (Symfony2)
@@ -42,3 +42,4 @@
 
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
+backup_ateneux/

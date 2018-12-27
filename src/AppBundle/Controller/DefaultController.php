@@ -119,13 +119,14 @@ class DefaultController extends Controller
 
 
     }
+
     /**
      * @Route("/change_password_teacher/{teacher_id}", name="change_password_teacher")
      */
     public function changePasswordTeacher($teacher_id)
     {
         $em = $this->getDoctrine()->getManager();
-        $teacher=$em->getRepository("AppBundle:Teacher")->find($teacher_id);
+        $teacher = $em->getRepository("AppBundle:Teacher")->find($teacher_id);
         $tokenGenerator = $this->container->get('fos_user.util.token_generator');
         $userManager = $this->container->get('fos_user.user_manager');
         $password = substr($tokenGenerator->generateToken(), 0, 8);
@@ -135,7 +136,7 @@ class DefaultController extends Controller
         $em->persist($teacher);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('teacher_show', array('id'=>$teacher->getId())));
+        return $this->redirect($this->generateUrl('teacher_show', array('id' => $teacher->getId())));
     }
 
     public function mediationAction()
@@ -161,28 +162,39 @@ class DefaultController extends Controller
             $month_by_mediation[$month] = $em->getRepository("AppBundle:Mediation")->findByMonth($month);//mediaciones por mes, sin tener en cuenta el curso
         }
 
-        $total_by_course=$em->getRepository("AppBundle:Mediation")->findAllMediationsByCourse();
+        $total_by_course = $em->getRepository("AppBundle:Mediation")->findAllMediationsByCourse();
 
         return $this->render(':statistics:mediation.html.twig', array(
             'course_year_mediations' => $course_year_mediations,
             'course_month_mediations' => $course_month_mediations,
             'month_by_mediation' => $month_by_mediation,
-            'total_by_course'=>$total_by_course
+            'total_by_course' => $total_by_course
         ));
     }
 
-    public function warningAction($year=null)
+    public function warningAction($year = null)
     {
         $em = $this->getDoctrine()->getManager();
-
-
-        $course_year_warnings = $em->getRepository("AppBundle:Warning")->findByTypeYear($year); //valores por año
+        $course_year_warnings = array(); //valores por año
+        $course_month_warnings = array(); // valores por mes
+        $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
         $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
+        foreach($warning_type as $type)
+        {
+            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type,$year),$type->getTitle()); //valores por año
+            foreach ($array_months as $month) {
+                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month);
+            }
+            $course_month_warnings[] = array($month_warnings, $type->getTitle());
+        }
+
+
 
 
 
         return $this->render(':statistics:warnings.html.twig', array(
-            'course_year_warnings'=>$course_year_warnings
+            'course_year_warnings' => $course_year_warnings,
+            'course_month_warnings' => $course_month_warnings,
         ));
     }
 }

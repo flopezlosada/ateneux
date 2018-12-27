@@ -66,13 +66,27 @@
                     data: [
                         {% for warning in course_year_warnings %}
                         {
-                            name: '{{ warning.wt }}',
-                            y: {{ warning.total }},
-                            drilldown: '{{ warning.wt }}'
+                            name: '{{ warning[1]}}',
+                            y: {{ warning[0] }},
+                            drilldown: '{{ warning[1] }}'
                         },
                         {% endfor %}
                     ]
                 }],
+                drilldown: {
+                    series: [
+                        {% for array_warning in course_month_warnings %}
+                        {
+                            name: '{{  array_warning[1] }}',
+                            id: '{{  array_warning[1]  }}',
+                            data: [{% for key,warning in  array_warning[0]  %}
+                                ["{{ key|month_names }}", {{ warning }}],
+                                {% endfor %}]
+
+                        },
+                        {% endfor %}
+                    ]
+                }
             });
 
 

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Service\RealCourse;
+
 /**
  * WarningRepository
  *
@@ -11,13 +13,38 @@ namespace AppBundle\Entity;
 class WarningRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findByTypeYear($year=null)
+    /**
+     * @param null $year
+     * @return mixed
+     */
+    public function findByTypeYear($type,$year=null)
     {
-        $em=$this->getEntityManager();
-        $dql="select count(w) as total, IDENTITY(w.warning_type) as wt from AppBundle:Warning w where w.date 
-          BETWEEN :start and :end group by wt";
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
+          BETWEEN :start and :end and w.warning_type=:type";
         $query = $em->createQuery($dql);
+        $query->setParameter('type',$type);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
-        return $query->getResult();
+        return $query->getSingleScalarResult();
+    }
+
+    public function findByCourseTypeMonth($type, $month,$year=null)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) from AppBundle:Warning w
+               where w.date 
+          BETWEEN :start and :end 
+              and MONTH(w.date)=:month and w.warning_type=:type 
+              order by w.date asc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('type',$type);
+        $query->setParameter("month", $month);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        return $query->getSingleScalarResult();
     }
 }
