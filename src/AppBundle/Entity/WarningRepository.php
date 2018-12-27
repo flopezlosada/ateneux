@@ -47,4 +47,39 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getSingleScalarResult();
     }
+
+
+
+    public function findMajorOffenceByTypeYear($major_offence_type,$year=null)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
+          BETWEEN :start and :end and w.warning_type=:type and w.major_offence_type=:major_offence_type";
+        $query = $em->createQuery($dql);
+        $query->setParameter('type',2);
+        $query->setParameter('major_offence_type',$major_offence_type);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        return $query->getSingleScalarResult();
+    }
+
+    public function findMajorOffenceByCourseTypeMonth($major_offence_type, $month,$year=null)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) from AppBundle:Warning w
+               where w.date 
+          BETWEEN :start and :end 
+              and MONTH(w.date)=:month and w.warning_type=:type and w.major_offence_type=:major_offence_type
+              order by w.date asc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('type',2);
+        $query->setParameter('major_offence_type',$major_offence_type);
+        $query->setParameter("month", $month);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        return $query->getSingleScalarResult();
+    }
 }

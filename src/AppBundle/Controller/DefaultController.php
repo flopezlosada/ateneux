@@ -188,6 +188,18 @@ class DefaultController extends Controller
             $course_month_warnings[] = array($month_warnings, $type->getTitle());
         }
 
+        // tipos de amonestaciones
+        $course_year_major_offence = array(); //valores por año
+        $course_month_major_offence = array(); // valores por mes
+        $major_offence_type=$em->getRepository("AppBundle:MajorOffenceType")->findAll();
+        foreach($major_offence_type as $type)
+        {
+            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type,$year),$type->getTitle()); //valores por año
+            foreach ($array_months as $month) {
+                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month);
+            }
+            $course_month_major_offence[] = array($month_major_offence, $type->getTitle());
+        }
 
 
 
@@ -195,6 +207,8 @@ class DefaultController extends Controller
         return $this->render(':statistics:warnings.html.twig', array(
             'course_year_warnings' => $course_year_warnings,
             'course_month_warnings' => $course_month_warnings,
+            'course_month_major_offence'=>$course_month_major_offence,
+            'course_year_major_offence'=>$course_year_major_offence,
         ));
     }
 }
