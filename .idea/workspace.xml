@@ -4,10 +4,7 @@
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/WarningController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/WarningController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php" afterDir="false" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,14 +27,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
-              <caret line="262" column="42" selection-start-line="262" selection-start-column="42" selection-end-line="262" selection-end-column="42" />
+            <state relative-caret-position="684">
+              <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
               <folding>
                 <element signature="e#41#70#0#PHP" expanded="true" />
                 <element signature="e#10325#10357#0#PHP" expanded="true" />
                 <element signature="e#11259#11281#1#PHP" expanded="true" />
                 <element signature="e#11335#11357#1#PHP" expanded="true" />
                 <element signature="e#11962#11981#1#PHP" expanded="true" />
+                <element signature="e#12236#12255#1#PHP" expanded="true" />
                 <element signature="e#12143#12181#0#PHP" expanded="true" />
               </folding>
             </state>
@@ -47,9 +45,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="105" column="22" selection-start-line="105" selection-start-column="22" selection-end-line="105" selection-end-column="22" />
+            <state relative-caret-position="309">
+              <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
               <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
               </folding>
@@ -78,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="166" column="41" selection-start-line="166" selection-start-column="41" selection-end-line="166" selection-end-column="41" />
+            <state relative-caret-position="549">
+              <caret line="181" column="51" selection-start-line="181" selection-start-column="20" selection-end-line="181" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -539,12 +539,12 @@
       <workItem from="1545925385449" duration="547000" />
       <workItem from="1545925949144" duration="3497000" />
       <workItem from="1545929583673" duration="6153000" />
-      <workItem from="1546171175736" duration="5582000" />
+      <workItem from="1546171175736" duration="6671000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79782000" />
+    <option name="totallyTimeSpent" value="80871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1026" extended-state="0" />
@@ -916,13 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="166" column="41" selection-start-line="166" selection-start-column="41" selection-end-line="166" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/warnings.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
@@ -930,16 +923,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="181" column="51" selection-start-line="181" selection-start-column="20" selection-end-line="181" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="262" column="42" selection-start-line="262" selection-start-column="42" selection-end-line="262" selection-end-column="42" />
+        <state relative-caret-position="684">
+          <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
           <folding>
             <element signature="e#41#70#0#PHP" expanded="true" />
             <element signature="e#10325#10357#0#PHP" expanded="true" />
             <element signature="e#11259#11281#1#PHP" expanded="true" />
             <element signature="e#11335#11357#1#PHP" expanded="true" />
             <element signature="e#11962#11981#1#PHP" expanded="true" />
+            <element signature="e#12236#12255#1#PHP" expanded="true" />
             <element signature="e#12143#12181#0#PHP" expanded="true" />
           </folding>
         </state>
@@ -947,9 +948,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="105" column="22" selection-start-line="105" selection-start-column="22" selection-end-line="105" selection-end-column="22" />
+        <state relative-caret-position="309">
+          <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
           <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>

@@ -243,9 +243,8 @@ class DefaultController extends Controller
         }
 
         $level_year_warnings = array(); //valores por año
-        $course_month_warnings = array(); // valores por mes
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
-        $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
+
 
         foreach ($courses_type as $course_type) {
             foreach ($warning_type as $type) {
@@ -254,12 +253,21 @@ class DefaultController extends Controller
             }
 
         }
+        $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
+        foreach ($courses_type as $course_type) {
+            foreach ($major_offence_type as $type) {
+                $level_offence_year_warnings[$course_type->getTitle()][]=
+                    $em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYearLevel($type, $course_type,  $year); //valores por año
+            }
 
+        }
 
         return $this->render(':statistics:level_warnings.html.twig', array(
             'courses_type' => $courses_type,
             'course_type_selected' => $course_type,
             'level_year_warnings' => $level_year_warnings,
+            'major_offence_type'=>$major_offence_type,
+            'level_offence_year_warnings'=>$level_offence_year_warnings,
             'warning_type'=>$warning_type,
             'year' => $year
         ));

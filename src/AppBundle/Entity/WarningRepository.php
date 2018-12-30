@@ -179,7 +179,26 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
+    public function findMajorOffenceByTypeYearLevel($major_offence_type,$course_type_id, $year = null, $course = null)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
+          BETWEEN :start and :end and w.warning_type=:type and w.major_offence_type=:major_offence_type and w.course_type=:course_type";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
+        $query = $em->createQuery($dql);
+        $query->setParameter('type', 2);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+        $query->setParameter('course_type', $course_type_id);
+        $query->setParameter('major_offence_type', $major_offence_type);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
+        return $query->getSingleScalarResult();
+    }
 
 
 }
