@@ -200,5 +200,28 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
+    public function findPenaltyByTypeYearLevel($penalty_type,$course_type_id, $year = null,$course=null)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
+          BETWEEN :start and :end and w.warning_type=:type and w.penalty_type=:penalty_type  and w.course_type=:course_type ";
+        if ($course) {
+            $dql .= ' and w.course=:course ';
+        }
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('type', 2);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+        $query->setParameter('penalty_type', $penalty_type);
+        $query->setParameter('course_type', $course_type_id);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        return $query->getSingleScalarResult();
+    }
+
+
 
 }

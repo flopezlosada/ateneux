@@ -42,7 +42,7 @@
             </div>
             <div class="panel-body">
 
-                <div id="container3" style="width:100%; height:400px;"></div>
+                <div id="container3" style="width:100%; height:600px;"></div>
             </div>
         </div>
     </div>
@@ -152,6 +152,59 @@
                 },
                 series: [
                     {% for key,warnings in level_offence_year_warnings %}
+                    {
+                        name: '{{ key }}',
+                        data: [{% for warning in warnings %}{{ warning }}{% if not loop.last %},{% endif %}{% endfor %}]
+                    },
+                    {% endfor %}
+                ]
+            });
+            var myChart = Highcharts.chart('container3', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Resumen por nivel de tipos de sanción anuales'
+                },
+
+                subtitle: {
+                    text: 'Tipos de Sanciones. IES La Cabrera'
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Número de Sanciones por nivel'
+                    }
+                },
+                xAxis: {
+                    categories: [
+                        {% for type in penalty_type %}
+                        '{{ type }}',
+                        {% endfor %}
+                    ],
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> incidencias<br/>'
+                },
+
+                legend: {
+                    enabled: true
+                },
+
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        }
+                    }
+                },
+                series: [
+                    {% for key,warnings in level_penalty_year_warnings %}
                     {
                         name: '{{ key }}',
                         data: [{% for warning in warnings %}{{ warning }}{% if not loop.last %},{% endif %}{% endfor %}]
