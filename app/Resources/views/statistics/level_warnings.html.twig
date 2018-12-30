@@ -1,0 +1,41 @@
+{% extends '::layout_graph.html.twig' %}
+
+{% block title_wrapper %}
+    Resumen de amonestaciones por nivel
+{% endblock %}
+{% block main %}
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Datos anuales
+            </div>
+            <div class="panel-body">
+
+                <div id="container" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Datos de amonestaciones por tipo
+            </div>
+            <div class="panel-body">
+
+                <div id="container2" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                Datos de amonestaciones por tipo de sanción
+            </div>
+            <div class="panel-body">
+
+                <div id="container3" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}

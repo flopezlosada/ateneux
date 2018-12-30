@@ -72,7 +72,16 @@
                 <a href="#"><i class="fa fa-chart-line fa-fw"></i> Estadísticas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{ path('statistics_warning') }}"><i class="fa fa-chart-bar fa-fw"></i>Amonestaciones</a>
+                        <a href="#"><i class="fa fa-exclamation fa-fw"></i>Amonestaciones<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse">
+                            <li>
+                                <a href="{{ path('statistics_warning') }}"><i class="fa fa-chart-bar fa-fw"></i>Resumen anual de amonestaciones</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('level_statistics_warning') }}"><i class="fa fa-chart-line fa-fw"></i>Amonestaciones por nivel</a>
+                            </li>
+                        </ul>
+
                     </li>
                     <li>
                         <a href="{{ path('statistics_mediation') }}"><i class="fa fa-chart-pie fa-fw"></i>Mediaciones</a>
@@ -83,3 +92,4 @@
     </div>
     <!-- /.sidebar-collapse -->
 </div>
+

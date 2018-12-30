@@ -147,6 +147,14 @@ class Warning
      */
     private $course;
 
+    /**
+     * Tipo de curso que está cursando el alumno en elm omento del parte, 1ºESO, 2ºESO, ....Es para estadísticas por niveles
+     * @var smallint $course_type
+     * @ORM\ManyToOne(targetEntity="CourseType", inversedBy="warnings")
+     * Curso actual
+     */
+    private $course_type;
+
 
     /**
      * @var int $sai
@@ -616,5 +624,29 @@ class Warning
     public function getSaiTeacher()
     {
         return $this->sai_teacher;
+    }
+
+    /**
+     * Set courseType.
+     *
+     * @param \AppBundle\Entity\CourseType|null $courseType
+     *
+     * @return Warning
+     */
+    public function setCourseType(\AppBundle\Entity\CourseType $courseType = null)
+    {
+        $this->course_type = $courseType;
+
+        return $this;
+    }
+
+    /**
+     * Get courseType.
+     *
+     * @return \AppBundle\Entity\CourseType|null
+     */
+    public function getCourseType()
+    {
+        return $this->course_type;
     }
 }

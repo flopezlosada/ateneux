@@ -36,6 +36,13 @@ class CourseType
      */
     protected $courses;
 
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Warning", mappedBy="course_type")
+     */
+    private $warnings;
+
     /**
      *
      * @ORM\OneToMany(targetEntity="Student", mappedBy="course_type")
@@ -227,5 +234,41 @@ class CourseType
     public function getStudents()
     {
         return $this->students;
+    }
+
+    /**
+     * Add warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return CourseType
+     */
+    public function addWarning(\AppBundle\Entity\Warning $warning)
+    {
+        $this->warnings[] = $warning;
+
+        return $this;
+    }
+
+    /**
+     * Remove warning.
+     *
+     * @param \AppBundle\Entity\Warning $warning
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeWarning(\AppBundle\Entity\Warning $warning)
+    {
+        return $this->warnings->removeElement($warning);
+    }
+
+    /**
+     * Get warnings.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWarnings()
+    {
+        return $this->warnings;
     }
 }

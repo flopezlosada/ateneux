@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/navigation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/CourseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/CourseType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Warning.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Warning.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php" afterDir="false" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,40 +31,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="183" column="109" selection-start-line="183" selection-start-column="109" selection-end-line="183" selection-end-column="109" />
+            <state relative-caret-position="510">
+              <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
               <folding>
                 <element signature="e#41#70#0#PHP" expanded="true" />
-                <element signature="e#7422#7443#1#PHP" expanded="true" />
-                <element signature="e#8255#8274#1#PHP" expanded="true" />
-                <element signature="e#8545#8564#1#PHP" expanded="true" />
-                <element signature="e#8877#8905#1#PHP" expanded="true" />
-                <element signature="e#9205#9224#1#PHP" expanded="true" />
-                <element signature="e#9402#9421#1#PHP" expanded="true" />
-                <element signature="e#9771#9794#1#PHP" expanded="true" />
-                <element signature="e#9955#9974#1#PHP" expanded="true" />
-                <element signature="e#10169#10188#1#PHP" expanded="true" />
+                <element signature="e#1253#1272#1#PHP" expanded="true" />
+                <element signature="e#10325#10357#0#PHP" expanded="true" />
+                <element signature="e#10868#10906#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="79" column="124" selection-start-line="79" selection-start-column="124" selection-end-line="79" selection-end-column="124" />
-              <folding>
-                <element signature="e#2254#2277#1#PHP" expanded="true" />
-                <element signature="e#2495#2514#1#PHP" expanded="true" />
-                <element signature="e#2692#2711#1#PHP" expanded="true" />
-                <element signature="e#3071#3099#1#PHP" expanded="true" />
-                <element signature="e#3237#3256#1#PHP" expanded="true" />
-                <element signature="e#3451#3470#1#PHP" expanded="true" />
-                <element signature="e#3800#3823#1#PHP" expanded="true" />
-                <element signature="e#3949#3968#1#PHP" expanded="true" />
-                <element signature="e#4152#4171#1#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -68,64 +55,63 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/warnings.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="254" column="14" selection-start-line="41" selection-end-line="254" selection-end-column="14" />
-              <folding>
-                <element signature="e#360#393#0#HTML" expanded="true" />
-                <element signature="e#646#679#0#HTML" expanded="true" />
-                <element signature="e#1038#1071#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="600">
+              <caret line="40" column="14" selection-end-line="40" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/navigation.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="77" column="57" selection-start-line="77" selection-start-column="57" selection-end-line="77" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/course/show.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="36" selection-start-column="36" selection-end-column="36" />
+            <state relative-caret-position="240">
+              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/WarningController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="843">
+              <caret line="129" column="49" selection-start-line="129" selection-start-column="49" selection-end-line="129" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Warning.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="136" column="62" selection-start-line="136" selection-start-column="58" selection-end-line="136" selection-end-column="62" />
               <folding>
-                <element signature="e#12#36#0#Twig" expanded="true" />
-                <element signature="e#11277#11310#0#HTML" expanded="true" />
-                <element signature="e#11616#11649#0#HTML" expanded="true" />
-                <element signature="e#11966#11999#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="e#6#84#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CourseType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2265">
-              <caret line="151" column="19" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="480">
+              <caret line="41" column="67" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -139,8 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>º</find>
-      <find>strin</find>
       <find>student</find>
       <find>reunion</find>
       <find>locali</find>
@@ -169,6 +153,8 @@
       <find>form.</find>
       <find>media</find>
       <find>course=:course</find>
+      <find>warning</find>
+      <find>warn</find>
     </findStrings>
     <replaceStrings>
       <replace>Meeting</replace>
@@ -198,9 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Resources/views/student/meetings.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/meeting/record_actions.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/AcademicInformationType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/academicinformation/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AcademicInformationController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/meeting/show.html.twig" />
@@ -219,8 +202,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/dashboard.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml" />
-        <option value="$PROJECT_DIR$/app/Resources/views/navigation.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/layout_graph.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" />
@@ -243,12 +224,17 @@
         <option value="$PROJECT_DIR$/app/Resources/views/meeting/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/config/config_dev.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/teacher/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/statistics/warnings.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/navigation.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Warning.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/CourseType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml" />
       </list>
     </option>
   </component>
@@ -351,35 +337,6 @@
             <path>
               <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
               <item name="ateneux" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="course" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -407,6 +364,30 @@
               <item name="ateneux" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="routing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ateneux" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ateneux" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -421,7 +402,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.RoutingSettingsForm" />
+    <property name="settings.editor.selected.configurable" value="fr.adrienbrault.idea.symfony2plugin.ui.TwigSettingsForm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -484,19 +465,20 @@
       <workItem from="1544804782866" duration="1111000" />
       <workItem from="1545925385449" duration="547000" />
       <workItem from="1545925949144" duration="3497000" />
-      <workItem from="1545929583673" duration="5553000" />
+      <workItem from="1545929583673" duration="6153000" />
+      <workItem from="1546171175736" duration="2162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73600000" />
+    <option name="totallyTimeSpent" value="76362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1026" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2860192" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.28922093" />
       <window_info id="Structure" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" weight="0.32917318" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.3296875" />
@@ -530,51 +512,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/MediationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CourseRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="20" column="35" selection-start-line="14" selection-start-column="7" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AssessmentBoardRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.lock">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Twig/Extension/AppExtension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="52" column="83" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/add_difficulties.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="57" column="102" selection-start-line="57" selection-start-column="97" selection-end-line="57" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/assessmentboard/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -681,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/student/if_control.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -724,7 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -804,24 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/WarningController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1548">
-          <caret line="129" column="49" selection-start-line="129" selection-start-column="49" selection-end-line="129" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="151" column="19" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningCauseTypeRepository.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -834,22 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Warning.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#6#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/MediationRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -857,77 +752,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/warnings.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="254" column="14" selection-start-line="41" selection-end-line="254" selection-end-column="14" />
-          <folding>
-            <element signature="e#360#393#0#HTML" expanded="true" />
-            <element signature="e#646#679#0#HTML" expanded="true" />
-            <element signature="e#1038#1071#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="183" column="109" selection-start-line="183" selection-start-column="109" selection-end-line="183" selection-end-column="109" />
-          <folding>
-            <element signature="e#41#70#0#PHP" expanded="true" />
-            <element signature="e#7422#7443#1#PHP" expanded="true" />
-            <element signature="e#8255#8274#1#PHP" expanded="true" />
-            <element signature="e#8545#8564#1#PHP" expanded="true" />
-            <element signature="e#8877#8905#1#PHP" expanded="true" />
-            <element signature="e#9205#9224#1#PHP" expanded="true" />
-            <element signature="e#9402#9421#1#PHP" expanded="true" />
-            <element signature="e#9771#9794#1#PHP" expanded="true" />
-            <element signature="e#9955#9974#1#PHP" expanded="true" />
-            <element signature="e#10169#10188#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="1095">
           <caret line="79" column="124" selection-start-line="79" selection-start-column="124" selection-end-line="79" selection-end-column="124" />
-          <folding>
-            <element signature="e#2254#2277#1#PHP" expanded="true" />
-            <element signature="e#2495#2514#1#PHP" expanded="true" />
-            <element signature="e#2692#2711#1#PHP" expanded="true" />
-            <element signature="e#3071#3099#1#PHP" expanded="true" />
-            <element signature="e#3237#3256#1#PHP" expanded="true" />
-            <element signature="e#3451#3470#1#PHP" expanded="true" />
-            <element signature="e#3800#3823#1#PHP" expanded="true" />
-            <element signature="e#3949#3968#1#PHP" expanded="true" />
-            <element signature="e#4152#4171#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/mediation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+        <state relative-caret-position="2265">
+          <caret line="151" column="19" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/course/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        <state relative-caret-position="585">
+          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
           <folding>
             <element signature="e#12#36#0#Twig" expanded="true" />
-            <element signature="e#11277#11310#0#HTML" expanded="true" />
-            <element signature="e#11616#11649#0#HTML" expanded="true" />
-            <element signature="e#11966#11999#0#HTML" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
@@ -935,6 +779,101 @@
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/RealCourse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/navigation.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="77" column="57" selection-start-line="77" selection-start-column="57" selection-end-line="77" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/warnings.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="14" selection-end-line="40" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/meeting.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/statistics/level_warnings.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/WarningController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="129" column="49" selection-start-line="129" selection-start-column="49" selection-end-line="129" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="109" column="22" lean-forward="true" selection-start-line="104" selection-end-line="109" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Warning.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="136" column="62" selection-start-line="136" selection-start-column="58" selection-end-line="136" selection-end-column="62" />
+          <folding>
+            <element signature="e#6#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CourseTypeRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CourseType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="41" column="67" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+          <folding>
+            <element signature="e#41#70#0#PHP" expanded="true" />
+            <element signature="e#1253#1272#1#PHP" expanded="true" />
+            <element signature="e#10325#10357#0#PHP" expanded="true" />
+            <element signature="e#10868#10906#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing/statistics.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
         </state>
       </provider>
     </entry>

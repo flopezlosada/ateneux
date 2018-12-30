@@ -34,6 +34,16 @@ class DefaultController extends Controller
         if ($this->get('security.authorization_checker')->isGranted("ROLE_TEACHER") && !$this->get('security.authorization_checker')->isGranted("ROLE_JEFATURA")) {
             return $this->redirect($this->generateUrl('teacher_show', array('id' => $this->getUser()->getTeacher()->getId())));
         }
+        $em=$this->getDoctrine()->getManager();
+        $warnings=$em->getRepository("AppBundle:Warning")->findAll();
+        foreach ($warnings as $warning)
+        {
+            $warning->setCourseType($warning->getCourse()->getCourseType());
+            $em->persist($warning);
+        }
+
+        $em->flush();
+
 
         /*$em=$this->getDoctrine()->getManager();
         $students=$em->getRepository('AppBundle:Student')->findAll();
@@ -222,6 +232,14 @@ class DefaultController extends Controller
             'course_year_major_offence'=>$course_year_major_offence,
             'course_month_penalty'=>$course_month_penalty,
             'course_year_penalty'=>$course_year_penalty,
+        ));
+    }
+
+    public function level_warningAction($course_type_id,$year=null)
+    {
+
+        return $this->render(':statistics:level_warnings.html.twig', array(
+
         ));
     }
 }

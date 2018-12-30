@@ -35,7 +35,7 @@ class RealCourse
      * Si se aporta el año, entiendo que es el año de inicio del curso, es decir, si se pasa 2017, entiendo que se
      * refiere al curso 2017/2108
      */
-    public function getStartDateCourse($year = null)
+    public function getStartDateCourse($year)
     {
         if ($year) {
             return date(($year)."-09-01");
@@ -51,7 +51,7 @@ class RealCourse
         }
     }
 
-    public function getEndDateCourse($year = null)
+    public function getEndDateCourse($year)
     {
 
         if ($year) {
