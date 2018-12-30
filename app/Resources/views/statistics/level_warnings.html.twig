@@ -4,6 +4,16 @@
     Resumen de amonestaciones por nivel
 {% endblock %}
 {% block main %}
+    {{ dump(level_year_warnings) }}
+    <div class="col-lg-12">
+        <p>Selecciona de la siguiente lista el nivel que quieres analizar:</p>
+        <ul class="list-inline">
+        {% for course_type in courses_type %}
+            <li><a href="{{ path('level_statistics_warning', {'course_type_id': course_type.id,'year':year}) }}">{{ course_type }}</a> </li>
+        {% endfor %}
+            <li><a href="{{ path('level_statistics_warning', {'year':year}) }}">Datos generales</a></li>
+        </ul>
+    </div>
     <div class="col-lg-12">
         <div class="panel panel-info">
             <div class="panel-heading">
@@ -38,4 +48,66 @@
         </div>
     </div>
     <div class="clearfix"></div>
+{% endblock %}
+{% block graph_js %}
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script>
+
+        $(function () {
+            var myChart = Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Resumen incidencias de comportamiento anuales'
+                },
+
+                subtitle: {
+                    text: 'Partes y faltas graves. IES La Cabrera'
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Número de Amonestaciones'
+                    }
+                },
+                xAxis: {
+                    categories: [
+                        {% for type in warning_type %}
+                        '{{ type }}',
+                        {% endfor %}
+                    ],
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> incidencias<br/>'
+                },
+
+                legend: {
+                    enabled: true
+                },
+
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        }
+                    }
+                },
+                series: [
+                        {% for key,warnings in level_year_warnings %}
+                    {
+                        name: '{{ key }}',
+                        data: [{% for warning in warnings %}{{ warning }}{% if not loop.last %},{% endif %}{% endfor %}]
+                    },
+                        {% endfor %}
+                ],
+            });
+        })
+    </script>
+
 {% endblock %}

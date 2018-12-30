@@ -43,9 +43,12 @@ class WarningController extends Controller
             $warning->setDate(new \DateTime($warning->getDate()));
             $warning->setPenaltyStartDate(new \DateTime($warning->getPenaltyStartDate()));
             $warning->setPenaltyEndDate(new \DateTime($warning->getPenaltyEndDate()));
+
             $warning->setStudent($student);
             $warning->setCourse($student->getCourse());
 
+            $em->persist($warning);
+            $warning->setCourseType($warning->getCourse()->getCourseType());
             $em->persist($warning);
             $em->flush();
 

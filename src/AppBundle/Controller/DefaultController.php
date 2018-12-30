@@ -34,16 +34,16 @@ class DefaultController extends Controller
         if ($this->get('security.authorization_checker')->isGranted("ROLE_TEACHER") && !$this->get('security.authorization_checker')->isGranted("ROLE_JEFATURA")) {
             return $this->redirect($this->generateUrl('teacher_show', array('id' => $this->getUser()->getTeacher()->getId())));
         }
-        $em=$this->getDoctrine()->getManager();
-        $warnings=$em->getRepository("AppBundle:Warning")->findAll();
-        foreach ($warnings as $warning)
-        {
-            $warning->setCourseType($warning->getCourse()->getCourseType());
-            $em->persist($warning);
-        }
+        /* $em=$this->getDoctrine()->getManager();
+         $warnings=$em->getRepository("AppBundle:Warning")->findAll();
+         foreach ($warnings as $warning)
+         {
+             $warning->setCourseType($warning->getCourse()->getCourseType());
+             $em->persist($warning);
+         }
 
-        $em->flush();
-
+         $em->flush();
+ */
 
         /*$em=$this->getDoctrine()->getManager();
         $students=$em->getRepository('AppBundle:Student')->findAll();
@@ -189,9 +189,8 @@ class DefaultController extends Controller
         $course_month_warnings = array(); // valores por mes
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
         $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
-        foreach($warning_type as $type)
-        {
-            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type,$year),$type->getTitle()); //valores por año
+        foreach ($warning_type as $type) {
+            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, $year), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
                 $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month);
             }
@@ -201,10 +200,9 @@ class DefaultController extends Controller
         // tipos de amonestaciones
         $course_year_major_offence = array(); //valores por año
         $course_month_major_offence = array(); // valores por mes
-        $major_offence_type=$em->getRepository("AppBundle:MajorOffenceType")->findAll();
-        foreach($major_offence_type as $type)
-        {
-            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type,$year),$type->getTitle()); //valores por año
+        $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
+        foreach ($major_offence_type as $type) {
+            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, $year), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
                 $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month);
             }
@@ -214,10 +212,9 @@ class DefaultController extends Controller
 
         $course_year_penalty = array(); //valores por año
         $course_month_penalty = array(); // valores por mes
-        $penalty_type=$em->getRepository("AppBundle:PenaltyType")->findAll();
-        foreach($penalty_type as $type)
-        {
-            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type,$year),$type->getTitle()); //valores por año
+        $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
+        foreach ($penalty_type as $type) {
+            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
                 $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month);
             }
@@ -228,18 +225,43 @@ class DefaultController extends Controller
         return $this->render(':statistics:warnings.html.twig', array(
             'course_year_warnings' => $course_year_warnings,
             'course_month_warnings' => $course_month_warnings,
-            'course_month_major_offence'=>$course_month_major_offence,
-            'course_year_major_offence'=>$course_year_major_offence,
-            'course_month_penalty'=>$course_month_penalty,
-            'course_year_penalty'=>$course_year_penalty,
+            'course_month_major_offence' => $course_month_major_offence,
+            'course_year_major_offence' => $course_year_major_offence,
+            'course_month_penalty' => $course_month_penalty,
+            'course_year_penalty' => $course_year_penalty,
         ));
     }
 
-    public function level_warningAction($course_type_id,$year=null)
+    public function level_warningAction($course_type_id, $year = null)
     {
+        $em = $this->getDoctrine()->getManager();
+        $courses_type = $em->getRepository("AppBundle:CourseType")->findAll();
+        if ($course_type_id) {
+            $course_type = $em->getRepository("AppBundle:CourseType")->find($course_type_id);
+        } else {
+            $course_type = null;
+        }
+
+        $level_year_warnings = array(); //valores por año
+        $course_month_warnings = array(); // valores por mes
+        $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
+        $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
+
+        foreach ($courses_type as $course_type) {
+            foreach ($warning_type as $type) {
+                $level_year_warnings[$course_type->getTitle()][]=
+                    $em->getRepository("AppBundle:Warning")->findByTypeLevelYear($course_type, $type, $year); //valores por año
+            }
+
+        }
+
 
         return $this->render(':statistics:level_warnings.html.twig', array(
-
+            'courses_type' => $courses_type,
+            'course_type_selected' => $course_type,
+            'level_year_warnings' => $level_year_warnings,
+            'warning_type'=>$warning_type,
+            'year' => $year
         ));
     }
 }

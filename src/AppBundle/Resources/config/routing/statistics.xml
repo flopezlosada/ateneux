@@ -11,7 +11,7 @@
         <default key="_controller">AppBundle:Default:warning</default>
         <default key="year"></default>
     </route>
-    <route id="level_statistics_warning" path="/warning/{course_type_id}/{year}" methods="GET">
+    <route id="level_statistics_warning" path="/level_warning/{course_type_id}/{year}" methods="GET">
         <default key="_controller">AppBundle:Default:level_warning</default>
         <default key="year"></default>
         <default key="course_type_id">NULL</default>
