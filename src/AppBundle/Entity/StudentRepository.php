@@ -11,33 +11,35 @@ namespace AppBundle\Entity;
 class StudentRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findMeetings($student_id, $meeting_status_id = null)
+    public function findMeetings($student_id, $course, $meeting_status_id = null)
     {
 
         $em = $this->getEntityManager();
-        $dql = "select t from AppBundle:Meeting t where t.student_meeting=:student ";
+        $dql = "select t from AppBundle:Meeting t where t.student_meeting=:student and t.course=:course ";
         if ($meeting_status_id) {
             $dql .= " and t.meeting_status=:status ";
         }
 
         $query = $em->createQuery($dql);
         $query->setParameter("student", $student_id);
+        $query->setParameter("course", $course);
+
         if ($meeting_status_id) {
             $query->setParameter("status", $meeting_status_id);
         }
 
-
         return $query->getResult();
     }
 
-    public function findWarnings($student_id, $meeting_status_id = null)
+    public function findWarnings($student_id,$course)
     {
 
         $em = $this->getEntityManager();
-        $dql = "select t from AppBundle:Warning t where t.student=:student order by t.date desc";
+        $dql = "select t from AppBundle:Warning t where t.student=:student and t.course=:course order by t.date desc";
 
         $query = $em->createQuery($dql);
         $query->setParameter("student", $student_id);
+        $query->setParameter("course", $course);
 
         return $query->getResult();
     }

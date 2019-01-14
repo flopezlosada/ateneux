@@ -86,31 +86,48 @@ class StudentController extends Controller
      * Finds and displays a student entity.
      *
      */
-    public function showAction(Student $student)
+    public function showAction(Student $student, $selected_course_id = null)
     {
+
         $deleteForm = $this->createDeleteForm($student);
         $em = $this->getDoctrine()->getManager();
-        $pending_student_meetings = $em->getRepository('AppBundle:Student')
-            ->findMeetings($student->getId(), 1);//encuentra reuniones pendientes (1)
 
-        $student_meetings = $em->getRepository('AppBundle:Student')
-            ->findMeetings($student->getId());//todas las reuniones que ha tenido el estudiante
-
-        $student_warnings = $em->getRepository('AppBundle:Student')
-            ->findWarnings($student->getId());//todas las amonestaciones y partes que ha tenido el estudiante
-
-        //busca que haya información sobre el estudiante para la reunión
-        $academic_informations = $em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
-        $assessment_board_learning_difficulties = null;
-        $learning_difficulties = null;
         if ($student->getCourse()) {
 
+            if ($selected_course_id == "NULL") {
+                $selected_course = $student->getCourse();
+            } else {
+                $selected_course = $em->getRepository("AppBundle:Course")->find($selected_course_id);
+            }
 
-            foreach ($student->getCourse()->getAssessmentsBoard() as $assessment_board) {
+            $pending_student_meetings = $em->getRepository('AppBundle:Student')
+                ->findMeetings($student->getId(), $selected_course,1);//encuentra reuniones pendientes (1)
 
-                $learning_difficulties = $em->getRepository("AppBundle:Student")->getDifficulties($student->getCourse(), $student, $assessment_board);
+            $student_meetings = $em->getRepository('AppBundle:Student')
+                ->findMeetings($student->getId(),$selected_course);//todas las reuniones que ha tenido el estudiante
+
+            $student_warnings = $em->getRepository('AppBundle:Student')
+                ->findWarnings($student->getId(), $selected_course);//todas las amonestaciones y partes que ha tenido el estudiante para el curso actual.
+
+            //busca que haya información sobre el estudiante para la reunión
+            $academic_informations = $em->getRepository("AppBundle:AcademicInformation")->findRealInformation($student);
+            $assessment_board_learning_difficulties = null;
+            $learning_difficulties = null;
+
+
+            foreach ($selected_course->getAssessmentsBoard() as $assessment_board) {
+
+                $learning_difficulties = $em->getRepository("AppBundle:Student")->getDifficulties($selected_course, $student, $assessment_board);
                 $assessment_board_learning_difficulties[] = array($assessment_board, $learning_difficulties);
             }
+        } else {
+            $pending_student_meetings = null;
+            $student_meetings = null;
+            $student_warnings = null;
+            $academic_informations = null;
+            $assessment_board_learning_difficulties = null;
+            $learning_difficulties = null;
+            $selected_course=null;
         }
 
 
@@ -123,6 +140,7 @@ class StudentController extends Controller
             'academic_informations' => $academic_informations,
             'assessment_board_learning_difficulties' => $assessment_board_learning_difficulties,
             'learning_difficulties' => $learning_difficulties,
+            'selected_course'=>$selected_course
         ));
     }
 

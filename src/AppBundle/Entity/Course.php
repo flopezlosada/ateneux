@@ -109,6 +109,13 @@ class Course
      */
     private $warnings;
 
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="course")
+     */
+    private $meetings;
+
     /**
      *
      * @ORM\OneToMany(targetEntity="AssessmentBoard", mappedBy="course")
@@ -634,5 +641,41 @@ class Course
     public function getSecondStudentMediations()
     {
         return $this->second_student_mediations;
+    }
+
+    /**
+     * Add meeting.
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return Course
+     */
+    public function addMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings[] = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Remove meeting.
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        return $this->meetings->removeElement($meeting);
+    }
+
+    /**
+     * Get meetings.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
     }
 }

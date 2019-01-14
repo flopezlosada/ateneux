@@ -34,6 +34,15 @@ class DefaultController extends Controller
         if ($this->get('security.authorization_checker')->isGranted("ROLE_TEACHER") && !$this->get('security.authorization_checker')->isGranted("ROLE_JEFATURA")) {
             return $this->redirect($this->generateUrl('teacher_show', array('id' => $this->getUser()->getTeacher()->getId())));
         }
+
+        $em=$this->getDoctrine()->getManager();
+        $meetings=$em->getRepository("AppBundle:Meeting")->findAll();
+        foreach ($meetings as $meeting)
+         {
+             $meeting->setCourse($meeting->getStudentMeeting()->getCourse());
+             $em->persist($meeting);
+         }
+        $em->flush();
         /* $em=$this->getDoctrine()->getManager();
          $warnings=$em->getRepository("AppBundle:Warning")->findAll();
          foreach ($warnings as $warning)

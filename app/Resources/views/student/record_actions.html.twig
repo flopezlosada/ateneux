@@ -2,39 +2,46 @@
     <li><a href="{{ path('student_edit', {'id': entity.id}) }}">Editar datos personales</a></li>
     {% if  app.request.attributes.get('_route') =='student_show' %}
         {% if  (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined
-        and entity.getCourse.getId is defined
-        and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId) %}
+            and entity.getCourse.getId is defined
+            and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId) %}
             <li><a href="{{ path('course_show', {'id': app.user.getTeacher.getMentorCourse.id}) }}">Listado de
                     estudiantes del curso {{ app.user.getTeacher.getMentorCourse.title }}</a></li>
         {% endif %}
         {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")
-        or is_granted("ROLE_TEACHER") %}
+            or is_granted("ROLE_TEACHER") %}
             {#(is_granted("ROLE_TEACHER")
            and app.user.getTeacher.getMentorCourse.id is defined
                and entity.getCourse.getId is defined
            and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId) #}
             {#{% if "now"|date("m/d/Y") > real_course.endDateCourse %}#}
-
-            <li><a href="{{ path('meeting_new', { 'student_id': entity.id}) }}">Programar reunión
-                </a></li>
-            <li><a href="{{ path('warning_new', {'student': entity.id}) }}">Añadir incidencia</a></li>
-            {% if not student.getIsMediator %}
-                <li><a href="{{ path('mediation_set_mediation', {'id': student.id, 'type': 'student'}) }}">Convertir en
-                        mediadora/or</a></li>
+            {% if selected_course is not null %}
+                <li><a href="{{ path('meeting_new', { 'student_id': entity.id}) }}">Programar reunión
+                    </a></li>
+                <li><a href="{{ path('warning_new', {'student': entity.id}) }}">Añadir incidencia</a></li>
+                {% if not student.getIsMediator %}
+                    <li><a href="{{ path('mediation_set_mediation', {'id': student.id, 'type': 'student'}) }}">Convertir
+                            en
+                            mediadora/or</a></li>
+                {% endif %}
             {% endif %}
-            {#{% endif %}#}
         {% endif %}
 
         {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")
-        or
-        (is_granted("ROLE_TEACHER")
-        and app.user.getTeacher.getMentorCourse.id is defined
-        and entity.getCourse.getId is defined
-        and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId) %}
-            <li><a href="{{ path('student_promote', {'id': student.id}) }}">Promocionar </a>
-            </li>
+            or
+            (is_granted("ROLE_TEACHER")
+            and app.user.getTeacher.getMentorCourse.id is defined
+            and entity.getCourse.getId is defined
+            and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId) %}
+            {% if selected_course is not null %}
+                <li><a href="{{ path('student_promote', {'id': student.id}) }}">Promocionar </a>
+                </li>
+            {% endif %}
         {% endif %}
-        <li><a href="{{ path('student_mediation_first', {'student_id': student.id}) }}">Mediación</a></li>
+        {% if selected_course is not null %}
+            <li><a href="{{ path('student_mediation_first', {'student_id': student.id}) }}">Mediación</a></li>
+        {% else %}
+            <li><a href="{{ path('student_course', {'student_id': student.id}) }}">Definir curso</a> </li>
+        {% endif %}
 
     {% else %}
         <li><a href="{{ path('student_show', {'id': entity.id}) }}">Ver detalles</a></li>

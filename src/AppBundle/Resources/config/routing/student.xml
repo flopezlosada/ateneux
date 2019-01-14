@@ -8,8 +8,9 @@
         <default key="_controller">AppBundle:Student:index</default>
     </route>
 
-    <route id="student_show" path="/{id}/show" methods="GET">
+    <route id="student_show" path="/{id}/show/{selected_course_id}" methods="GET">
         <default key="_controller">AppBundle:Student:show</default>
+        <default key="selected_course_id">NULL</default>
     </route>
 
     <route id="student_promote" path="/{id}/promote" methods="GET">

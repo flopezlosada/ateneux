@@ -114,6 +114,13 @@ class Meeting
      */
     private $observations;
 
+    /**
+     * Unidad que está cursando el alumno en elm omento del parte, 1ºESO-A, 2ºESO-C, ....
+     * @var smallint $course
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="meetings")
+     * Curso actual
+     */
+    private $course;
 
     /**
      * Get id
@@ -440,5 +447,29 @@ class Meeting
     public function getAcademicInformations()
     {
         return $this->academic_informations;
+    }
+
+    /**
+     * Set course.
+     *
+     * @param \AppBundle\Entity\Course|null $course
+     *
+     * @return Meeting
+     */
+    public function setCourse(\AppBundle\Entity\Course $course = null)
+    {
+        $this->course = $course;
+
+        return $this;
+    }
+
+    /**
+     * Get course.
+     *
+     * @return \AppBundle\Entity\Course|null
+     */
+    public function getCourse()
+    {
+        return $this->course;
     }
 }
