@@ -108,6 +108,7 @@ class CourseController extends Controller
             $course_month_penalty[] = array($month_penalty, $type->getTitle());
         }
 
+        $warnings_by_student=$em->getRepository("AppBundle:Warning")->findWarningByStudentCourse($course);
 
 
 
@@ -122,6 +123,7 @@ class CourseController extends Controller
             'course_year_major_offence'=>$course_year_major_offence,
             'course_month_penalty'=>$course_month_penalty,
             'course_year_penalty'=>$course_year_penalty,
+            'warnings_by_student'=>$warnings_by_student
         ));
     }
 

@@ -111,7 +111,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByTypeYear($penalty_type, $year = null,$course=null)
+    public function findPenaltyByTypeYear($penalty_type, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -132,7 +132,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByCourseTypeMonth($penalty_type, $month, $year = null,$course=null)
+    public function findPenaltyByCourseTypeMonth($penalty_type, $month, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
@@ -159,7 +159,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-     public function findByTypeLevelYear($course_type_id, $warning_type, $year = null)
+    public function findByTypeLevelYear($course_type_id, $warning_type, $year = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -179,7 +179,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
-    public function findMajorOffenceByTypeYearLevel($major_offence_type,$course_type_id, $year = null, $course = null)
+    public function findMajorOffenceByTypeYearLevel($major_offence_type, $course_type_id, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -200,7 +200,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByTypeYearLevel($penalty_type,$course_type_id, $year = null,$course=null)
+    public function findPenaltyByTypeYearLevel($penalty_type, $course_type_id, $year = null, $course = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -222,6 +222,14 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
+    public function findWarningByStudentCourse($course)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total, IDENTITY(w.student) as s from AppBundle:Warning w where w.course=:course group by s order by total desc";
+        $query = $em->createQuery($dql);
+        $query->setParameter("course", $course);
 
+        return $query->getResult();
+    }
 
 }

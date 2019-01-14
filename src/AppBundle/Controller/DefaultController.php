@@ -232,52 +232,78 @@ class DefaultController extends Controller
         ));
     }
 
-    public function level_warningAction($course_type_id, $year = null)
+    public function level_warningAction($selected_course_type_id, $year = null)
     {
         $em = $this->getDoctrine()->getManager();
         $courses_type = $em->getRepository("AppBundle:CourseType")->findAll();
-        if ($course_type_id) {
-            $course_type = $em->getRepository("AppBundle:CourseType")->find($course_type_id);
-        } else {
-            $course_type = null;
-        }
-
-        $level_year_warnings = array(); //valores por año
-        $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
-
-
-        foreach ($courses_type as $course_type) {
-            foreach ($warning_type as $type) {
-                $level_year_warnings[$course_type->getTitle()][]=
-                    $em->getRepository("AppBundle:Warning")->findByTypeLevelYear($course_type, $type, $year); //valores por año
-            }
-
-        }
-        $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
-        foreach ($courses_type as $course_type) {
-            foreach ($major_offence_type as $type) {
-                $level_offence_year_warnings[$course_type->getTitle()][]=
-                    $em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYearLevel($type, $course_type,  $year); //valores por año
-            }
-        }
-
         $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
-        foreach ($courses_type as $course_type) {
-            foreach ($penalty_type as $type) {
-                $level_penalty_year_warnings[$course_type->getTitle()][]=
-                    $em->getRepository("AppBundle:Warning")->findPenaltyByTypeYearLevel($type, $course_type,  $year); //valores por año
+        $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
+        $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
+        $level_year_warnings = array(); //valores por año
+
+
+        if ($selected_course_type_id != "NULL") {
+            $selected_course_type = $em->getRepository("AppBundle:CourseType")->find($selected_course_type_id);
+
+
+            foreach ($warning_type as $type) {
+                $level_year_warnings[$selected_course_type->getTitle()][] =
+                    $em->getRepository("AppBundle:Warning")->findByTypeLevelYear($selected_course_type, $type, $year); //valores por año
             }
+
+
+            foreach ($major_offence_type as $type) {
+                $level_offence_year_warnings[$selected_course_type->getTitle()][] =
+                    $em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYearLevel($type, $selected_course_type, $year); //valores por año
+            }
+
+
+            foreach ($penalty_type as $type) {
+                $level_penalty_year_warnings[$selected_course_type->getTitle()][] =
+                    $em->getRepository("AppBundle:Warning")->findPenaltyByTypeYearLevel($type, $selected_course_type, $year); //valores por año
+            }
+
+
+        } else {
+            $selected_course_type = null;
+
+
+            foreach ($courses_type as $course_type) {
+                foreach ($warning_type as $type) {
+                    $level_year_warnings[$course_type->getTitle()][] =
+                        $em->getRepository("AppBundle:Warning")->findByTypeLevelYear($course_type, $type, $year); //valores por año
+                }
+
+            }
+
+
+            foreach ($courses_type as $course_type) {
+                foreach ($major_offence_type as $type) {
+                    $level_offence_year_warnings[$course_type->getTitle()][] =
+                        $em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYearLevel($type, $course_type, $year); //valores por año
+                }
+            }
+
+
+            foreach ($courses_type as $course_type) {
+                foreach ($penalty_type as $type) {
+                    $level_penalty_year_warnings[$course_type->getTitle()][] =
+                        $em->getRepository("AppBundle:Warning")->findPenaltyByTypeYearLevel($type, $course_type, $year); //valores por año
+                }
+            }
+
         }
+
 
         return $this->render(':statistics:level_warnings.html.twig', array(
             'courses_type' => $courses_type,
-            'course_type_selected' => $course_type,
+            'selected_course_type' => $selected_course_type,
             'level_year_warnings' => $level_year_warnings,
-            'major_offence_type'=>$major_offence_type,
-            'penalty_type'=>$penalty_type,
-            'level_offence_year_warnings'=>$level_offence_year_warnings,
-            'level_penalty_year_warnings'=>$level_penalty_year_warnings,
-            'warning_type'=>$warning_type,
+            'major_offence_type' => $major_offence_type,
+            'penalty_type' => $penalty_type,
+            'level_offence_year_warnings' => $level_offence_year_warnings,
+            'level_penalty_year_warnings' => $level_penalty_year_warnings,
+            'warning_type' => $warning_type,
             'year' => $year
         ));
     }
