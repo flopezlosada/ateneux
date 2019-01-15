@@ -54,12 +54,14 @@ class Meeting
 
     /**
      * @var smallint $meeting_type
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="MeetingType", inversedBy="meetings")
      */
     private $meeting_type;
 
     /**
      * @var smallint $meeting_board
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="MeetingBoard", inversedBy="meetings")
      * organo de la estructura: jefatura, tutorx, orientación ...
      */
