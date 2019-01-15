@@ -35,14 +35,14 @@ class DefaultController extends Controller
             return $this->redirect($this->generateUrl('teacher_show', array('id' => $this->getUser()->getTeacher()->getId())));
         }
 
-        $em=$this->getDoctrine()->getManager();
+        /*$em=$this->getDoctrine()->getManager();
         $meetings=$em->getRepository("AppBundle:Meeting")->findAll();
         foreach ($meetings as $meeting)
          {
              $meeting->setCourse($meeting->getStudentMeeting()->getCourse());
              $em->persist($meeting);
          }
-        $em->flush();
+        $em->flush();**/
         /* $em=$this->getDoctrine()->getManager();
          $warnings=$em->getRepository("AppBundle:Warning")->findAll();
          foreach ($warnings as $warning)

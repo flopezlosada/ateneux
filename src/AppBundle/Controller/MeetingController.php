@@ -46,6 +46,7 @@ class MeetingController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $meeting->setStudentMeeting($student);
+            $meeting->setCourse($student->getCourse());
             $meeting->setMeetingStatus($meeting_status);
             //$student->addMeeting($meeting);
 

@@ -95,6 +95,8 @@ class StudentController extends Controller
         if ($student->getCourse()) {
 
             if ($selected_course_id == "NULL") {
+
+
                 $selected_course = $student->getCourse();
             } else {
                 $selected_course = $em->getRepository("AppBundle:Course")->find($selected_course_id);
