@@ -316,4 +316,59 @@ class DefaultController extends Controller
             'year' => $year
         ));
     }
+
+    public function level_warning_courseAction($selected_course_type_id,$year = null)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $courses_type = $em->getRepository("AppBundle:CourseType")->findAll();
+        $selected_course_type = $em->getRepository("AppBundle:CourseType")->find($selected_course_type_id);
+        $course_year_warnings = array(); //valores por año
+        $course_month_warnings = array(); // valores por mes
+        $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
+        $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
+        foreach ($warning_type as $type) {
+            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
+            foreach ($array_months as $month) {
+                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month,null,null, $selected_course_type);
+            }
+            $course_month_warnings[] = array($month_warnings, $type->getTitle());
+        }
+
+        // tipos de amonestaciones
+        $course_year_major_offence = array(); //valores por año
+        $course_month_major_offence = array(); // valores por mes
+        $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
+        foreach ($major_offence_type as $type) {
+            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
+            foreach ($array_months as $month) {
+                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month,null,null, $selected_course_type);
+            }
+            $course_month_major_offence[] = array($month_major_offence, $type->getTitle());
+        }
+
+
+        $course_year_penalty = array(); //valores por año
+        $course_month_penalty = array(); // valores por mes
+        $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
+        foreach ($penalty_type as $type) {
+            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year,null,$selected_course_type), $type->getTitle()); //valores por año
+            foreach ($array_months as $month) {
+                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month,null,null, $selected_course_type);
+            }
+            $course_month_penalty[] = array($month_penalty, $type->getTitle());
+        }
+
+
+        return $this->render(':statistics:warnings.html.twig', array(
+            'courses_type' => $courses_type,
+            'course_year_warnings' => $course_year_warnings,
+            'course_month_warnings' => $course_month_warnings,
+            'course_month_major_offence' => $course_month_major_offence,
+            'course_year_major_offence' => $course_year_major_offence,
+            'course_month_penalty' => $course_month_penalty,
+            'course_year_penalty' => $course_year_penalty,
+            'selected_course_type'=>$selected_course_type,
+            'year' => $year
+        ));
+    }
 }

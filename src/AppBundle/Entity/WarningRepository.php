@@ -18,7 +18,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
      * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findByTypeYear($type, $year = null, $course = null)
+    public function findByTypeYear($type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -26,10 +26,18 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
+        if ($course_type) {
+            $dql .= ' and w.course_type=:course_type ';
+        }
+
         $query = $em->createQuery($dql);
         $query->setParameter('type', $type);
         if ($course) {
             $query->setParameter("course", $course);
+        }
+
+        if ($course_type) {
+            $query->setParameter("course_type", $course_type);
         }
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
@@ -37,7 +45,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findByCourseTypeMonth($type, $month, $year = null, $course = null)
+    public function findByCourseTypeMonth($type, $month, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
@@ -48,7 +56,9 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
-
+        if ($course_type) {
+            $dql .= ' and w.course_type=:course_type ';
+        }
         $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
@@ -57,6 +67,9 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $query->setParameter("course", $course);
         }
+        if ($course_type) {
+            $query->setParameter("course_type", $course_type);
+        }
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
@@ -64,7 +77,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
-    public function findMajorOffenceByTypeYear($major_offence_type, $year = null, $course = null)
+    public function findMajorOffenceByTypeYear($major_offence_type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -72,10 +85,16 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
+        if ($course_type) {
+            $dql .= ' and w.course_type=:course_type ';
+        }
         $query = $em->createQuery($dql);
         $query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
+        }
+        if ($course_type) {
+            $query->setParameter("course_type", $course_type);
         }
         $query->setParameter('major_offence_type', $major_offence_type);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
@@ -84,7 +103,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findMajorOffenceByCourseTypeMonth($major_offence_type, $month, $year = null, $course = null)
+    public function findMajorOffenceByCourseTypeMonth($major_offence_type, $month, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
@@ -95,13 +114,18 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
-
+        if ($course_type) {
+            $dql .= ' and w.course_type=:course_type ';
+        }
         $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
         $query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
+        }
+        if ($course_type) {
+            $query->setParameter("course_type", $course_type);
         }
         $query->setParameter('major_offence_type', $major_offence_type);
         $query->setParameter("month", $month);
@@ -111,7 +135,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByTypeYear($penalty_type, $year = null, $course = null)
+    public function findPenaltyByTypeYear($penalty_type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -119,11 +143,16 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
-
+        if ($course_type) {
+            $dql .= ' and w.course_type=:course_type ';
+        }
         $query = $em->createQuery($dql);
         $query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
+        }
+        if ($course_type) {
+            $query->setParameter("course_type", $course_type);
         }
         $query->setParameter('penalty_type', $penalty_type);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
@@ -132,7 +161,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function findPenaltyByCourseTypeMonth($penalty_type, $month, $year = null, $course = null)
+    public function findPenaltyByCourseTypeMonth($penalty_type, $month, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
@@ -143,13 +172,18 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
-
+        if ($course_type) {
+            $dql .= ' and w.course_type=:course_type ';
+        }
         $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
         $query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
+        }
+        if ($course_type) {
+            $query->setParameter("course_type", $course_type);
         }
         $query->setParameter('penalty_type', $penalty_type);
         $query->setParameter("month", $month);
@@ -172,6 +206,27 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('warning_type', $warning_type);
 
         $query->setParameter('course_type', $course_type_id);
+        $query->setParameter('start', RealCourse::getStartDateCourse($year));
+        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        return $query->getSingleScalarResult();
+    }
+
+
+    public function findByTypeLevelYearMonth($course_type_id, $warning_type, $month, $year = null)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
+          BETWEEN :start and :end and MONTH(w.date)=:month and w.warning_type=:warning_type
+           and w.course_type=:course_type
+          ";
+
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('warning_type', $warning_type);
+
+        $query->setParameter('course_type', $course_type_id);
+        $query->setParameter("month", $month);
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
 

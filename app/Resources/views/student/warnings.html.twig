@@ -1,19 +1,19 @@
 <div class="tab-pane fade"
      id="warnings">
     <h4>Listado de incidencias</h4>
-    <ul>
-        {% for warning in student_warnings %}
-            <li>
-                <a href="{{ path('warning_show', {'id': warning.id}) }}">{{ warning }}</a>.<br>
-                Profesora/or: {{ warning.getTeacher }} <br>
-                Fecha: {{ warning.date|localizeddate('long','none','es') }}<br>
-                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
-                    {#(is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined
-                and entity.getCourse.getId is defined
-                and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId)  or#}
-                    <a href="{{ path('warning_edit', {'id': warning.id,'student':student.id}) }}">Editar</a>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+
+    {% for warning in student_warnings %}
+        <div class="alert  {{ cycle(['alert-info', 'alert-success','alert-warning','alert-danger'], loop.index0) }}">
+            <a href="{{ path('warning_show', {'id': warning.id}) }}">{{ warning }}</a>.<br>
+            Profesora/or: {{ warning.getTeacher }} <br>
+            Fecha: {{ warning.date|localizeddate('long','none','es') }}<br>
+            {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
+                {#(is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined
+            and entity.getCourse.getId is defined
+            and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId)  or#}
+                <a href="{{ path('warning_edit', {'id': warning.id,'student':student.id}) }}">Editar</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+
 </div>

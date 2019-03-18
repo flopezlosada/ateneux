@@ -1,13 +1,9 @@
 <div class="tab-pane fade"
      id="mediation_needed">
     <h4>Mediaciones que ha necesitado</h4>
-    {% for mediation in student.getFirstStudents %}
-        <p><a href="{{ path('mediation_show', {'id': mediation.id}) }}">Mediación con {{ mediation.getSecondStudent }}</a> ({{ mediation.getDate|localizeddate('long','none','es') }})
-        </p>
+    {% for mediation in mediation_needed %}
+        <div class="alert  {{ cycle(['alert-info', 'alert-success','alert-warning','alert-danger'], loop.index0) }}">
+            <a href="{{ path('mediation_show', {'id': mediation.id}) }}">Mediación con {{ mediation.getOtherStudent(student) }}</a> ({{ mediation.getDate|localizeddate('long','none','es') }})
+        </div>
     {% endfor %}
-    {% for mediation in student.getSecondStudents %}
-        <p><a href="{{ path('mediation_show', {'id': mediation.id}) }}">Mediación con {{ mediation.getFirstStudent }}</a> ({{ mediation.getDate|localizeddate('long','none','es') }})
-        </p>
-    {% endfor %}
-
 </div>

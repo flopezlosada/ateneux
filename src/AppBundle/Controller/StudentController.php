@@ -122,6 +122,15 @@ class StudentController extends Controller
                 $learning_difficulties = $em->getRepository("AppBundle:Student")->getDifficulties($selected_course, $student, $assessment_board);
                 $assessment_board_learning_difficulties[] = array($assessment_board, $learning_difficulties);
             }
+            $mediation_needed=$em->getRepository("AppBundle:Mediation")->findByStudentCourse($student,$selected_course);
+            if ($student->getIsMediator()){
+                $mediations_mediator=$em->getRepository("AppBundle:Mediation")->findByMediatorCourse($student,$selected_course);
+            }
+            else {
+                $mediations_mediator=null;
+            }
+
+
         } else {
             $pending_student_meetings = null;
             $student_meetings = null;
@@ -130,6 +139,8 @@ class StudentController extends Controller
             $assessment_board_learning_difficulties = null;
             $learning_difficulties = null;
             $selected_course=null;
+            $mediation_needed=null;
+            $mediations_mediator=null;
         }
 
 
@@ -142,7 +153,9 @@ class StudentController extends Controller
             'academic_informations' => $academic_informations,
             'assessment_board_learning_difficulties' => $assessment_board_learning_difficulties,
             'learning_difficulties' => $learning_difficulties,
-            'selected_course'=>$selected_course
+            'selected_course'=>$selected_course,
+            'mediation_needed'=>$mediation_needed,
+            'mediations_mediator'=>$mediations_mediator
         ));
     }
 

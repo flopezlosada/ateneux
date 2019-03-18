@@ -1,10 +1,21 @@
 {% extends '::layout_graph.html.twig' %}
 
 {% block title_wrapper %}
-    Resumen de amonestaciones
+    Resumen de amonestaciones {% if selected_course_type is defined %} {{ selected_course_type }} {% endif %}
 {% endblock %}
 {% block main %}
     <div class="col-lg-12">
+        {% if selected_course_type is defined %}
+            <p>Selecciona de la siguiente lista el nivel que quieres analizar:</p>
+            <ul class="list-inline">
+                {% for course_type in courses_type %}
+                    <li>
+                        <a href="{{ path('level_statistics_warning_course_type', {'selected_course_type_id': course_type.id,'year':year}) }}">{{ course_type }}</a>
+                    </li>
+                {% endfor %}
+                <li><a href="{{ path('level_statistics_warning', {'year':year}) }}">Datos generales</a></li>
+            </ul>
+        {% endif %}
         <div class="panel panel-info">
             <div class="panel-heading">
                 Datos anuales

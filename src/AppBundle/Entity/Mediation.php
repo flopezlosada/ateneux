@@ -438,4 +438,17 @@ class Mediation
     {
         return $this->course_second_student;
     }
+
+    public function getOtherStudent(Student $student)
+    {
+        if ($this->getFirstStudent()===$student)
+        {
+            return $this->getSecondStudent();
+        }
+
+        if ($this->getSecondStudent()===$student)
+        {
+            return $this->getFirstStudent();
+        }
+    }
 }

@@ -1,4 +1,16 @@
 {% extends '::layout_crud.html.twig' %}
+{% form_theme form _self %}
+
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            <div class="alert  {{ cycle(['alert-info','alert-warning','alert-danger'], loop.index0) }}">
+                {{- form_widget(child) -}}
+                {{ form_label(child, null, {translation_domain: choice_translation_domain}) }}
+            </div>
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
 {% block title_wrapper %}Añadir Evolución Académica.{% endblock %}
 {% block main -%}
     <div class="panel panel-default">
@@ -17,7 +29,7 @@
                                 {{ form_label(form.academic) }}
                             </div>
 
-                            {{ form_widget(form.academic,{'attr':{'placeholder':''}}) }}
+                            {{ form_widget(form.academic,{'attr':{'placeholder':''}})|raw }}
 
                         </div>
 

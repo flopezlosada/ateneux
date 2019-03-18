@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <routes xmlns="http://symfony.com/schema/routing"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="statistics_mediation" path="/mediation" methods="GET">
         <default key="_controller">AppBundle:Default:mediation</default>
@@ -17,6 +17,9 @@
         <default key="selected_course_type_id">NULL</default>
     </route>
 
-
+    <route id="level_statistics_warning_course_type" path="/level_warning_course/{selected_course_type_id}/{year}" methods="GET">
+        <default key="_controller">AppBundle:Default:level_warning_course</default>
+        <default key="year"></default>
+    </route>
 
 </routes>

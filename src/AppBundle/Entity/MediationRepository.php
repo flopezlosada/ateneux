@@ -100,4 +100,35 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
+    public function findByStudentCourse($student, $selected_course)
+    {
+        $em = $this->getEntityManager();
+        $dql = "Select m from AppBundle:Mediation m where (m.first_student=:student and m.course_first_student=:course) 
+                or (m.second_student=:student and m.course_second_student=:course) order by m.date desc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("student", $student);
+        $query->setParameter("course", $selected_course);
+
+        return $query->getResult();
+
+    }
+
+    public function findByMediatorCourse($student, Course $selected_course)
+    {
+        $em = $this->getEntityManager();
+        $dql = "Select m from AppBundle:Mediation m where m.student_mediator=:student and
+         m.date   BETWEEN :start and :end  
+        order by m.date desc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("student", $student);
+
+        $query->setParameter('start', $selected_course->getStartDate());
+        $query->setParameter('end', $selected_course->getEndDate());
+
+
+        return $query->getResult();
+
+    }
 }

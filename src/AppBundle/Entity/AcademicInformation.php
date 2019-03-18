@@ -231,7 +231,7 @@ class AcademicInformation
 
     public function __toString()
     {
-        return "Evolución Académica. Fecha: ".$this->getDate()->format("d/m/Y");
+        return "Evolución Académica. Fecha: ".$this->getDate()->format("d/m/Y").". ".strip_tags(html_entity_decode($this->getInformation()));
     }
 
 

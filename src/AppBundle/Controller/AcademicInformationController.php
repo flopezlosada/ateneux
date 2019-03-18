@@ -130,7 +130,7 @@ class AcademicInformationController extends Controller
      *
      * @param AcademicInformation $academicInformation The academicInformation entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(AcademicInformation $academicInformation)
     {
@@ -147,7 +147,7 @@ class AcademicInformationController extends Controller
         $form = $this->createFormBuilder()
             ->add('academic', EntityType::class, array(
                 'class' => 'AppBundle\Entity\AcademicInformation',
-                'expanded' => false,
+                'expanded' => true,
                 'multiple' => false,
                 'query_builder' => function (EntityRepository $repository) use ($meeting)
                 {
@@ -167,9 +167,12 @@ class AcademicInformationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid())
         {
+
             // data is an array with "name", "email", and "message" keys
             $data = $form->getData();
-            $meeting->setAcademicMeeting($data['academic']);
+            $academic=$data['academic'];
+
+            $meeting->addAcademicInformation($academic);
             $em->persist($meeting);
             $em->flush();
 
