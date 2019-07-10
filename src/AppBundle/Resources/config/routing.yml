@@ -53,3 +53,6 @@ app_mediation:
 app_statistics:
         resource: "@AppBundle/Resources/config/routing/statistics.xml"
         prefix:   /statistics
+admin:
+        resource: "@AppBundle/Resources/config/routing/admin.xml"
+        prefix:   /admin

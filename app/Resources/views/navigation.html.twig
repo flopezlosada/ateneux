@@ -4,7 +4,7 @@
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
+                    <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
                                     </button>
@@ -56,7 +56,8 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="fa fa-chalkboard-teacher   fa-fw"></i> Tutoras/es<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-chalkboard-teacher   fa-fw"></i> Tutoras/es<span
+                            class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ path('teacher_index') }}">Listado de tutoras/es {{ real_course.getRealCourse }}</a>
@@ -75,19 +76,32 @@
                         <a href="#"><i class="fa fa-exclamation fa-fw"></i>Amonestaciones<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level collapse">
                             <li>
-                                <a href="{{ path('statistics_warning') }}"><i class="fa fa-chart-bar fa-fw"></i>Resumen anual de amonestaciones</a>
+                                <a href="{{ path('statistics_warning') }}"><i class="fa fa-chart-bar fa-fw"></i>Resumen
+                                    anual de amonestaciones</a>
                             </li>
                             <li>
-                                <a href="{{ path('level_statistics_warning') }}"><i class="fa fa-chart-line fa-fw"></i>Amonestaciones por nivel</a>
+                                <a href="{{ path('level_statistics_warning') }}"><i class="fa fa-chart-line fa-fw"></i>Amonestaciones
+                                    por nivel</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a href="{{ path('statistics_mediation') }}"><i class="fa fa-chart-pie fa-fw"></i>Mediaciones</a>
+                        <a href="{{ path('statistics_mediation') }}"><i
+                                    class="fa fa-chart-pie fa-fw"></i>Mediaciones</a>
                     </li>
                 </ul>
             </li>
+            {% if is_granted("ROLE_ADMIN")  or is_granted("ROLE_JEFATURA") %}
+                <li>
+                    <a href="#"><i class="fa fa-user-lock fa-fw"></i> Administración<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('admin_course_change_index') }}">Cambiar de curso</a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

@@ -12,7 +12,7 @@ namespace AppBundle\Service;
 class RealCourse
 {
 
-    public function getRealCourse()
+    public static function getRealCourse()
     {
         $real_month = date('m');
         $real_year = date('Y');
@@ -22,6 +22,18 @@ class RealCourse
         }
 
         return ($real_year - 1) . "/" . $real_year;
+    }
+
+    public function getPreviousCourse()
+    {
+        $real_month = date('m');
+        $real_year = date('Y');
+
+        if ($real_month > 6) {
+            return ($real_year -1) . "/" . $real_year;
+        }
+
+        return ($real_year - 2) . "/" . ($real_year-1);
     }
 
 
@@ -35,7 +47,7 @@ class RealCourse
      * Si se aporta el año, entiendo que es el año de inicio del curso, es decir, si se pasa 2017, entiendo que se
      * refiere al curso 2017/2108
      */
-    public static function getStartDateCourse($year)
+    public static function getStartDateCourse($year=null)
     {
         if ($year) {
             return date(($year)."-09-01");
@@ -51,7 +63,7 @@ class RealCourse
         }
     }
 
-    public static function getEndDateCourse($year)
+    public static function getEndDateCourse($year=null)
     {
 
         if ($year) {

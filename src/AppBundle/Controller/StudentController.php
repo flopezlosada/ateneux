@@ -283,7 +283,7 @@ class StudentController extends Controller
 
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
-            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student);//encuentra cursos activos del tipo que le corresponde
+            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student->getCourseType()->getId());//encuentra cursos activos del tipo que le corresponde
         } else {
             $courses = $em->getRepository('AppBundle:Course')->findAll();
         }

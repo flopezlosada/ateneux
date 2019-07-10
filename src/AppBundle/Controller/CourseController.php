@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Course;
+use AppBundle\Service\RealCourse;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,7 +25,7 @@ class CourseController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $courses = $em->getRepository('AppBundle:Course')->findAll();
+        $courses = $em->getRepository('AppBundle:Course')->findRealCourses();
 
         return $this->render('course/index.html.twig', array(
             'courses' => $courses,

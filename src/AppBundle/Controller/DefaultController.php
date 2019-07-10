@@ -3,8 +3,11 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Course;
 use AppBundle\Entity\Teacher;
+use AppBundle\Service\RealCourse;
 use Proxies\__CG__\AppBundle\Entity\Student;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -12,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
@@ -158,6 +162,7 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('teacher_show', array('id' => $teacher->getId())));
     }
 
+
     public function mediationAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -183,12 +188,12 @@ class DefaultController extends Controller
 
         $total_by_course = $em->getRepository("AppBundle:Mediation")->findAllMediationsByCourse();
 
-        return $this->render(':statistics:mediation.html.twig', array(
+        array(
             'course_year_mediations' => $course_year_mediations,
             'course_month_mediations' => $course_month_mediations,
             'month_by_mediation' => $month_by_mediation,
             'total_by_course' => $total_by_course
-        ));
+        );
     }
 
     public function warningAction($year = null)
@@ -317,7 +322,7 @@ class DefaultController extends Controller
         ));
     }
 
-    public function level_warning_courseAction($selected_course_type_id,$year = null)
+    public function level_warning_courseAction($selected_course_type_id, $year = null)
     {
         $em = $this->getDoctrine()->getManager();
         $courses_type = $em->getRepository("AppBundle:CourseType")->findAll();
@@ -329,7 +334,7 @@ class DefaultController extends Controller
         foreach ($warning_type as $type) {
             $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month,null,null, $selected_course_type);
+                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month, null, null, $selected_course_type);
             }
             $course_month_warnings[] = array($month_warnings, $type->getTitle());
         }
@@ -341,7 +346,7 @@ class DefaultController extends Controller
         foreach ($major_offence_type as $type) {
             $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month,null,null, $selected_course_type);
+                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month, null, null, $selected_course_type);
             }
             $course_month_major_offence[] = array($month_major_offence, $type->getTitle());
         }
@@ -351,9 +356,9 @@ class DefaultController extends Controller
         $course_month_penalty = array(); // valores por mes
         $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
         foreach ($penalty_type as $type) {
-            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year,null,$selected_course_type), $type->getTitle()); //valores por año
+            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month,null,null, $selected_course_type);
+                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month, null, null, $selected_course_type);
             }
             $course_month_penalty[] = array($month_penalty, $type->getTitle());
         }
@@ -367,8 +372,176 @@ class DefaultController extends Controller
             'course_year_major_offence' => $course_year_major_offence,
             'course_month_penalty' => $course_month_penalty,
             'course_year_penalty' => $course_year_penalty,
-            'selected_course_type'=>$selected_course_type,
+            'selected_course_type' => $selected_course_type,
             'year' => $year
         ));
+    }
+
+    /**
+     *
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
+    public function course_change_indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
+            ->findoneBy(array("course" => RealCourse::getRealCourse()));
+        if ($course_activation_status->getStatus() == 1) {
+            return $this->redirect($this->generateUrl('admin_course_student_list'));
+        } else if ($course_activation_status->getStatus() == 2) {
+            return $this->redirect($this->generateUrl('dashboard'));
+        }
+
+        return $this->render(':admin:change_course_index.html.twig', array(
+            "active_courses" => null
+        ));
+    }
+
+
+    /**
+     *
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
+    public function course_changeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
+            ->findoneBy(array("course" => RealCourse::getRealCourse()));
+
+
+        $active_courses = $em->getRepository("AppBundle:Course")->findBy(array("course_status" => 1));
+        $course_status_ended = $em->getRepository("AppBundle:CourseStatus")->find(2);
+        $course_status_active = $em->getRepository("AppBundle:CourseStatus")->find(1);
+        foreach ($active_courses as $course) {
+            $new_course = new Course();
+            $new_course->setCourseStatus($course_status_active);
+            $new_course->setCourseType($course->getCourseType());
+            $new_course->setTitle($course->getTitle());
+            $new_course->setStartDate(new \DateTime(RealCourse::getStartDateCourse()));
+            $new_course->setEndDate(new \DateTime(RealCourse::getEndDateCourse()));
+            $em->persist($new_course);
+            $course->setCourseStatus($course_status_ended);
+            $em->persist($course);
+        }
+
+        $students = $em->getRepository("AppBundle:Student")->findBy(array("student_status" => array(1, null)));
+        foreach ($students as $student) {
+            if ($student->getCourse() !== null) {
+                $student->addHistoricalCourse($student->getCourse());
+            }
+            $student->setCourse(null);
+            //     $em->persist($student);
+        }
+
+
+        $mentors = $em->getRepository("AppBundle:Teacher")
+            ->createQueryBuilder('c')->where(("c.mentor_course is not null"))->getQuery()->getResult();
+        foreach ($mentors as $mentor) {
+            $mentor->addHistoricalCourse($mentor->getMentorCourse());
+            $mentor->setMentorCourse(null);
+            $em->persist($mentor);
+        }
+
+        //control del proceso de activación
+        $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
+            ->findoneBy(array("course" => RealCourse::getRealCourse()));
+        $course_activation_status->setStatus(1);
+        $em->persist($course_activation_status);
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_course_student_list'));
+
+    }
+
+
+    /**
+     *
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
+    public function change_student_demoteAction($student_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+        $student = $em->getRepository('AppBundle:Student')->find($student_id);
+        if ($student->getCourseType()) {
+            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student->getCourseType()->getId());//encuentra cursos activos del tipo que le corresponde
+        } else {
+            $courses = $em->getRepository('AppBundle:Course')->findAll();
+        }
+        return $this->render('student/courses.html.twig', array(
+            'student' => $student,
+            'courses' => $courses
+        ));
+    }
+
+
+    /**
+     *
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
+    public function change_student_listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $course_types = $em->getRepository('AppBundle:CourseType')->findAll();
+        foreach ($course_types as $type) {
+            $type->setStudentPending($em->getRepository("AppBundle:Student")->getLevelPending($type->getId()));
+        }
+        $request = Request::createFromGlobals();
+
+        $type_active = $request->query->get('type_active');
+
+        return $this->render(':admin:change_course_student_level.html.twig', array(
+            "course_types" => $course_types,
+            'type_active' => $type_active
+        ));
+    }
+
+
+    /**
+     *
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
+    public function change_student_promoteAction($student_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $array_courses_promote = array(1 => array(2, 9), 2 => array(3, 7, 10), 3 => array(4, 7, 10), 4 => array(5, 7), 5 => 6, 7 => 8, 8 => 5, 9 => 10);
+        $student = $em->getRepository('AppBundle:Student')->find($student_id);
+        if ($student->getCourseType()) {
+            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,
+                $array_courses_promote[$student->getCourseType()->getId()]);//encuentra cursos activos del tipo que le corresponde
+        } else {
+            $courses = $em->getRepository('AppBundle:Course')->findAll();
+        }
+        return $this->render('student/courses.html.twig', array(
+            'student' => $student,
+            'courses' => $courses
+        ));
+    }
+
+
+    /**
+     *
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_JEFATURA')")
+     */
+    public function change_student_statusAction($status_id, $student_id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $student = $em->getRepository("AppBundle:Student")->find($student_id);
+        $status = $em->getRepository("AppBundle:StudentStatus")->find($status_id);
+        $student->setStudentStatus($status);
+        $em->persist($student);
+        $em->flush();
+
+        $session = $this->get('session');
+
+        $session->getFlashBag()->add(
+            'success',
+            'La/el estudiante ha sido actualizado con éxito'
+        );
+
+        return $this->redirect($this->generateUrl('admin_course_student_list', array('type_active' => $student->getCourseType()->getId())));
     }
 }

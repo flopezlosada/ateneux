@@ -1,0 +1,27 @@
+{% extends '::layout_list.html.twig' %}
+{% block title_wrapper %}Administración. Cambio de curso{% endblock %}
+{% block main %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Activar el nuevo curso {{ real_course.getRealCourse }} | {{ active_courses|length }}
+    </div>
+    <div class="panel-body">
+        <p>A continuación se realizarán los siguientes cambios:</p>
+        <ul>
+            <li>Todos los cursos que finalizaron en junio de {{ "now"|date("Y") }} pasarán a estado finalizado
+                y se crearán nuevos cursos similares pero con fecha de inicio
+                el <strong>1 de julio de {{ "now"|date("Y") }}</strong>  y finalización <strong> 30 de junio de {{ ("now"|date("Y")+1) }}</strong> </li>
+            <li>Todxs lxs estudiantes pasarán a estar sin curso definido y se guardará en su histórico el curso anterior.
+                Deberéis asignar a cada estudiante su nuevo curso. Para ello hay que ir uno por uno indicando si promociona o repite</li>
+            <li>Todxs lxs tutorxs perderán su curso actual para que podáis indicar el nuevo curso que tutoriza.
+                Se guardará en su histórico el curso que tienen actualmente</li>
+        </ul>
+        <p>Si estás de acuerdo, pincha en el siguiente enlace:
+            <a href="{{ path('admin_course_change') }}">
+        <button class="btn btn-outline btn-warning" type="button"
+                onclick="return confirm('¿Estás segura/o de realizar esta operación?\n No tiene vuelta atrás')">Actualizar cursos
+        </button></a></p>
+
+    </div>
+</div>
+{% endblock %}

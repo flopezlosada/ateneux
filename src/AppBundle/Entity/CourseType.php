@@ -46,6 +46,7 @@ class CourseType
     /**
      *
      * @ORM\OneToMany(targetEntity="Student", mappedBy="course_type")
+     * @ORM\OrderBy({"surname" = "ASC"})
      */
     private $students;
 
@@ -55,6 +56,12 @@ class CourseType
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+
+    /**
+     * @var string $title
+     * @ORM\Column(name="short_title", type="string", length=10)
+     */
+    private $short_title;
 
     /**
      * @var dateTime $created
@@ -71,6 +78,33 @@ class CourseType
      * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
+
+    /**
+     * @var Es una lista de estudiantes que aún no se han actualizado. Es para la activación del nuevo curso, cuando
+     * hay que indicar uno por uno a cada estudiante qué hace. Este es el listado de la gente que aún no ha sido
+     * actualizado (ya sea promocionar, repetir, etc)
+     * Esta variable se llena en el controlador, no es de la tabla de datos
+     */
+    private $student_pending;
+
+    /**
+     * @return Es
+     */
+    public function getStudentPending()
+    {
+        return $this->student_pending;
+    }
+
+    /**
+     * @param Es $student_pending
+     */
+    public function setStudentPending($student_pending)
+    {
+        $this->student_pending = $student_pending;
+    }
+
+
+
     /**
      * Constructor
      */
@@ -270,5 +304,29 @@ class CourseType
     public function getWarnings()
     {
         return $this->warnings;
+    }
+
+    /**
+     * Set shortTitle.
+     *
+     * @param string $shortTitle
+     *
+     * @return CourseType
+     */
+    public function setShortTitle($shortTitle)
+    {
+        $this->short_title = $shortTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get shortTitle.
+     *
+     * @return string
+     */
+    public function getShortTitle()
+    {
+        return $this->short_title;
     }
 }

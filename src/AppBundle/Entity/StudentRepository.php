@@ -31,7 +31,7 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
-    public function findWarnings($student_id,$course)
+    public function findWarnings($student_id, $course)
     {
 
         $em = $this->getEntityManager();
@@ -57,7 +57,8 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
     public function getDifficulties($course, $student, $assessment_board)
     {
         $em = $this->getEntityManager();
-        $dql = "select t from AppBundle:AssessmentBoardLearningDifficulties t where t.course=:course and t.student=:student and t.assessment_board=:assessment_board";
+        $dql = "select t from AppBundle:AssessmentBoardLearningDifficulties t where t.course=:course and t.student=:student 
+            and t.assessment_board=:assessment_board";
         $query = $em->createQuery($dql);
         $query->setParameter("course", $course);
         $query->setParameter("assessment_board", $assessment_board);
@@ -90,6 +91,21 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
         $em = $this->getEntityManager();
         $dql = "select t from AppBundle:Student t where t.course is not null order by t.surname, t.name";
         $query = $em->createQuery($dql);
+
+        return $query->getResult();
+
+    }
+
+    public function getLevelPending($type)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Student t where t.course is null and (t.student_status 
+                in (:status) or t.student_status is null) and t.course_type=:course_type order by t.surname, t.name";
+
+        $query = $em->createQuery($dql);
+
+        $query->setParameter("course_type", $type);
+        $query->setParameter("status",array(1) );
 
         return $query->getResult();
 
