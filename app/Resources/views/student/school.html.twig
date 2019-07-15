@@ -254,10 +254,12 @@
     </div>
 {% else %}
     <p>No se han definido los datos académicos.
-    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")
-    or (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId
-    is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId) %}
-        Por favor, añádelos a continuación. <a
-            href="{{ path('studentschool_new', {'student_id': student.id}) }}">Añadir</a></p>
+    {% if status_real_course!=3 %}
+        {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")
+            or (is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId
+            is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId) %}
+            Por favor, añádelos a continuación. <a
+                href="{{ path('studentschool_new', {'student_id': student.id}) }}">Añadir</a></p>
+        {% endif %}
     {% endif %}
 {% endif %}

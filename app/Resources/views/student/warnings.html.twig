@@ -11,7 +11,7 @@
                 {#(is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.id is defined
             and entity.getCourse.getId is defined
             and app.user.getTeacher.getMentorCourse.id==entity.getCourse.getId)  or#}
-                <a href="{{ path('warning_edit', {'id': warning.id,'student':student.id}) }}">Editar</a>
+            {% if status_real_course!=3 %}<a href="{{ path('warning_edit', {'id': warning.id,'student':student.id}) }}">Editar</a>{% endif %}
             {% endif %}
         </div>
     {% endfor %}

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Student;
+use AppBundle\Service\CourseStatus;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,11 +87,14 @@ class StudentController extends Controller
      * Finds and displays a student entity.
      *
      */
-    public function showAction(Student $student, $selected_course_id = null)
+    public function showAction(Student $student, $selected_course_id = null, CourseStatus $course_status)
     {
 
         $deleteForm = $this->createDeleteForm($student);
         $em = $this->getDoctrine()->getManager();
+
+
+        $status_real_course=$course_status->getStatusRealCourse($selected_course_id);//devuelve 0,1,2 ó 3 según el estado del curso que se está analizando
 
         if ($student->getCourse()) {
 
@@ -100,6 +104,7 @@ class StudentController extends Controller
                 $selected_course = $student->getCourse();
             } else {
                 $selected_course = $em->getRepository("AppBundle:Course")->find($selected_course_id);
+
             }
 
             $pending_student_meetings = $em->getRepository('AppBundle:Student')
@@ -144,6 +149,7 @@ class StudentController extends Controller
         }
 
 
+
         return $this->render('student/show.html.twig', array(
             'student' => $student,
             'pending_student_meetings' => $pending_student_meetings,
@@ -155,7 +161,8 @@ class StudentController extends Controller
             'learning_difficulties' => $learning_difficulties,
             'selected_course'=>$selected_course,
             'mediation_needed'=>$mediation_needed,
-            'mediations_mediator'=>$mediations_mediator
+            'mediations_mediator'=>$mediations_mediator,
+            'status_real_course'=>$status_real_course
         ));
     }
 

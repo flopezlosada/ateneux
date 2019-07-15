@@ -24,7 +24,7 @@ class RealCourse
         return ($real_year - 1) . "/" . $real_year;
     }
 
-    public function getPreviousCourse()
+    public static function getPreviousCourse()
     {
         $real_month = date('m');
         $real_year = date('Y');

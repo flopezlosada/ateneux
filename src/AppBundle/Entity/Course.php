@@ -678,4 +678,12 @@ class Course
     {
         return $this->meetings;
     }
+
+    /**
+     * devuelve el año de este curso en formato AAAA/AAAA
+     */
+    public function getRealYear()
+    {
+      return $this->getStartDate()->format('Y')."/".$this->getEndDate()->format('Y');
+    }
 }

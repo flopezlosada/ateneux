@@ -5,65 +5,80 @@
 {% block main -%}
     <div class="panel panel-default">
         <div class="panel-heading">
+            {% if status_real_course==3 %}
+                <div class="alert alert-warning">
+                    Estás viendo los datos de un curso ya terminado. NO es el curso actual.
+                    Pincha <a href="{{ path('student_show', {'id': student.id, 'selected_course_id': null}) }}">aquí
+                        para ir al curso actual</a>
+                </div>
+            {% endif %}
             <h1>Ficha de estudiante: {{ student }} </h1>
-            {% if student.getCourse == null %}
-                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")%}
-                    <div class="alert alert-danger">
-                        Debes definir el curso actual de la/el estudiante <a
-                                href="{{ path('student_course', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% elseif  is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined %}
-                    <div class="alert alert-danger">No se ha indicado el curso del estudiante. <a
-                                href="{{ path('student_course_selected', {'course_id': app.user.getTeacher.getMentorCourse.getId, 'student_id': student.id}) }}"
-                                class="alert-link">Añadir a mi curso</a>.
-                    </div>
-                {% endif %}
-            {% endif %}
-            {% if student.getMedical.getId is not defined %}
-                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")%}
-                    <div class="alert alert-danger">
-                        Debes definir los datos médicos de la/el estudiante <a
-                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId  is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
-                    <div class="alert alert-danger">
-                        Debes definir los datos médicos de la/el estudiante <a
-                                href="{{ path('studentmedical_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% endif %}
-            {% endif %}
-            {% if student.getFamiliar.getId is not defined %}
-                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
-                    <div class="alert alert-danger">
-                        Debes definir los datos familiares de la/el estudiante <a
-                                href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
-                    <div class="alert alert-danger">
-                        Debes definir los datos familiares de la/el estudiante <a
-                                href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% endif %}
-            {% endif %}
-            {% if student.getStudentSchool.getId is not defined %}
-                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA")%}
-                    <div class="alert alert-danger">
-                        Debes definir los datos académicos de la/el estudiante <a
-                                href="{{ path('studentschool_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
-                    <div class="alert alert-danger">
-                        Debes definir los datos académicos de la/el estudiante <a
-                                href="{{ path('studentschool_new', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
-                    </div>
-                {% endif %}
-                {% if pending_student_meetings|length>0 %}
-                    {% for meeting in pending_student_meetings %}
-                        <div class="alert alert-info">
-                            Esta/e estudiante tiene pendiente una {{ meeting.getMeetingType }} el
-                            día {{ meeting.date|localizeddate('long','none','es') }}
+            {% if status_real_course!=3 %}
+                {% if student.getCourse == null %}
+                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
+                        <div class="alert alert-danger">
+                            Debes definir el curso actual de la/el estudiante <a
+                                    href="{{ path('student_course', {'student_id': student.id}) }}" class="alert-link">Indicar</a>.
                         </div>
-                    {% endfor %}
+                    {% elseif  is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined %}
+                        <div class="alert alert-danger">No se ha indicado el curso del estudiante. <a
+                                    href="{{ path('student_course_selected', {'course_id': app.user.getTeacher.getMentorCourse.getId, 'student_id': student.id}) }}"
+                                    class="alert-link">Añadir a mi curso</a>.
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if student.getMedical.getId is not defined %}
+                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
+                        <div class="alert alert-danger">
+                            Debes definir los datos médicos de la/el estudiante <a
+                                    href="{{ path('studentmedical_new', {'student_id': student.id}) }}"
+                                    class="alert-link">Indicar</a>.
+                        </div>
+                    {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId  is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                        <div class="alert alert-danger">
+                            Debes definir los datos médicos de la/el estudiante <a
+                                    href="{{ path('studentmedical_new', {'student_id': student.id}) }}"
+                                    class="alert-link">Indicar</a>.
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if student.getFamiliar.getId is not defined %}
+                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
+                        <div class="alert alert-danger">
+                            Debes definir los datos familiares de la/el estudiante <a
+                                    href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}"
+                                    class="alert-link">Indicar</a>.
+                        </div>
+                    {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                        <div class="alert alert-danger">
+                            Debes definir los datos familiares de la/el estudiante <a
+                                    href="{{ path('studentfamiliar_new', {'student_id': student.id}) }}"
+                                    class="alert-link">Indicar</a>.
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if student.getStudentSchool.getId is not defined %}
+                    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
+                        <div class="alert alert-danger">
+                            Debes definir los datos académicos de la/el estudiante <a
+                                    href="{{ path('studentschool_new', {'student_id': student.id}) }}"
+                                    class="alert-link">Indicar</a>.
+                        </div>
+                    {% elseif  student.getCourse != null and is_granted("ROLE_TEACHER") and app.user.getTeacher.getMentorCourse.getId is defined and student.getCourse.getId is defined and app.user.getTeacher.getMentorCourse.getId == student.getCourse.getId %}
+                        <div class="alert alert-danger">
+                            Debes definir los datos académicos de la/el estudiante <a
+                                    href="{{ path('studentschool_new', {'student_id': student.id}) }}"
+                                    class="alert-link">Indicar</a>.
+                        </div>
+                    {% endif %}
+                    {% if pending_student_meetings|length>0 %}
+                        {% for meeting in pending_student_meetings %}
+                            <div class="alert alert-info">
+                                Esta/e estudiante tiene pendiente una {{ meeting.getMeetingType }} el
+                                día {{ meeting.date|localizeddate('long','none','es') }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 {% endif %}
             {% endif %}
         </div>
@@ -71,16 +86,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Datos<br>personales</a>
+                        <li class="active"><a href="#home" data-toggle="tab"
+                                              aria-expanded="true">Datos<br>personales</a>
                         </li>
                         <li class=""><a href="#medical" data-toggle="tab" aria-expanded="false">Datos<br>médicos</a>
                         </li>
-                        <li class=""><a href="#familiar" data-toggle="tab" aria-expanded="false">Contexto<br>Familiar</a>
+                        <li class=""><a href="#familiar" data-toggle="tab"
+                                        aria-expanded="false">Contexto<br>Familiar</a>
                         </li>
                         <li class=""><a href="#school" data-toggle="tab" aria-expanded="false">Contexto<br>escolar</a>
                         </li>
                         {% if student_meetings|length>0 %}
-                            <li class=""><a href="#meetings" data-toggle="tab" aria-expanded="false">Reuniones<br>de curso</a>
+                            <li class=""><a href="#meetings" data-toggle="tab" aria-expanded="false">Reuniones<br>de
+                                    curso</a>
                             </li>
                         {% endif %}
                         {% if student_warnings|length>0 %}
@@ -89,7 +107,8 @@
                         {% endif %}
 
                         {% if assessment_board_learning_difficulties|length>0 %}
-                            <li class=""><a href="#assessmentboard" data-toggle="tab" aria-expanded="false">Juntas de<br>evaluación</a>
+                            <li class=""><a href="#assessmentboard" data-toggle="tab" aria-expanded="false">Juntas
+                                    de<br>evaluación</a>
                             </li>
                         {% endif %}
                         {% if student.hadMediationNeeded %}
@@ -99,6 +118,10 @@
                         {% if student.getIsMediator %}
                             <li class=""><a href="#mediator" data-toggle="tab" aria-expanded="false">Estudiante<br>mediadora/or</a>
                             </li>
+                        {% endif %}
+                        {% if student.historicalCourses|length>0 %}
+                            <li class=""><a href="#historical" data-toggle="tab" aria-expanded="false">Histórico <br>de
+                                    cursos</a></li>
                         {% endif %}
 
                     </ul>
@@ -122,17 +145,19 @@
                             <p><strong>Correo electrónico: </strong>{{ student.getEmail }}</p>
 
                             {% if student.getCourse != null %}
-                                <p><strong>Curso actual: </strong> {{ student.getCourse }} | <a
-                                            href="{{ path('student_course', {'student_id': student.id}) }}" class="alert-link">Cambiar</a></p>
+                                <p><strong>Curso actual: </strong> {{ student.getCourse }} | {% if status_real_course!=3 %}<a
+                                            href="{{ path('student_course', {'student_id': student.id}) }}"
+                                            class="alert-link">Cambiar</a>{% endif %}</p>
                             {% endif %}
                         </div>
                         <div class="tab-pane fade"
                              id="medical">{% include ':student:medical.html.twig' with {'entity':student} %}
                             {% if student.getMedical.getId is defined %}
-                                <div class="clearfix"></div><div class="panel panel-default">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="{{ path('studentmedical_edit', {'id': student.getMedical.getId}) }}">Editar
-                                            datos médicos</a>
+                                        {% if status_real_course!=3 %}<a href="{{ path('studentmedical_edit', {'id': student.getMedical.getId}) }}">Editar
+                                            datos médicos</a>{% endif %}
                                     </div>
                                 </div>
                             {% endif %}
@@ -140,10 +165,11 @@
                         <div class="tab-pane fade"
                              id="familiar">{% include ':student:familiar.html.twig' with {'entity':student} %}
                             {% if student.getFamiliar.getId is defined %}
-                                <div class="clearfix"></div><div class="panel panel-default">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="{{ path('studentfamiliar_edit', {'id': student.getFamiliar.getId}) }}">Editar
-                                            contexto familiar</a> |
+                                        {% if status_real_course!=3 %}<a href="{{ path('studentfamiliar_edit', {'id': student.getFamiliar.getId}) }}">Editar
+                                            contexto familiar</a> {% endif %}|
                                         <a
                                                 href="{{ path('student_familiar_pdf', {'student_id': student.getId}) }}">Generar
                                             pdf</a>
@@ -154,10 +180,11 @@
                         <div class="tab-pane fade"
                              id="school">{% include ':student:school.html.twig' with {'entity':student} %}
                             {% if student.getStudentSchool.getId is defined %}
-                                <div class="clearfix"></div><div class="panel panel-default">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="{{ path('studentschool_edit', {'id': student.getStudentSchool.getId}) }}">Editar
-                                            contexto escolar</a> |
+                                        {% if status_real_course!=3 %}<a href="{{ path('studentschool_edit', {'id': student.getStudentSchool.getId}) }}">Editar
+                                            contexto escolar</a>{% endif %} |
                                         <a href="{{ path('student_school_generate', {'student_id': student.getId, 'type': 'pdf'}) }}">Generar
                                             pdf</a>
                                     </div>
@@ -178,6 +205,9 @@
                         {% endif %}
                         {% if student.getIsMediator %}
                             {% include ':student:mediator.html.twig' %}
+                        {% endif %}
+                        {% if student.historicalCourses|length>0 %}
+                            {% include ':student:historical.html.twig' %}
                         {% endif %}
                     </div>
                 </div>

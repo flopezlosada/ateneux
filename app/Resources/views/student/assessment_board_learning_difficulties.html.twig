@@ -13,7 +13,7 @@
                     <p><strong>{{ diff.getType }}</strong>: {{ diff.learningDifficulties }} <br>
                         {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") or   is_granted("ROLE_TEACHER") %}
 
-                            <a href="{{ path('assessmentboardlearningdifficulties_edit', {'id':diff.id}) }}">Editar</a>
+                        {% if status_real_course!=3 %}<a href="{{ path('assessmentboardlearningdifficulties_edit', {'id':diff.id}) }}">Editar</a>{% endif %}
                         {% endif %}
                     </p>
                 {% endfor %}

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Course;
+use AppBundle\Entity\CourseActivationControl;
 use AppBundle\Entity\Teacher;
 use AppBundle\Service\RealCourse;
 use Proxies\__CG__\AppBundle\Entity\Student;
@@ -385,11 +386,20 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
-            ->findoneBy(array("course" => RealCourse::getRealCourse()));
-        if ($course_activation_status->getStatus() == 1) {
-            return $this->redirect($this->generateUrl('admin_course_student_list'));
-        } else if ($course_activation_status->getStatus() == 2) {
-            return $this->redirect($this->generateUrl('dashboard'));
+            ->findoneBy(array("name" => RealCourse::getRealCourse()));
+        if ($course_activation_status) {
+            if ($course_activation_status->getStatus() == 1) {
+                return $this->redirect($this->generateUrl('admin_course_student_list'));
+            } else if ($course_activation_status->getStatus() == 2 ||$course_activation_status->getStatus() == 3) {
+                return $this->redirect($this->generateUrl('dashboard'));
+            }
+        } else {
+            $course_activation_control=new CourseActivationControl();
+            $course_activation_control->setCourse(RealCourse::getRealCourse());
+            $course_activation_control->setStatus(0);
+            $em->persist($course_activation_control);
+
+            $em->flush();
         }
 
         return $this->render(':admin:change_course_index.html.twig', array(
@@ -405,8 +415,6 @@ class DefaultController extends Controller
     public function course_changeAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
-            ->findoneBy(array("course" => RealCourse::getRealCourse()));
 
 
         $active_courses = $em->getRepository("AppBundle:Course")->findBy(array("course_status" => 1));
@@ -444,9 +452,16 @@ class DefaultController extends Controller
 
         //control del proceso de activación
         $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
-            ->findoneBy(array("course" => RealCourse::getRealCourse()));
+            ->findoneBy(array("name" => RealCourse::getRealCourse()));
         $course_activation_status->setStatus(1);
         $em->persist($course_activation_status);
+
+        //modifica el estado del curso anterior y lo pone a 3 ->terminado
+        $previous_course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
+            ->findoneBy(array("name" => RealCourse::getPreviousCourse()));
+
+        $previous_course_activation_status->setStatus(3);
+        $em->persist($previous_course_activation_status);
 
         $em->flush();
 

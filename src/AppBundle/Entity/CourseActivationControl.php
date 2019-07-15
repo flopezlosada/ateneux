@@ -23,12 +23,13 @@ class CourseActivationControl
      * @var string course
      * @ORM\Column(name="course", type="string", length=255)
      */
-    private $course;
+    public $name;
 
     /** 0=>El curso no ha sido aún iniciado. Es el momento de en julio realizar los cambios de cursos y de estudiantes, si promocionan o no
      * 1 => El curso se ha iniciado, se han realizado los cambios automáticos de creación de cursos y de poner en nulo
      * el curso de los estudiantes. Sólo queda promocionar o repetir cada estudiante individualmente.
-     * 2=> Se han realizado todos los cambios en estudiantes, todos tienen ya su nuevo curso.
+     * 2=> Se han realizado todos los cambios en estudiantes, todos tienen ya su nuevo curso.Igual no lo implemento.
+     * 3=>Se ha inciado un nuevo curso. Es decir, al iniciar el curso, se pone en 3 el curso anterior
      * @var int status
      * @ORM\Column(name="status", type="smallint", length=2)
      */
@@ -91,5 +92,29 @@ class CourseActivationControl
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set name.
+     *
+     * @param string $name
+     *
+     * @return CourseActivationControl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

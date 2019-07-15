@@ -48,3 +48,10 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    #register our custom service with a name in this case OCWServices
+    CourseStatus:
+        # The namespace with the name of the class that contain our service
+        class: AppBundle\Service\CourseStatus
+        public: true
+        #The services that we will inject (see the constructor)
+        arguments: [ "@doctrine.orm.entity_manager" ]
