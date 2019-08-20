@@ -386,7 +386,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
-            ->findoneBy(array("name" => RealCourse::getRealCourse()));
+            ->findoneBy(array("course" => RealCourse::getRealCourse()));
         if ($course_activation_status) {
             if ($course_activation_status->getStatus() == 1) {
                 return $this->redirect($this->generateUrl('admin_course_student_list'));
@@ -395,6 +395,7 @@ class DefaultController extends Controller
             }
         } else {
             $course_activation_control=new CourseActivationControl();
+
             $course_activation_control->setCourse(RealCourse::getRealCourse());
             $course_activation_control->setStatus(0);
             $em->persist($course_activation_control);
@@ -452,13 +453,13 @@ class DefaultController extends Controller
 
         //control del proceso de activación
         $course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
-            ->findoneBy(array("name" => RealCourse::getRealCourse()));
+            ->findoneBy(array("course" => RealCourse::getRealCourse()));
         $course_activation_status->setStatus(1);
         $em->persist($course_activation_status);
 
         //modifica el estado del curso anterior y lo pone a 3 ->terminado
         $previous_course_activation_status = $em->getRepository("AppBundle:CourseActivationControl")
-            ->findoneBy(array("name" => RealCourse::getPreviousCourse()));
+            ->findoneBy(array("course" => RealCourse::getPreviousCourse()));
 
         $previous_course_activation_status->setStatus(3);
         $em->persist($previous_course_activation_status);

@@ -273,11 +273,18 @@ class Student
      */
     private $birth_date;
 
+    /**
+     * @ORM\OneToMany(targetEntity="GuidanceFollowUp", mappedBy="student")
+     */
+    protected $guidance_follow_ups;
+
 
     /**
      * @var Me sirve para mostrar una propiedad en cada evaluación, la de items sin evaluar en una evaluación determinada. No se guarda, es sólo para la plantilla..
      */
     private $not_evaluated_difficulties_in_assessment_board;
+
+
 
 
 
@@ -1278,4 +1285,40 @@ class Student
         $this->not_evaluated_difficulties_in_assessment_board = $not_evaluated_difficulties_in_assessment_board;
     }
 
+
+    /**
+     * Add guidanceFollowUp.
+     *
+     * @param \AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp
+     *
+     * @return Student
+     */
+    public function addGuidanceFollowUp(\AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp)
+    {
+        $this->guidance_follow_ups[] = $guidanceFollowUp;
+
+        return $this;
+    }
+
+    /**
+     * Remove guidanceFollowUp.
+     *
+     * @param \AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeGuidanceFollowUp(\AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp)
+    {
+        return $this->guidance_follow_ups->removeElement($guidanceFollowUp);
+    }
+
+    /**
+     * Get guidanceFollowUps.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGuidanceFollowUps()
+    {
+        return $this->guidance_follow_ups;
+    }
 }

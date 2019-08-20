@@ -146,11 +146,23 @@ class Course
     protected $assessments_board_learning_difficulties;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="GuidanceFollowUp", mappedBy="course")
+     */
+    protected $guidance_follow_ups;
+
+
+
     public function __toString()
     {
         return $this->getTitle();
     }
 
+    //devuelve los años del curso en formato YYYY/YYYY
+    public function getYearsOfCourse()
+    {
+        return $this->getStartDate()->format("Y")."/".$this->getEndDate()->format("Y");
+    }
     /**
      * Set title
      *
@@ -685,5 +697,41 @@ class Course
     public function getRealYear()
     {
       return $this->getStartDate()->format('Y')."/".$this->getEndDate()->format('Y');
+    }
+
+    /**
+     * Add guidanceFollowUp.
+     *
+     * @param \AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp
+     *
+     * @return Course
+     */
+    public function addGuidanceFollowUp(\AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp)
+    {
+        $this->guidance_follow_ups[] = $guidanceFollowUp;
+
+        return $this;
+    }
+
+    /**
+     * Remove guidanceFollowUp.
+     *
+     * @param \AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeGuidanceFollowUp(\AppBundle\Entity\GuidanceFollowUp $guidanceFollowUp)
+    {
+        return $this->guidance_follow_ups->removeElement($guidanceFollowUp);
+    }
+
+    /**
+     * Get guidanceFollowUps.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGuidanceFollowUps()
+    {
+        return $this->guidance_follow_ups;
     }
 }

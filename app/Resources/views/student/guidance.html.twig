@@ -1,0 +1,27 @@
+<div class="tab-pane fade"
+     id="guidance">
+    <h4>{{ guidance.guidanceFollowUpStatus }}</h4>
+    <p>Fecha de inicio: {{ guidance.startDate |localizeddate('long','none','es') }}<br>
+    {% if  guidance.guidanceFollowUpStatus.id ==2 %}
+        Fecha de finalización: {{ guidance.endDate |localizeddate('long','none','es') }}<br>
+    {% endif %}
+    </p>
+    {% if is_granted("ROLE_ORIENTACION") or is_granted("ROLE_JEFATURA")%}
+        <p><strong>Archivos de seguimiento</strong></p>
+        <ul>
+        {% for file in guidance.files %}
+            <li><a href="{{ asset('uploads/student/guidance_follow_up_files/' ~file.getArchive)}}">{{ file }}</a>
+                {% if is_granted("ROLE_ORIENTACION") %}
+                    | <a href="{{ path('guidancefollowupfile_delete', {'id': file.id}) }}" onclick="return confirm('¿Estás segura/o de eliminar este archivo?')">Eliminar</a>
+                {% endif %}
+            </li>
+            {% else %}
+            <li>No se ha definido ningún archivo de seguimiento</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if is_granted("ROLE_ORIENTACION") %}
+        <p><a href="{{ path('guidancefollowupfile_new', {'guidance_follow_up_id': guidance.id}) }}">Añadir archivo seguimiento</a> </p>
+    {% endif %}
+</div>

@@ -124,6 +124,12 @@
                                     cursos</a></li>
                         {% endif %}
 
+                        {% if guidance is not null %}
+                            <li class=""><a href="#guidance" data-toggle="tab" aria-expanded="false">Seguimiento <br>de
+                                    orientación</a></li>
+                        {% endif %}
+
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="home">
@@ -145,9 +151,10 @@
                             <p><strong>Correo electrónico: </strong>{{ student.getEmail }}</p>
 
                             {% if student.getCourse != null %}
-                                <p><strong>Curso actual: </strong> {{ student.getCourse }} | {% if status_real_course!=3 %}<a
-                                            href="{{ path('student_course', {'student_id': student.id}) }}"
-                                            class="alert-link">Cambiar</a>{% endif %}</p>
+                                <p><strong>Curso actual: </strong> {{ student.getCourse }}
+                                    | {% if status_real_course!=3 %}<a
+                                        href="{{ path('student_course', {'student_id': student.id}) }}"
+                                        class="alert-link">Cambiar</a>{% endif %}</p>
                             {% endif %}
                         </div>
                         <div class="tab-pane fade"
@@ -156,8 +163,10 @@
                                 <div class="clearfix"></div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        {% if status_real_course!=3 %}<a href="{{ path('studentmedical_edit', {'id': student.getMedical.getId}) }}">Editar
-                                            datos médicos</a>{% endif %}
+                                        {% if status_real_course!=3 %}<a
+                                            href="{{ path('studentmedical_edit', {'id': student.getMedical.getId}) }}">
+                                                Editar
+                                                datos médicos</a>{% endif %}
                                     </div>
                                 </div>
                             {% endif %}
@@ -168,7 +177,9 @@
                                 <div class="clearfix"></div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        {% if status_real_course!=3 %}<a href="{{ path('studentfamiliar_edit', {'id': student.getFamiliar.getId}) }}">Editar
+                                        {% if status_real_course!=3 %}<a
+                                        href="{{ path('studentfamiliar_edit', {'id': student.getFamiliar.getId}) }}">
+                                            Editar
                                             contexto familiar</a> {% endif %}|
                                         <a
                                                 href="{{ path('student_familiar_pdf', {'student_id': student.getId}) }}">Generar
@@ -183,8 +194,10 @@
                                 <div class="clearfix"></div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        {% if status_real_course!=3 %}<a href="{{ path('studentschool_edit', {'id': student.getStudentSchool.getId}) }}">Editar
-                                            contexto escolar</a>{% endif %} |
+                                        {% if status_real_course!=3 %}<a
+                                            href="{{ path('studentschool_edit', {'id': student.getStudentSchool.getId}) }}">
+                                                Editar
+                                                contexto escolar</a>{% endif %} |
                                         <a href="{{ path('student_school_generate', {'student_id': student.getId, 'type': 'pdf'}) }}">Generar
                                             pdf</a>
                                     </div>
@@ -208,6 +221,10 @@
                         {% endif %}
                         {% if student.historicalCourses|length>0 %}
                             {% include ':student:historical.html.twig' %}
+                        {% endif %}
+
+                        {% if guidance is not null %}
+                            {% include ':student:guidance.html.twig' %}
                         {% endif %}
                     </div>
                 </div>

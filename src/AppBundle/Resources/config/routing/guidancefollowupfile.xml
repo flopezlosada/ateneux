@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="guidancefollowupfile_index" path="/" methods="GET">
+        <default key="_controller">AppBundle:GuidanceFollowUpFile:index</default>
+    </route>
+
+    <route id="guidancefollowupfile_show" path="/{id}/show" methods="GET">
+        <default key="_controller">AppBundle:GuidanceFollowUpFile:show</default>
+    </route>
+
+    <route id="guidancefollowupfile_new" path="/new/{guidance_follow_up_id}" methods="GET|POST">
+        <default key="_controller">AppBundle:GuidanceFollowUpFile:new</default>
+    </route>
+
+    <route id="guidancefollowupfile_edit" path="/{id}/edit" methods="GET|POST">
+        <default key="_controller">AppBundle:GuidanceFollowUpFile:edit</default>
+    </route>
+
+    <route id="guidancefollowupfile_delete" path="/{id}/delete" methods="GET">
+        <default key="_controller">AppBundle:GuidanceFollowUpFile:delete</default>
+    </route>
+
+</routes>

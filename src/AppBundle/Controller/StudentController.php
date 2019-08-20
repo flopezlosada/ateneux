@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\GuidanceFollowUp;
 use AppBundle\Entity\Student;
 use AppBundle\Service\CourseStatus;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -94,7 +95,7 @@ class StudentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 
-        $status_real_course=$course_status->getStatusRealCourse($selected_course_id);//devuelve 0,1,2 ó 3 según el estado del curso que se está analizando
+        $status_real_course = $course_status->getStatusRealCourse($selected_course_id);//devuelve 0,1,2 ó 3 según el estado del curso que se está analizando
 
         if ($student->getCourse()) {
 
@@ -108,10 +109,10 @@ class StudentController extends Controller
             }
 
             $pending_student_meetings = $em->getRepository('AppBundle:Student')
-                ->findMeetings($student->getId(), $selected_course,1);//encuentra reuniones pendientes (1)
+                ->findMeetings($student->getId(), $selected_course, 1);//encuentra reuniones pendientes (1)
 
             $student_meetings = $em->getRepository('AppBundle:Student')
-                ->findMeetings($student->getId(),$selected_course);//todas las reuniones que ha tenido el estudiante
+                ->findMeetings($student->getId(), $selected_course);//todas las reuniones que ha tenido el estudiante
 
             $student_warnings = $em->getRepository('AppBundle:Student')
                 ->findWarnings($student->getId(), $selected_course);//todas las amonestaciones y partes que ha tenido el estudiante para el curso actual.
@@ -127,13 +128,14 @@ class StudentController extends Controller
                 $learning_difficulties = $em->getRepository("AppBundle:Student")->getDifficulties($selected_course, $student, $assessment_board);
                 $assessment_board_learning_difficulties[] = array($assessment_board, $learning_difficulties);
             }
-            $mediation_needed=$em->getRepository("AppBundle:Mediation")->findByStudentCourse($student,$selected_course);
-            if ($student->getIsMediator()){
-                $mediations_mediator=$em->getRepository("AppBundle:Mediation")->findByMediatorCourse($student,$selected_course);
+            $mediation_needed = $em->getRepository("AppBundle:Mediation")->findByStudentCourse($student, $selected_course);
+            if ($student->getIsMediator()) {
+                $mediations_mediator = $em->getRepository("AppBundle:Mediation")->findByMediatorCourse($student, $selected_course);
+            } else {
+                $mediations_mediator = null;
             }
-            else {
-                $mediations_mediator=null;
-            }
+
+            $guidance = $em->getRepository("AppBundle:GuidanceFollowUp")->findStudentGuidance($student);
 
 
         } else {
@@ -143,11 +145,11 @@ class StudentController extends Controller
             $academic_informations = null;
             $assessment_board_learning_difficulties = null;
             $learning_difficulties = null;
-            $selected_course=null;
-            $mediation_needed=null;
-            $mediations_mediator=null;
+            $selected_course = null;
+            $mediation_needed = null;
+            $mediations_mediator = null;
+            $guidance = null;
         }
-
 
 
         return $this->render('student/show.html.twig', array(
@@ -159,10 +161,11 @@ class StudentController extends Controller
             'academic_informations' => $academic_informations,
             'assessment_board_learning_difficulties' => $assessment_board_learning_difficulties,
             'learning_difficulties' => $learning_difficulties,
-            'selected_course'=>$selected_course,
-            'mediation_needed'=>$mediation_needed,
-            'mediations_mediator'=>$mediations_mediator,
-            'status_real_course'=>$status_real_course
+            'selected_course' => $selected_course,
+            'mediation_needed' => $mediation_needed,
+            'mediations_mediator' => $mediations_mediator,
+            'status_real_course' => $status_real_course,
+            'guidance' => $guidance
         ));
     }
 
@@ -243,6 +246,30 @@ class StudentController extends Controller
                 )
             );
         }
+
+    }
+
+    public function guidanceAction($student_id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $student = $em->getRepository('AppBundle:Student')->find($student_id);
+        $guidance_status = $em->getRepository("AppBundle:GuidanceFollowUpStatus")->find(1);
+
+        $guidance = new GuidanceFollowUp();
+        $guidance->setStudent($student);
+        $guidance->setCourse($student->getCourse());
+        $guidance->setStartDate(new \DateTime());
+        $guidance->setGuidanceFollowUpStatus($guidance_status);
+
+        $em->persist($guidance);
+
+        $em->flush();
+
+
+        return $this->redirectToRoute('student_show', array('id' => $student->getId()));
+
 
     }
 

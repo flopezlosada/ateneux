@@ -23,7 +23,7 @@ class CourseActivationControl
      * @var string course
      * @ORM\Column(name="course", type="string", length=255)
      */
-    public $name;
+    public $course;
 
     /** 0=>El curso no ha sido aún iniciado. Es el momento de en julio realizar los cambios de cursos y de estudiantes, si promocionan o no
      * 1 => El curso se ha iniciado, se han realizado los cambios automáticos de creación de cursos y de poner en nulo
@@ -94,27 +94,5 @@ class CourseActivationControl
         return $this->status;
     }
 
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return CourseActivationControl
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
 
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 }

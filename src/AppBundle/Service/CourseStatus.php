@@ -21,7 +21,7 @@ class CourseStatus
 
     public function getStatusRealCourse($selected_course_id = null)
     {
-        $dql="select c from AppBundle:CourseActivationControl c where c.name=:course";
+        $dql = "select c from AppBundle:CourseActivationControl c where c.course=:course";
         $query = $this->em->createQuery($dql);
         if ($selected_course_id == "NULL") {
 

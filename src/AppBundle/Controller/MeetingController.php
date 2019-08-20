@@ -22,6 +22,7 @@ class MeetingController extends Controller
 
         $meetings = $em->getRepository('AppBundle:Meeting')->findAll();
 
+
         return $this->render('meeting/index.html.twig', array(
             'meetings' => $meetings,
         ));

@@ -53,4 +53,9 @@
     <route id="student_mediation_second" path="/mediation/second/{first_student}/{second_student}" methods="GET">
         <default key="_controller">AppBundle:Mediation:new</default>
     </route>
+
+    <route id="student_guidance" path="/guidance/{student_id}" methods="GET">
+        <default key="_controller">AppBundle:Student:guidance</default>
+    </route>
+
 </routes>

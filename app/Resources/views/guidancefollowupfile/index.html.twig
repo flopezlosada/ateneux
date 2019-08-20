@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Guidancefollowupfiles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Archive</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Modified</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for guidanceFollowUpFile in guidanceFollowUpFiles %}
+            <tr>
+                <td><a href="{{ path('guidancefollowupfile_show', { 'id': guidanceFollowUpFile.id }) }}">{{ guidanceFollowUpFile.id }}</a></td>
+                <td>{{ guidanceFollowUpFile.name }}</td>
+                <td>{{ guidanceFollowUpFile.content }}</td>
+                <td>{{ guidanceFollowUpFile.archive }}</td>
+                <td>{% if guidanceFollowUpFile.created %}{{ guidanceFollowUpFile.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if guidanceFollowUpFile.updated %}{{ guidanceFollowUpFile.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if guidanceFollowUpFile.modified %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('guidancefollowupfile_show', { 'id': guidanceFollowUpFile.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('guidancefollowupfile_edit', { 'id': guidanceFollowUpFile.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('guidancefollowupfile_new') }}">Create a new guidanceFollowUpFile</a>
+        </li>
+    </ul>
+{% endblock %}

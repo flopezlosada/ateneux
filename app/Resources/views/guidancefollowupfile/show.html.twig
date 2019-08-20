@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Guidancefollowupfile</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ guidanceFollowUpFile.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ guidanceFollowUpFile.name }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ guidanceFollowUpFile.content }}</td>
+            </tr>
+            <tr>
+                <th>Archive</th>
+                <td>{{ guidanceFollowUpFile.archive }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if guidanceFollowUpFile.created %}{{ guidanceFollowUpFile.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if guidanceFollowUpFile.updated %}{{ guidanceFollowUpFile.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modified</th>
+                <td>{% if guidanceFollowUpFile.modified %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('guidancefollowupfile_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('guidancefollowupfile_edit', { 'id': guidanceFollowUpFile.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
