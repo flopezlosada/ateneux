@@ -59,6 +59,7 @@ class Teacher
     private $surname;
 
     /**
+     * @Assert\NotBlank
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
