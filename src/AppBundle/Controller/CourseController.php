@@ -149,8 +149,11 @@ class CourseController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $course->setStartDate(new \DateTime($course->getStartDate())) ;
             $course->setEndDate(new \DateTime($course->getEndDate())) ;
-            $course->getMentorTeacher()->setMentorCourse($course);
-            $this->getDoctrine()->getManager()->persist($course->getMentorTeacher());
+            if($course->getMentorTeacher()) {
+                $course->getMentorTeacher()->setMentorCourse($course);
+                $this->getDoctrine()->getManager()->persist($course->getMentorTeacher());
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('course_show', array('id' => $course->getId()));
