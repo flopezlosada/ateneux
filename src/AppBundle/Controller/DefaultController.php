@@ -479,10 +479,22 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-
+        $array_courses_demote = array(
+            1 => array(1 ),
+            2 => array(2,7),
+            3 => array(3,7,10),
+            4 => array(4,7),
+            5 => 5,
+            6 => 6,
+            7 => 7,
+            8 => 8,
+            9 => array(9,7),
+            10 => array(10, 7)
+        );
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
-            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student->getCourseType()->getId());//encuentra cursos activos del tipo que le corresponde
+            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,
+                $array_courses_demote[$student->getCourseType()->getId()]);//encuentra cursos activos del tipo que le corresponde
         } else {
             $courses = $em->getRepository('AppBundle:Course')->findAll();
         }
@@ -522,7 +534,15 @@ class DefaultController extends Controller
     public function change_student_promoteAction($student_id)
     {
         $em = $this->getDoctrine()->getManager();
-        $array_courses_promote = array(1 => array(2, 9), 2 => array(3, 7, 10), 3 => array(4, 7, 10), 4 => array(5, 7), 5 => 6, 7 => 8, 8 => 5, 9 => 10);
+        $array_courses_promote = array(
+            1 => array(2, 9),
+            2 => array(3, 10),
+            3 => array(4),
+            4 => array(5),
+            5 => 6,
+            7 => 8,
+            8 => 5,
+            9 => array(10,4));
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
             $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,
