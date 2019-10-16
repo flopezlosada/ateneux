@@ -542,7 +542,7 @@ class DefaultController extends Controller
             5 => 6,
             7 => 8,
             8 => 5,
-            9 => array(10,4),
+            9 => array(10),
             10 => 4);
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
