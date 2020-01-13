@@ -244,6 +244,7 @@ class DefaultController extends Controller
             'course_year_major_offence' => $course_year_major_offence,
             'course_month_penalty' => $course_month_penalty,
             'course_year_penalty' => $course_year_penalty,
+            'year'=>$year
         ));
     }
 

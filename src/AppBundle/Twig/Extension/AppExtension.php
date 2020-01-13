@@ -9,6 +9,7 @@
 namespace AppBundle\Twig\Extension;
 
 
+use AppBundle\Service\RealCourse;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -51,6 +52,7 @@ class AppExtension extends \Twig_Extension
             new \Twig_Function('select_glossary_letters', array($this, 'select_glossary_letters')),
             new \Twig_Function('insert_snippets', array($this, 'insertSnippets')),
             new \Twig_Function('getDateFromWeek', array($this, 'getDateFromWeek')),
+            new \Twig_Function('getNameOfCourseFromYear', array($this, 'getNameOfCourseFromYear')),
         );
     }
 
@@ -225,5 +227,14 @@ class AppExtension extends \Twig_Extension
         $mes = $fecha->format('F');
 
         return $this->mesCastellano($mes);
+    }
+
+    public function getNameOfCourseFromYear($year=null)
+    {
+        if ($year==null)
+        {
+            return RealCourse::getRealCourse();
+        }
+        return $year."/".($year+1);
     }
 }
