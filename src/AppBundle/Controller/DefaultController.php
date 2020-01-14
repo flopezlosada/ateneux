@@ -207,7 +207,7 @@ class DefaultController extends Controller
         foreach ($warning_type as $type) {
             $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, $year), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month);
+                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month,$year);
             }
             $course_month_warnings[] = array($month_warnings, $type->getTitle());
         }
@@ -219,7 +219,7 @@ class DefaultController extends Controller
         foreach ($major_offence_type as $type) {
             $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, $year), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month);
+                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month,$year);
             }
             $course_month_major_offence[] = array($month_major_offence, $type->getTitle());
         }
@@ -231,7 +231,7 @@ class DefaultController extends Controller
         foreach ($penalty_type as $type) {
             $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month);
+                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month,$year);
             }
             $course_month_penalty[] = array($month_penalty, $type->getTitle());
         }
