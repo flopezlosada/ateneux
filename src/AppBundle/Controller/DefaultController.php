@@ -189,12 +189,12 @@ class DefaultController extends Controller
 
         $total_by_course = $em->getRepository("AppBundle:Mediation")->findAllMediationsByCourse();
 
-        array(
+        return $this->render(':statistics:mediation.html.twig', array(
             'course_year_mediations' => $course_year_mediations,
             'course_month_mediations' => $course_month_mediations,
             'month_by_mediation' => $month_by_mediation,
             'total_by_course' => $total_by_course
-        );
+        ));
     }
 
     public function warningAction($year = null)
