@@ -58,4 +58,16 @@ class CourseRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
 
     }
+
+    public function findCoursesList($school_year)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Course t where t.school_year=:school_year";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter("school_year", $school_year);
+
+
+        return $query->getResult();
+    }
 }

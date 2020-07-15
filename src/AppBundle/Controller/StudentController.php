@@ -95,18 +95,21 @@ class StudentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 
+
         $status_real_course = $course_status->getStatusRealCourse($selected_course_id);//devuelve 0,1,2 ó 3 según el estado del curso que se está analizando
+
+        if ($selected_course_id == "NULL") {
+
+
+            $selected_course = $student->getCourse();
+        } else {
+            $selected_course = $em->getRepository("AppBundle:Course")->find($selected_course_id);
+
+        }
 
         if ($student->getCourse()) {
 
-            if ($selected_course_id == "NULL") {
 
-
-                $selected_course = $student->getCourse();
-            } else {
-                $selected_course = $em->getRepository("AppBundle:Course")->find($selected_course_id);
-
-            }
 
             $pending_student_meetings = $em->getRepository('AppBundle:Student')
                 ->findMeetings($student->getId(), $selected_course, 1);//encuentra reuniones pendientes (1)
@@ -145,7 +148,7 @@ class StudentController extends Controller
             $academic_informations = null;
             $assessment_board_learning_difficulties = null;
             $learning_difficulties = null;
-            $selected_course = null;
+            //$selected_course = null;
             $mediation_needed = null;
             $mediations_mediator = null;
             $guidance = null;

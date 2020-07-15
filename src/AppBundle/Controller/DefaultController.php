@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Course;
 use AppBundle\Entity\CourseActivationControl;
+use AppBundle\Entity\SchoolYear;
 use AppBundle\Entity\Teacher;
 use AppBundle\Service\RealCourse;
 use Proxies\__CG__\AppBundle\Entity\Student;
@@ -164,9 +165,11 @@ class DefaultController extends Controller
     }
 
 
-    public function mediationAction()
+    public function mediationAction($school_year = null)
     {
         $em = $this->getDoctrine()->getManager();
+        $school_years=$em->getRepository("AppBundle:SchoolYear")->findAll();
+        $school_year=$em->getRepository("AppBundle:SchoolYear")->find($school_year);
         $course_year_mediations = array(); //valores por año
         $course_month_mediations = array(); // valores por mes
         $current_year = date("Y");
@@ -174,9 +177,9 @@ class DefaultController extends Controller
         $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
 
         foreach ($course_types as $type) {
-            $course_year_mediations[] = array($em->getRepository("AppBundle:Mediation")->findByCourseType($type), $type->getTitle());
+            $course_year_mediations[] = array($em->getRepository("AppBundle:Mediation")->findByCourseType($type,$school_year), $type->getTitle());
             foreach ($array_months as $month) {
-                $month_mediations[$month] = $em->getRepository("AppBundle:Mediation")->findByCourseTypeMonth($type, $month);
+                $month_mediations[$month] = $em->getRepository("AppBundle:Mediation")->findByCourseTypeMonth($type, $month, $school_year);
 
 
             }
@@ -193,6 +196,7 @@ class DefaultController extends Controller
             'course_year_mediations' => $course_year_mediations,
             'course_month_mediations' => $course_month_mediations,
             'month_by_mediation' => $month_by_mediation,
+            'school_years'=>$school_years,
             'total_by_course' => $total_by_course
         ));
     }
@@ -202,6 +206,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $course_year_warnings = array(); //valores por año
         $course_month_warnings = array(); // valores por mes
+        $school_years=$em->getRepository("AppBundle:SchoolYear")->findAll();
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
         $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
         foreach ($warning_type as $type) {
@@ -244,6 +249,7 @@ class DefaultController extends Controller
             'course_year_major_offence' => $course_year_major_offence,
             'course_month_penalty' => $course_month_penalty,
             'course_year_penalty' => $course_year_penalty,
+            'school_years'=>$school_years,
             'year'=>$year
         ));
     }
@@ -252,6 +258,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $courses_type = $em->getRepository("AppBundle:CourseType")->findAll();
+        $school_years=$em->getRepository("AppBundle:SchoolYear")->findAll();
         $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
         $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
@@ -320,6 +327,7 @@ class DefaultController extends Controller
             'level_offence_year_warnings' => $level_offence_year_warnings,
             'level_penalty_year_warnings' => $level_penalty_year_warnings,
             'warning_type' => $warning_type,
+            'school_years'=>$school_years,
             'year' => $year
         ));
     }
@@ -418,13 +426,16 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-
+        $school_year=new SchoolYear();
+        $school_year->setTitle(RealCourse::getRealCourse());
+        $em->persist($school_year);
         $active_courses = $em->getRepository("AppBundle:Course")->findBy(array("course_status" => 1));
         $course_status_ended = $em->getRepository("AppBundle:CourseStatus")->find(2);
         $course_status_active = $em->getRepository("AppBundle:CourseStatus")->find(1);
         foreach ($active_courses as $course) {
             $new_course = new Course();
             $new_course->setCourseStatus($course_status_active);
+            $new_course->setSchoolYear($school_year);
             $new_course->setCourseType($course->getCourseType());
             $new_course->setTitle($course->getTitle());
             $new_course->setStartDate(new \DateTime(RealCourse::getStartDateCourse()));

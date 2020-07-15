@@ -10,7 +10,7 @@ namespace AppBundle\Entity;
  */
 class MediationRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findByCourseType($type)
+    public function findByCourseType($type,$school_year)
     {
 
 
@@ -19,18 +19,19 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
               or  m.course_second_student in (:courses)";
 
         $query = $em->createQuery($dql);
-        $query->setParameter("courses", $this->getCourseTypesIds($type));
+        $query->setParameter("courses", $this->getCourseTypesIds($type,$school_year));
 
         return $query->getSingleScalarResult();
     }
 
-    private function getCourseTypesIds($type)
+
+    private function getCourseTypesIds($type,$school_year)
     {
         $em = $this->getEntityManager();
 
-        $dql_courses = "select c from AppBundle:Course c where c.course_status=:course_status and c.course_type=:type";
+        $dql_courses = "select c from AppBundle:Course c where c.school_year=:school_year and c.course_type=:type";
         $query_courses = $em->createQuery($dql_courses);
-        $query_courses->setParameter("course_status", 1);
+        $query_courses->setParameter("school_year", $school_year);
         $query_courses->setParameter("type", $type);
 
         $result_courses = $query_courses->getResult();
@@ -60,7 +61,7 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
-    public function findByCourseTypeMonth($type, $month)
+    public function findByCourseTypeMonth($type, $month,$school_year)
     {
         $em = $this->getEntityManager();
         $dql = "select count(m) from AppBundle:Mediation m
@@ -68,7 +69,7 @@ class MediationRepository extends \Doctrine\ORM\EntityRepository
               and MONTH(m.date)=:month order by m.date asc";
 
         $query = $em->createQuery($dql);
-        $query->setParameter("courses", $this->getCourseTypesIds($type));
+        $query->setParameter("courses", $this->getCourseTypesIds($type,$school_year));
         $query->setParameter("month", $month);
 
         return $query->getSingleScalarResult();

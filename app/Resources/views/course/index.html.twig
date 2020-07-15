@@ -1,5 +1,12 @@
 {% extends '::layout_list.html.twig' %}
-{% block title_wrapper %}Listado de cursos {{ real_course.getRealCourse }}{% endblock %}
+{% block title_wrapper %}
+            Listado de cursos
+    {% if school_year is defined%}
+        {{ school_year.title }}
+    {% else %}
+                {{ real_course.getRealCourse }}
+    {% endif %}
+{% endblock %}
 {% block main %}
     <div class="panel panel-default">
         <div class="panel-heading">

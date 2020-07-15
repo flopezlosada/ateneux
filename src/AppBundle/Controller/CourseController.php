@@ -62,6 +62,30 @@ class CourseController extends Controller
         ));
     }
 
+    public function previousAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $school_years = $em->getRepository('AppBundle:SchoolYear')->findAll();
+
+        return $this->render('school_years/index.html.twig', array(
+            'school_years' => $school_years,
+        ));
+    }
+
+    public function previousListAction($year)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $courses = $em->getRepository('AppBundle:Course')->findCoursesList($year);
+        $school_year = $em->getRepository("AppBundle:SchoolYear")->find($year);
+
+        return $this->render('course/index.html.twig', array(
+            'courses' => $courses,
+            'school_year' => $school_year
+        ));
+    }
+
     /**
      * Finds and displays a course entity.
      *
@@ -74,11 +98,10 @@ class CourseController extends Controller
         $course_month_warnings = array(); // valores por mes
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
         $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
-        foreach($warning_type as $type)
-        {
-            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type,null,$course),$type->getTitle()); //valores por año
+        foreach ($warning_type as $type) {
+            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, null, $course), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month,null,$course);
+                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month, null, $course);
             }
             $course_month_warnings[] = array($month_warnings, $type->getTitle());
         }
@@ -86,12 +109,11 @@ class CourseController extends Controller
         // tipos de amonestaciones
         $course_year_major_offence = array(); //valores por año
         $course_month_major_offence = array(); // valores por mes
-        $major_offence_type=$em->getRepository("AppBundle:MajorOffenceType")->findAll();
-        foreach($major_offence_type as $type)
-        {
-            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type,null,$course),$type->getTitle()); //valores por año
+        $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
+        foreach ($major_offence_type as $type) {
+            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, null, $course), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month,null,$course);
+                $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month, null, $course);
             }
             $course_month_major_offence[] = array($month_major_offence, $type->getTitle());
         }
@@ -99,20 +121,16 @@ class CourseController extends Controller
 
         $course_year_penalty = array(); //valores por año
         $course_month_penalty = array(); // valores por mes
-        $penalty_type=$em->getRepository("AppBundle:PenaltyType")->findAll();
-        foreach($penalty_type as $type)
-        {
-            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type,null,$course),$type->getTitle()); //valores por año
+        $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
+        foreach ($penalty_type as $type) {
+            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, null, $course), $type->getTitle()); //valores por año
             foreach ($array_months as $month) {
-                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month,null,$course);
+                $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month, null, $course);
             }
             $course_month_penalty[] = array($month_penalty, $type->getTitle());
         }
 
-        $warnings_by_student=$em->getRepository("AppBundle:Warning")->findWarningByStudentCourse($course);
-
-
-
+        $warnings_by_student = $em->getRepository("AppBundle:Warning")->findWarningByStudentCourse($course);
 
 
         return $this->render('course/show.html.twig', array(
@@ -120,11 +138,11 @@ class CourseController extends Controller
             'delete_form' => $deleteForm->createView(),
             'course_year_warnings' => $course_year_warnings,
             'course_month_warnings' => $course_month_warnings,
-            'course_month_major_offence'=>$course_month_major_offence,
-            'course_year_major_offence'=>$course_year_major_offence,
-            'course_month_penalty'=>$course_month_penalty,
-            'course_year_penalty'=>$course_year_penalty,
-            'warnings_by_student'=>$warnings_by_student
+            'course_month_major_offence' => $course_month_major_offence,
+            'course_year_major_offence' => $course_year_major_offence,
+            'course_month_penalty' => $course_month_penalty,
+            'course_year_penalty' => $course_year_penalty,
+            'warnings_by_student' => $warnings_by_student
         ));
     }
 
@@ -136,20 +154,19 @@ class CourseController extends Controller
     {
 
         $deleteForm = $this->createDeleteForm($course);
-        $previous_mentor=$course->getMentorTeacher();
-        if ($previous_mentor)
-        {
+        $previous_mentor = $course->getMentorTeacher();
+        if ($previous_mentor) {
             $previous_mentor->setMentorCourse(null);
         }
-        $course->setStartDate($course->getStartDate()->format('Y-m-d')) ;
-        $course->setENdDate($course->getEndDate()->format('Y-m-d')) ;
+        $course->setStartDate($course->getStartDate()->format('Y-m-d'));
+        $course->setENdDate($course->getEndDate()->format('Y-m-d'));
         $editForm = $this->createForm('AppBundle\Form\CourseType', $course);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $course->setStartDate(new \DateTime($course->getStartDate())) ;
-            $course->setEndDate(new \DateTime($course->getEndDate())) ;
-            if($course->getMentorTeacher()) {
+            $course->setStartDate(new \DateTime($course->getStartDate()));
+            $course->setEndDate(new \DateTime($course->getEndDate()));
+            if ($course->getMentorTeacher()) {
                 $course->getMentorTeacher()->setMentorCourse($course);
                 $this->getDoctrine()->getManager()->persist($course->getMentorTeacher());
             }
@@ -208,13 +225,12 @@ class CourseController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 
-        $form = $this->createFormBuilder(null,array('validation_groups' => false))
+        $form = $this->createFormBuilder(null, array('validation_groups' => false))
             ->add('student', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Student',
                 'expanded' => true,
                 'multiple' => true,
-                'query_builder' => function (EntityRepository $repository) use ($course)
-                {
+                'query_builder' => function (EntityRepository $repository) use ($course) {
                     $qb = $repository->createQueryBuilder('t')
                         ->where('t.course is NULL')
                         ->andWhere("t.course_type=:course_type")
@@ -230,15 +246,13 @@ class CourseController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted())
-        {
+        if ($form->isSubmitted()) {
             // data is an array with "name", "email", and "message" keys
             $data = $form->getData();
             //dump($data);
-            foreach ($data["student"] as $student_id)
-            {
+            foreach ($data["student"] as $student_id) {
                 //dump($student_id);
-                $student=$em->getRepository("AppBundle:Student")->find($student_id->getId());
+                $student = $em->getRepository("AppBundle:Student")->find($student_id->getId());
                 $student->setCourse($course);
             }
 

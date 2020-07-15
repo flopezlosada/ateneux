@@ -4,8 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="statistics_mediation" path="/mediation" methods="GET">
+    <route id="statistics_mediation" path="/mediation/{school_year}" methods="GET">
         <default key="_controller">AppBundle:Default:mediation</default>
+
     </route>
     <route id="statistics_warning" path="/warning/{year}" methods="GET">
         <default key="_controller">AppBundle:Default:warning</default>

@@ -7,7 +7,7 @@
         <div class="panel-heading">
             {% if status_real_course==3 %}
                 <div class="alert alert-warning">
-                    Estás viendo los datos de un curso ya terminado. NO es el curso actual.
+                    Estás viendo los datos de un curso ya terminado {{ selected_course }} ({{ selected_course.schoolyear }}). NO es el curso actual.
                     Pincha <a href="{{ path('student_show', {'id': student.id, 'selected_course_id': null}) }}">aquí
                         para ir al curso actual</a>
                 </div>

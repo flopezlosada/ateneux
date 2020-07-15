@@ -9,8 +9,24 @@
 namespace AppBundle\Service;
 
 
+use Doctrine\ORM\EntityManager;
+
 class RealCourse
 {
+    public static $em;
+    private $container;
+
+    // We need to inject this variables later.
+    public function __construct(EntityManager $entityManager)
+    {
+        RealCourse::$em = $entityManager;
+
+    }
+
+    public static function getRealSchoolCourse()
+    {
+       return RealCourse::$em->getRepository("AppBundle:SchoolYear")->findRealSchoolCourse();
+    }
 
     public static function getRealCourse()
     {
@@ -30,10 +46,10 @@ class RealCourse
         $real_year = date('Y');
 
         if ($real_month > 6) {
-            return ($real_year -1) . "/" . $real_year;
+            return ($real_year - 1) . "/" . $real_year;
         }
 
-        return ($real_year - 2) . "/" . ($real_year-1);
+        return ($real_year - 2) . "/" . ($real_year - 1);
     }
 
 
@@ -47,37 +63,36 @@ class RealCourse
      * Si se aporta el año, entiendo que es el año de inicio del curso, es decir, si se pasa 2017, entiendo que se
      * refiere al curso 2017/2108
      */
-    public static function getStartDateCourse($year=null)
+    public static function getStartDateCourse($year = null)
     {
         if ($year) {
-            return date(($year)."-09-01");
+            return date(($year) . "-09-01");
         } else {
             $real_month = date('m');
             $real_year = date('Y');
 
             if ($real_month > 6) {
-                return date($real_year."-09-01");
+                return date($real_year . "-09-01");
             }
 
-            return date(($real_year-1)."-09-01");
+            return date(($real_year - 1) . "-09-01");
         }
     }
 
-    public static function getEndDateCourse($year=null)
+    public static function getEndDateCourse($year = null)
     {
 
         if ($year) {
-            return date(($year+1)."-06-30");
-        }
-        else {
+            return date(($year + 1) . "-06-30");
+        } else {
             $real_month = date('m');
             $real_year = date('Y');
 
             if ($real_month > 8) {
-                return date(($real_year+1)."-06-30");
+                return date(($real_year + 1) . "-06-30");
             }
 
-            return date(($real_year)."-06-30");
+            return date(($real_year) . "-06-30");
         }
     }
 }

@@ -5,7 +5,7 @@
 {% block main -%}
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h1>Ficha de curso: {{ course }} </h1>
+            <h1>Ficha de curso: {{ course }} {{ course.schoolyear }}</h1>
             {% if course.getMentorTeacher == null %}
                 <div class="alert alert-danger">
                     Debes definir la/el tutor del curso <a

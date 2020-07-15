@@ -24,6 +24,9 @@
                     <li>
                         <a href="{{ path('course_index') }}">Listado de cursos {{ real_course.getRealCourse }}</a>
                     </li>
+                    <li>
+                        <a href="{{ path('course_previous') }}">Listado de cursos anteriores</a>
+                    </li>
                     {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_JEFATURA") %}
                         <li>
                             <a href="{{ path('course_new') }}">Añadir curso</a>
@@ -87,7 +90,7 @@
 
                     </li>
                     <li>
-                        <a href="{{ path('statistics_mediation') }}"><i
+                        <a href="{{ path('statistics_mediation',{'school_year' : real_course.getRealSchoolCourse.id}) }}"><i
                                     class="fa fa-chart-pie fa-fw"></i>Mediaciones</a>
                     </li>
                 </ul>

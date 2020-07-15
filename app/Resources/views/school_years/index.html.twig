@@ -1,0 +1,17 @@
+{% extends '::layout_list.html.twig' %}
+{% block title_wrapper %}Listado de cursos {{ real_course.getRealCourse }}{% endblock %}
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Listado de años escolares
+        </div>
+        <div class="panel-body">
+            <p>Pincha en cada año escolar para ver sus cursos</p>
+            <ul>
+            {% for year in school_years %}
+                <li><a href="{{ path('course_previous_list', {'year': year.id}) }}">{{ year }}</a> </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -30,6 +30,13 @@ class Course
     private $id;
 
     /**
+     * Se trata de organizar los cursos por año escolar
+     * @var smallint $school_year
+     * @ORM\ManyToOne(targetEntity="SchoolYear", inversedBy="courses")
+     */
+    private $school_year;
+
+    /**
      * @var string $title
      * @Assert\NotBlank
      * @ORM\Column(name="title", type="string", length=255)
@@ -733,5 +740,29 @@ class Course
     public function getGuidanceFollowUps()
     {
         return $this->guidance_follow_ups;
+    }
+
+    /**
+     * Set schoolYear.
+     *
+     * @param \AppBundle\Entity\SchoolYear|null $schoolYear
+     *
+     * @return Course
+     */
+    public function setSchoolYear(\AppBundle\Entity\SchoolYear $schoolYear = null)
+    {
+        $this->school_year = $schoolYear;
+
+        return $this;
+    }
+
+    /**
+     * Get schoolYear.
+     *
+     * @return \AppBundle\Entity\SchoolYear|null
+     */
+    public function getSchoolYear()
+    {
+        return $this->school_year;
     }
 }

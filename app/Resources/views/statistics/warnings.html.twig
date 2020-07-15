@@ -51,11 +51,15 @@
     <div class="clearfix"></div>
     <div class="col-lg-12">
         <ul class="list-inline">
-            {% if app.request.attributes.get('_route') =='level_statistics_warning_course_type'%}
-                <li><a href="{{ path('level_statistics_warning_course_type', {'selected_course_type_id': selected_course_type.id,'year':year}) }}">Año 2018/2019</a> </li>
-             {% else %}
-                 <li><a href="{{ path('statistics_warning', {'year': '2018'}) }}">Año 2018/2019</a> </li>
-            {% endif %}
+            {% for school_year in school_years %}
+                {% if app.request.attributes.get('_route') =='level_statistics_warning_course_type' %}
+                    <li>
+                        <a href="{{ path('level_statistics_warning_course_type', {'selected_course_type_id': selected_course_type.id,'year':year}) }}">Año
+                            {{ school_year  }}</a></li>
+                {% else %}
+                    <li><a href="{{ path('statistics_warning', {'year':  school_year.getfirstyear}) }}">Año {{ school_year }}</a></li>
+                {% endif %}
+            {% endfor %}
 
         </ul>
     </div>

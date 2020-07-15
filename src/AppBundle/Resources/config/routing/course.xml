@@ -8,6 +8,14 @@
         <default key="_controller">AppBundle:Course:index</default>
     </route>
 
+    <route id="course_previous" path="/previous" methods="GET">
+        <default key="_controller">AppBundle:Course:previous</default>
+    </route>
+
+    <route id="course_previous_list" path="/previous_list/{year}" methods="GET">
+        <default key="_controller">AppBundle:Course:previousList</default>
+    </route>
+
     <route id="course_show" path="/{id}/show" methods="GET">
         <default key="_controller">AppBundle:Course:show</default>
     </route>
