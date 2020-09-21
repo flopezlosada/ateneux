@@ -319,29 +319,7 @@ class Mediation
         return $this->date;
     }
 
-    /**
-     * Set mediator.
-     *
-     * @param \AppBundle\Entity\MediatorInterface|null $mediator
-     *
-     * @return Mediation
-     */
-    public function setMediator(\AppBundle\Entity\MediatorInterface $mediator = null)
-    {
-        $this->mediator = $mediator;
-
-        return $this;
-    }
-
-    /**
-     * Get mediator.
-     *
-     * @return \AppBundle\Entity\MediatorInterface|null
-     */
-    public function getMediator()
-    {
-        return $this->mediator;
-    }
+    
 
     /**
      * Set studentMediator.

@@ -6,11 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55a3063b-64ed-4089-8080-90f2ddb41269" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/beberlei/doctrineextensions/" />
     <ignored path="$PROJECT_DIR$/vendor/behat/transliterator/" />
@@ -134,13 +130,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WarningRepository.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WarningRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="724">
               <caret line="248" column="29" selection-start-line="248" selection-start-column="29" selection-end-line="248" selection-end-column="29" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mediation.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="321" column="4" selection-start-line="321" selection-start-column="4" selection-end-line="321" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
@@ -172,7 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start_d</find>
       <find>Meeting</find>
       <find>guessExtension</find>
       <find>File</find>
@@ -202,6 +211,7 @@
       <find>course.getStudents</find>
       <find>findPenaltyByTypeYear</find>
       <find>findMajorOffenceByTypeYear</find>
+      <find>mediator</find>
     </findStrings>
     <replaceStrings>
       <replace>Meeting</replace>
@@ -265,6 +275,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/WarningRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php" />
       </list>
     </option>
   </component>
@@ -585,12 +596,12 @@
       <workItem from="1594829416878" duration="66000" />
       <workItem from="1594829491686" duration="6984000" />
       <workItem from="1595242801512" duration="10000" />
-      <workItem from="1600700985402" duration="4511000" />
+      <workItem from="1600700985402" duration="4706000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11571000" />
+    <option name="totallyTimeSpent" value="11766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="26" width="1910" height="1023" extended-state="0" />
@@ -878,6 +889,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="724">
           <caret line="248" column="29" selection-start-line="248" selection-start-column="29" selection-end-line="248" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Mediation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="321" column="4" selection-start-line="321" selection-start-column="4" selection-end-line="321" selection-end-column="4" />
         </state>
       </provider>
     </entry>
