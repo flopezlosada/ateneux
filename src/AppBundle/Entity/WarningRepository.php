@@ -18,7 +18,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
      * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findByTypeYear($type, $year = null, $course = null, $course_type=null)
+    public function findByTypeYear($type, $year = null, $course = null, $course_type = null)
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) as total from AppBundle:Warning w where w.date 
@@ -41,6 +41,31 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         }
         $query->setParameter('start', RealCourse::getStartDateCourse($year));
         $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        return $query->getSingleScalarResult();
+    }
+
+    /**
+     * Para los cursos que ya se han finalizado, hago la consulta de otra manera
+     * @param $type
+     * @param $course
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findByTypeCourse($type, $course)
+    {
+        $em = $this->getEntityManager();
+        $dql = "select count(w) as total from AppBundle:Warning w where w.warning_type=:type and w.course=:course ";
+
+
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('type', $type);
+        if ($course) {
+            $query->setParameter("course", $course);
+        }
+
+
 
         return $query->getSingleScalarResult();
     }
@@ -80,8 +105,14 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     public function findMajorOffenceByTypeYear($major_offence_type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
-        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
-          BETWEEN :start and :end and w.warning_type=:type and w.major_offence_type=:major_offence_type";
+        $dql = "select count(w) as total from AppBundle:Warning w where w.warning_type=:type and w.major_offence_type=:major_offence_type";
+
+        if ($course==null or $course->getCourseStatus()->getId()==1)
+        {
+            $dql .=' and w.date 
+          BETWEEN :start and :end ';
+        }
+
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
@@ -97,9 +128,13 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
             $query->setParameter("course_type", $course_type);
         }
         $query->setParameter('major_offence_type', $major_offence_type);
-        $query->setParameter('start', RealCourse::getStartDateCourse($year));
-        $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
+
+        if ($course==null or $course->getCourseStatus()->getId()==1) {
+            $query->setParameter('start', RealCourse::getStartDateCourse($year));
+            $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        }
         return $query->getSingleScalarResult();
     }
 
@@ -107,10 +142,15 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
-               where w.date 
-          BETWEEN :start and :end 
-              and MONTH(w.date)=:month and w.warning_type=:type and w.major_offence_type=:major_offence_type
+               where MONTH(w.date)=:month and w.warning_type=:type and w.major_offence_type=:major_offence_type
               ";
+
+        if ($course==null or $course->getCourseStatus()->getId()==1)
+        {
+            $dql .=' and w.date 
+          BETWEEN :start and :end ';
+        }
+
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
@@ -129,8 +169,11 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         }
         $query->setParameter('major_offence_type', $major_offence_type);
         $query->setParameter("month", $month);
-        $query->setParameter('start', RealCourse::getStartDateCourse($year));
-        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        if ($course==null or $course->getCourseStatus()->getId()==1) {
+            $query->setParameter('start', RealCourse::getStartDateCourse($year));
+            $query->setParameter('end', RealCourse::getEndDateCourse($year));
+        }
 
         return $query->getSingleScalarResult();
     }
@@ -138,8 +181,14 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     public function findPenaltyByTypeYear($penalty_type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
-        $dql = "select count(w) as total from AppBundle:Warning w where w.date 
-          BETWEEN :start and :end and w.warning_type=:type and w.penalty_type=:penalty_type";
+        $dql = "select count(w) as total from AppBundle:Warning w where  w.warning_type=:type and w.penalty_type=:penalty_type";
+
+        if ($course==null or $course->getCourseStatus()->getId()==1)
+        {
+            $dql .=' and w.date 
+          BETWEEN :start and :end ';
+        }
+
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
@@ -154,9 +203,13 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         if ($course_type) {
             $query->setParameter("course_type", $course_type);
         }
+
         $query->setParameter('penalty_type', $penalty_type);
-        $query->setParameter('start', RealCourse::getStartDateCourse($year));
-        $query->setParameter('end', RealCourse::getEndDateCourse($year));
+
+        if ($course==null or $course->getCourseStatus()->getId()==1) {
+            $query->setParameter('start', RealCourse::getStartDateCourse($year));
+            $query->setParameter('end', RealCourse::getEndDateCourse($year));
+        }
 
         return $query->getSingleScalarResult();
     }
@@ -165,10 +218,15 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     {
         $em = $this->getEntityManager();
         $dql = "select count(w) from AppBundle:Warning w
-               where w.date 
-          BETWEEN :start and :end 
-              and MONTH(w.date)=:month and w.warning_type=:type and w.penalty_type=:penalty_type
+               where  MONTH(w.date)=:month and w.warning_type=:type and w.penalty_type=:penalty_type
              ";
+
+        if ($course==null or $course->getCourseStatus()->getId()==1)
+        {
+            $dql .=' and w.date 
+          BETWEEN :start and :end ';
+        }
+
         if ($course) {
             $dql .= ' and w.course=:course ';
         }
@@ -187,9 +245,11 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         }
         $query->setParameter('penalty_type', $penalty_type);
         $query->setParameter("month", $month);
-        $query->setParameter('start', RealCourse::getStartDateCourse($year));
-        $query->setParameter('end', RealCourse::getEndDateCourse($year));
 
+        if ($course==null or $course->getCourseStatus()->getId()==1) {
+            $query->setParameter('start', RealCourse::getStartDateCourse($year));
+            $query->setParameter('end', RealCourse::getEndDateCourse($year));
+        }
         return $query->getSingleScalarResult();
     }
 

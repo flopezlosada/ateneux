@@ -98,12 +98,26 @@ class CourseController extends Controller
         $course_month_warnings = array(); // valores por mes
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
         $array_months = array("09", "10", "11", "12", "01", "02", "03", "04", "05", "06");
-        foreach ($warning_type as $type) {
-            $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, null, $course), $type->getTitle()); //valores por año
-            foreach ($array_months as $month) {
-                $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month, null, $course);
+        if ($course->getCourseStatus()->getId()==2)
+        {
+            foreach ($warning_type as $type) {
+                $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeCourse($type, $course), $type->getTitle()); //valores por año
+                foreach ($array_months as $month) {
+                    $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month, null, $course);
+                }
+                $course_month_warnings[] = array($month_warnings, $type->getTitle());
             }
-            $course_month_warnings[] = array($month_warnings, $type->getTitle());
+            $students_list=$course->getHistoricalStudents();
+        }
+        else {
+            $students_list=$course->getStudents();
+            foreach ($warning_type as $type) {
+                $course_year_warnings[] = array($em->getRepository("AppBundle:Warning")->findByTypeYear($type, null, $course), $type->getTitle()); //valores por año
+                foreach ($array_months as $month) {
+                    $month_warnings[$month] = $em->getRepository("AppBundle:Warning")->findByCourseTypeMonth($type, $month, null, $course);
+                }
+                $course_month_warnings[] = array($month_warnings, $type->getTitle());
+            }
         }
 
         // tipos de amonestaciones
@@ -142,7 +156,8 @@ class CourseController extends Controller
             'course_year_major_offence' => $course_year_major_offence,
             'course_month_penalty' => $course_month_penalty,
             'course_year_penalty' => $course_year_penalty,
-            'warnings_by_student' => $warnings_by_student
+            'warnings_by_student' => $warnings_by_student,
+            'students_list'=>$students_list
         ));
     }
 

@@ -99,17 +99,15 @@ class StudentController extends Controller
         $status_real_course = $course_status->getStatusRealCourse($selected_course_id);//devuelve 0,1,2 ó 3 según el estado del curso que se está analizando
 
         if ($selected_course_id == "NULL") {
-
-
             $selected_course = $student->getCourse();
+
         } else {
             $selected_course = $em->getRepository("AppBundle:Course")->find($selected_course_id);
+            $student->setCourse($selected_course);
 
         }
 
         if ($student->getCourse()) {
-
-
 
             $pending_student_meetings = $em->getRepository('AppBundle:Student')
                 ->findMeetings($student->getId(), $selected_course, 1);//encuentra reuniones pendientes (1)
