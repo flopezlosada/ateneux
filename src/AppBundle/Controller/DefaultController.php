@@ -548,13 +548,15 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $array_courses_promote = array(
             1 => array(2, 9),
-            2 => array(3, 10),
+            //2 => array(3, 10),
+            2 => array(3, 11),
             3 => array(4),
             4 => array(5),
             5 => 6,
             7 => 8,
             8 => 5,
-            9 => array(10),
+            //9 => array(10),
+            9 => array(11),
             10 => 4);
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
