@@ -537,30 +537,19 @@ class DefaultController extends Controller
         $array_courses_promote = array(
             1 => array(2, 9),
             //2 => array(3, 10),
-<<<<<<< HEAD
             2 => array(3, 11, 13),
             3 => array(4, 11, 13),
             4 => array(5, 13),
-=======
-            2 => array(3, 11),
-            3 => array(4),
-            4 => array(5),
->>>>>>> a8aeb597c469e8d71086cbeef3d27fd34e2d25bd
             5 => 6,
             7 => 14,
             8 => 5,
             //9 => array(10),
-<<<<<<< HEAD
             9 => array(3, 11, 13),
             10 => array(4, 11, 13),
             11 => array(4, 11, 13),
             12 => array(5, 13),
             13 => 14,
             14 => 5);
-=======
-            9 => array(11),
-            10 => 4);
->>>>>>> a8aeb597c469e8d71086cbeef3d27fd34e2d25bd
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
             $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,
