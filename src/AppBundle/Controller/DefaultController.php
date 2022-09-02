@@ -56,18 +56,14 @@ class DefaultController extends Controller
              $warning->setCourseType($warning->getCourse()->getCourseType());
              $em->persist($warning);
          }
-
          $em->flush();
  */
 
         /*$em=$this->getDoctrine()->getManager();
         $students=$em->getRepository('AppBundle:Student')->findAll();
-
         foreach ($students as $student)
         {
             if ($student->getCourse()) {
-
-
                 $student->setCourseType($student->getCourse()->getCourseType());
                 $em->persist($student);
             }
@@ -91,7 +87,6 @@ class DefaultController extends Controller
              array("Juan","Morena Hernanz"),array("Salomé","De Santos"),array("Carmelo","Domínguez González"),
              array("Carolina","Hidalgo Rico"),array("Elena","Aparicio Fernandez"),array("Laura","Rodriguez Estrada"),
              array("Ana","Lasso"),array("Agueda","Orellana Solares"),array("Maria Manuela","Garcia Fabrega"));
-
          foreach ($array_teacher as $teacher)
          {
              $new_teacher=new Teacher();
@@ -99,9 +94,7 @@ class DefaultController extends Controller
              $new_teacher->setSurname($teacher[1]);
              $new_teacher->setEmail(str_replace(' ', '', $teacher[0]).str_replace(' ', '', $teacher[1])."@yahoo.es");
              $em->persist($new_teacher);
-
              $this->createuserfromteacher($new_teacher);
-
          }*/
 
 
@@ -112,21 +105,16 @@ class DefaultController extends Controller
             $username = $username[0];
             $username = $username . '_' . rand(10, 90);
             $userManager = $this->container->get('fos_user.user_manager');
-
             $userAdmin = $userManager->createUser();
-
             //genero un nombre de usuario modificado por si acaso
             $userAdmin->setUsername($username);
             $userAdmin->setEmail($teacher->getEmail());
-
             $tokenGenerator = $this->container->get('fos_user.util.token_generator');
             $password = substr($tokenGenerator->generateToken(), 0, 8);
-
             $userAdmin->setPlainPassword($password);
             $userAdmin->addRole("ROLE_USER");
             $userAdmin->addRole("ROLE_TEACHER");
             $userAdmin->setEnabled(true);
-
             $userManager->updateUser($userAdmin, true);
             $teacher->setUser($userAdmin);
             $teacher->setPassw($password);
@@ -548,14 +536,20 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $array_courses_promote = array(
             1 => array(2, 9),
-            2 => array(3, 10),
-            3 => array(4),
-            4 => array(5),
+            //2 => array(3, 10),
+            2 => array(3, 11, 13),
+            3 => array(4, 11, 13),
+            4 => array(5, 13),
             5 => 6,
-            7 => 8,
+            7 => 14,
             8 => 5,
-            9 => array(10),
-            10 => 4);
+            //9 => array(10),
+            9 => array(3, 11, 13),
+            10 => array(4, 11, 13),
+            11 => array(4, 11, 13),
+            12 => array(5, 13),
+            13 => 14,
+            14 => 5);
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
             $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1,
