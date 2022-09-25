@@ -439,7 +439,7 @@ class DefaultController extends Controller
                 $student->addHistoricalCourse($student->getCourse());
             }
             $student->setCourse(null);
-            //     $em->persist($student);
+            $em->persist($student);
         }
 
 
