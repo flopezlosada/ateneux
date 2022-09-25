@@ -6,6 +6,9 @@
  * User: paco
  * Date: 1/12/15
  * Time: 21:52
+ * 
+ * Añadida columna "active" para poder decidir qúe se muestra y qué no en añadir curso. (Rober 02/09/22)
+ * 
  */
 
 namespace AppBundle\Entity;
@@ -86,6 +89,12 @@ class CourseType
      * Esta variable se llena en el controlador, no es de la tabla de datos
      */
     private $student_pending;
+
+    /**
+     * @var boolean $active
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active;
 
     /**
      * @return Es
