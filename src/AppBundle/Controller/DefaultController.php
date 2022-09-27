@@ -480,16 +480,18 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $array_courses_demote = array(
-            1 => array(1 ),
-            2 => array(2,7),
-            3 => array(3,7,10),
-            4 => array(4,7),
+            1 => array(1),
+            2 => array(2),
+            3 => array(3,11),
+            4 => array(4),
             5 => 5,
             6 => 6,
-            7 => 7,
-            8 => 8,
-            9 => array(9,7),
-            10 => array(10, 7)
+            7 => 13,
+            8 => 14,
+            9 => array(9),
+            10 => array(11),
+            11 => array(11),
+            12 => array(12)
         );
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
