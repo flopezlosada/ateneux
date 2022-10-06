@@ -21,7 +21,8 @@ class TeacherController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $teachers = $em->getRepository('AppBundle:Teacher')->findAll();
+        //$teachers = $em->getRepository('AppBundle:Teacher')->findAll();
+        $teachers = $em->getRepository('AppBundle:Teacher')->findBy(['active' => 1]);
 
         return $this->render('teacher/index.html.twig', array(
             'teachers' => $teachers,

@@ -45,6 +45,13 @@ class Teacher
     private $is_mediator = false;
 
     /**
+     * @var int active
+     * @ORM\Column(name="active", type="boolean", length=1)
+     * ¿es profesor/a actualmente?
+     */
+    private $active;
+
+    /**
      *
      * @var string passw
      * @ORM\Column(name="passw", type="string", length=255,nullable=true)
