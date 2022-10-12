@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,10 +24,19 @@ class WarningType extends AbstractType
             ->add('penalty_start_date',TextType::class, array('label'=>'Fecha Inicio de sanción', 'attr'=>array('class'=>'datepicker2 form-control')))
             ->add('penalty_end_date',TextType::class, array('label'=>'Fecha Fin de sanción', 'attr'=>array('class'=>'datepicker3 form-control')))
             ->add('warning_type',null,array('label'=>'Tipo de incidencia'))
-            ->add('teacher',null,array('label'=>'Profesora/or'))
+            ->add('teacher',null,array('label'=>'Profesora/or',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')->where('u.active=1')->orderBy('u.name');
+                }))
             //->add('warning_cause_type',null,array('label'=>'Motivo de amonestación'))
-            ->add('major_offence_type',null,array('label'=>'Tipo de falta grave'))
-            ->add('penalty_type',null,array('label'=>'Tipo de sanción'))
+            ->add('major_offence_type',null,array('label'=>'Tipo de falta',
+                'choice_label' => function ($entity) {
+                    return $entity->getTitleWithType();
+                }))
+            ->add('penalty_type',null,array('label'=>'Tipo de sanción',
+                'choice_label' => function ($entity) {
+                    return $entity->getTitleWithType();
+                }))
             ->add('sai',null, array('label' => '¿Acude a la SAI?'))
             ->add('sai_observations', null, array('label' => 'Resumen de la estancia en la SAI','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
             ->add('sai_teacher',null,array('label'=>'Profesora/or de guardia en la SAI'))

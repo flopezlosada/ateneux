@@ -44,6 +44,14 @@ class MajorOffenceType
      */
     private $title;
 
+
+    /**
+     * @var integer $warning_type
+     * @Assert\NotBlank
+     * @ORM\Column(name="warning_type", type="integer")
+     */
+    private $warning_type;
+
    
     /**
      * Constructor
@@ -85,6 +93,16 @@ class MajorOffenceType
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Get title with type
+     *
+     * @return string
+     */
+    public function getTitleWithType()
+    {
+        return '_'.$this->warning_type.'_'.$this->title;
     }
 
     /**

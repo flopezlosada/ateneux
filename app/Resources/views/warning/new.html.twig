@@ -122,12 +122,47 @@
             }
         })
 
+        $('#appbundle_warning_major_offence_type').find('option:contains(_2_)').each(function() {
+            $(this).html($(this).html().replace('_2_', ''));
+            $(this).attr('warning_type', 2);
+        });
+        $('#appbundle_warning_major_offence_type').find('option:contains(_3_)').each(function() {
+            $(this).html($(this).html().replace('_3_', ''));
+            $(this).attr('warning_type', 3);
+        });
+        $('#appbundle_warning_penalty_type').find('option:contains(_2_)').each(function() {
+            $(this).html($(this).html().replace('_2_', ''));
+            $(this).attr('warning_type', 2);
+        });
+        $('#appbundle_warning_penalty_type').find('option:contains(_3_)').each(function() {
+            $(this).html($(this).html().replace('_3_', ''));
+            $(this).attr('warning_type', 3);
+        });
+
         $('#appbundle_warning_warning_type').change(function () {
-            if ($(this).val() == 2) {
+            if ($(this).val() == 3) {
                 tinymce.get('appbundle_warning_information').setContent('');
+                $('#appbundle_warning_major_offence_type').val('');
+                $('#appbundle_warning_penalty_type').val('');
                 $('#minor_warning').hide('slow');
                 $('#major_warning').removeClass('hidden');
                 $('#major_warning').show('slow');
+                $('#appbundle_warning_major_offence_type').find('option').hide();
+                $('#appbundle_warning_major_offence_type').find('option[warning_type=3]').show();
+                $('#appbundle_warning_penalty_type').find('option').hide();
+                $('#appbundle_warning_penalty_type').find('option[warning_type=3]').show();
+            }
+            else if ($(this).val() == 2) {
+                tinymce.get('appbundle_warning_information').setContent('');
+                $('#appbundle_warning_major_offence_type').val('');
+                $('#appbundle_warning_penalty_type').val('');
+                $('#minor_warning').hide('slow');
+                $('#major_warning').removeClass('hidden');
+                $('#major_warning').show('slow');
+                $('#appbundle_warning_major_offence_type').find('option').hide();
+                $('#appbundle_warning_major_offence_type').find('option[warning_type=2]').show();
+                $('#appbundle_warning_penalty_type').find('option').hide();
+                $('#appbundle_warning_penalty_type').find('option[warning_type=2]').show();
             }
             else if ($(this).val() == 1) {
                 tinymce.get('appbundle_warning_description').setContent('');
@@ -153,6 +188,18 @@
             $('#minor_warning').hide('slow');
             $('#major_warning').removeClass('hidden');
             $('#major_warning').show('slow');
+            $('#appbundle_warning_major_offence_type').find('option').hide();
+            $('#appbundle_warning_major_offence_type').find('option[warning_type=2]').show();
+            $('#appbundle_warning_penalty_type').find('option').hide();
+            $('#appbundle_warning_penalty_type').find('option[warning_type=2]').show();
+        } else if ($('#appbundle_warning_warning_type').val() == 3) {
+            $('#minor_warning').hide('slow');
+            $('#major_warning').removeClass('hidden');
+            $('#major_warning').show('slow');
+            $('#appbundle_warning_major_offence_type').find('option').hide();
+            $('#appbundle_warning_major_offence_type').find('option[warning_type=3]').show();
+            $('#appbundle_warning_penalty_type').find('option').hide();
+            $('#appbundle_warning_penalty_type').find('option[warning_type=3]').show();
         }
 
 
