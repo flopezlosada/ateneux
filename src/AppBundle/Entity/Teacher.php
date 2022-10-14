@@ -49,7 +49,7 @@ class Teacher
      * @ORM\Column(name="active", type="boolean", length=1)
      * ¿es profesor/a actualmente?
      */
-    private $active;
+    private $active = true;
 
     /**
      *
