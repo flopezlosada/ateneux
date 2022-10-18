@@ -19,4 +19,18 @@ class TeacherRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+
+    /**
+     * Devuelve los profesores activos y ordenados
+     */
+    public function findActiveTeachers()
+    {
+        $em = $this->getEntityManager();
+        $dql = "select t from AppBundle:Teacher t where t.active=1 ORDER BY t.name asc";
+
+        $query = $em->createQuery($dql);
+
+        return $query->getResult();
+    }
 }

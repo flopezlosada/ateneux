@@ -47,7 +47,8 @@ class TeacherController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $course = $em->getRepository('AppBundle:Course')->find($course_id);
-        $teachers = $em->getRepository('AppBundle:Teacher')->findAll();//encuentra cursos activos
+        //$teachers = $em->getRepository('AppBundle:Teacher')->findAll();//encuentra cursos activos
+        $teachers = $em->getRepository('AppBundle:Teacher')->findActiveTeachers();
 
         return $this->render('teacher/course.html.twig', array(
             'teachers' => $teachers,
