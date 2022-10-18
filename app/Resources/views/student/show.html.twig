@@ -151,7 +151,8 @@
                             <p><strong>Correo electrónico: </strong>{{ student.getEmail }}</p>
 
                             {% if student.getCourse != null %}
-                                <p><strong>Curso actual: </strong> {{ student.getCourse }}
+                                <p><strong>Curso actual: </strong>
+                                <a href="{{ path('course_show', { 'id': student.getCourse.id }) }}"> {{ student.getCourse }}</a>
                                     | {% if status_real_course!=3 %}<a
                                         href="{{ path('student_course', {'student_id': student.id}) }}"
                                         class="alert-link">Cambiar</a>{% endif %}</p>
