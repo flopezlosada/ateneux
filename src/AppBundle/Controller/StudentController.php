@@ -320,7 +320,8 @@ class StudentController extends Controller
         if ($student->getCourseType()) {
             $courses = $em->getRepository('AppBundle:Course')->findCoursesStatusUnity(1, $student->getCourseType()->getId());//encuentra cursos activos del tipo que le corresponde
         } else {
-            $courses = $em->getRepository('AppBundle:Course')->findAll();
+            //$courses = $em->getRepository('AppBundle:Course')->findAll();
+            $courses = $em->getRepository('AppBundle:Course')->findCoursesStatus(1);
         }
         return $this->render('student/courses.html.twig', array(
             'student' => $student,
