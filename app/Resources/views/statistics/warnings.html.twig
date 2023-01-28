@@ -54,7 +54,7 @@
             {% for school_year in school_years %}
                 {% if app.request.attributes.get('_route') =='level_statistics_warning_course_type' %}
                     <li>
-                        <a href="{{ path('level_statistics_warning_course_type', {'selected_course_type_id': selected_course_type.id,'year':year}) }}">Año
+                        <a href="{{ path('level_statistics_warning_course_type', {'selected_course_type_id': selected_course_type.id,'year':school_year.getfirstyear}) }}">Año
                             {{ school_year  }}</a></li>
                 {% else %}
                     <li><a href="{{ path('statistics_warning', {'year':  school_year.getfirstyear}) }}">Año {{ school_year }}</a></li>

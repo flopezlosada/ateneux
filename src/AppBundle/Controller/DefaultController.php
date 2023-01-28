@@ -325,6 +325,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $courses_type = $em->getRepository("AppBundle:CourseType")->findAll();
         $selected_course_type = $em->getRepository("AppBundle:CourseType")->find($selected_course_type_id);
+        $school_years=$em->getRepository("AppBundle:SchoolYear")->findAll();
         $course_year_warnings = array(); //valores por año
         $course_month_warnings = array(); // valores por mes
         $warning_type = $em->getRepository("AppBundle:WarningType")->findAll();
@@ -371,6 +372,7 @@ class DefaultController extends Controller
             'course_month_penalty' => $course_month_penalty,
             'course_year_penalty' => $course_year_penalty,
             'selected_course_type' => $selected_course_type,
+            'school_years'=>$school_years,
             'year' => $year
         ));
     }
