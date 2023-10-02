@@ -58,7 +58,7 @@
                                                 <td>
                                                     <a href="{{ path('student_show', {'id': student.id, 'selected_course_id': null}) }}">{{ student }}</a></td>
                                                 <td>
-                                                    {% if type.id in [1,2,3,4,5,7,9,10] %}
+                                                    {% if type.id in [1,2,3,4,5,7,9,10,11,13] %}
                                                     <a href="{{ path('admin_course_student_promote', {'student_id': student.id}) }}">
                                                         <button class="btn btn-outline btn-success" type="button">
                                                             Promociona

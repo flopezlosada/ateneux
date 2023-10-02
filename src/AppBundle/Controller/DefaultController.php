@@ -550,7 +550,7 @@ class DefaultController extends Controller
             //9 => array(10),
             9 => array(3, 11, 13),
             10 => array(4, 11, 13),
-            11 => array(4, 11, 13),
+            11 => array(12, 13),
             12 => array(5, 13),
             13 => 14,
             14 => 5);
