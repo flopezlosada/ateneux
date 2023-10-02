@@ -493,7 +493,9 @@ class DefaultController extends Controller
             9 => array(9),
             10 => array(11),
             11 => array(11),
-            12 => array(12)
+            12 => array(12),
+            13 => array(13),
+            14 => array(14)
         );
         $student = $em->getRepository('AppBundle:Student')->find($student_id);
         if ($student->getCourseType()) {
