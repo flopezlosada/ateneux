@@ -180,6 +180,30 @@ class Warning
 
 
     /**
+     * @var int $delivered_student
+     * @ORM\Column(name="delivered_student", type="boolean", length=1, nullable=true)
+     * ¿Entregado a la alumna?
+     */
+    private $delivered_student = false;
+
+
+    /**
+     * @var int $family_informed
+     * @ORM\Column(name="family_informed", type="boolean", length=1, nullable=true)
+     * ¿Familia informada?
+     */
+    private $family_informed = false;
+
+
+    /**
+     * @var int $penalty_served
+     * @ORM\Column(name="penalty_served", type="boolean", length=1, nullable=true)
+     * ¿Sanción cumplida?
+     */
+    private $penalty_served = false;
+
+
+    /**
      * Get id.
      *
      * @return int
@@ -625,6 +649,87 @@ class Warning
     {
         return $this->sai_teacher;
     }
+
+
+
+
+    /**
+     * Set deliveredStudent.
+     *
+     * @param bool|null $deliveredStudent
+     *
+     * @return Warning
+     */
+    public function setDeliveredStudent($deliveredStudent = null)
+    {
+        $this->delivered_student = $deliveredStudent;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveredStudent.
+     *
+     * @return bool|null
+     */
+    public function getDeliveredStudent()
+    {
+        return $this->delivered_student;
+    }
+
+
+    /**
+     * Set familyInformed.
+     *
+     * @param bool|null $familyInformed
+     *
+     * @return Warning
+     */
+    public function setFamilyInformed($familyInformed = null)
+    {
+        $this->family_informed = $familyInformed;
+
+        return $this;
+    }
+
+    /**
+     * Get familyInformed.
+     *
+     * @return bool|null
+     */
+    public function getFamilyInformed()
+    {
+        return $this->family_informed;
+    }
+
+
+    /**
+     * Set penaltyServed.
+     *
+     * @param bool|null $penaltyServed
+     *
+     * @return Warning
+     */
+    public function setPenaltyServed($penaltyServed = null)
+    {
+        $this->penalty_served = $penaltyServed;
+
+        return $this;
+    }
+
+    /**
+     * Get penaltyServed.
+     *
+     * @return bool|null
+     */
+    public function getPenaltyServed()
+    {
+        return $this->penalty_served;
+    }
+
+
+
+
 
     /**
      * Set courseType.

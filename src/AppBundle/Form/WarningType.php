@@ -19,7 +19,7 @@ class WarningType extends AbstractType
 
             ->add('date',TextType::class, array('label'=>'Fecha', 'attr'=>array('class'=>'datepicker form-control')))
             ->add('information', null, array('label' => 'Información','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
-            ->add('signed',null, array('label' => '¿Ha devuelto firmado la incidencia?'))
+            ->add('signed',null, array('label' => '¿Ha devuelto firmada la incidencia?'))
             ->add('description', null, array('label' => 'Descripción del hecho','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
             ->add('penalty_start_date',TextType::class, array('label'=>'Fecha Inicio de sanción', 'attr'=>array('class'=>'datepicker2 form-control')))
             ->add('penalty_end_date',TextType::class, array('label'=>'Fecha Fin de sanción', 'attr'=>array('class'=>'datepicker3 form-control')))
@@ -40,6 +40,9 @@ class WarningType extends AbstractType
             ->add('sai',null, array('label' => '¿Acude a la SAI?'))
             ->add('sai_observations', null, array('label' => 'Resumen de la estancia en la SAI','attr'=>array('class'=>'tinymce','data-theme'=>'advanced')))
             ->add('sai_teacher',null,array('label'=>'Profesora/or de guardia en la SAI'))
+            ->add('delivered_student',null, array('label' => 'Parte entregado a la / al estudiante'))
+            ->add('family_informed',null, array('label' => 'Familia informada (mail/teléfono)'))
+            ->add('penalty_served',null, array('label' => 'Sanción cumplida'))
         ;
     }/**
      * {@inheritdoc}

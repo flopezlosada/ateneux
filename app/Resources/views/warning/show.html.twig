@@ -26,17 +26,27 @@
                     <p><strong>Profesora/or: </strong><a
                                 href="{{ path('teacher_show', {'id': warning.teacher.id}) }}"> {{ warning.teacher }}</a>
                     </p>
-                    {% if  warning.warningtype.id==1 %}
-                        <p><strong>Información: </strong>{{ warning.information|raw }}</p>
-                    {% elseif  warning.warningtype.id==2 %}
-                        <p><strong>Tipo de falta grave:</strong> {{ warning.majoroffencetype }}</p>
-                        <p><strong>Descripción del hecho:</strong> {{ warning.description|raw }}</p>
-                        <p><strong>Sanción</strong> {{ warning.penaltytype }}</p>
-                        <p><strong>Fecha inicio de
-                                sanción:</strong> {{ warning.penaltystartdate|localizeddate('long','none','es') }}</p>
-                        <p><strong>Fecha fin de
-                                sanción:</strong> {{ warning.penaltyenddate|localizeddate('long','none','es') }}</p>
-                    {% endif %}
+
+                    {# ########## Ya no diferenciamos faltas leves
+
+                            {% if  warning.warningtype.id==1 %}
+                                <p><strong>Información: </strong>{{ warning.information|raw }}</p>
+                                <p><strong>Sanción</strong> {{ warning.penaltytype }}</p>
+                                <p><strong>Fecha inicio de
+                                        sanción:</strong> {{ warning.penaltystartdate|localizeddate('long','none','es') }}</p>
+                                <p><strong>Fecha fin de
+                                        sanción:</strong> {{ warning.penaltyenddate|localizeddate('long','none','es') }}</p>
+                            {% elseif  warning.warningtype.id==2 %} #}
+
+                    <p><strong>Tipo de falta:</strong> {{ warning.majoroffencetype }}</p>
+                    {% if warning.information is not empty %} <p><strong>Información: </strong>{{ warning.information|raw }}</p> {% endif %}
+                    {% if warning.description is not empty %} <p><strong>Descripción del hecho:</strong> {{ warning.description|raw }}</p> {% endif %}
+                    <p><strong>Sanción</strong> {{ warning.penaltytype }}</p>
+                    <p><strong>Fecha inicio de
+                            sanción:</strong> {{ warning.penaltystartdate|localizeddate('long','none','es') }}</p>
+                    <p><strong>Fecha fin de
+                            sanción:</strong> {{ warning.penaltyenddate|localizeddate('long','none','es') }}</p>
+                    {# {% endif %} #}
 
                     <p>
                         <strong>¿Ha acudido a la SAI?:</strong>
@@ -50,6 +60,21 @@
                         <p><strong>Observaciones sobre la estancia en la SAI:</strong> {{ warning.getSaiObservations|raw }}</p>
                     </p>
                     {% endif %}
+                    </p>
+
+                    <p>
+                        <strong>Parte entregado a la / al estudiante:</strong>
+                        {% include ':warning:checkbox_control.html.twig' with {'property':warning.getDeliveredStudent} %}
+                    </p>
+
+                    <p>
+                        <strong>Familia informada (mail/teléfono):</strong>
+                        {% include ':warning:checkbox_control.html.twig' with {'property':warning.getFamilyInformed} %}
+                    </p>
+
+                    <p>
+                        <strong>Sanción cumplida:</strong>
+                        {% include ':warning:checkbox_control.html.twig' with {'property':warning.getPenaltyServed} %}
                     </p>
 
                     <p>
