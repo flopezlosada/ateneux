@@ -140,6 +140,8 @@
                                      src="{{ asset('uploads/student/images/' ~ student.image) | imagine_filter('image_student_card') }}"
                                 >
                             </div>
+                            <p><strong>NIA: </strong>{{ student.getNia }}</p>
+
                             <p><strong>Nombre y Apellidos: </strong>{{ student }}</p>
 
                             <p><strong>Dirección:</strong> {{ student.getCompleteAddress }}</p>

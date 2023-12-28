@@ -23,6 +23,7 @@ class StudentType extends AbstractType
 
         $builder
             ->add('birth_date',TextType::class, array('label'=>'Fecha de nacimiento','required'=>false, 'attr'=>array('class'=>'datepicker form-control')))
+            ->add('nia', null, array('label' => 'NIA'))
             ->add('name', null, array('label' => 'Nombre'))
             ->add('surname', null, array('label' => 'Apellidos'))
             ->add('address', null, array('label' => 'Dirección'))

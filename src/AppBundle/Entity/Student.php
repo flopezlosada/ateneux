@@ -34,6 +34,13 @@ class Student
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @var string nia
+     * @ORM\Column(name="nia", type="string", length=255)
+     */
+    private $nia;
+
+    /**
      *
      * @var smallint $student_status
      * @ORM\ManyToOne(targetEntity="StudentStatus", inversedBy="students")
@@ -380,6 +387,30 @@ class Student
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nia
+     *
+     * @param string $nia
+     *
+     * @return Student
+     */
+    public function setNia($nia)
+    {
+        $this->nia = $nia;
+
+        return $this;
+    }
+
+    /**
+     * Get nia
+     *
+     * @return string
+     */
+    public function getNia()
+    {
+        return $this->nia;
     }
 
     /**
