@@ -105,7 +105,8 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     public function findMajorOffenceByTypeYear($major_offence_type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
-        $dql = "select count(w) as total from AppBundle:Warning w where w.warning_type=:type and w.major_offence_type=:major_offence_type";
+        //$dql = "select count(w) as total from AppBundle:Warning w where w.warning_type=:type and w.major_offence_type=:major_offence_type";
+        $dql = "select count(w) as total from AppBundle:Warning w where w.major_offence_type=:major_offence_type";
 
         if ($course==null or $course->getCourseStatus()->getId()==1)
         {
@@ -120,7 +121,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
             $dql .= ' and w.course_type=:course_type ';
         }
         $query = $em->createQuery($dql);
-        $query->setParameter('type', 2);
+        //$query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
         }
@@ -141,8 +142,11 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     public function findMajorOffenceByCourseTypeMonth($major_offence_type, $month, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
-        $dql = "select count(w) from AppBundle:Warning w
+        /*$dql = "select count(w) from AppBundle:Warning w
                where MONTH(w.date)=:month and w.warning_type=:type and w.major_offence_type=:major_offence_type
+              ";*/
+        $dql = "select count(w) from AppBundle:Warning w
+               where MONTH(w.date)=:month and w.major_offence_type=:major_offence_type
               ";
 
         if ($course==null or $course->getCourseStatus()->getId()==1)
@@ -160,7 +164,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
-        $query->setParameter('type', 2);
+        //$query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
         }
@@ -181,7 +185,8 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     public function findPenaltyByTypeYear($penalty_type, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
-        $dql = "select count(w) as total from AppBundle:Warning w where  w.warning_type=:type and w.penalty_type=:penalty_type";
+        //$dql = "select count(w) as total from AppBundle:Warning w where  w.warning_type=:type and w.penalty_type=:penalty_type";
+        $dql = "select count(w) as total from AppBundle:Warning w where w.penalty_type=:penalty_type";
 
         if ($course==null or $course->getCourseStatus()->getId()==1)
         {
@@ -196,7 +201,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
             $dql .= ' and w.course_type=:course_type ';
         }
         $query = $em->createQuery($dql);
-        $query->setParameter('type', 2);
+        //$query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
         }
@@ -217,9 +222,12 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
     public function findPenaltyByCourseTypeMonth($penalty_type, $month, $year = null, $course = null, $course_type=null)
     {
         $em = $this->getEntityManager();
-        $dql = "select count(w) from AppBundle:Warning w
+        /*$dql = "select count(w) from AppBundle:Warning w
                where  MONTH(w.date)=:month and w.warning_type=:type and w.penalty_type=:penalty_type
-             ";
+             ";*/
+        $dql = "select count(w) from AppBundle:Warning w
+               where MONTH(w.date)=:month and w.penalty_type=:penalty_type
+             ";   
 
         if ($course==null or $course->getCourseStatus()->getId()==1)
         {
@@ -236,7 +244,7 @@ class WarningRepository extends \Doctrine\ORM\EntityRepository
         $dql .= ' order by w.date asc ';
 
         $query = $em->createQuery($dql);
-        $query->setParameter('type', 2);
+        //$query->setParameter('type', 2);
         if ($course) {
             $query->setParameter("course", $course);
         }

@@ -80,6 +80,16 @@ class PenaltyType
     }
 
     /**
+     * Get warning type.
+     *
+     * @return int
+     */
+    public function getWarningType()
+    {
+        return $this->warning_type;
+    }
+
+    /**
      * Set title.
      *
      * @param string $title

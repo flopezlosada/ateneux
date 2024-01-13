@@ -72,6 +72,16 @@ class MajorOffenceType
     }
 
     /**
+     * Get warning type
+     *
+     * @return integer
+     */
+    public function getWarningType()
+    {
+        return $this->warning_type;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
