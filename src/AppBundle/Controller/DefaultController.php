@@ -343,11 +343,11 @@ class DefaultController extends Controller
         $course_month_major_offence = array(); // valores por mes
         $major_offence_type = $em->getRepository("AppBundle:MajorOffenceType")->findAll();
         foreach ($major_offence_type as $type) {
-            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
+            $course_year_major_offence[] = array($em->getRepository("AppBundle:Warning")->findMajorOffenceByTypeYear($type, $year, null, $selected_course_type), $type->getTitle(), $type->getWarningType()); //valores por año
             foreach ($array_months as $month) {
                 $month_major_offence[$month] = $em->getRepository("AppBundle:Warning")->findMajorOffenceByCourseTypeMonth($type, $month, null, null, $selected_course_type);
             }
-            $course_month_major_offence[] = array($month_major_offence, $type->getTitle());
+            $course_month_major_offence[] = array($month_major_offence, $type->getTitle(), $type->getWarningType());
         }
 
 
@@ -355,11 +355,11 @@ class DefaultController extends Controller
         $course_month_penalty = array(); // valores por mes
         $penalty_type = $em->getRepository("AppBundle:PenaltyType")->findAll();
         foreach ($penalty_type as $type) {
-            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year, null, $selected_course_type), $type->getTitle()); //valores por año
+            $course_year_penalty[] = array($em->getRepository("AppBundle:Warning")->findPenaltyByTypeYear($type, $year, null, $selected_course_type), $type->getTitle(), $type->getWarningType()); //valores por año
             foreach ($array_months as $month) {
                 $month_penalty[$month] = $em->getRepository("AppBundle:Warning")->findPenaltyByCourseTypeMonth($type, $month, null, null, $selected_course_type);
             }
-            $course_month_penalty[] = array($month_penalty, $type->getTitle());
+            $course_month_penalty[] = array($month_penalty, $type->getTitle(), $type->getWarningType());
         }
 
 
