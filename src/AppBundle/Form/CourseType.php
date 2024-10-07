@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +20,11 @@ class CourseType extends AbstractType
             ->add('start_date',TextType::class, array('label'=>'Fecha de inicio', 'attr'=>array('class'=>'datepicker form-control')))
             ->add('end_date',TextType::class, array('label'=>'Fecha de finalización', 'attr'=>array('class'=>'datepicker2 form-control')))
             ->add('course_type', null, array('label' => 'Tipo de curso'))
-            ->add('mentor_teacher', null, array('label' => 'Indica la tutora o tutor del curso'));
+            ->add('mentor_teacher', null, array(
+                'label' => 'Indica la tutora o tutor del curso',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')->where('u.active=1')->orderBy('u.name');
+                }));
     }
     
     /**

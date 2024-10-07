@@ -90,6 +90,8 @@
     <script>
         $('.datepicker').pickadate({
             formatSubmit: 'yyyy-mm-dd',
+            selectYears: 40,
+            selectMonths: true,
             onStart: function () {
                 {% if student.getBirthDate() %}
                 var date = new Date("{{  student.getBirthDate()}}");
