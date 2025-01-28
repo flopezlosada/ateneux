@@ -149,9 +149,9 @@
                     data: [
                         {% for warning in course_year_warnings %}
                         {
-                            name: '{{ warning[1] }}',
+                            name: `{{ warning[1] }}`,
                             y: {{ warning[0] }},
-                            drilldown: '{{ warning[1] }}'
+                            drilldown: `{{ warning[1] }}`
                         },
                         {% endfor %}
                     ]
@@ -160,8 +160,8 @@
                     series: [
                         {% for array_warning in course_month_warnings %}
                         {
-                            name: '{{ array_warning[1] }}',
-                            id: '{{ array_warning[1] }}',
+                            name: `{{ array_warning[1] }}`,
+                            id: `{{ array_warning[1] }}`,
                             data: [{% for key,warning in  array_warning[0] %}
                                 ["{{ key|month_names }}", {{ warning }}],
                                 {% endfor %}]
@@ -218,9 +218,9 @@
                         {% for warning in course_year_major_offence %}
                             {% if warning[2] == 1 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -231,8 +231,8 @@
                         {% for array_warning in course_month_major_offence %}
                             {% if array_warning[2] == 1 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -290,9 +290,9 @@
                         {% for warning in course_year_major_offence %}
                             {% if warning[2] == 2 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -303,8 +303,8 @@
                         {% for array_warning in course_month_major_offence %}
                             {% if array_warning[2] == 2 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -362,9 +362,9 @@
                         {% for warning in course_year_major_offence %}
                             {% if warning[2] == 3 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -375,8 +375,8 @@
                         {% for array_warning in course_month_major_offence %}
                             {% if array_warning[2] == 3 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -434,9 +434,9 @@
                         {% for warning in course_year_major_offence %}
                             {% if warning[2] == 4 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -447,8 +447,8 @@
                         {% for array_warning in course_month_major_offence %}
                             {% if array_warning[2] == 4 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -506,9 +506,9 @@
                         {% for warning in course_year_penalty %}
                             {% if warning[2] == 1 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -519,8 +519,8 @@
                         {% for array_warning in course_month_penalty %}
                             {% if array_warning[2] == 1 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -578,9 +578,9 @@
                         {% for warning in course_year_penalty %}
                             {% if warning[2] == 2 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -591,8 +591,8 @@
                         {% for array_warning in course_month_penalty %}
                             {% if array_warning[2] == 2 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -650,9 +650,9 @@
                         {% for warning in course_year_penalty %}
                             {% if warning[2] == 3 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -663,8 +663,8 @@
                         {% for array_warning in course_month_penalty %}
                             {% if array_warning[2] == 3 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
@@ -722,9 +722,9 @@
                         {% for warning in course_year_penalty %}
                             {% if warning[2] == 4 %}
                                 {
-                                    name: '{{ warning[1] }}',
+                                    name: `{{ warning[1] }}`,
                                     y: {{ warning[0] }},
-                                    drilldown: '{{ warning[1] }}'
+                                    drilldown: `{{ warning[1] }}`
                                 },
                             {% endif %}
                         {% endfor %}
@@ -735,8 +735,8 @@
                         {% for array_warning in course_month_penalty %}
                             {% if array_warning[2] == 4 %}
                                 {
-                                    name: '{{ array_warning[1] }}',
-                                    id: '{{ array_warning[1] }}',
+                                    name: `{{ array_warning[1] }}`,
+                                    id: `{{ array_warning[1] }}`,
                                     data: [{% for key,warning in  array_warning[0] %}
                                         ["{{ key|month_names }}", {{ warning }}],
                                         {% endfor %}]
